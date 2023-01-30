@@ -1,0 +1,39 @@
+---
+name: PR Labels
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize, reopened, edited]
+
+jobs:
+  pr_labels:
+    name: 🏭 Verify labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏷 Verify PR has a valid label
+        uses: satvik-s/pr-label-check@5c3107c10f20f6ce1a61d35028204eb4c2842d93 # v1.0.0
+        with:
+          labels: breaking-change,bugfix,documentation,enhancement,refactor,performance,new-feature,maintenance,ci,dependencies,translations,changelog-ignore
+          type: any_of
+  pr_wip_check:
+    runs-on: ubuntu-latest
+    name: 🏭 Check for blocking labels
+    steps:
+      - name: 🏷 Check PR for a merge-blocking label
+        uses: tim-actions/wip-check@8c84f5987215d49440b86475062d61e4f099e1b7 # main branch
+        with:
+          labels: '["do-not-merge", "wip", "rfc", "blocked"]'
+          keywords: '["WIP", "wip", "RFC", "rfc"]'
+  pr_monorepo_label:
+    name: 🏭 Label PR With Repo(s)
+    runs-on: ubuntu-latest
+    if: contains(fromJson('["main", "l10_*"]'), github.base_ref) != true
+    steps:
+      - name: 🏷 Apply repo labels
+        uses: tinkurlab/monorepo-pr-labeler-action@6242ef35f78e617d14982c66ab715fa400b7ab25 # 4.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_DIRS: 'apps|packages'
+        with:
+          prefix: '📦'
+          separator: ' '
