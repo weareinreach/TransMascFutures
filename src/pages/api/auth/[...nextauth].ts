@@ -1,16 +1,37 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/require-await */
 import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
 
-import { env } from '../../../env/server.mjs'
+import type { NextAuthOptions, User } from 'next-auth'
 
-import type { NextAuthOptions } from 'next-auth'
 // Prisma adapter for NextAuth, optional and can be removed
 
 export const authOptions: NextAuthOptions = {
-	// Include user.id on session
+	providers: [
+		Credentials({
+			credentials: {
+				email: { label: 'Email', type: 'text' },
+				password: { label: 'Password', type: 'password' },
+			},
+			authorize: async (credentials) => {
+				return {
+					email: '',
+					id: '',
+					roles: [''],
+					permissions: [''],
+				}
+			},
+		}),
+	],
 	callbacks: {
-		session({ session, user }) {
+		jwt: async ({ token, user }) => {
+			user && (token.user = user as User)
+			return token
+		},
+		session: async ({ session, token }) => {
 			if (session.user) {
-				session.user.id = user.id
+				session.user = token.user
 			}
 			return session
 		},
@@ -19,17 +40,6 @@ export const authOptions: NextAuthOptions = {
 	session: {
 		strategy: 'jwt',
 	},
-	providers: [
-		/**
-		 * ...add more providers here
-		 *
-		 * Most other providers require a bit more work than the Discord provider. For example, the GitHub
-		 * provider requires you to add the `refresh_token_expires_in` field to the Account model. Refer to the
-		 * NextAuth.js docs for the provider you want to use. Example:
-		 *
-		 * @see https://next-auth.js.org/providers/github
-		 */
-	],
 }
 
 export default NextAuth(authOptions)
