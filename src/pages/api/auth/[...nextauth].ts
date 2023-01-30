@@ -1,7 +1,9 @@
-import NextAuth, { type NextAuthOptions } from 'next-auth'
-// Prisma adapter for NextAuth, optional and can be removed
+import NextAuth from 'next-auth'
 
 import { env } from '../../../env/server.mjs'
+
+import type { NextAuthOptions } from 'next-auth'
+// Prisma adapter for NextAuth, optional and can be removed
 
 export const authOptions: NextAuthOptions = {
 	// Include user.id on session

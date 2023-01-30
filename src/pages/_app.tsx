@@ -1,10 +1,15 @@
-import { MantineProvider } from '@mantine/core'
-import { type AppType } from 'next/app'
+import { MantineProvider, TypographyStylesProvider } from '@mantine/core'
+import { ModalsProvider } from '@mantine/modals'
+import { NotificationsProvider } from '@mantine/notifications'
 import Head from 'next/head'
-import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
+import { appWithTranslation } from 'next-i18next'
 
+import { styleCache, theme, fontWorkSans } from '../styles'
 import { api } from '../utils/api'
+
+import type { AppType } from 'next/app'
+import type { Session } from 'next-auth'
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
 	return (
@@ -16,17 +21,21 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 			<MantineProvider
 				withGlobalStyles
 				withNormalizeCSS
-				theme={{
-					/** Put your mantine theme override here */
-					colorScheme: 'light',
-				}}
+				theme={{ ...theme, fontFamily: fontWorkSans.style.fontFamily }}
+				emotionCache={styleCache}
 			>
-				<SessionProvider session={session}>
-					<Component {...pageProps} />
-				</SessionProvider>
+				<TypographyStylesProvider>
+					<NotificationsProvider>
+						<ModalsProvider>
+							<SessionProvider session={session}>
+								<Component {...pageProps} />
+							</SessionProvider>
+						</ModalsProvider>
+					</NotificationsProvider>
+				</TypographyStylesProvider>
 			</MantineProvider>
 		</>
 	)
 }
 
-export default api.withTRPC(MyApp)
+export default api.withTRPC(appWithTranslation(MyApp))

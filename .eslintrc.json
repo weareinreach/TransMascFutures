@@ -19,7 +19,12 @@
 		"project": "./tsconfig.json"
 	},
 	"plugins": ["codegen", "@typescript-eslint", "i18next"],
-	"extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "prettier"],
+	"extends": [
+		"next/core-web-vitals",
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+		"plugin:storybook/recommended"
+	],
 	"rules": {
 		"@typescript-eslint/consistent-type-imports": "warn",
 		"i18next/no-literal-string": 1,
@@ -29,8 +34,13 @@
 		"import/no-duplicates": "error",
 		"import/no-empty-named-blocks": "error",
 		"import/no-extraneous-dependencies": "error",
-		"import/no-unused-modules": ["warn", { "missingExports": true }],
-		"import/consistent-type-specifier-style": ["error", "prefer-inline"],
+		"import/no-unused-modules": [
+			"warn",
+			{
+				"missingExports": true
+			}
+		],
+		"import/consistent-type-specifier-style": ["error", "prefer-top-level"],
 		"import/order": [
 			"warn",
 			{

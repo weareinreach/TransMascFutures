@@ -16,6 +16,15 @@
 		"incremental": true,
 		"noUncheckedIndexedAccess": true
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".*.js", ".lib/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.cjs",
+		"**/*.mjs",
+		".*.js",
+		".lib/*.ts",
+		".storybook/*"
+	],
 	"exclude": ["node_modules"]
 }
