@@ -6,6 +6,10 @@ import { NavLinks } from './NavLinks'
 const HEADER_HEIGHT = 75
 
 const useStyles = createStyles((theme) => ({
+	header: {
+		backgroundColor: theme.other.colors.glaadGray,
+	},
+
 	navbar: {
 		display: 'flex',
 		justifyContent: 'space-around',
@@ -25,7 +29,7 @@ const useStyles = createStyles((theme) => ({
 export const Navbar = () => {
 	const { classes } = useStyles()
 	return (
-		<Header height={HEADER_HEIGHT} sx={{ backgroundColor: '#BEBEBE' }}>
+		<Header height={HEADER_HEIGHT} className={classes.header}>
 			<Container className={classes.navbar} fluid>
 				<NavLinks />
 			</Container>

@@ -26,7 +26,7 @@ export const theme: MantineThemeOverride = {
 	},
 	other: {
 		colors: {
-			gray: '#999999',
+			glaadGray: '#BEBEBE',
 		},
 	},
 }
@@ -34,7 +34,7 @@ export const theme: MantineThemeOverride = {
 declare module '@mantine/core' {
 	export interface MantineThemeOther {
 		colors: {
-			gray: '#999999'
+			glaadGray: '#BEBEBE'
 		}
 	}
 }
