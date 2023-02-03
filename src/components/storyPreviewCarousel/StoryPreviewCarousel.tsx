@@ -1,24 +1,36 @@
-import { Carousel } from "@mantine/carousel"
+import { Carousel } from '@mantine/carousel'
 
-import type { ReactNode } from "react"
+import { CarouselControls } from './CarouselControls'
+
+import type { ReactNode } from 'react'
 
 type CarouselProps = {
 	children: ReactNode[]
 }
 
-
-export const StoryPreviewCarousel = ({ children }: CarouselProps )=>{
-	const slides = children.map((child, i) => <Carousel.Slide key={i}>{child}</Carousel.Slide> )
+export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
+	const slides = children.map((child, i) => <Carousel.Slide key={i}>{child}</Carousel.Slide>)
 
 	return (
 		<Carousel
 			withIndicators
-			slideSize="32%"
-			slideGap="md"
+			slideSize='32%'
+			slideGap='md'
 			loop
-			align="center"
+			align='center'
 			slidesToScroll={3}
-	>
+			nextControlIcon={<CarouselControls direction='right' />}
+			previousControlIcon={<CarouselControls direction='left' />}
+			styles={{
+				control: {
+					border: 'none',
+					backgroundColor: 'transparent',
+					boxShadow: 'none',
+				},
+			}}
+			controlsOffset='xs'
+			inViewThreshold={1}
+		>
 			{slides}
 		</Carousel>
 	)
