@@ -1,35 +1,15 @@
-import { Header, Container, createStyles } from '@mantine/core'
+import { Header, Container } from '@mantine/core'
 
 import { HamburgerMenu } from './HamburgerMenu'
 import { NavLinks } from './NavLinks'
+import { useStyles } from './NavStyles'
 
 const HEADER_HEIGHT = 75
-
-const useStyles = createStyles((theme) => ({
-	header: {
-		backgroundColor: theme.other.colors.glaadGray,
-	},
-
-	navbar: {
-		display: 'flex',
-		justifyContent: 'space-around',
-		alignItems: 'center',
-		height: '100%',
-
-		['& a']: {
-			color: theme.colors.gray[0],
-		},
-
-		[`@media (max-width: ${theme.breakpoints.md}px)`]: {
-			display: 'none',
-		},
-	},
-}))
 
 export const Navbar = () => {
 	const { classes } = useStyles()
 	return (
-		<Header height={HEADER_HEIGHT} className={classes.header}>
+		<Header height={HEADER_HEIGHT} className={classes.glaadGray}>
 			<Container className={classes.navbar} fluid>
 				<NavLinks />
 			</Container>

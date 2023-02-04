@@ -1,17 +1,6 @@
-import { createStyles } from '@mantine/core'
 import Link from 'next/link'
 
-const useStyles = createStyles((theme, _params, _getRef) => ({
-	link: {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: '100%',
-		height: '100%',
-		fontStyle: 'italic',
-		textAlign: 'center',
-	},
-}))
+import { useStyles } from './NavStyles'
 
 type linkData = Array<[string, string]>
 
@@ -27,9 +16,9 @@ export const NavLinks = () => {
 	]
 
 	const links = linksInfo.map((linkInfo) => {
-		const [title] = linkInfo
+		const [title, href] = linkInfo
 		return (
-			<Link key={title} href='#' className={classes.link}>
+			<Link key={title} href={href} className={classes.navlink}>
 				{title.toUpperCase()}
 			</Link>
 		)
