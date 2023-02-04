@@ -5,6 +5,7 @@
 	"scripts": {
 		"build": "next build",
 		"build-storybook": "storybook build",
+		"chromatic": "chromatic --exit-zero-on-changes",
 		"db:deploy": "prisma migrate deploy",
 		"db:down": "cd docker && docker compose down",
 		"db:generate": "prisma generate",
@@ -85,6 +86,7 @@
 		"@typescript-eslint/eslint-plugin": "5.49.0",
 		"@typescript-eslint/parser": "5.49.0",
 		"boxen": "7.0.1",
+		"chromatic": "6.15.0",
 		"eslint": "8.33.0",
 		"eslint-config-next": "13.1.6",
 		"eslint-plugin-codegen": "0.17.0",
@@ -124,5 +126,7 @@
 				"i18next-http-backend": "2"
 			}
 		}
-	}
+	},
+	"readme": "ERROR: No README data found!",
+	"_id": "@weareinreach/glaad@0.1.0"
 }
