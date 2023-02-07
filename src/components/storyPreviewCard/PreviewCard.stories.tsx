@@ -3,7 +3,7 @@ import { PreviewCard } from './PreviewCard'
 import type { Meta } from '@storybook/react'
 
 export default {
-	title: 'Preview Card',
+	title: 'Components/Preview Card',
 	component: PreviewCard,
 	args: {
 		title: 'NAME, PRONOUNS, AGE',
@@ -20,5 +20,6 @@ export const Mobile = {
 		viewport: {
 			defaultViewport: 'iphonex',
 		},
+		layout: 'fullscreen',
 	},
 }

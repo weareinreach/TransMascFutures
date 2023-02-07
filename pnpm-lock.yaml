@@ -52,6 +52,7 @@ specifiers:
   boxen: 7.0.1
   chromatic: 6.15.0
   dayjs: 1.11.7
+  embla-carousel-auto-height: 7.0.9
   embla-carousel-react: 7.0.9
   eslint: 8.33.0
   eslint-config-next: 13.1.6
@@ -112,6 +113,7 @@ dependencies:
   '@trpc/react-query': 10.9.0_ixfcn37h5gqu3mzwg7mclp4g2m
   '@trpc/server': 10.9.0
   dayjs: 1.11.7
+  embla-carousel-auto-height: 7.0.9_embla-carousel@7.0.9
   embla-carousel-react: 7.0.9_react@18.2.0
   eslint-config-prettier: 8.6.0_eslint@8.33.0
   i18next: 22.4.9
@@ -6511,6 +6513,14 @@ packages:
 
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
+
+  /embla-carousel-auto-height/7.0.9_embla-carousel@7.0.9:
+    resolution: {integrity: sha512-ZCFF+vgm7gV6zCRBqHA6Ytv6ZeSr97KeifGlghaaCGQjv4lQtEmqE3z2HA6ogOrvI1BQKKv2CUj3RNwewEx9eg==}
+    peerDependencies:
+      embla-carousel: 7.0.9
+    dependencies:
+      embla-carousel: 7.0.9
+    dev: false
 
   /embla-carousel-react/7.0.9_react@18.2.0:
     resolution: {integrity: sha512-KGnnZWukN+N2H6VjQf6C9mWmInqtCIiInhkGsJ9ckxri3m3Ks6wRDz+RRlV1kcuPHtRoxyFuBBGNwftWqMO9Pw==}
