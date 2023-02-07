@@ -1,29 +1,35 @@
-import { Button as MantineButton } from '@mantine/core'
+import { Button as MantineButton, createStyles } from '@mantine/core'
 
 import type { ButtonProps } from '@mantine/core'
 import type { ReactNode } from 'react'
 
-export const Button = ({ children, color, variant, size }: Props) => {
+export const Button = ({ children, variant = 'primary', size }: Props) => {
+	const useStyles = createStyles((theme) => ({
+		root: {
+			borderRadius: 0,
+			fontWeight: 600,
+			height: 'auto',
+			padding: '15px',
+			textAlign: 'center',
+			width: '175px',
+			backgroundColor: variant === 'primary' ? theme.other.colors.black : theme.other.colors.midGray,
+			['&:hover']: {
+				backgroundColor: variant === 'primary' ? theme.other.colors.midGray : theme.other.colors.black,
+			},
+		},
+		label: {
+			whiteSpace: 'normal',
+			textTransform: variant === 'secondary' ? 'uppercase' : undefined,
+		},
+	}))
+	const { classes } = useStyles()
+
 	return (
 		<MantineButton
-			color={color}
-			variant={variant}
 			size={size}
-			sx={[
-				{
-					borderRadius: 0,
-					fontWeight: 'normal',
-					height: 'auto',
-					padding: '15px',
-					textAlign: 'center',
-					width: '175px',
-				},
-				{
-					span: {
-						whiteSpace: 'normal',
-					},
-				},
-			]}
+			classNames={{
+				...classes,
+			}}
 		>
 			{children}
 		</MantineButton>
@@ -32,7 +38,6 @@ export const Button = ({ children, color, variant, size }: Props) => {
 
 type Props = {
 	children: ReactNode
-	color: ButtonProps['color']
-	variant?: ButtonProps['variant']
+	variant?: 'primary' | 'secondary'
 	size?: ButtonProps['size']
 }

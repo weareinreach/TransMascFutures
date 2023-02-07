@@ -14,15 +14,13 @@ type Story = StoryObj<typeof Button>
 export const Default: Story = {
 	args: {
 		children: 'See Queer Stories',
-		color: 'dark',
-		variant: 'filled',
+		variant: 'primary',
 	},
 }
 
 export const Secondary: Story = {
 	args: {
-		children: 'CLICK HERE TO PARTICIPATE',
-		color: 'gray',
-		variant: 'filled',
+		children: 'Click here to participate',
+		variant: 'secondary',
 	},
 }
