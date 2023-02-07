@@ -1,4 +1,3 @@
-import { fireEvent, userEvent, within } from '@storybook/testing-library'
 import React from 'react'
 
 import { Navbar } from './Navbar'
@@ -13,7 +12,7 @@ export default {
 	},
 } as Meta<typeof Navbar>
 
-const Template: StoryFn<typeof Navbar> = (args) => <Navbar />
+const Template: StoryFn<typeof Navbar> = () => <Navbar />
 
 export const Default = Template.bind({})
 
@@ -24,8 +23,3 @@ Mobile.parameters = {
 		defaultViewport: 'iphonex',
 	},
 }
-
-// Mobile.play =  async ({ canvasElement }) => {
-// 	const canvas = within(canvasElement);
-
-// };

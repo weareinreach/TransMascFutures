@@ -1,32 +1,37 @@
-import { Card, Image, Text, createStyles } from '@mantine/core'
+import { Card, Text, createStyles, AspectRatio } from '@mantine/core'
+import Image from 'next/image'
 
-type message = {
+type CardProps = {
 	title: string
 	text: string
+	imgAlt: string
+	imgSrc: string
 }
 
-
-const useStyles = createStyles((theme) =>({
-	card:{
+const useStyles = createStyles(() => ({
+	card: {
 		minWidth: 340,
-		maxWidth: 480
-	}
+		maxWidth: 480,
+	},
 }))
 
-
-export const PreviewCard = ({ text, title }: message) => {
+export const PreviewCard = ({ text, title, imgSrc, imgAlt }: CardProps) => {
 	const { classes } = useStyles()
 
 	return (
 		<div className={classes.card}>
-			<Card m="md">
+			<Card m='md'>
 				<Card.Section>
-					<Image height={160} alt='Story image' withPlaceholder />
+					<AspectRatio ratio={480 / 355}>
+						<Image width={480} height={355} alt={imgAlt} src={imgSrc} />
+					</AspectRatio>
 				</Card.Section>
-				<Text fw={700} fz="lg" >
+				<Text fw={700} fz='lg'>
 					{title}
 				</Text>
-				<Text lineClamp={5} fz="sm">{text}</Text>
+				<Text lineClamp={5} fz='sm'>
+					{text}
+				</Text>
 			</Card>
 		</div>
 	)
