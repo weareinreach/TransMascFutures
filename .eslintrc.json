@@ -18,7 +18,7 @@
 	"parserOptions": {
 		"project": "./tsconfig.json"
 	},
-	"plugins": ["codegen", "@typescript-eslint", "i18next"],
+	"plugins": ["codegen", "@typescript-eslint", "i18next", "storybook"],
 	"extends": [
 		"next/core-web-vitals",
 		"plugin:@typescript-eslint/recommended",
