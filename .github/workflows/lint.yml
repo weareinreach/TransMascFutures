@@ -3,6 +3,8 @@ name: Lint & format
 on:
   push:
     branches-ignore: [dev, main, renovate/*]
+  pull_request_target:
+    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   lintformat:
