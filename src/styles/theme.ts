@@ -1,4 +1,4 @@
-import type { MantineThemeOverride } from '@mantine/core'
+import type { MantineThemeOverride, MantineThemeOther } from '@mantine/core'
 
 export const theme: MantineThemeOverride = {
 	colorScheme: 'light',
@@ -24,4 +24,17 @@ export const theme: MantineThemeOverride = {
 			h6: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
 		},
 	},
+	other: {
+		colors: {
+			glaadGray: '#BEBEBE',
+		},
+	},
+}
+
+declare module '@mantine/core' {
+	export interface MantineThemeOther {
+		colors: {
+			glaadGray: '#BEBEBE'
+		}
+	}
 }
