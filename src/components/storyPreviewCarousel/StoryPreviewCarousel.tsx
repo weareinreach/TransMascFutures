@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel'
-
-import { CarouselControls } from './CarouselControls'
+import { IconChevronRight, IconChevronLeft } from '@tabler/icons'
+import AutoHeight from 'embla-carousel-auto-height'
 
 import type { ReactNode } from 'react'
 
@@ -10,17 +10,17 @@ type CarouselProps = {
 
 export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
 	const slides = children.map((child, i) => <Carousel.Slide key={i}>{child}</Carousel.Slide>)
-
+	const [size, strokeWidth, color] = [64, 3, 'black']
 	return (
 		<Carousel
-			withIndicators
 			slideSize='32%'
-			slideGap='md'
+			slideGap='xs'
+			height={500}
 			loop
 			align='center'
 			slidesToScroll={3}
-			nextControlIcon={<CarouselControls direction='right' />}
-			previousControlIcon={<CarouselControls direction='left' />}
+			nextControlIcon={<IconChevronRight size={size} strokeWidth={strokeWidth} color={color} />}
+			previousControlIcon={<IconChevronLeft size={size} strokeWidth={strokeWidth} color={color} />}
 			styles={{
 				control: {
 					border: 'none',
@@ -28,8 +28,10 @@ export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
 					boxShadow: 'none',
 				},
 			}}
-			controlsOffset='xs'
+			controlsOffset={-24}
 			inViewThreshold={1}
+			plugins={[AutoHeight({ active: true })]}
+			controlSize={size}
 		>
 			{slides}
 		</Carousel>
