@@ -56,7 +56,7 @@ jobs:
         run: pnpm install
 
       - name: Lint projects
-        run: pnpm lint:fix --format github
+        run: pnpm lint:fix
         if: always()
         id: lint
 
