@@ -3,15 +3,11 @@ name: Lint & format
 on:
   push:
     branches-ignore: [dev, main, renovate/*]
-  pull_request_target:
-    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   lintformat:
     env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-      # GITHUB_TOKEN: ${{ secrets.GH_ACT_PAT }}
+      GITHUB_TOKEN: ${{ secrets.GH_ACT_PAT }}
     name: 'Lint & format'
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +56,7 @@ jobs:
         run: pnpm install
 
       - name: Lint projects
-        run: pnpm lint:fix -- --format github
+        run: pnpm lint:fix --format github
         if: always()
         id: lint
 
