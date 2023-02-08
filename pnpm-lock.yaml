@@ -33,7 +33,7 @@ specifiers:
   '@storybook/nextjs': 7.0.0-beta.43
   '@storybook/react': 7.0.0-beta.43
   '@storybook/testing-library': 0.0.13
-  '@tabler/icons': 1.119.0
+  '@tabler/icons': 2.2.0
   '@tanstack/react-query': 4.24.4
   '@tiptap/extension-link': 2.0.0-beta.212
   '@tiptap/react': 2.0.0-beta.212
@@ -99,11 +99,11 @@ dependencies:
   '@mantine/nprogress': 5.10.3_7qw7iibcf4wkwwwrwp57hnnlya
   '@mantine/prism': 5.10.3_7qw7iibcf4wkwwwrwp57hnnlya
   '@mantine/spotlight': 5.10.3_7qw7iibcf4wkwwwrwp57hnnlya
-  '@mantine/tiptap': 5.10.3_g27g3hpai27262aa2egdzxywgm
+  '@mantine/tiptap': 5.10.3_qtzniwuky257etm4pjtkxl4lbe
   '@next-auth/prisma-adapter': 1.0.5_77bhi65b6v5jbrzr36rs2ojwe4
   '@next/font': 13.1.6
   '@prisma/client': 4.9.0_prisma@4.9.0
-  '@tabler/icons': 1.119.0_biqbaboplfbrettd7655fr4n2y
+  '@tabler/icons': 2.2.0
   '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
   '@tiptap/extension-link': 2.0.0-beta.212_zgjcuhkx73ahmrjtl4wwrfvmla
   '@tiptap/react': 2.0.0-beta.212_5n3ejm7jnz75jiyjltlzi6qjle
@@ -2249,7 +2249,7 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@mantine/tiptap/5.10.3_g27g3hpai27262aa2egdzxywgm:
+  /@mantine/tiptap/5.10.3_qtzniwuky257etm4pjtkxl4lbe:
     resolution: {integrity: sha512-RfsbdqX4F2YFMn1HhYmFVZ1zZ2KyB66UNxp9czx9njhzT7pX7a9YtqdBj9LIa22/X4qgjtt9/NNEG6vIzIxSaA==}
     peerDependencies:
       '@mantine/core': 5.10.3
@@ -2262,7 +2262,7 @@ packages:
       '@mantine/core': 5.10.3_ylq7zkqz7uvrjy7wd5cseqyxu4
       '@mantine/hooks': 5.10.3_react@18.2.0
       '@mantine/utils': 5.10.3_react@18.2.0
-      '@tabler/icons': 1.119.0_biqbaboplfbrettd7655fr4n2y
+      '@tabler/icons': 2.2.0
       '@tiptap/extension-link': 2.0.0-beta.212_zgjcuhkx73ahmrjtl4wwrfvmla
       '@tiptap/react': 2.0.0-beta.212_5n3ejm7jnz75jiyjltlzi6qjle
       react: 18.2.0
@@ -3965,19 +3965,8 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tabler/icons/1.119.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-Fk3Qq4w2SXcTjc/n1cuL5bccPkylrOMo7cYpQIf/yw6zP76LQV9dtLcHQUjFiUnaYuswR645CnURIhlafyAh9g==}
-    peerDependencies:
-      react: ^16.x || 17.x || 18.x || 18
-      react-dom: ^16.x || 17.x || 18.x
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
+  /@tabler/icons/2.2.0:
+    resolution: {integrity: sha512-s2mm+7JqmLObKdU89Dtiy+USmUpOlACsoXZZPykjAJZC4pK3wMYxLsclJxViWLeLTb6Bc0oga92V7R+9nrj1ZQ==}
     dev: false
 
   /@tanstack/query-core/4.24.4:
