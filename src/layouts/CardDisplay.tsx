@@ -1,4 +1,4 @@
-import { MediaQuery, Flex } from '@mantine/core'
+import { MediaQuery, Flex, Container } from '@mantine/core'
 
 import { StoryPreviewCarousel } from '../components/storyPreviewCarousel/StoryPreviewCarousel'
 
@@ -10,7 +10,7 @@ type CardDisplayProps = {
 
 export const CardDisplay = ({ children }: CardDisplayProps) => {
 	return (
-		<>
+		<Container fluid mb='sm'>
 			<MediaQuery smallerThan='md' styles={{ display: 'none' }}>
 				<div>
 					<StoryPreviewCarousel>{children}</StoryPreviewCarousel>
@@ -21,6 +21,6 @@ export const CardDisplay = ({ children }: CardDisplayProps) => {
 					{children}
 				</Flex>
 			</MediaQuery>
-		</>
+		</Container>
 	)
 }
