@@ -1,54 +1,49 @@
 import Image from 'next/image'
-import { Grid, Container, createStyles } from '@mantine/core'
+import Link from 'next/link'
+import { Grid, Container, Flex, AspectRatio } from '@mantine/core'
 
 import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { Button } from '../../components/Button/Button'
 import { CardDisplay } from '../CardDisplay'
 import transMascLogo from '/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 
-const useStyles = createStyles((theme) => ({
-	center: {
-		display: 'flex',
-		justifyContent: 'center',
-	},
-	logo: {
-		maxHeight: '200px !important',
-	},
-	grid: {
-		maxWidth: '550px !important',
-		[`@media (min-width: ${theme.breakpoints.md}px)`]: {
-			height: 200,
-		},
-	},
-}))
-
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
-		const { name, pronouns, birthYear, image } = story
+		const { name, pronouns, birthYear, image, publicSlug } = story
 
 		return (
-			<PreviewCard
-				key={`${name}${i}`}
-				title={`${name}, ${pronouns}, ${year - birthYear}`}
-				text={story.storyJoy}
-				imgAlt={image ? `${name} image` : 'Inreach x Glaad'}
-				imgSrc={image ? image : story.defaultImageId}
-			/>
+			<Container key={`${name}${i}`}>
+				<Flex direction='column' align='center'>
+					<Link href={`/story/${publicSlug}`} style={{ textDecoration: 'none' }}>
+						<PreviewCard
+							title={`${name}, ${pronouns}, ${year - birthYear}`}
+							text={story.storyJoy}
+							imgAlt={image ? `${name} image` : 'Inreach x Glaad'}
+							imgSrc={image ? image : story.defaultImageId}
+						/>
+					</Link>
+					<Link href={'/category/#'}>
+						<Button>{'See CATEGORY Stories'}</Button>
+					</Link>
+				</Flex>
+			</Container>
 		)
 	})
 
-	const { classes, cx } = useStyles()
-
 	return (
 		<Container fluid>
-			<Grid align='center' justify={'center'}>
-				<Grid.Col lg={3} md={2} p={0}></Grid.Col>
-				<Grid.Col lg={6} md={8} className={cx(classes.center, classes.grid)}>
-					<Image src={transMascLogo} alt='transmasc logo' className={classes.logo} />
+			<Grid justify='center' align='center'>
+				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
+				<Grid.Col lg={6} md={12}>
+					<AspectRatio ratio={800 / 300}>
+						<Image src={transMascLogo} alt='transmasc logo' width={800} height={300} />
+					</AspectRatio>
 				</Grid.Col>
-				<Grid.Col lg={3} md={2} className={classes.center}>
-					<Button variant='secondary'>{'Click here to participate'}</Button>
+				<Grid.Col lg={3} md={12}>
+					<Flex justify='center'>
+						<Button variant='secondary'>{'Click here to participate'}</Button>
+					</Flex>
 				</Grid.Col>
 			</Grid>
 			<CardDisplay>{previewCards}</CardDisplay>
@@ -63,6 +58,7 @@ export type story = {
 	storyJoy: string
 	image?: string
 	defaultImageId: string
+	publicSlug: string
 }
 
 type MainPageProps = {
