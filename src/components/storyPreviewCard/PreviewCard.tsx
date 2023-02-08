@@ -10,7 +10,6 @@ type CardProps = {
 
 const useStyles = createStyles(() => ({
 	card: {
-		minWidth: 340,
 		maxWidth: 480,
 	},
 }))
