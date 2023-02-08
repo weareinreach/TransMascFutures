@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker'
 import React from 'react'
 
 import { MainPage } from './MainPage'
+import { Navbar } from '../../components/Navbar/Navbar'
 
 import type { story } from './MainPage'
 import type { Meta } from '@storybook/react'
@@ -22,10 +23,16 @@ export default {
 				storyJoy: faker.lorem.sentences(6),
 				image: faker.datatype.number(100) % 3 === 0 ? undefined : 'http://placekitten.com/g/480/355',
 				defaultImageId: '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png',
+				publicSlug: '#',
 			})
 		}
 
-		return <MainPage stories={stories} />
+		return (
+			<>
+				<Navbar />
+				<MainPage stories={stories} />
+			</>
+		)
 	},
 } as Meta<typeof MainPage>
 
