@@ -17,12 +17,12 @@ const useStyles = createStyles((theme) => ({
 	},
 }))
 
-type Props = {
+export type cardProps = {
 	title: string
 	text: string
 }
 
-export const StatisticCard = ({ title, text }: Props) => {
+export const StatisticCard = ({ title, text }: cardProps) => {
 	const { classes } = useStyles()
 	return (
 		<Card className={classes.card}>
