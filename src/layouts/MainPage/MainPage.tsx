@@ -4,6 +4,7 @@ import { Grid, Container, Flex, AspectRatio } from '@mantine/core'
 
 import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { Button } from '../../components/Button/Button'
+import { ModalForm } from '../../components/ModalForm/ModalForm'
 import { CardDisplay } from '../CardDisplay'
 import transMascLogo from '/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 
@@ -11,7 +12,6 @@ export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
 		const { name, pronouns, birthYear, image, publicSlug } = story
-
 		return (
 			<Container key={`${name}${i}`}>
 				<Flex direction='column' align='center'>
@@ -23,7 +23,7 @@ export const MainPage = ({ stories }: MainPageProps) => {
 							imgSrc={image ? image : story.defaultImageId}
 						/>
 					</Link>
-					<Link href={'/category/#'}>
+					<Link style={{ marginTop: 'auto' }} href={'/category/#'}>
 						<Button>{'See CATEGORY Stories'}</Button>
 					</Link>
 				</Flex>
@@ -42,7 +42,7 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>
 					<Flex justify='center'>
-						<Button variant='secondary'>{'Click here to participate'}</Button>
+						<ModalForm />
 					</Flex>
 				</Grid.Col>
 			</Grid>
