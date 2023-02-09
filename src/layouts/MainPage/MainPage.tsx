@@ -1,12 +1,11 @@
+import { Grid, Container, Flex, AspectRatio } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Grid, Container, Flex, AspectRatio } from '@mantine/core'
 
-import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { Button } from '../../components/Button/Button'
 import { ModalForm } from '../../components/ModalForm/ModalForm'
+import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../CardDisplay'
-import transMascLogo from '/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
@@ -37,7 +36,12 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
 				<Grid.Col lg={6} md={12}>
 					<AspectRatio ratio={800 / 300}>
-						<Image src={transMascLogo} alt='transmasc logo' width={800} height={300} />
+						<Image
+							src='/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
+							alt='transmasc logo'
+							width={800}
+							height={300}
+						/>
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>
