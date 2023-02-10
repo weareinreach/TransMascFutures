@@ -10,7 +10,7 @@ export const storyRouter = createTRPCRouter({
 			},
 			take: 9,
 			orderBy: {
-				createdAt: 'asc',
+				createdAt: 'desc',
 			},
 		})
 	),
