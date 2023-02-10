@@ -6,6 +6,7 @@ import { Button } from '../../components/Button/Button'
 import { ModalForm } from '../../components/ModalForm/ModalForm'
 import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../CardDisplay'
+import transMasc from '/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
@@ -14,12 +15,13 @@ export const MainPage = ({ stories }: MainPageProps) => {
 		return (
 			<Container key={`${name}${i}`}>
 				<Flex direction='column' align='center'>
-					<Link href={`/story/${publicSlug}`} style={{ textDecoration: 'none' }}>
+					{/* Ask what should be used for the link to the story */}
+					<Link href={`/story/`} style={{ textDecoration: 'none' }}>
 						<PreviewCard
 							title={`${name}, ${pronouns}, ${year - birthYear}`}
 							text={story.storyJoy}
 							imgAlt={image ? `${name} image` : 'Inreach x Glaad'}
-							imgSrc={image ? image : story.defaultImageId}
+							imgSrc={image || story.defaultImage}
 						/>
 					</Link>
 					<Link style={{ marginTop: 'auto' }} href={'/category/#'}>
@@ -36,12 +38,7 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
 				<Grid.Col lg={6} md={12}>
 					<AspectRatio ratio={800 / 300}>
-						<Image
-							src='/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
-							alt='transmasc logo'
-							width={800}
-							height={300}
-						/>
+						<Image src={transMasc} alt='transmasc logo' width={800} height={300} />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>
@@ -60,9 +57,9 @@ export type story = {
 	pronouns: string
 	birthYear: number
 	storyJoy: string
-	image?: string
-	defaultImageId: string
-	publicSlug: string
+	image: string | null
+	defaultImage?: string
+	publicSlug: string | null
 }
 
 type MainPageProps = {

@@ -21,8 +21,7 @@ export default {
 				pronouns: 'Cat/Kitten',
 				birthYear: faker.date.birthdate({ min: 2004, max: 2023, mode: 'year' }).getFullYear(),
 				storyJoy: faker.lorem.sentences(6),
-				image: faker.datatype.number(100) % 3 === 0 ? undefined : 'http://placekitten.com/g/480/355',
-				defaultImageId: '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png',
+				image: faker.datatype.number(100) % 3 === 0 ? null : 'http://placekitten.com/g/480/355',
 				publicSlug: '#',
 			})
 		}
