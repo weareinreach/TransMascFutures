@@ -1,4 +1,4 @@
-import { Card, Text, createStyles, AspectRatio, Skeleton } from '@mantine/core'
+import { Card, Text, createStyles, AspectRatio } from '@mantine/core'
 import Image from 'next/image'
 import noImage from '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'
 
