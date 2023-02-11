@@ -6,22 +6,23 @@ import { Button } from '../../components/Button/Button'
 import { ModalForm } from '../../components/ModalForm/ModalForm'
 import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../CardDisplay'
-import transMasc from '/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
+
+import type { DefaultImage } from '@prisma/client'
 
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
-		const { name, pronouns, birthYear, image, publicSlug } = story
+		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
+		const img = image || defaultImage
 		return (
 			<Container key={`${name}${i}`}>
 				<Flex direction='column' align='center'>
-					{/* Ask what should be used for the link to the story */}
-					<Link href={`/story/`} style={{ textDecoration: 'none' }}>
+					<Link href={`/story/${publicSlug}`} style={{ textDecoration: 'none' }}>
 						<PreviewCard
 							title={`${name}, ${pronouns}, ${year - birthYear}`}
 							text={story.storyJoy}
-							imgAlt={image ? `${name} image` : 'Inreach x Glaad'}
-							imgSrc={image || story.defaultImage}
+							imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
+							imgSrc={image ? image : (defaultImage?.image as string)}
 						/>
 					</Link>
 					<Link style={{ marginTop: 'auto' }} href={'/category/#'}>
@@ -38,7 +39,12 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
 				<Grid.Col lg={6} md={12}>
 					<AspectRatio ratio={800 / 300}>
-						<Image src={transMasc} alt='transmasc logo' width={800} height={300} />
+						<Image
+							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
+							alt='transmasc logo'
+							width={800}
+							height={300}
+						/>
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>
@@ -57,9 +63,9 @@ export type story = {
 	pronouns: string
 	birthYear: number
 	storyJoy: string
-	image: string | null
-	defaultImage?: string
-	publicSlug: string | null
+	image?: string
+	defaultImage?: DefaultImage
+	publicSlug: string
 }
 
 type MainPageProps = {
