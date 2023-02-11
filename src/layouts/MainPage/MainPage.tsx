@@ -13,11 +13,10 @@ export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
 		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
-		const img = image || defaultImage
 		return (
 			<Container key={`${name}${i}`}>
 				<Flex direction='column' align='center'>
-					<Link href={`/story/${publicSlug}`} style={{ textDecoration: 'none' }}>
+					<Link href={`/story/${publicSlug || 'none'}`} style={{ textDecoration: 'none' }}>
 						<PreviewCard
 							title={`${name}, ${pronouns}, ${year - birthYear}`}
 							text={story.storyJoy}
@@ -63,11 +62,11 @@ export type story = {
 	pronouns: string
 	birthYear: number
 	storyJoy: string
-	image?: string
-	defaultImage?: DefaultImage
-	publicSlug: string
+	image: string | null
+	publicSlug: string | null
+	defaultImage: DefaultImage | null
 }
 
-type MainPageProps = {
+export type MainPageProps = {
 	stories: story[]
 }
