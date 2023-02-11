@@ -1,4 +1,4 @@
-import { Title, Grid, Container, AspectRatio } from '@mantine/core'
+import { Title, Grid, Container, AspectRatio, MediaQuery } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,15 +12,15 @@ import type { story } from '../MainPage/MainPage'
 export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
-		const { name, pronouns, birthYear, image, publicSlug } = story
+		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
 		return (
 			<Container key={`${name}${i}`}>
 				<Link href={`/story/${publicSlug}`} style={{ textDecoration: 'none' }}>
 					<PreviewCard
 						title={`${name}, ${pronouns}, ${year - birthYear}`}
 						text={story.storyJoy}
-						imgAlt={image ? `${name} image` : 'Inreach x Glaad'}
-						imgSrc={image ? image : story.defaultImageId}
+						imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
+						imgSrc={image ? image : (defaultImage?.image as string)}
 					/>
 				</Link>
 			</Container>
@@ -33,7 +33,7 @@ export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 				<Grid.Col lg={5} md={6}>
 					<AspectRatio ratio={800 / 300}>
 						<Image
-							src='/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
+							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 							alt='transmasc logo'
 							width={800}
 							height={300}
@@ -56,9 +56,11 @@ export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 			</Grid>
 			<CardDisplay>{previewCards}</CardDisplay>
 			<Container ml='xl' mb='xl' display='fixed'>
-				<Link href='/'>
-					<Button>{'Back to Home'}</Button>{' '}
-				</Link>
+				<MediaQuery query='(max-width: 1000px)' styles={{ display: 'none' }}>
+					<Link href='/'>
+						<Button>{'Back to Home'}</Button>{' '}
+					</Link>
+				</MediaQuery>
 			</Container>
 		</Container>
 	)
