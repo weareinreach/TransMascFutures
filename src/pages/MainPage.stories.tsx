@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker'
 import React from 'react'
 
-import { MainPage } from './MainPage'
-import { Navbar } from '../../components/Navbar/Navbar'
+import { MainPage } from './index'
+import { Navbar } from '../components/Navbar/Navbar'
 
-import type { story } from './MainPage'
+import type { story } from './index'
 import type { Meta } from '@storybook/react'
 
 const stories: story[] = []
