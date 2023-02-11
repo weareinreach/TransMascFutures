@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { CategoryPage } from './CategoryPage'
+import { CategoryPage } from './[category]'
 import { Navbar } from '../../components/Navbar/Navbar'
-import { Default } from '../MainPage/MainPage.stories'
+import mainPageCSF from '../MainPage.stories'
 
 import type { Meta } from '@storybook/react'
 
@@ -14,7 +14,7 @@ export default {
 	},
 	args: {
 		category: 'queer',
-		stories: Default,
+		stories: mainPageCSF.args?.stories,
 	},
 	render: ({ category, stories }) => {
 		return (
