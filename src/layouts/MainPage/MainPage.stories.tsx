@@ -19,6 +19,7 @@ for (let i = 0; i < 9; i++) {
 				? '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'
 				: 'http://placekitten.com/g/480/355',
 		publicSlug: '#',
+		defaultImage: null,
 	})
 }
 
@@ -29,18 +30,6 @@ export default {
 		layout: 'fullscreen',
 	},
 	render: () => {
-		const stories: story[] = []
-		for (let i = 0; i < 9; i++) {
-			stories.push({
-				name: faker.name.firstName(),
-				pronouns: 'Cat/Kitten',
-				birthYear: faker.date.birthdate({ min: 2004, max: 2023, mode: 'year' }).getFullYear(),
-				storyJoy: faker.lorem.sentences(6),
-				image: faker.datatype.number(100) % 3 === 0 ? undefined : 'http://placekitten.com/g/480/355',
-				publicSlug: '#',
-			})
-		}
-
 		return (
 			<>
 				<Navbar />
