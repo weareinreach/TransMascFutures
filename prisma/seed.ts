@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
-const categories = ['queer', 'BIPOC', 'disabled']
+const categories = ['queer', 'bipoc', 'disabled']
 
 async function main() {
 	while ((await prisma.story.findMany()).length < 20) {
