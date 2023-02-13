@@ -9,14 +9,18 @@ import type { Meta } from '@storybook/react'
 
 const stories: story[] = []
 for (let i = 0; i < 9; i++) {
+	const storyContent = faker.lorem.sentences(6)
 	stories.push({
 		name: faker.name.firstName(),
 		pronouns: 'Cat/Kitten',
 		birthYear: faker.date.birthdate({ min: 2004, max: 2023, mode: 'year' }).getFullYear(),
-		storyJoy: faker.lorem.sentences(6),
+		storyJoy:
+			faker.datatype.number({ max: 10, min: 0 }) % 2 === 0
+				? storyContent
+				: storyContent.split(' ').join('\n'),
 		image:
 			faker.datatype.number(100) % 3 === 0
-				? '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'
+				? '/assets/tmf-logo-sw-color.png'
 				: 'http://placekitten.com/g/480/355',
 		publicSlug: '#',
 		defaultImage: null,
