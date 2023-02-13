@@ -29,7 +29,10 @@ export default {
 	parameters: {
 		layout: 'fullscreen',
 	},
-	render: () => {
+	args: {
+		stories: stories,
+	},
+	render: ({ stories }) => {
 		return (
 			<>
 				<Navbar />
