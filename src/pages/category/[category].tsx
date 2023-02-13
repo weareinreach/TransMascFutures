@@ -36,12 +36,7 @@ export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 			<Grid align='center' my='md'>
 				<Grid.Col lg={5} md={6}>
 					<AspectRatio ratio={800 / 300}>
-						<Image
-							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
-							alt='transmasc logo'
-							width={800}
-							height={300}
-						/>
+						<Image src='/assets/tmf-logo-rect-bw.png' alt='transmasc logo' width={800} height={300} />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={4} md={6}>

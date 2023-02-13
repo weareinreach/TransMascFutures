@@ -1,5 +1,5 @@
 import { Header, Container, createStyles, Burger, Drawer, Text, Button } from '@mantine/core'
-import { IconArrowBigLeft } from '@tabler/icons-react'
+import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -85,7 +85,7 @@ const NavLinks = () => {
 
 const HomeButton = () => (
 	<Link href='/'>
-		<Button leftIcon={<IconArrowBigLeft />} color='gray.0' variant='outline'>
+		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
 			{' Home'}
 		</Button>
 	</Link>
