@@ -3,7 +3,7 @@ import { Button as MantineButton, createStyles } from '@mantine/core'
 import type { ButtonProps } from '@mantine/core'
 import type { ReactNode } from 'react'
 
-export const Button = ({ children, variant = 'primary', size }: Props) => {
+export const Button = ({ children, variant = 'primary', size, type }: Props) => {
 	const useStyles = createStyles((theme) => ({
 		root: {
 			borderRadius: 0,
@@ -30,6 +30,7 @@ export const Button = ({ children, variant = 'primary', size }: Props) => {
 			classNames={{
 				...classes,
 			}}
+			type={type}
 		>
 			{children}
 		</MantineButton>
@@ -39,5 +40,6 @@ export const Button = ({ children, variant = 'primary', size }: Props) => {
 type Props = {
 	children: ReactNode
 	variant?: 'primary' | 'secondary'
+	type?: 'submit'
 	size?: ButtonProps['size']
 }

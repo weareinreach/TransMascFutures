@@ -1,17 +1,11 @@
-import { Navbar } from './Navbar'
+import { ModalForm } from './ModalForm'
 
 import type { Meta } from '@storybook/react'
 
 export default {
-	title: 'Components/Navbar',
-	component: Navbar,
-	parameters: {
-		layout: 'fullscreen',
-	},
-	args: {
-		path: '/',
-	},
-} as Meta<typeof Navbar>
+	title: 'Components/ModalForm',
+	component: ModalForm,
+} as Meta<typeof ModalForm>
 
 export const Default = {}
 

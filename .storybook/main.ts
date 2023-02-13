@@ -7,7 +7,7 @@ const config: StorybookConfig = {
 	staticDirs: [
 		{
 			from: '../public',
-			to: 'public',
+			to: '/',
 		},
 	],
 	addons: [
