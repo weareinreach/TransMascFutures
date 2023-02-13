@@ -34,7 +34,9 @@ export const PreviewCard = ({ text, title, imgSrc, imgAlt }: CardProps) => {
 				{title}
 			</Text>
 			<Text {...lineclamp} fz='sm'>
-				{typeof text === 'string' ? text.split('\n').map((paragraph, i) => <p key={i}>{paragraph}</p>) : text}
+				{typeof text === 'string'
+					? text.split('\n').map((paragraph, i) => <Text key={i}>{paragraph}</Text>)
+					: text}
 			</Text>
 		</Card>
 	)
