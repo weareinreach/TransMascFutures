@@ -8,6 +8,9 @@ export default {
 	parameters: {
 		layout: 'fullscreen',
 	},
+	args: {
+		path: '/',
+	},
 } as Meta<typeof Navbar>
 
 export const Default = {}

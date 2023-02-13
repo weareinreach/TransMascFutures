@@ -1,5 +1,7 @@
-import { Header, Container, createStyles, Burger, Drawer, Text } from '@mantine/core'
+import { Header, Container, createStyles, Burger, Drawer, Text, Button } from '@mantine/core'
+import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const HEADER_HEIGHT = 75
@@ -31,7 +33,6 @@ export const useStyles = createStyles((theme) => ({
 
 	burger: {
 		display: 'flex',
-		justifyContent: 'flex-end',
 		alignItems: 'center',
 		height: '100%',
 
@@ -81,12 +82,25 @@ const NavLinks = () => {
 
 	return <>{links}</>
 }
-const HamburgerMenu = () => {
+
+const HomeButton = () => (
+	<Link href='/'>
+		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
+			{' Home'}
+		</Button>
+	</Link>
+)
+
+// This type is only needed when trying to make a story for a page
+// to check whether the button to go to the main page works
+type pathProp = { path?: string }
+
+const HamburgerMenu = ({ path }: pathProp) => {
 	const [opened, setOpened] = useState(false)
 	const { classes } = useStyles()
 
 	return (
-		<Container className={classes.burger}>
+		<Container className={classes.burger} sx={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
 			<Drawer
 				opened={opened}
 				onClose={() => setOpened(false)}
@@ -105,6 +119,7 @@ const HamburgerMenu = () => {
 			>
 				<NavLinks />
 			</Drawer>
+			{path !== '/' ? <HomeButton /> : undefined}
 			<Burger
 				opened={opened}
 				onClick={() => setOpened((o) => !o)}
@@ -117,14 +132,15 @@ const HamburgerMenu = () => {
 	)
 }
 
-export const Navbar = () => {
+export const Navbar = ({ path }: pathProp) => {
 	const { classes } = useStyles()
+	const router = useRouter()
 	return (
 		<Header height={HEADER_HEIGHT} className={classes.glaadGray}>
 			<Container className={classes.navbar} fluid>
 				<NavLinks />
 			</Container>
-			<HamburgerMenu />
+			<HamburgerMenu path={path || router.pathname} />
 		</Header>
 	)
 }
