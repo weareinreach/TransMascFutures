@@ -9,7 +9,7 @@ export default {
 	title: 'components/Statistic Cards',
 	component: StatisticCard,
 	parameters: {
-		layout: 'fullscreen',
+		layout: 'centered',
 	},
 	tags: ['autodocs'],
 } as Meta<typeof StatisticCard>
@@ -29,28 +29,36 @@ const statistics = [
 	},
 ]
 
-export const Default = ({ title, text }: cardProps) => <StatisticCard title={title} text={text} />
-Default.args = {
-	title: statistics[0]?.title,
-	text: statistics[0]?.text,
+export const Default = {
+	args: {
+		title: statistics[0]?.title,
+		text: statistics[0]?.text,
+	},
+
+	render: ({ title, text }: cardProps) => <StatisticCard title={title} text={text} />,
 }
 
-export const AboutPage = ({ cards }: storyArgs) => {
-	const children = cards.map(({ title, text }) => <StatisticCard key={title} title={title} text={text} />)
-	return (
-		<Flex
-			direction={{ base: 'column', md: 'row' }}
-			justify={{ md: 'center' }}
-			align={{ base: 'center', md: 'start' }}
-		>
-			{children}
-		</Flex>
-	)
-}
-AboutPage.args = {
-	cards: statistics,
-}
+export const AboutPage = {
+	args: {
+		cards: statistics,
+	},
+	parameters: {
+		layout: 'fullscreen',
+	},
 
+	render: ({ cards }: storyArgs) => {
+		const children = cards.map(({ title, text }) => <StatisticCard key={title} title={title} text={text} />)
+		return (
+			<Flex
+				direction={{ base: 'column', md: 'row' }}
+				justify={{ md: 'center' }}
+				align={{ base: 'center', md: 'start' }}
+			>
+				{children}
+			</Flex>
+		)
+	},
+}
 type storyArgs = {
 	cards: cardProps[]
 }
