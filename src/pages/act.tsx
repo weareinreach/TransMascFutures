@@ -23,12 +23,7 @@ export const Act: NextPage = () => {
 				</Grid.Col>
 				<Grid.Col span='auto'>
 					<AspectRatio ratio={800 / 300}>
-						<Image
-							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
-							alt='transmasc logo'
-							width={800}
-							height={300}
-						/>
+						<Image src='/assets/tmf-logo-rect-bw.png' alt='transmasc logo' width={800} height={300} />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}></Grid.Col>
@@ -54,7 +49,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[0] as string}
-						imgSrc='/assets/COLOR_TRANSMASCFUTURES (500x500).png'
+						imgSrc='/assets/tmf-logo-sw-color.png'
 					/>
 				</Grid.Col>
 				<Grid.Col lg={4} md={12}>
@@ -75,7 +70,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[1] as string}
-						imgSrc={'/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
+						imgSrc={'/assets/tmf-logo-sw-color.png'}
 					/>
 				</Grid.Col>
 				<Grid.Col lg={4} md={12}>
@@ -98,7 +93,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[1] as string}
-						imgSrc={'/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
+						imgSrc={'/assets/tmf-logo-sw-color.png'}
 					/>
 				</Grid.Col>
 
