@@ -16,7 +16,7 @@ export const Act: NextPage = () => {
 	return (
 		<Container fluid p={'xl'}>
 			<Grid px='xl'>
-				<Grid.Col pl='xl' lg={4} md={12}>
+				<Grid.Col pl='xl' lg={3} md={12}>
 					<Title fw={900} order={1} size='30px !important' tt='capitalize'>
 						{'Act'}
 					</Title>
@@ -24,14 +24,14 @@ export const Act: NextPage = () => {
 				<Grid.Col span='auto'>
 					<AspectRatio ratio={800 / 300}>
 						<Image
-							src='/public/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
+							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
 							alt='transmasc logo'
 							width={800}
 							height={300}
 						/>
 					</AspectRatio>
 				</Grid.Col>
-				<Grid.Col lg={4} md={12}></Grid.Col>
+				<Grid.Col lg={3} md={12}></Grid.Col>
 			</Grid>
 			<Grid p='md'>
 				<Grid.Col lg={4} md={12}>
@@ -54,7 +54,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[0] as string}
-						imgSrc='/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'
+						imgSrc='/assets/COLOR_TRANSMASCFUTURES (500x500).png'
 					/>
 				</Grid.Col>
 				<Grid.Col lg={4} md={12}>
@@ -75,7 +75,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[1] as string}
-						imgSrc={'/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
+						imgSrc={'/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
 					/>
 				</Grid.Col>
 				<Grid.Col lg={4} md={12}>
@@ -98,7 +98,7 @@ export const Act: NextPage = () => {
 							</>
 						}
 						imgAlt={cardTitles[1] as string}
-						imgSrc={'/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
+						imgSrc={'/assets/COLOR_TRANSMASCFUTURES (500x500).png'}
 					/>
 				</Grid.Col>
 
@@ -109,3 +109,5 @@ export const Act: NextPage = () => {
 		</Container>
 	)
 }
+
+export default Act
