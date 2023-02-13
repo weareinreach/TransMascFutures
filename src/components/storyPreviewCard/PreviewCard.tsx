@@ -7,7 +7,7 @@ type CardProps = {
 	title: string
 	text: string | ReactNode | ReactNode[]
 	imgAlt: string
-	imgSrc: string
+	imgSrc?: string
 }
 
 const useStyles = createStyles(() => ({
@@ -27,7 +27,7 @@ export const PreviewCard = ({ text, title, imgSrc, imgAlt }: CardProps) => {
 		<Card m='md' h='90%' className={classes.card}>
 			<Card.Section>
 				<AspectRatio ratio={480 / 355}>
-					<Image width={480} height={355} alt={imgAlt} src={imgSrc} />
+					<Image width={480} height={355} alt={imgAlt} src={imgSrc || '/assets/tmf-logo-sq-color.png'} />
 				</AspectRatio>
 			</Card.Section>
 			<Text fw={700} fz='lg' tt='uppercase'>

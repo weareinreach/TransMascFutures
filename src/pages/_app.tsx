@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
 import { appWithTranslation } from 'next-i18next'
 
+import { Navbar } from '../components/Navbar/Navbar'
 import { styleCache, theme, fontWorkSans } from '../styles'
 import { api } from '../utils/api'
 
@@ -28,6 +29,7 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 					<NotificationsProvider>
 						<ModalsProvider>
 							<SessionProvider session={session}>
+								<Navbar />
 								<Component {...pageProps} />
 							</SessionProvider>
 						</ModalsProvider>
