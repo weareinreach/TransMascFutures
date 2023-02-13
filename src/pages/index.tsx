@@ -40,12 +40,7 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
 				<Grid.Col lg={6} md={12}>
 					<AspectRatio ratio={800 / 300}>
-						<Image
-							src='/assets/TRANSMASCFUTURES (800 × 300 px)(2).png'
-							alt='transmasc logo'
-							width={800}
-							height={300}
-						/>
+						<Image src='/assets/tmf-logo-rect-bw.png' alt='transmasc logo' width={800} height={300} />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>
