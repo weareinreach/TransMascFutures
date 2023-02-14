@@ -30,7 +30,7 @@ export const storyRouter = createTRPCRouter({
 			})
 		)
 		.query(async ({ ctx, input }) => {
-			const story = await ctx.prisma.story.findUnique({
+			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { publicSlug: input.publicSlug },
 			})
 			return story
@@ -42,7 +42,7 @@ export const storyRouter = createTRPCRouter({
 			})
 		)
 		.query(async ({ ctx, input }) => {
-			const story = await ctx.prisma.story.findUnique({
+			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { id: input.id },
 			})
 			return story
