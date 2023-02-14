@@ -1,22 +1,17 @@
 import { Text, Box, Container, Center, List, ScrollArea } from '@mantine/core'
 
+import { glossary } from '../../public/assets/glossary'
 import { Banner } from '../components/Banner/Banner'
 
 import type { NextPage } from 'next'
 
-export type glossaryElement = { title: string; definition: string }
-
-type glossaryProps = {
-	glossary?: glossaryElement[]
-}
-
-export const Glossary = ({ glossary }: glossaryProps) => {
+export const Learn: NextPage = () => {
 	if (glossary) {
-		const listItems = glossary.map(({ title, definition }) => (
-			<List.Item key={title} mb='lg' mx='xl'>
+		const listItems = glossary.map(({ term, definition }) => (
+			<List.Item key={term} mb='lg' mx='xl'>
 				<Text fz='xl'>
 					<p>
-						<strong>{title}</strong>
+						<strong>{term + ': '}</strong>
 						{definition}
 					</p>
 				</Text>
@@ -24,32 +19,26 @@ export const Glossary = ({ glossary }: glossaryProps) => {
 		))
 
 		return (
-			<ScrollArea style={{ width: '100%', height: 400 }}>
-				<List px={'xl'} style={{ listStyleType: 'none' }}>
-					{listItems}
-				</List>
-			</ScrollArea>
+			<Container fluid>
+				<Banner title='Learn' />
+				<Center style={{ width: '100%' }}>
+					<Box
+						sx={(theme) => ({
+							width: '80%',
+							height: '10px',
+							backgroundColor: theme.other.colors.glaadGray,
+						})}
+					></Box>
+				</Center>
+				<ScrollArea style={{ width: '100%', height: 400 }}>
+					<List px={'xl'} style={{ listStyleType: 'none' }}>
+						{listItems}
+					</List>
+				</ScrollArea>
+			</Container>
 		)
 	}
 	return <></>
-}
-
-export const Learn: NextPage = () => {
-	return (
-		<Container fluid>
-			<Banner title='Learn' />
-			<Center style={{ width: '100%' }}>
-				<Box
-					sx={(theme) => ({
-						width: '80%',
-						height: '10px',
-						backgroundColor: theme.other.colors.glaadGray,
-					})}
-				></Box>
-				<Glossary />
-			</Center>
-		</Container>
-	)
 }
 
 export default Learn
