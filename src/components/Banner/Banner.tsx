@@ -7,7 +7,7 @@ export const Banner = ({ title }: BannerProp) => {
 			<Grid px='xl'>
 				<Grid.Col pl='xl' lg={3} md={12}>
 					<Title fw={900} order={1} size='30px !important' tt='uppercase'>
-						{'Act'}
+						{title}
 					</Title>
 				</Grid.Col>
 				<Grid.Col span='auto'>
