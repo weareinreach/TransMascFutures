@@ -1,7 +1,7 @@
 import { Text, Box, Container, Center, List, ScrollArea } from '@mantine/core'
 
-import { glossary } from '../../public/assets/glossary'
 import { Banner } from '../components/Banner/Banner'
+import { glossary } from '../data/glossary'
 
 import type { NextPage } from 'next'
 

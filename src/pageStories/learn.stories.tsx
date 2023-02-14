@@ -1,4 +1,4 @@
-import { Learn } from './learn'
+import { Learn } from '../pages/learn'
 
 import type { Meta } from '@storybook/react'
 
@@ -10,4 +10,12 @@ export default {
 	},
 } as Meta<typeof Learn>
 
-export const Default = {}
+export const Desktop = {}
+
+export const Mobile = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'iphonex',
+		},
+	},
+}
