@@ -11,15 +11,40 @@ export const storyRouter = createTRPCRouter({
 				})
 				.nullish()
 		)
-		.query(({ ctx, input }) => {
+		.query(async ({ ctx, input }) => {
 			let filter = { published: true }
 			if (input && input.category) filter = { ...filter, ...{ keyJoy: input.category } }
 
-			return ctx.prisma.story.findMany({
+			const stories = await ctx.prisma.story.findMany({
 				where: filter,
 				take: 9,
 				orderBy: { createdAt: 'desc' },
 				include: { defaultImage: true },
 			})
+			return stories
+		}),
+	getStoryBySlug: publicProcedure
+		.input(
+			z.object({
+				publicSlug: z.string(),
+			})
+		)
+		.query(async ({ ctx, input }) => {
+			const story = await ctx.prisma.story.findUniqueOrThrow({
+				where: { publicSlug: input.publicSlug },
+			})
+			return story
+		}),
+	getStoryById: protectedProcedure
+		.input(
+			z.object({
+				id: z.string(),
+			})
+		)
+		.query(async ({ ctx, input }) => {
+			const story = await ctx.prisma.story.findUniqueOrThrow({
+				where: { id: input.id },
+			})
+			return story
 		}),
 })
