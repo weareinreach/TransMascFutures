@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker'
 import React from 'react'
 
-import { MainPage } from './index'
 import { Navbar } from '../components/Navbar/Navbar'
+import { MainPage } from '../pages/index'
 
-import type { story } from './index'
+import type { story } from '../pages/index'
 import type { Meta } from '@storybook/react'
 
 const stories: story[] = []
@@ -42,4 +42,15 @@ export default {
 	},
 } as Meta<typeof MainPage>
 
-export const Default = {}
+export const Desktop = {
+	args: {
+		stories: stories,
+	},
+}
+export const Mobile = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'iphonex',
+		},
+	},
+}

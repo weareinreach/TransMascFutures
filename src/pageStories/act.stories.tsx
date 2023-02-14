@@ -1,4 +1,4 @@
-import { Act } from './act'
+import { Act } from '../pages/act'
 
 import type { Meta } from '@storybook/react'
 
