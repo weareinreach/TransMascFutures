@@ -46,4 +46,15 @@ export default {
 	},
 } as Meta<typeof MainPage>
 
-export const Default = {}
+export const Desktop = {
+	args: {
+		stories: stories,
+	},
+}
+export const Mobile = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'iphonex',
+		},
+	},
+}
