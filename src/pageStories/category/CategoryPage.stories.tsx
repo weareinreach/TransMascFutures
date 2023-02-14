@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { CategoryPage } from './[category]'
 import { Navbar } from '../../components/Navbar/Navbar'
+import { CategoryPage } from '../../pages/category/[category]'
 import mainPageCSF from '../MainPage.stories'
 
 import type { Meta } from '@storybook/react'
