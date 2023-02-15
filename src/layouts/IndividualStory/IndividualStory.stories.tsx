@@ -3,15 +3,9 @@ import { IndividualStory } from './IndividualStory'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof IndividualStory> = {
-	title: 'Layouts/IndividualStory',
+	title: 'Layouts/Individual Story',
 	component: IndividualStory,
 	tags: ['autodocs'],
-}
-
-export default meta
-type Story = StoryObj<typeof IndividualStory>
-
-export const Default: Story = {
 	args: {
 		age: 18,
 		image: 'https://i.ibb.co/r4RLjcM/Screen-Shot-2023-02-13-at-10-04-32-PM.png',
@@ -27,5 +21,18 @@ export const Default: Story = {
 				text: 'When I was able to access HRT, my life changed for the better and I was immediately happier in my own skin.',
 			},
 		],
+	},
+}
+
+export default meta
+type Story = StoryObj<typeof IndividualStory>
+
+export const Default: Story = {}
+
+export const Mobile: Story = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'iphonex',
+		},
 	},
 }
