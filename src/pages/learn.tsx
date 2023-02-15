@@ -1,15 +1,29 @@
-import { Text, Box, Container, Center, List, ScrollArea } from '@mantine/core'
+import { Text, Box, Container, Center, List, ScrollArea, createStyles, useMantineTheme } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 
 import { Banner } from '../components/Banner/Banner'
 import { glossary } from '../data/glossary'
 
 import type { NextPage } from 'next'
 
+const useStyles = createStyles((theme) => ({
+	glossaryText: {
+		fontSize: theme.fontSizes.md,
+		[theme.fn.largerThan('sm')]: {
+			fontSize: theme.fontSizes.xl,
+		},
+	},
+}))
+
 export const Learn: NextPage = () => {
+	const { classes } = useStyles()
+	const theme = useMantineTheme()
+	const mediaQuery = useMediaQuery(`(min-width: ${theme.breakpoints.sm}px)`)
+
 	if (glossary) {
 		const listItems = glossary.map(({ term, definition }) => (
-			<List.Item key={term} mb='lg' mx='xl'>
-				<Text fz='xl'>
+			<List.Item key={term} mb='lg'>
+				<Text className={classes.glossaryText}>
 					<p>
 						<strong>{term + ': '}</strong>
 						{definition}
@@ -31,7 +45,13 @@ export const Learn: NextPage = () => {
 					></Box>
 				</Center>
 				<ScrollArea style={{ width: '100%', height: 400 }}>
-					<List px={'xl'} style={{ listStyleType: 'none' }}>
+					<List
+						style={{
+							listStyleType: 'none',
+							paddingLeft: mediaQuery ? undefined : theme.spacing.xs,
+							paddingRight: mediaQuery ? undefined : theme.spacing.xs,
+						}}
+					>
 						{listItems}
 					</List>
 				</ScrollArea>
