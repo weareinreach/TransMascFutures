@@ -1,4 +1,4 @@
-import { Loader, Center, Title, Flex, Grid, Container, AspectRatio } from '@mantine/core'
+import { Loader, Center, Title, Flex, Grid, Container, AspectRatio, Stack } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -16,21 +16,24 @@ export const MainPage = ({ stories }: MainPageProps) => {
 	const previewCards = stories.map((story, i) => {
 		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
 		return (
-			<Container key={`${name}${i}`}>
-				<Flex direction='column' align='center'>
-					<Link href={`/story/${publicSlug || 'none'}`} style={{ textDecoration: 'none' }}>
-						<PreviewCard
-							title={`${name}, ${pronouns}, ${year - birthYear}`}
-							text={story.storyJoy}
-							imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
-							imgSrc={image ? image : (defaultImage?.image as string)}
-						/>
-					</Link>
-					<Link style={{ marginTop: 'auto' }} href={'/category/#'}>
+			<Stack justify='space-between' align='stretch' sx={{ height: '100%' }} key={`${name}${i}`}>
+				<Link
+					href={`/story/${publicSlug || 'none'}`}
+					style={{ textDecoration: 'none', marginBottom: 'auto' }}
+				>
+					<PreviewCard
+						title={`${name}, ${pronouns}, ${year - birthYear}`}
+						text={story.storyJoy}
+						imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
+						imgSrc={image ? image : (defaultImage?.image as string)}
+					/>
+				</Link>
+				<Center>
+					<Link href={'/category/#'}>
 						<Button>{'See CATEGORY Stories'}</Button>
 					</Link>
-				</Flex>
-			</Container>
+				</Center>
+			</Stack>
 		)
 	})
 

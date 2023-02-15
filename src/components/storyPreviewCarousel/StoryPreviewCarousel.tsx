@@ -15,7 +15,6 @@ export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
 		<Carousel
 			slideSize='32%'
 			slideGap='xs'
-			height={500}
 			loop
 			align='center'
 			slidesToScroll={3}

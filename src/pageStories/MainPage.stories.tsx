@@ -16,7 +16,7 @@ for (let i = 0; i < 9; i++) {
 		storyJoy: faker.lorem.sentences(6),
 		image:
 			faker.datatype.number(100) % 3 === 0
-				? '/public/assets/COLOR_TRANSMASCFUTURES (500x500).png'
+				? '/assets/tmf-logo-sw-color.png'
 				: 'http://placekitten.com/g/480/355',
 		publicSlug: '#',
 		defaultImage: null,
