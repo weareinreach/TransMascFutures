@@ -2,26 +2,27 @@ import { z } from 'zod'
 
 import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc'
 
+export const categories = z.enum(['queer', 'bipoc', 'disabled'])
+
 export const storyRouter = createTRPCRouter({
 	recentNine: publicProcedure
 		.input(
 			z
 				.object({
-					category: z.enum(['queer', 'bipoc', 'disabled']).nullish(),
+					category: categories.nullish(),
 				})
 				.nullish()
 		)
-		.query(async ({ ctx, input }) => {
+		.query(({ ctx, input }) => {
 			let filter = { published: true }
 			if (input && input.category) filter = { ...filter, ...{ keyJoy: input.category } }
 
-			const stories = await ctx.prisma.story.findMany({
+			return ctx.prisma.story.findMany({
 				where: filter,
 				take: 9,
 				orderBy: { createdAt: 'desc' },
 				include: { defaultImage: true },
 			})
-			return stories
 		}),
 	getStoryBySlug: publicProcedure
 		.input(
