@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { CategoryPage } from './[category]'
 import { Navbar } from '../../components/Navbar/Navbar'
-import mainPageCSF from '../MainPage.stories'
+import { CategoryPage } from '../../pages/category/[category]'
+import { Desktop as MainPageDesktop } from '../MainPage.stories'
 
 import type { Meta } from '@storybook/react'
 
@@ -14,7 +14,7 @@ export default {
 	},
 	args: {
 		category: 'queer',
-		stories: mainPageCSF.args?.stories,
+		stories: MainPageDesktop.args.stories,
 	},
 	render: ({ category, stories }) => {
 		return (
@@ -26,4 +26,12 @@ export default {
 	},
 } as Meta<typeof CategoryPage>
 
-export const DefaultPage = {}
+export const Desktop = {}
+
+export const Mobile = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'iphonex',
+		},
+	},
+}
