@@ -1,5 +1,4 @@
 import { adminRouter } from './routers/admin'
-import { exampleRouter } from './routers/example'
 import { storyRouter } from './routers/stories'
 import { createTRPCRouter } from './trpc'
 
@@ -9,7 +8,6 @@ import { createTRPCRouter } from './trpc'
  * All routers added in /api/routers should be manually added here
  */
 export const appRouter = createTRPCRouter({
-	example: exampleRouter,
 	story: storyRouter,
 	admin: adminRouter,
 })

@@ -69,6 +69,15 @@ model DefaultImage {
   story Story[]
 }
 
+model StoryCategory {
+  id String @id @default(cuid())
+
+  category    String
+  categoryKey String
+
+  stories StoryToCategory[]
+}
+
 model Story {
   id String @id @default(cuid())
 
@@ -96,8 +105,18 @@ model Story {
   isInfluencer Boolean @default(false)
   publicSlug   String? @unique
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  categories StoryToCategory[]
+}
+
+model StoryToCategory {
+  category   StoryCategory @relation(fields: [categoryId], references: [id])
+  categoryId String
+  story      Story         @relation(fields: [storyId], references: [id])
+  storyId    String
+
+  @@id([categoryId, storyId])
 }
 
 model PartnerOrg {
