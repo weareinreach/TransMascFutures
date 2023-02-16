@@ -6,8 +6,8 @@ on:
 
 jobs:
   lintformat:
-    env:
-      GITHUB_TOKEN: ${{ secrets.GH_ACT_PAT }}
+    # env:
+      # GITHUB_TOKEN: ${{ secrets.GH_ACT_PAT }}
     name: 'Lint & format'
     runs-on: ubuntu-latest
     steps:
