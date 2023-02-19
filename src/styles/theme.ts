@@ -1,4 +1,13 @@
-import type { MantineThemeOverride, MantineThemeOther } from '@mantine/core'
+import type { MantineThemeOverride, DefaultProps } from '@mantine/core'
+import type { PolymorphicComponentProps } from '@mantine/utils'
+
+const themeCustomObj = {
+	colors: {
+		glaadGray: '#BEBEBE',
+		midGray: '#65676B',
+		black: '#000000',
+	},
+} as const
 
 export const theme: MantineThemeOverride = {
 	colorScheme: 'light',
@@ -24,21 +33,16 @@ export const theme: MantineThemeOverride = {
 			h6: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
 		},
 	},
-	other: {
-		colors: {
-			glaadGray: '#BEBEBE',
-			midGray: '#65676B',
-			black: '#000000',
-		},
-	},
+	other: themeCustomObj,
 }
 
+export type PolyComponent<ComponentProps extends DefaultProps> = PolymorphicComponentProps<
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
+	ComponentProps
+>
+type ThemeCustomObject = typeof themeCustomObj
 declare module '@mantine/core' {
-	export interface MantineThemeOther {
-		colors: {
-			glaadGray: '#BEBEBE'
-			midGray: '#65676B'
-			black: '#000000'
-		}
-	}
+	// eslint-disable-next-line @typescript-eslint/no-empty-interface
+	export interface MantineThemeOther extends ThemeCustomObject {}
 }
