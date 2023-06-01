@@ -112,10 +112,10 @@ model Story {
   pronouns  String
   birthYear Int
 
-  response1EN String
-  response2EN String
-  response1ES String
-  response2ES String
+  response1EN String?
+  response2EN String?
+  response1ES String?
+  response2ES String?
 
   userId String? // Not linked - using app auth
 
