@@ -1,6 +1,6 @@
 import { MantineProvider, TypographyStylesProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
-import { NotificationsProvider } from '@mantine/notifications'
+import { Notifications } from '@mantine/notifications'
 import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
 import { appWithTranslation } from 'next-i18next'
@@ -25,16 +25,13 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 				theme={{ ...theme, fontFamily: fontWorkSans.style.fontFamily }}
 				emotionCache={styleCache}
 			>
-				<TypographyStylesProvider>
-					<NotificationsProvider>
-						<ModalsProvider>
-							<SessionProvider session={session}>
-								<Navbar />
-								<Component {...pageProps} />
-							</SessionProvider>
-						</ModalsProvider>
-					</NotificationsProvider>
-				</TypographyStylesProvider>
+				<ModalsProvider>
+					<SessionProvider session={session}>
+						<Navbar />
+						<Component {...pageProps} />
+					</SessionProvider>
+				</ModalsProvider>
+				<Notifications />
 			</MantineProvider>
 		</>
 	)

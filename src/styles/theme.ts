@@ -1,3 +1,5 @@
+import { rem, em } from '@mantine/core'
+
 import type { MantineThemeOverride, DefaultProps } from '@mantine/core'
 import type { PolymorphicComponentProps } from '@mantine/utils'
 
@@ -14,23 +16,23 @@ export const theme: MantineThemeOverride = {
 	fontFamily:
 		'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
 	fontSizes: {
-		xs: 12,
-		sm: 14,
-		md: 16,
-		lg: 18,
-		xl: 20,
+		xs: rem(12),
+		sm: rem(14),
+		md: rem(16),
+		lg: rem(18),
+		xl: rem(20),
 	},
 	headings: {
 		fontFamily:
 			'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
 		fontWeight: 500,
 		sizes: {
-			h1: { fontSize: 40, lineHeight: 1.25, fontWeight: undefined },
-			h2: { fontSize: 24, lineHeight: 1.25, fontWeight: undefined },
-			h3: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
-			h4: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
-			h5: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
-			h6: { fontSize: 16, lineHeight: 1.25, fontWeight: 600 },
+			h1: { fontSize: rem(40), lineHeight: 1.25, fontWeight: undefined },
+			h2: { fontSize: rem(24), lineHeight: 1.25, fontWeight: undefined },
+			h3: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
+			h4: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
+			h5: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
+			h6: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
 		},
 	},
 	other: themeCustomObj,

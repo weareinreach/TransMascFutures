@@ -1,4 +1,4 @@
-import { Card, Text, createStyles, AspectRatio } from '@mantine/core'
+import { Card, Text, createStyles, AspectRatio, rem } from '@mantine/core'
 import Image from 'next/image'
 
 import type { ReactNode } from 'react'
@@ -12,7 +12,7 @@ type CardProps = {
 
 const useStyles = createStyles(() => ({
 	card: {
-		maxWidth: 480,
+		maxWidth: rem(480),
 		['& a']: {
 			textDecoration: 'underline',
 			color: 'inherit',

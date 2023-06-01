@@ -112,7 +112,7 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				size='sm'
 				padding='xl'
 				styles={(theme) => ({
-					drawer: {
+					content: {
 						backgroundColor: theme.other.colors.glaadGray,
 					},
 				})}
