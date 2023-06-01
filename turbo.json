@@ -2,7 +2,11 @@
 	"$schema": "https://turbo.build/schema.json",
 	"pipeline": {
 		"build:next": {
+			"dependsOn": ["db:deploy"],
 			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"db:deploy": {
+			"dependsOn": ["db:generate"]
 		}
 	}
 }
