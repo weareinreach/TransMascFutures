@@ -2,7 +2,6 @@ import { Center, Loader, Text, Title, Grid, Container, AspectRatio, MediaQuery }
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { z } from 'zod'
 
 import { Button } from '../../components/Button/Button'
 import { ModalForm } from '../../components/ModalForm/ModalForm'
@@ -17,6 +16,7 @@ export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
 		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
+		console.log(story)
 		return (
 			<Container key={`${name}${i}`}>
 				<Link href={`/story/${publicSlug || 'none'}`} style={{ textDecoration: 'none' }}>
@@ -70,13 +70,10 @@ type CategoryPageProps = {
 	category: string
 }
 
-const categories = z.enum(['queer', 'bipoc', 'disabled'])
-type categories = z.infer<typeof categories>
-
 const Category: NextPage = () => {
 	const router = useRouter()
 	const query = router.query['category']
-	const { data, isError, isLoading } = api.story.recentNine.useQuery({ category: query as categories })
+	const { data, isError, isLoading } = api.story.recentNine.useQuery({ category: query as string })
 
 	if (isLoading) {
 		return (
