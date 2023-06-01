@@ -1,5 +1,5 @@
 import { Navbar } from '../components'
-import { AboutPage } from '../pages/about'
+import AboutPage from '../pages/about'
 
 import type { Meta } from '@storybook/react'
 

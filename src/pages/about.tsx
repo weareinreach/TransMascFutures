@@ -2,7 +2,7 @@ import { Container, createStyles, Flex, Image, SimpleGrid, Text, Title, rem } fr
 
 import { StatisticCard } from '../components/statisticCard/StatisticCard'
 
-export const AboutPage = ({ partners }: AboutPageProps) => {
+const AboutPage = ({ partners }: AboutPageProps) => {
 	const useStyles = createStyles((theme) => ({
 		title: {
 			fontWeight: 'bold',
@@ -76,3 +76,4 @@ export const AboutPage = ({ partners }: AboutPageProps) => {
 type AboutPageProps = {
 	partners: { logo: string; link: string }[]
 }
+export default AboutPage

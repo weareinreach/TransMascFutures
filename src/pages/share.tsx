@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Button } from '../components/Button/Button'
 
-export const SharePage = ({ image }: Props) => {
+const SharePage = ({ image }: Props) => {
 	const useStyles = createStyles((theme) => ({
 		header: {
 			textTransform: 'uppercase',
@@ -76,3 +76,4 @@ export const SharePage = ({ image }: Props) => {
 type Props = {
 	image: string
 }
+export default SharePage

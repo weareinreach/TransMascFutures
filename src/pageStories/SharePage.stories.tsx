@@ -1,5 +1,5 @@
 import { Navbar } from '../components/Navbar/Navbar'
-import { SharePage } from '../pages/share'
+import SharePage from '../pages/share'
 
 import type { Meta } from '@storybook/react'
 
