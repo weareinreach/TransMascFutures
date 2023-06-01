@@ -1,5 +1,6 @@
 import { createStylesServer, ServerStyles } from '@mantine/next'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 import { styleCache } from '../styles/emotionCache'
 
@@ -27,6 +28,11 @@ export default class _Document extends Document {
 				<body>
 					<Main />
 					<NextScript />
+					<Script
+						src='https://stats.inreach.org/umami.js'
+						data-website-id='4aa20a1c-b728-4a15-a3dc-8b0a771de69e'
+						data-domains='inreach.org'
+					/>
 				</body>
 			</Html>
 		)
