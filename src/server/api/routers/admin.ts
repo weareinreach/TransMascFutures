@@ -120,4 +120,14 @@ export const adminRouter = createTRPCRouter({
 				return tx.story.findFirst({ where: { id } })
 			})
 		}),
+	editPartnerLink: adminProcedure
+		.input(z.object({ id: z.string(), href: z.string() }))
+		.mutation(async ({ ctx, input }) => {
+			const updatedPartnerOrg = await ctx.prisma.partnerOrg.update({
+				where: { id: input.id },
+				data: { href: input.href },
+			})
+
+			return updatedPartnerOrg
+		}),
 })

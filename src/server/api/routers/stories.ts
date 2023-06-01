@@ -59,4 +59,12 @@ export const storyRouter = createTRPCRouter({
 			})
 			return story
 		}),
+	unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
+		const { id } = input
+		// Check if story belongs to user
+		return await ctx.prisma.story.update({
+			where: { id },
+			data: { published: false },
+		})
+	}),
 })
