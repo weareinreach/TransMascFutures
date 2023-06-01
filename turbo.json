@@ -1,5 +1,6 @@
 {
 	"$schema": "https://turbo.build/schema.json",
+	"globalEnv": ["POSTGRES_URL_NON_POOLING", "POSTGRES_PRISMA_URL", "NEXTAUTH_SECRET"],
 	"pipeline": {
 		"build:next": {
 			"dependsOn": ["db:deploy"],

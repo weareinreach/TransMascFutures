@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 /**
  * This is the client-side entrypoint for your tRPC API. It's used to create the `api` object which contains
  * the Next.js App-wrapper as well as your typesafe react-query hooks.
