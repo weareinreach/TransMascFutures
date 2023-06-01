@@ -1,3 +1,4 @@
+import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 
 import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc'
@@ -7,22 +8,31 @@ export const storyRouter = createTRPCRouter({
 		.input(
 			z
 				.object({
-					category: z.enum(['queer', 'bipoc', 'disabled']).nullish(),
+					category: z.string(),
 				})
-				.nullish()
+				.optional()
 		)
 		.query(async ({ ctx, input }) => {
-			let filter = { published: true }
-			if (input && input.category) filter = { ...filter, ...{ keyJoy: input.category } }
+			const filter = {
+				published: true,
+				categories: { some: { category: { category: input?.category } } },
+			}
 
 			const stories = await ctx.prisma.story.findMany({
 				where: filter,
-				take: 9,
 				orderBy: { createdAt: 'desc' },
-				include: { defaultImage: true },
+				take: 9,
+				include: {
+					defaultImage: true,
+					categories: !input?.category ? { include: { category: true } } : false,
+				},
 			})
+
+			if (stories.length === 0) throw new TRPCError({ code: 'NOT_FOUND' })
+
 			return stories
 		}),
+
 	getStoryBySlug: publicProcedure
 		.input(
 			z.object({
@@ -32,6 +42,7 @@ export const storyRouter = createTRPCRouter({
 		.query(async ({ ctx, input }) => {
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { publicSlug: input.publicSlug },
+				include: { categories: { include: { category: true } } },
 			})
 			return story
 		}),
@@ -44,6 +55,7 @@ export const storyRouter = createTRPCRouter({
 		.query(async ({ ctx, input }) => {
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { id: input.id },
+				include: { categories: { include: { category: true } } },
 			})
 			return story
 		}),

@@ -8,13 +8,15 @@ import { PreviewCard } from '../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../layouts/CardDisplay'
 import { api } from '../utils/api'
 
-import type { DefaultImage } from '@prisma/client'
+import type { DefaultImage, StoryToCategory, StoryCategory, Story } from '@prisma/client'
 import type { NextPage } from 'next'
 
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
-		const { name, pronouns, birthYear, image, publicSlug, defaultImage } = story
+		const { name, pronouns, birthYear, image, publicSlug, defaultImage, categories } = story
+		const category = categories[0]?.category
+		const categoryName = category ? category.category : 'more'
 		return (
 			<Stack justify='space-between' align='stretch' sx={{ height: '100%' }} key={`${name}${i}`}>
 				<Link
@@ -29,8 +31,8 @@ export const MainPage = ({ stories }: MainPageProps) => {
 					/>
 				</Link>
 				<Center>
-					<Link href={'/category/#'}>
-						<Button>{'See CATEGORY Stories'}</Button>
+					<Link href={`/category/${categoryName}`}>
+						<Button>{`See ${categoryName} Stories`}</Button>
 					</Link>
 				</Center>
 			</Stack>
@@ -57,14 +59,9 @@ export const MainPage = ({ stories }: MainPageProps) => {
 	)
 }
 
-export type story = {
-	name: string
-	pronouns: string
-	birthYear: number
-	storyJoy: string
-	image: string | null
-	publicSlug: string | null
+export type story = Story & {
 	defaultImage: DefaultImage | null
+	categories: (StoryToCategory & { category?: StoryCategory })[]
 }
 
 export type MainPageProps = {
