@@ -1,6 +1,7 @@
 import { MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
+import { Analytics } from '@vercel/analytics/react'
 import { type AppType } from 'next/app'
 import Head from 'next/head'
 import { type Session } from 'next-auth'
@@ -32,6 +33,7 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 				</ModalsProvider>
 				<Notifications />
 			</MantineProvider>
+			<Analytics />
 		</>
 	)
 }
