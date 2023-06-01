@@ -3,8 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "next build",
+		"build": "turbo build:next",
 		"build-storybook": "storybook build",
+		"build:next": "next build",
 		"chromatic": "chromatic --exit-zero-on-changes",
 		"db:deploy": "prisma migrate deploy",
 		"db:down": "cd docker && docker compose down",
@@ -86,6 +87,7 @@
 		"@types/prettier": "2.7.3",
 		"@types/react": "18.2.7",
 		"@types/react-dom": "18.2.4",
+		"@types/umami": "0.1.1",
 		"@typescript-eslint/eslint-plugin": "5.59.8",
 		"@typescript-eslint/parser": "5.59.8",
 		"boxen": "7.1.0",
@@ -106,6 +108,7 @@
 		"react-docgen-typescript": "2.2.2",
 		"storybook": "7.0.18",
 		"tsx": "3.12.7",
+		"turbo": "1.10.1",
 		"typescript": "5.0.4"
 	},
 	"packageManager": "pnpm@8.6.0",
