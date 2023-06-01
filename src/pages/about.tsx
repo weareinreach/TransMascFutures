@@ -1,4 +1,4 @@
-import { Container, createStyles, Flex, Image, SimpleGrid, Text, Title } from '@mantine/core'
+import { Container, createStyles, Flex, Image, SimpleGrid, Text, Title, rem } from '@mantine/core'
 
 import { StatisticCard } from '../components/statisticCard/StatisticCard'
 
@@ -10,17 +10,17 @@ export const AboutPage = ({ partners }: AboutPageProps) => {
 		},
 		image: {
 			margin: '0 auto -25px',
-			width: '500px',
+			width: rem(500),
 
-			[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-				width: '300px',
+			[theme.fn.smallerThan('sm')]: {
+				width: rem(300),
 				height: 'auto',
 			},
 		},
 		statistics: {
-			borderBottom: `10px solid ${theme.other.colors.glaadGray}`,
+			borderBottom: `${rem(10)} solid ${theme.other.colors.glaadGray}`,
 
-			[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+			[theme.fn.smallerThan('sm')]: {
 				flexDirection: 'column',
 				alignItems: 'center',
 			},
@@ -29,7 +29,7 @@ export const AboutPage = ({ partners }: AboutPageProps) => {
 			paddingTop: '1rem',
 		},
 		partners: {
-			[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+			[theme.fn.smallerThan('sm')]: {
 				flexDirection: 'column',
 				alignItems: 'center',
 			},
