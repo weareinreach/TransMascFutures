@@ -1,3 +1,46 @@
 {
-	"translationkey": "String value"
+	"about": {
+		"campaign": "This trans-led digital campaign organized by InReach and GLAAD aims to showcase positive stories from the diverse transmasculine community and increase access to safe, verified resources through the free InReach App.",
+		"hollister": "<text>And special thanks to <link>The Hollister Confidence Fund<link> for their support.</text>",
+		"stats": {
+			"stat1": "<title>56%</title>\n<text> of trans men and transmasculine youth have considered suicide.</text>",
+			"stat2": "<title>1 in 5</title>\n<text> transgender and nonbinary youth have attempted suicide.</text>",
+			"stat3": "<title>36%</title>\n<text> of the U.S. trans population identify as trans men.</text>"
+		},
+		"supporting-partners": "Supporting Partners"
+	},
+	"act": {
+		"card1": "<title>Participate in this campaign</title>\n<text>We're currently accepting submissions from trans men and transmasculine adults in the U.S. to share their story.</text>\n<text>Click <link>here</link> to participate.</text>",
+		"card2": "<title>Help increase resource access for the diverse transmasculine community</title>\n<text>InReach is always looking for new resource suggestions to help expand our free app. Know an organization that is affirming and safe for transmasculine people?</text>\n<text>You can suggest a resource to be listed on the free InReach App <link>here</link>.</text>",
+		"card3": "<title>Access affirming resources, 24/7</title>\n<text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you.</text>\n<text><link>Click here</link> and our new trans men and transmasculine community 'sort by' filter will automatically be applied to your search!</text>"
+	},
+	"main-page": {
+		"tagline1": "Trans men and transmasculine adults share their stories of trans joy.",
+		"tagline2": "Trans futures are InReach."
+	},
+	"nav": {
+		"about": "About",
+		"act": "Act",
+		"find-resources": "Find resources",
+		"gallery": "Gallery",
+		"share": "Share",
+		"switch-lang": "Haz clic aquí para cambiar a español."
+	},
+	"share": {
+		"download-button": "Link to Drive",
+		"list1": "Multiple 1080 x 1080 PNG graphics",
+		"list2": "Google document with sample sharing language",
+		"subtitle": "For your sharing convenience:",
+		"title": "Use our #TransmascFutures social media toolkit."
+	},
+	"story-gallery": {
+		"bipoc": "Transmasc + BIPOC + Proud",
+		"disabled": "Transmasc + Disabled + Proud",
+		"elder": "Transmasc + Elder + Proud",
+		"gallery-joy": "Trans joy: Gallery",
+		"immigrant": "Transmasc + Immigrant + Proud",
+		"nonbinary": "Transmasc/Nonbinary + Proud",
+		"queer": "Transmasc + Queer + Proud",
+		"transman": "Trans man + Proud"
+	}
 }
