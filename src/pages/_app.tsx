@@ -1,16 +1,15 @@
-import { MantineProvider, TypographyStylesProvider } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
+import { type AppType } from 'next/app'
 import Head from 'next/head'
+import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import { appWithTranslation } from 'next-i18next'
 
 import { Navbar } from '../components/Navbar/Navbar'
-import { styleCache, theme, fontWorkSans } from '../styles'
+import { fontWorkSans, styleCache, theme } from '../styles'
 import { api } from '../utils/api'
-
-import type { AppType } from 'next/app'
-import type { Session } from 'next-auth'
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
 	return (

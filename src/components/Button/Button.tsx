@@ -1,7 +1,6 @@
-import { Button as MantineButton, createStyles, rem } from '@mantine/core'
-
-import type { ButtonProps } from '@mantine/core'
-import type { ReactNode } from 'react'
+import { createStyles, Button as MantineButton, rem } from '@mantine/core'
+import { type ButtonProps } from '@mantine/core'
+import { type ReactNode } from 'react'
 
 export const Button = ({ children, variant = 'primary', size, type }: Props) => {
 	const useStyles = createStyles((theme) => ({

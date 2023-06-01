@@ -1,4 +1,6 @@
-import { Loader, Center, Title, Flex, Grid, Container, AspectRatio, Stack } from '@mantine/core'
+import { AspectRatio, Center, Container, Flex, Grid, Loader, Stack, Title } from '@mantine/core'
+import { type DefaultImage, type Story, type StoryCategory, type StoryToCategory } from '@prisma/client'
+import { type NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,15 +10,12 @@ import { PreviewCard } from '../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../layouts/CardDisplay'
 import { api } from '../utils/api'
 
-import type { DefaultImage, StoryToCategory, StoryCategory, Story } from '@prisma/client'
-import type { NextPage } from 'next'
-
 export const MainPage = ({ stories }: MainPageProps) => {
 	const year = Number(new Date().getFullYear())
 	const previewCards = stories.map((story, i) => {
 		const { name, pronouns, birthYear, image, publicSlug, defaultImage, categories } = story
-		const category = categories[0]?.category
-		const categoryName = category ? category.category : 'more'
+		const category = categories?.at(0)?.category
+		const categoryName = category ? category.categoryEN : 'more'
 		return (
 			<Stack justify='space-between' align='stretch' sx={{ height: '100%' }} key={`${name}${i}`}>
 				<Link
@@ -25,9 +24,9 @@ export const MainPage = ({ stories }: MainPageProps) => {
 				>
 					<PreviewCard
 						title={`${name}, ${pronouns}, ${year - birthYear}`}
-						text={story.storyJoy}
-						imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
-						imgSrc={image ? image : (defaultImage?.image as string)}
+						text={story.response1EN}
+						imgAlt={image ? `${name} image` : (defaultImage?.altEN as string)}
+						imgSrc={image ? image : (defaultImage?.src as string)}
 					/>
 				</Link>
 				<Center>
@@ -60,8 +59,8 @@ export const MainPage = ({ stories }: MainPageProps) => {
 }
 
 export type story = Story & {
-	defaultImage: DefaultImage | null
-	categories: (StoryToCategory & { category?: StoryCategory })[]
+	defaultImage?: DefaultImage | null
+	categories?: (StoryToCategory & { category?: StoryCategory })[]
 }
 
 export type MainPageProps = {

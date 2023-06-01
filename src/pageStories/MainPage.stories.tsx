@@ -1,11 +1,10 @@
 import { faker } from '@faker-js/faker'
+import { type Meta } from '@storybook/react'
 import React from 'react'
 
 import { Navbar } from '../components/Navbar/Navbar'
 import { MainPage } from '../pages/index'
-
-import type { story } from '../pages/index'
-import type { Meta } from '@storybook/react'
+import { type story } from '../pages/index'
 
 const stories: story[] = []
 for (let i = 0; i < 9; i++) {
@@ -14,10 +13,11 @@ for (let i = 0; i < 9; i++) {
 		name: faker.name.firstName(),
 		pronouns: 'Cat/Kitten',
 		birthYear: faker.datatype.number({ min: 2000, max: 2023 }),
-		storyJoy: faker.lorem.sentences(6),
-		keyJoy: 'test',
-		storyAccess: faker.lorem.sentences(3),
-		keyAccess: 'test',
+		response1EN: faker.lorem.sentences(6),
+		response2EN: faker.lorem.sentences(3),
+		response1ES: null,
+		response2ES: null,
+		userId: null,
 		image:
 			faker.datatype.number(100) % 3 === 0
 				? '/assets/tmf-logo-sw-color.png'

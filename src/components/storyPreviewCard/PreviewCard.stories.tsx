@@ -1,6 +1,6 @@
-import { PreviewCard } from './PreviewCard'
+import { type Meta } from '@storybook/react'
 
-import type { Meta } from '@storybook/react'
+import { PreviewCard } from './PreviewCard'
 
 export default {
 	title: 'Components/Preview Card',

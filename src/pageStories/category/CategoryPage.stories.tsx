@@ -1,10 +1,9 @@
+import { type Meta } from '@storybook/react'
 import React from 'react'
 
 import { Navbar } from '../../components/Navbar/Navbar'
 import { CategoryPage } from '../../pages/category/[category]'
 import { Desktop as MainPageDesktop } from '../MainPage.stories'
-
-import type { Meta } from '@storybook/react'
 
 export default {
 	title: 'Pages/Category Page',

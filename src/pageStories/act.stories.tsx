@@ -1,6 +1,6 @@
-import { Act } from '../pages/act'
+import { type Meta } from '@storybook/react'
 
-import type { Meta } from '@storybook/react'
+import { Act } from '../pages/act'
 
 export default {
 	title: 'Pages/Act',

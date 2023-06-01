@@ -1,10 +1,9 @@
-import { Text, Box, Container, Center, List, ScrollArea, createStyles, useMantineTheme } from '@mantine/core'
+import { Box, Center, Container, createStyles, List, ScrollArea, Text, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
+import { type NextPage } from 'next'
 
 import { Banner } from '../components/Banner/Banner'
 import { glossary } from '../data/glossary'
-
-import type { NextPage } from 'next'
 
 const useStyles = createStyles((theme) => ({
 	glossaryText: {

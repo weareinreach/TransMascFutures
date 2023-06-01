@@ -1,10 +1,9 @@
-import { Grid, Title, Container, AspectRatio } from '@mantine/core'
+import { AspectRatio, Container, Grid, Title } from '@mantine/core'
+import { type NextPage } from 'next'
 import Image from 'next/image'
 
 import { BackHomeButton } from '../components/BackHomeButton/BackHomeButton'
 import { PreviewCard } from '../components/storyPreviewCard/PreviewCard'
-
-import type { NextPage } from 'next'
 
 const cardTitles = [
 	'Participate in this campaign.',

@@ -1,4 +1,4 @@
-import { Container, Grid, Title, AspectRatio } from '@mantine/core'
+import { AspectRatio, Container, Grid, Title } from '@mantine/core'
 import Image from 'next/image'
 
 export const Banner = ({ title }: BannerProp) => {

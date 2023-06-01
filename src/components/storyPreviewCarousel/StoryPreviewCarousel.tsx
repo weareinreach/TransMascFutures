@@ -1,8 +1,7 @@
 import { Carousel } from '@mantine/carousel'
-import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import AutoHeight from 'embla-carousel-auto-height'
-
-import type { ReactNode } from 'react'
+import { type ReactNode } from 'react'
 
 type CarouselProps = {
 	children: ReactNode[]

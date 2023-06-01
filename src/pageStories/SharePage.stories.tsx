@@ -1,7 +1,7 @@
+import { type Meta } from '@storybook/react'
+
 import { Navbar } from '../components/Navbar/Navbar'
 import SharePage from '../pages/share'
-
-import type { Meta } from '@storybook/react'
 
 export default {
 	title: 'Pages/Share Page',

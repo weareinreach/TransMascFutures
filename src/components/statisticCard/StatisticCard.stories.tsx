@@ -1,9 +1,8 @@
 import { Flex } from '@mantine/core'
+import { type Meta } from '@storybook/react'
 
 import { StatisticCard } from './StatisticCard'
-
-import type { cardProps } from './StatisticCard'
-import type { Meta } from '@storybook/react'
+import { type cardProps } from './StatisticCard'
 
 export default {
 	title: 'components/Statistic Cards',

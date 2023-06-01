@@ -1,4 +1,4 @@
-import { Header, Container, createStyles, Burger, Drawer, Text, Button } from '@mantine/core'
+import { Burger, Button, Container, createStyles, Drawer, Header, Text } from '@mantine/core'
 import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'

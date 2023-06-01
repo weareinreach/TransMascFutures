@@ -1,4 +1,4 @@
-import { Container, createStyles, Flex, Image, SimpleGrid, Text, Title, rem } from '@mantine/core'
+import { Container, createStyles, Flex, Image, rem, SimpleGrid, Text, Title } from '@mantine/core'
 
 import { StatisticCard } from '../components/statisticCard/StatisticCard'
 

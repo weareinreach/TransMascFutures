@@ -1,7 +1,7 @@
+import { type Meta } from '@storybook/react'
+
 import { Navbar } from '../components'
 import AboutPage from '../pages/about'
-
-import type { Meta } from '@storybook/react'
 
 const partners = [
 	{ logo: '/assets/tmf-logo-rect-bw.png', link: '#' },

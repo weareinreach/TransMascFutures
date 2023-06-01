@@ -1,6 +1,6 @@
-import { IndividualStory } from './IndividualStory'
+import { type Meta, type StoryObj } from '@storybook/react'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import { IndividualStory } from './IndividualStory'
 
 const meta: Meta<typeof IndividualStory> = {
 	title: 'Layouts/Individual Story',

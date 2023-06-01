@@ -1,7 +1,6 @@
-import { rem, em } from '@mantine/core'
-
-import type { MantineThemeOverride, DefaultProps } from '@mantine/core'
-import type { PolymorphicComponentProps } from '@mantine/utils'
+import { rem } from '@mantine/core'
+import { type DefaultProps, type MantineThemeOverride } from '@mantine/core'
+import { type PolymorphicComponentProps } from '@mantine/utils'
 
 const themeCustomObj = {
 	colors: {

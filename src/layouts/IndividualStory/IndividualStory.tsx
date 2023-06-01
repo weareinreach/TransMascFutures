@@ -1,4 +1,4 @@
-import { Flex, Image, createStyles } from '@mantine/core'
+import { createStyles, Flex, Image } from '@mantine/core'
 
 export const IndividualStory = ({ age, image, name, pronouns, quotes }: Props) => {
 	const useStyles = createStyles((theme) => ({

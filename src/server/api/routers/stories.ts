@@ -1,7 +1,8 @@
+import { type Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 
-import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc'
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 export const storyRouter = createTRPCRouter({
 	recentNine: publicProcedure
@@ -13,9 +14,9 @@ export const storyRouter = createTRPCRouter({
 				.optional()
 		)
 		.query(async ({ ctx, input }) => {
-			const filter = {
+			const filter: Prisma.StoryWhereInput = {
 				published: true,
-				categories: { some: { category: { category: input?.category } } },
+				categories: { some: { category: { categoryEN: input?.category } } },
 			}
 
 			const stories = await ctx.prisma.story.findMany({

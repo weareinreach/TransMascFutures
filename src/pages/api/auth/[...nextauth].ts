@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/require-await */
 import NextAuth from 'next-auth'
+import { type NextAuthOptions, type User } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-
-import type { NextAuthOptions, User } from 'next-auth'
 
 // Prisma adapter for NextAuth, optional and can be removed
 

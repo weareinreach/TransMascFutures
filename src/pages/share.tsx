@@ -1,4 +1,4 @@
-import { createStyles, Flex, Image, List, Stack, rem } from '@mantine/core'
+import { createStyles, Flex, Image, List, rem, Stack } from '@mantine/core'
 import Link from 'next/link'
 
 import { Button } from '../components/Button/Button'

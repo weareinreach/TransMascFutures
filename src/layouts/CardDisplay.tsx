@@ -1,8 +1,7 @@
-import { MediaQuery, Flex, Container } from '@mantine/core'
+import { Container, Flex, MediaQuery } from '@mantine/core'
+import { type ReactNode } from 'react'
 
 import { StoryPreviewCarousel } from '../components/storyPreviewCarousel/StoryPreviewCarousel'
-
-import type { ReactNode } from 'react'
 
 type CardDisplayProps = {
 	children: ReactNode[]

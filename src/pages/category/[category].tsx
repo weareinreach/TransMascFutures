@@ -1,4 +1,5 @@
-import { Center, Loader, Text, Title, Grid, Container, AspectRatio, MediaQuery } from '@mantine/core'
+import { AspectRatio, Center, Container, Grid, Loader, MediaQuery, Text, Title } from '@mantine/core'
+import { type NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -8,9 +9,7 @@ import { ModalForm } from '../../components/ModalForm/ModalForm'
 import { PreviewCard } from '../../components/storyPreviewCard/PreviewCard'
 import { CardDisplay } from '../../layouts/CardDisplay'
 import { api } from '../../utils/api'
-
-import type { story } from '../index'
-import type { NextPage } from 'next'
+import { type story } from '../index'
 
 export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 	const year = Number(new Date().getFullYear())
@@ -22,9 +21,9 @@ export const CategoryPage = ({ stories, category }: CategoryPageProps) => {
 				<Link href={`/story/${publicSlug || 'none'}`} style={{ textDecoration: 'none' }}>
 					<PreviewCard
 						title={`${name}, ${pronouns}, ${year - birthYear}`}
-						text={story.storyJoy}
-						imgAlt={image ? `${name} image` : (defaultImage?.description as string)}
-						imgSrc={image ? image : (defaultImage?.image as string)}
+						text={story.response1EN}
+						imgAlt={image ? `${name} image` : (defaultImage?.altEN as string)}
+						imgSrc={image ? image : (defaultImage?.src as string)}
 					/>
 				</Link>
 			</Container>

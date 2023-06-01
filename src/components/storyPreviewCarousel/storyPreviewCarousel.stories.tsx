@@ -1,10 +1,9 @@
 import { faker } from '@faker-js/faker'
+import { type Meta } from '@storybook/react'
 import React from 'react'
 
 import { StoryPreviewCarousel } from './StoryPreviewCarousel'
 import { PreviewCard } from '../storyPreviewCard/PreviewCard'
-
-import type { Meta } from '@storybook/react'
 
 export default {
 	title: 'Components/Story Preview Carousel',

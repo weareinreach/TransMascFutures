@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unused-modules */
 import { faker } from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
 
@@ -7,14 +8,15 @@ const categories = ['queer', 'bipoc', 'disabled']
 async function main() {
 	const defaultImage = await prisma.defaultImage.create({
 		data: {
-			description: 'default',
-			image: '/assets/tmf-logo-sw-color.png',
+			altEN: 'default',
+			altES: 'default',
+			src: '/assets/tmf-logo-sw-color.png',
 		},
 	})
 
 	while ((await prisma.story.findMany()).length < 20) {
 		const categoryName = categories[Math.floor(Math.random() * categories.length)]
-		const category = await prisma.storyCategory.findFirst({ where: { category: categoryName } })
+		const category = await prisma.storyCategory.findFirst({ where: { categoryEN: categoryName } })
 		const hasDefaultImage = faker.datatype.number(100) % 3
 		const connectDefaultImage = { defaultImage: {} }
 		if (hasDefaultImage % 2 === 0) connectDefaultImage.defaultImage = { connect: { id: defaultImage.id } }
@@ -25,10 +27,8 @@ async function main() {
 					name: faker.name.firstName(),
 					pronouns: 'Cat/Kitten',
 					birthYear: faker.datatype.number({ min: 1, max: 20 }),
-					storyJoy: faker.lorem.sentences(6),
-					keyJoy: '',
-					storyAccess: faker.lorem.sentences(3),
-					keyAccess: '',
+					response1EN: faker.lorem.sentences(6),
+					response2EN: faker.lorem.sentences(3),
 					image: hasDefaultImage === 0 ? undefined : 'http://placekitten.com/g/480/355',
 					defaultImage: connectDefaultImage.defaultImage,
 					published: true,
@@ -40,8 +40,8 @@ async function main() {
 										id: (category && category.id) || 'test',
 									},
 									create: {
-										category: categoryName,
-										categoryKey: categoryName,
+										categoryEN: categoryName,
+										categoryES: categoryName,
 									},
 								},
 							},
