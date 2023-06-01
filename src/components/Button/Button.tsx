@@ -1,4 +1,4 @@
-import { Button as MantineButton, createStyles } from '@mantine/core'
+import { Button as MantineButton, createStyles, rem } from '@mantine/core'
 
 import type { ButtonProps } from '@mantine/core'
 import type { ReactNode } from 'react'
@@ -9,9 +9,9 @@ export const Button = ({ children, variant = 'primary', size, type }: Props) => 
 			borderRadius: 0,
 			fontWeight: 600,
 			height: 'auto',
-			padding: '15px',
+			padding: rem(15),
 			textAlign: 'center',
-			width: '175px',
+			width: rem(175),
 			backgroundColor: variant === 'primary' ? theme.other.colors.black : theme.other.colors.midGray,
 			['&:hover']: {
 				backgroundColor: variant === 'primary' ? theme.other.colors.midGray : theme.other.colors.black,

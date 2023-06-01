@@ -1,12 +1,12 @@
-import { Card, Text, Title, createStyles } from '@mantine/core'
+import { Card, Text, Title, createStyles, rem } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
 	card: {
-		maxWidth: 320,
+		maxWidth: rem(320),
 	},
 	title: {
-		marginBottom: '0px !important',
-		[`@media (max-width: ${theme.breakpoints.md}px)`]: {
+		marginBottom: `${rem(0)} !important`,
+		[theme.fn.smallerThan(theme.breakpoints.md)]: {
 			fontSize: theme.fontSizes.md,
 		},
 	},

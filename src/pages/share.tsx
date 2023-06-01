@@ -1,4 +1,4 @@
-import { createStyles, Flex, Image, List, Stack } from '@mantine/core'
+import { createStyles, Flex, Image, List, Stack, rem } from '@mantine/core'
 import Link from 'next/link'
 
 import { Button } from '../components/Button/Button'
@@ -10,22 +10,22 @@ export const SharePage = ({ image }: Props) => {
 		},
 
 		flexWrapper: {
-			padding: '0px 15px',
+			padding: `${rem(0)} ${rem(15)}`,
 			['& *']: {
 				flex: 1,
 			},
-			[`@media (max-width: ${theme.breakpoints.md}px)`]: {
+			[theme.fn.smallerThan('md')]: {
 				flexDirection: 'column',
 			},
 		},
 		content: {
-			gap: '0',
-			margin: '0',
-			padding: '0px 25px',
+			gap: rem(0),
+			margin: rem(0),
+			padding: `${rem(0)} ${rem(25)}`,
 			textAlign: 'center',
 		},
 		downloadText: {
-			margin: '0px',
+			margin: rem(0),
 			textTransform: 'uppercase',
 			fontSize: '1.5rem',
 			fontWeight: 'bold',
