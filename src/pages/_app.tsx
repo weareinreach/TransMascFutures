@@ -16,7 +16,8 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 	return (
 		<>
 			<Head>
-				<title>Page title</title>
+				{/* eslint-disable-next-line i18next/no-literal-string */}
+				<title>#TransmascFutures - InReach x GLAAD</title>
 				<meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
 			</Head>
 			<MantineProvider

@@ -2,6 +2,7 @@ import { Burger, Button, Container, createStyles, Drawer, Header, Text } from '@
 import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 
 const HEADER_HEIGHT = 75
@@ -58,24 +59,24 @@ export const useStyles = createStyles((theme) => ({
 	},
 }))
 
-type LinkData = Array<[string, string]>
+type LinkData = Array<{ key: string; href: string }>
 
 const NavLinks = () => {
 	const { classes } = useStyles()
+	const { t } = useTranslation()
 
 	const linksInfo: LinkData = [
-		['learn', '#'],
-		['act', '#'],
-		['about', '#'],
-		['share', '#'],
-		['find resources', '#'],
+		{ key: 'nav.gallery', href: '/gallery' },
+		{ key: 'nav.act', href: '/act' },
+		{ key: 'nav.about', href: '/about' },
+		{ key: 'nav.share', href: '/share' },
+		{ key: 'nav.find-resources', href: 'https://app.inreach.org' },
 	]
 
-	const links = linksInfo.map((linkInfo) => {
-		const [title, href] = linkInfo
+	const links = linksInfo.map(({ key, href }) => {
 		return (
-			<Link key={title} href={href} className={classes.navlink}>
-				{title.toUpperCase()}
+			<Link key={key} href={href} className={classes.navlink}>
+				{t(key).toLocaleUpperCase()}
 			</Link>
 		)
 	})
