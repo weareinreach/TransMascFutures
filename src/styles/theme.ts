@@ -1,6 +1,5 @@
 import { rem } from '@mantine/core'
-import { type DefaultProps, type MantineThemeOverride } from '@mantine/core'
-import { type PolymorphicComponentProps } from '@mantine/utils'
+import { type MantineThemeOverride } from '@mantine/core'
 
 const themeCustomObj = {
 	colors: {
@@ -37,13 +36,4 @@ export const theme: MantineThemeOverride = {
 	other: themeCustomObj,
 }
 
-export type PolyComponent<ComponentProps extends DefaultProps> = PolymorphicComponentProps<
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
-	ComponentProps
->
-type ThemeCustomObject = typeof themeCustomObj
-declare module '@mantine/core' {
-	// eslint-disable-next-line @typescript-eslint/no-empty-interface
-	export interface MantineThemeOther extends ThemeCustomObject {}
-}
+export type ThemeCustomObject = typeof themeCustomObj
