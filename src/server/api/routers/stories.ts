@@ -24,7 +24,7 @@ export const storyRouter = createTRPCRouter({
 				orderBy: { createdAt: 'desc' },
 				take: 9,
 				include: {
-					defaultImage: true,
+					image: true,
 					categories: !input?.category ? { include: { category: true } } : false,
 				},
 			})
@@ -67,5 +67,31 @@ export const storyRouter = createTRPCRouter({
 			where: { id },
 			data: { published: false },
 		})
+	}),
+	getCategories: publicProcedure.query(async ({ ctx }) => {
+		const categories = await ctx.prisma.storyCategory.findMany({
+			select: { categoryEN: true, categoryES: true, order: true },
+			orderBy: { order: 'asc' },
+		})
+		return categories
+	}),
+	getByCategory: publicProcedure.input(z.string()).query(async ({ ctx, input }) => {
+		const stories = await ctx.prisma.story.findMany({
+			where: {
+				published: true,
+				categories: { some: { categoryId: input } },
+			},
+			select: {
+				id: true,
+				name: true,
+				categories: { select: { category: { select: { categoryEN: true, categoryES: true, id: true } } } },
+				pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true, pronounsES: true } } } },
+				response1EN: true,
+				response1ES: true,
+				response2EN: true,
+				response2ES: true,
+			},
+		})
+		return stories
 	}),
 })
