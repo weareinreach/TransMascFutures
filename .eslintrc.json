@@ -112,7 +112,7 @@
 					{
 						"name": "next-i18next/serverSideTranslations",
 						"importNames": ["serverSideTranslations"],
-						"message": "Please import 'getServerSideTranslations' from '~app/utils/i18n'"
+						"message": "Please import 'getServerSideTranslations' from '~/server/i18n'"
 					}
 				]
 			}

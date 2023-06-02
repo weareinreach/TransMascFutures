@@ -1,8 +1,10 @@
 import { AspectRatio, Center, Container, Flex, Grid, Loader, Stack, Title } from '@mantine/core'
 import { type DefaultImage, type Story, type StoryCategory, type StoryToCategory } from '@prisma/client'
-import { type NextPage } from 'next'
+import { type GetStaticProps, type NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { getServerSideTranslations } from '~/server/i18n'
 
 import { Button } from '../components/Button/Button'
 import { ModalForm } from '../components/ModalForm/ModalForm'
@@ -92,3 +94,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+	return {
+		props: {
+			...(await getServerSideTranslations(locale)),
+		},
+	}
+}

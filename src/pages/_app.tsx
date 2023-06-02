@@ -8,9 +8,11 @@ import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import { appWithTranslation } from 'next-i18next'
 
-import { Navbar } from '../components/Navbar/Navbar'
-import { fontWorkSans, styleCache, theme } from '../styles'
-import { api } from '../utils/api'
+import { Navbar } from '~/components/Navbar/Navbar'
+import { fontWorkSans, styleCache, theme } from '~/styles'
+import { api } from '~/utils/api'
+
+import i18nConfig from '../../next-i18next.config'
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
 	return (
@@ -39,4 +41,4 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 	)
 }
 
-export default api.withTRPC(appWithTranslation(MyApp))
+export default api.withTRPC(appWithTranslation(MyApp, i18nConfig))

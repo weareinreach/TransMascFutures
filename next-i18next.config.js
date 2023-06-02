@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // @ts-check
 /* eslint-disable import/no-unused-modules */
@@ -15,12 +16,13 @@ const config = {
 	},
 	defaultNS: 'common',
 	localePath: path.resolve('./public/locales'),
-	// eslint-disable-next-line turbo/no-undeclared-env-vars
 	reloadOnPrerender: process.env.NODE_ENV !== 'production',
+	debug: process.env.NODE_ENV !== 'production',
 	nonExplicitSupportedLngs: true,
 	cleanCode: true,
 	react: { useSuspense: false },
 	joinArrays: '',
+	serializeConfig: false,
 	interpolation: {
 		skipOnVariables: false,
 		alwaysFormat: true,
