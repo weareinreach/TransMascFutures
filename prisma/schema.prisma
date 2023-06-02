@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["extendedWhereUnique", "fieldReference", "jsonProtocol", "postgresqlExtensions", "views"]
 }
 
 datasource db {
@@ -105,12 +106,35 @@ model StoryCategory {
   updatedAt DateTime          @updatedAt
 }
 
+model Pronouns {
+  id String @id @default(cuid())
+
+  pronounsEN String
+  pronounsES String
+
+  stories PronounsToStory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PronounsToStory {
+  pronoun   Pronouns @relation(fields: [pronounId], references: [id])
+  pronounId String
+  story     Story    @relation(fields: [storyId], references: [id])
+  storyId   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([storyId, pronounId])
+}
+
 model Story {
   id String @id @default(cuid())
 
-  name      String
-  pronouns  String
-  birthYear Int
+  name     String
+  pronouns PronounsToStory[]
 
   response1EN String?
   response2EN String?
@@ -119,10 +143,8 @@ model Story {
 
   userId String? // Not linked - using app auth
 
-  // User provided image or use from our provided images
-  image          String?
-  defaultImage   DefaultImage? @relation(fields: [defaultImageId], references: [id])
-  defaultImageId String?
+  image   DefaultImage? @relation(fields: [imageId], references: [id])
+  imageId String?
 
   categories StoryToCategory[]
 

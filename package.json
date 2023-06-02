@@ -10,7 +10,7 @@
 		"db:deploy": "prisma migrate deploy",
 		"db:down": "cd docker && docker compose down",
 		"db:generate": "prisma generate",
-		"db:migrate": "prisma migrate dev --create-only",
+		"db:migrate": "prisma migrate dev --create-only --skip-seed --skip-generate",
 		"db:migrate:apply": "prisma migrate dev",
 		"db:up": "cd docker && docker compose up -d",
 		"dev": "next dev",
