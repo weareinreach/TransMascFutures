@@ -12,6 +12,7 @@
 		"db:generate": "prisma generate",
 		"db:migrate": "prisma migrate dev --create-only --skip-seed --skip-generate",
 		"db:migrate:apply": "prisma migrate dev",
+		"db:repl": "pnpm dlx @prismatools/console@latest",
 		"db:up": "cd docker && docker compose up -d",
 		"dev": "next dev",
 		"dev:ui": "storybook dev -p 6006",

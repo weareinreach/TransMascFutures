@@ -1,8 +1,8 @@
 import { type Prisma } from '@prisma/client'
 
 export const pronouns: Prisma.PronounsCreateManyInput[] = [
-	{ pronounsEN: 'They/Them/Theirs', pronounsES: 'Elle' },
-	{ pronounsEN: 'He/Him/His', pronounsES: 'Él' },
-	{ pronounsEN: 'Any pronouns', pronounsES: 'Cualquier pronombre' },
-	{ pronounsEN: 'No pronouns', pronounsES: 'No pronombres' },
+	{ id: 'clienra200007pexbweivoffq', pronounsEN: 'They/Them/Theirs', pronounsES: 'Elle' },
+	{ id: 'clienra200008pexbpobaxztr', pronounsEN: 'He/Him/His', pronounsES: 'Él' },
+	{ id: 'clienra200009pexb5wyo4bkt', pronounsEN: 'Any pronouns', pronounsES: 'Cualquier pronombre' },
+	{ id: 'clienra20000apexb4zhmhq3d', pronounsEN: 'No pronouns', pronounsES: 'No pronombres' },
 ]

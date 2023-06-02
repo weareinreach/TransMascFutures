@@ -12,6 +12,8 @@
 /prisma/db.sqlite
 /prisma/db.sqlite-journal
 /prisma/seedData/stories.ts
+/prisma/**/*.json
+/prisma/seedData/temp.ts
 
 # next.js
 /.next/
