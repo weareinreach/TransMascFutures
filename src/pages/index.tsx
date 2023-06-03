@@ -16,7 +16,6 @@ import { ModalForm } from '../components/ModalForm/ModalForm'
 import { api, type RouterOutputs } from '../utils/api'
 
 const useStyles = createStyles((theme) => {
-	console.log(theme.shadows.lg)
 	return {
 		categoryCard: {},
 		categoryImage: {
@@ -140,6 +139,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 60 * 60 * 60 * 24, // 24 hours
+		revalidate: 60 * 60 * 24, // 24 hours
 	}
 }

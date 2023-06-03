@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps<
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 60 * 60 * 60 * 24, // 24 hours
+		revalidate: 60 * 60 * 24, // 24 hours
 	}
 }
 export const getStaticPaths: GetStaticPaths = async ({ locales = ['en', 'es'] }) => {
