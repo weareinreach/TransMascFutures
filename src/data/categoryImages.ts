@@ -1,3 +1,5 @@
+import { type LiteralUnion } from 'type-fest'
+
 import bipoc from '../../public/assets/characters/cropped/bipoc.png'
 import disabled from '../../public/assets/characters/cropped/disabled.png'
 import elder from '../../public/assets/characters/cropped/elder.png'
@@ -18,3 +20,9 @@ export const categoryImages = {
 
 export const isValidCategoryImage = (category: unknown): category is keyof typeof categoryImages =>
 	typeof category === 'string' && Object.hasOwn(categoryImages, category)
+
+export const getCategoryImage = (category: LiteralUnion<keyof typeof categoryImages, string>) => {
+	if (isValidCategoryImage(category)) return categoryImages[category]
+
+	return categoryImages.transman
+}

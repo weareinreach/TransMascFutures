@@ -35,6 +35,10 @@
 		"subtitle": "Para tu conveniencia al compartir:",
 		"title": "Usa nuestro kit de herramientas de redes sociales #TransmascFutures"
 	},
+	"story": {
+		"prompt1": "El primer momento en el cual pude ver mi futuro como un hombre trans o una persona transmasculina fue...",
+		"prompt2": "Los recursos que me ayudaron..."
+	},
 	"story-gallery": {
 		"bipoc": "Transmasculino + BIPOC (persona negra, indígena y de color) + Con orgullo",
 		"disabled": "Transmasculino + Con discapacidad + Con orgullo",

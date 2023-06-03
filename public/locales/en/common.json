@@ -23,10 +23,11 @@
 		"act": "Act",
 		"find-resources": "Find resources",
 		"gallery": "Gallery",
+		"home": "Back to home",
 		"share": "Share",
-		"switch-lang": "Haz clic aquí para cambiar a español.",
-		"home": "Back to home"
+		"switch-lang": "Haz clic aquí para cambiar a español."
 	},
+	"see-x-stories": "See {{category}} stories",
 	"share": {
 		"download-button": "Link to Drive",
 		"list1": "Multiple 1080 x 1080 PNG graphics",
@@ -34,15 +35,18 @@
 		"subtitle": "For your sharing convenience:",
 		"title": "Use our #TransmascFutures social media toolkit."
 	},
+	"story": {
+		"prompt1": "The first moment I could see my future as a trans man or transmasculine person was...",
+		"prompt2": "Resources that helped me..."
+	},
 	"story-gallery": {
 		"bipoc": "Transmasc + BIPOC + Proud",
 		"disabled": "Transmasc + Disabled + Proud",
 		"elder": "Transmasc + Elder + Proud",
 		"gallery-joy": "Trans joy: Gallery",
 		"immigrant": "Transmasc + Immigrant + Proud",
-		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud",
 		"queer": "Transmasc + Queer + Proud",
-		"transman": "Trans man + Proud"
-	},
-	"see-x-stories": "See {{category}} stories"
+		"transman": "Trans man + Proud",
+		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud"
+	}
 }

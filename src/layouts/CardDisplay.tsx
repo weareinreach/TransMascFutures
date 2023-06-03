@@ -1,13 +1,4 @@
-import {
-	Center,
-	Container,
-	createStyles,
-	Flex,
-	Grid,
-	type MantineTheme,
-	MediaQuery,
-	rem,
-} from '@mantine/core'
+import { Center, Container, createStyles, Flex, Grid, MediaQuery, rem } from '@mantine/core'
 import { type ReactNode, useMemo } from 'react'
 
 import { StoryPreviewCarousel } from '../components/storyPreviewCarousel/StoryPreviewCarousel'
@@ -31,6 +22,9 @@ const useStyles = createStyles((theme) => ({
 		...theme.fn.hover({
 			background: `linear-gradient(210deg, rgba(91,206,250,${hoverAlpha}) 0%, rgba(245,169,184,${hoverAlpha}) 25%, rgba(255,255,255,${hoverAlpha}) 50%, rgba(245,169,184,${hoverAlpha}) 75%, rgba(91,206,250,${hoverAlpha}) 100%);`,
 		}),
+		[theme.fn.smallerThan('md')]: {
+			margin: `${rem(20)} ${rem(0)}`,
+		},
 	},
 	border1: {
 		borderImageSource:
@@ -69,6 +63,16 @@ export const CardDisplay = ({ children }: CardDisplayProps) => {
 		return output
 	}, [children])
 
+	const mobileBorders = useMemo(() => {
+		const classNames: (string | undefined)[] = []
+
+		while (classNames.length < children.length) {
+			classNames.push(...[0, 1, 2].map((n) => getBorderColor(n)))
+		}
+		return classNames
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [children])
+
 	if (!children.length || !storyGrid.length) return <>Loading...</>
 
 	return (
@@ -92,7 +96,11 @@ export const CardDisplay = ({ children }: CardDisplayProps) => {
 			</MediaQuery>
 			<MediaQuery largerThan='md' styles={{ display: 'none' }}>
 				<Flex direction='column' align='center'>
-					{children}
+					{children.map((child, i) => (
+						<div key={i} className={mobileBorders.at(i)}>
+							{child}
+						</div>
+					))}
 				</Flex>
 			</MediaQuery>
 		</Container>

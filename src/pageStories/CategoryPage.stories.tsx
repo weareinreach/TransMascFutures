@@ -1,8 +1,8 @@
 import { type Meta } from '@storybook/react'
 import React from 'react'
 
-import { Navbar } from '../../components/Navbar/Navbar'
-import { CategoryPage } from '../../pages/category/[tag]'
+import { Navbar } from '~/components/Navbar/Navbar'
+import { CategoryPage } from '~/pages/category/[tag]/[[...storyId]]'
 
 export default {
 	title: 'Pages/Category Page',

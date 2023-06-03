@@ -45,7 +45,7 @@ export const storyRouter = createTRPCRouter({
 			})
 			return story
 		}),
-	getStoryById: protectedProcedure
+	getStoryById: publicProcedure
 		.input(
 			z.object({
 				id: z.string(),
@@ -53,8 +53,31 @@ export const storyRouter = createTRPCRouter({
 		)
 		.query(async ({ ctx, input }) => {
 			const story = await ctx.prisma.story.findUniqueOrThrow({
-				where: { id: input.id },
-				include: { categories: { include: { category: true } } },
+				where: { id: input.id, published: true },
+				select: {
+					id: true,
+					name: true,
+					response1EN: true,
+					response2EN: true,
+					response1ES: true,
+					response2ES: true,
+					categories: {
+						select: {
+							category: {
+								select: {
+									id: true,
+									image: true,
+									imageAltEN: true,
+									imageAltES: true,
+									categoryEN: true,
+									categoryES: true,
+									tag: true,
+								},
+							},
+						},
+					},
+					pronouns: { select: { pronoun: { select: { pronounsEN: true, pronounsES: true } } } },
+				},
 			})
 			return story
 		}),

@@ -44,7 +44,7 @@ export const MainPage = ({ categories }: MainPageProps) => {
 					<Anchor
 						variant='category'
 						component={Link}
-						href={{ pathname: '/category/[tag]', query: { tag } }}
+						href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
 						style={{ textDecoration: 'none', marginBottom: 'auto' }}
 					>
 						<Image
@@ -59,7 +59,7 @@ export const MainPage = ({ categories }: MainPageProps) => {
 						<Anchor
 							variant='category'
 							component={Link}
-							href={{ pathname: '/category/[tag]', query: { tag } }}
+							href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
 						>
 							<Trans i18nKey='see-x-stories' values={{ category: categoryName }} shouldUnescape={true} />
 						</Anchor>

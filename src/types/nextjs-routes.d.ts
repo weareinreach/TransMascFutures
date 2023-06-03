@@ -15,7 +15,7 @@ declare module "nextjs-routes" {
     | StaticRoute<"/act">
     | DynamicRoute<"/api/auth/[...nextauth]", { "nextauth": string[] }>
     | DynamicRoute<"/api/trpc/[trpc]", { "trpc": string }>
-    | DynamicRoute<"/category/[tag]", { "tag": string }>
+    | DynamicRoute<"/category/[tag]/[[...storyId]]", { "tag": string; "storyId"?: string[] | undefined }>
     | StaticRoute<"/gallery">
     | StaticRoute<"/">
     | StaticRoute<"/learn">
