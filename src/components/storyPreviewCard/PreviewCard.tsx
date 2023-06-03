@@ -2,8 +2,6 @@ import { AspectRatio, Card, createStyles, rem, Text } from '@mantine/core'
 import Image from 'next/image'
 import { type ReactNode } from 'react'
 
-import { theme } from '~/styles'
-
 type CardProps = {
 	title: string
 	subtitle?: string

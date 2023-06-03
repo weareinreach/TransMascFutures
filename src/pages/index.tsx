@@ -20,9 +20,10 @@ const useStyles = createStyles((theme) => {
 	return {
 		categoryCard: {},
 		categoryImage: {
-			// filter: `dropShadow(${theme.shadows.lg})`,
 			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`,
-			// boxShadow: theme.shadows.lg,
+			...theme.fn.hover({
+				filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.fn.lighten(theme.other.colors.blue, 0)})`,
+			}),
 		},
 	}
 })
