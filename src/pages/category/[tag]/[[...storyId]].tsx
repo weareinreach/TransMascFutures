@@ -134,30 +134,6 @@ type CategoryPageProps = {
 	category: string
 }
 
-// const Category: NextPage = () => {
-// 	const router = useRouter<'/category/[tag]/[[...storyId]]'>()
-// 	const query = router.query.tag ?? ''
-// 	const { data, isError, isLoading } = api.story.getByCategory.useQuery({ tag: query })
-
-// 	if (isLoading) {
-// 		return (
-// 			<Center style={{ height: '80vh' }}>
-// 				<Loader size='xl' variant='bars' />
-// 			</Center>
-// 		)
-// 	} else if (isError) {
-// 		// Consult Joe about how to handle users trying to go
-// 		// to non-existant categories
-// 		return <Text ta='center'>Something is wrong...</Text>
-// 	}
-
-// 	return (
-// 		<>
-// 			<CategoryPage stories={data} category={query} />
-// 		</>
-// 	)
-// }
-
 export const getStaticProps: GetStaticProps<
 	Record<string, unknown>,
 	RoutedQuery<'/category/[tag]/[[...storyId]]'>
