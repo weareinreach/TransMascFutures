@@ -2,8 +2,7 @@ import { type Meta } from '@storybook/react'
 import React from 'react'
 
 import { Navbar } from '../../components/Navbar/Navbar'
-import { CategoryPage } from '../../pages/category/[category]'
-import { Desktop as MainPageDesktop } from '../MainPage.stories'
+import { CategoryPage } from '../../pages/category/[tag]'
 
 export default {
 	title: 'Pages/Category Page',
@@ -13,7 +12,6 @@ export default {
 	},
 	args: {
 		category: 'queer',
-		stories: MainPageDesktop.args.stories,
 	},
 	render: ({ category, stories }) => {
 		return (

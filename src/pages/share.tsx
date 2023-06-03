@@ -1,7 +1,5 @@
-import { createStyles, Flex, Image, List, rem, Stack } from '@mantine/core'
+import { Button, createStyles, Flex, Image, List, rem, Stack } from '@mantine/core'
 import Link from 'next/link'
-
-import { Button } from '../components/Button/Button'
 
 const SharePage = ({ image }: Props) => {
 	const useStyles = createStyles((theme) => ({

@@ -1,39 +1,15 @@
-import { faker } from '@faker-js/faker'
 import { type Meta } from '@storybook/react'
 import React from 'react'
 
 import { Navbar } from '../components/Navbar/Navbar'
 import { MainPage } from '../pages/index'
-import { type story } from '../pages/index'
 
-const stories: story[] = []
-for (let i = 0; i < 9; i++) {
-	stories.push({
-		id: i.toString(),
-		name: faker.name.firstName(),
-		pronouns: 'Cat/Kitten',
-		birthYear: faker.datatype.number({ min: 2000, max: 2023 }),
-		response1EN: faker.lorem.sentences(6),
-		response2EN: faker.lorem.sentences(3),
-		response1ES: null,
-		response2ES: null,
-		userId: null,
-		image:
-			faker.datatype.number(100) % 3 === 0
-				? '/assets/tmf-logo-sw-color.png'
-				: 'http://placekitten.com/g/480/355',
-		publicSlug: '#',
-		defaultImageId: 'null',
-		defaultImage: null,
-		createdAt: new Date(),
-		updatedAt: new Date(),
-		published: true,
-		isInfluencer: false,
-		categories: [],
-		imageModeration: null,
-		textToxicity: null,
-	})
-}
+const imageInfo = {
+	image: '',
+	imageAltEN: '',
+	imageAltES: '',
+	tag: '',
+} as const
 
 export default {
 	title: 'Pages/Main Page',
@@ -42,23 +18,37 @@ export default {
 		layout: 'fullscreen',
 	},
 	args: {
-		stories: stories,
+		categories: [
+			{ id: 'clienra1i0000pexbs0j5xjhl', categoryEN: 'BIPOC', categoryES: 'BIPOC', ...imageInfo },
+			{
+				id: 'clienra1i0001pexbc72b9hyj',
+				categoryEN: 'Disabled',
+				categoryES: 'Con discapacidad',
+				...imageInfo,
+			},
+			{ id: 'clienra1i0002pexbm17yqg2d', categoryEN: 'Elder', categoryES: 'Persona mayor', ...imageInfo },
+			{ id: 'clienra1i0003pexbvo2gu720', categoryEN: 'Immigrant', categoryES: 'Inmigrante', ...imageInfo },
+			{
+				id: 'clienra1i0004pexbkht4nc39',
+				categoryEN: 'Transmasc/Nonbinary',
+				categoryES: 'Transmasculino/Nonbinario',
+				...imageInfo,
+			},
+			{ id: 'clienra1i0005pexby9upd67c', categoryEN: 'Queer', categoryES: 'Queer', ...imageInfo },
+			{ id: 'clienra1i0006pexbks2nzu97', categoryEN: 'Trans man', categoryES: 'Hombre trans', ...imageInfo },
+		],
 	},
-	render: ({ stories }) => {
+	render: ({ categories }) => {
 		return (
 			<>
 				<Navbar />
-				<MainPage stories={stories} />
+				<MainPage categories={categories} />
 			</>
 		)
 	},
 } as Meta<typeof MainPage>
 
-export const Desktop = {
-	args: {
-		stories: stories,
-	},
-}
+export const Desktop = {}
 export const Mobile = {
 	parameters: {
 		viewport: {
