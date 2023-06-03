@@ -5,7 +5,8 @@
 			"files": ["*.ts", "*.tsx"],
 			"parserOptions": {
 				"project": "tsconfig.json"
-			}
+			},
+			"rules": { "@typescript-eslint/no-unsafe-assignment": 0, "@typescript-eslint/no-unsafe-call": 0 }
 		},
 		{
 			"files": ["**/*.spec.ts", "**/*.d.ts"],
@@ -70,7 +71,6 @@
 		"import/no-absolute-path": "error",
 		"import/no-duplicates": "error",
 		"import/no-empty-named-blocks": "error",
-		"import/no-extraneous-dependencies": "error",
 		"import/no-unused-modules": [
 			"warn",
 			{
@@ -120,7 +120,8 @@
 		"require-await": "off",
 		"@typescript-eslint/require-await": "off",
 		"no-return-await": "off",
-		"@typescript-eslint/return-await": "off"
+		"@typescript-eslint/return-await": "off",
+		"@typescript-eslint/no-unsafe-assignment": 0
 	},
 	"ignorePatterns": ["!.*", "**/node_modules/**", "dist/", ".next/"],
 	"settings": {
