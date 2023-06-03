@@ -26,6 +26,8 @@ const config = {
 		remotePatterns: [{ protocol: 'https', hostname: 'placehold.co', pathname: '/**' }],
 		// domains: ['placehold.co'],
 	},
+	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
+	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
 }
 /**
  * Wraps NextJS config with the Bundle Analyzer config.

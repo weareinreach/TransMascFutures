@@ -27,7 +27,8 @@
 		"strict": true,
 		"target": "es2017",
 		"paths": {
-			"~/*": ["./src/*"]
+			"~/*": ["./src/*"],
+			"~public/*": ["./public/*"]
 		}
 	},
 	"include": [
