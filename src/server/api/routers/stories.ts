@@ -1,38 +1,36 @@
-import { type Prisma } from '@prisma/client'
-import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 export const storyRouter = createTRPCRouter({
-	recentNine: publicProcedure
-		.input(
-			z
-				.object({
-					category: z.string(),
-				})
-				.optional()
-		)
-		.query(async ({ ctx, input }) => {
-			const filter: Prisma.StoryWhereInput = {
-				published: true,
-				categories: { some: { category: { categoryEN: input?.category } } },
-			}
+	// recentNine: publicProcedure
+	// 	.input(
+	// 		z
+	// 			.object({
+	// 				category: z.string(),
+	// 			})
+	// 			.optional()
+	// 	)
+	// 	.query(async ({ ctx, input }) => {
+	// 		const filter: Prisma.StoryWhereInput = {
+	// 			published: true,
+	// 			categories: { some: { category: { categoryEN: input?.category } } },
+	// 		}
 
-			const stories = await ctx.prisma.story.findMany({
-				where: filter,
-				orderBy: { createdAt: 'desc' },
-				take: 9,
-				include: {
-					image: true,
-					categories: !input?.category ? { include: { category: true } } : false,
-				},
-			})
+	// 		const stories = await ctx.prisma.story.findMany({
+	// 			where: filter,
+	// 			orderBy: { createdAt: 'desc' },
+	// 			take: 9,
+	// 			include: {
+	// 				image: true,
+	// 				categories: !input?.category ? { include: { category: true } } : false,
+	// 			},
+	// 		})
 
-			if (stories.length === 0) throw new TRPCError({ code: 'NOT_FOUND' })
+	// 		if (stories.length === 0) throw new TRPCError({ code: 'NOT_FOUND' })
 
-			return stories
-		}),
+	// 		return stories
+	// 	}),
 
 	getStoryBySlug: publicProcedure
 		.input(
@@ -70,28 +68,39 @@ export const storyRouter = createTRPCRouter({
 	}),
 	getCategories: publicProcedure.query(async ({ ctx }) => {
 		const categories = await ctx.prisma.storyCategory.findMany({
-			select: { categoryEN: true, categoryES: true, order: true },
+			select: {
+				categoryEN: true,
+				categoryES: true,
+				id: true,
+				image: true,
+				imageAltEN: true,
+				imageAltES: true,
+				tag: true,
+			},
 			orderBy: { order: 'asc' },
 		})
 		return categories
 	}),
-	getByCategory: publicProcedure.input(z.string()).query(async ({ ctx, input }) => {
-		const stories = await ctx.prisma.story.findMany({
-			where: {
-				published: true,
-				categories: { some: { categoryId: input } },
-			},
-			select: {
-				id: true,
-				name: true,
-				categories: { select: { category: { select: { categoryEN: true, categoryES: true, id: true } } } },
-				pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true, pronounsES: true } } } },
-				response1EN: true,
-				response1ES: true,
-				response2EN: true,
-				response2ES: true,
-			},
-		})
-		return stories
-	}),
+	getByCategory: publicProcedure
+		.input(z.object({ tag: z.string(), take: z.number().optional() }))
+		.query(async ({ ctx, input }) => {
+			const stories = await ctx.prisma.story.findMany({
+				where: {
+					published: true,
+					categories: { some: { category: { tag: input.tag } } },
+				},
+				select: {
+					id: true,
+					name: true,
+					categories: { select: { category: { select: { categoryEN: true, categoryES: true, id: true } } } },
+					pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true, pronounsES: true } } } },
+					response1EN: true,
+					response1ES: true,
+					response2EN: true,
+					response2ES: true,
+				},
+				...(input.take ? { take: input.take } : {}),
+			})
+			return stories
+		}),
 })
