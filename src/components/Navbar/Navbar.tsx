@@ -1,8 +1,9 @@
-import { Burger, Button, Container, createStyles, Drawer, Header, Text } from '@mantine/core'
+import { Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
 import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import { type Route } from 'nextjs-routes'
 import { useState } from 'react'
 
 const HEADER_HEIGHT = 75
@@ -47,6 +48,8 @@ export const useStyles = createStyles((theme) => ({
 		display: 'flex',
 		width: '100%',
 		height: '100%',
+		fontWeight: 600,
+		fontSize: rem(32),
 		fontStyle: 'italic',
 		flexDirection: 'column',
 		marginTop: theme.spacing.md,
@@ -59,21 +62,29 @@ export const useStyles = createStyles((theme) => ({
 	},
 }))
 
-type LinkData = Array<{ key: string; href: string }>
+type LinkData = { key: string; href: Route }
 
 const NavLinks = () => {
 	const { classes } = useStyles()
 	const { t } = useTranslation()
 
-	const linksInfo: LinkData = [
-		{ key: 'nav.gallery', href: '/gallery' },
-		{ key: 'nav.act', href: '/act' },
-		{ key: 'nav.about', href: '/about' },
-		{ key: 'nav.share', href: '/share' },
-		{ key: 'nav.find-resources', href: 'https://app.inreach.org' },
-	]
+	const linksInfo = [
+		{ key: 'nav.gallery', href: '/gallery' as const },
+		{ key: 'nav.act', href: '/act' as const },
+		{ key: 'nav.about', href: '/about' as const },
+		{ key: 'nav.share', href: '/share' as const },
+		{ key: 'nav.find-resources', href: 'https://app.inreach.org' as const },
+	] //satisfies Array<Readonly<LinkData>>
 
 	const links = linksInfo.map(({ key, href }) => {
+		if (href === 'https://app.inreach.org') {
+			return (
+				<a key={key} href={href} className={classes.navlink}>
+					{t(key).toLocaleUpperCase()}
+				</a>
+			)
+		}
+
 		return (
 			<Link key={key} href={href} className={classes.navlink}>
 				{t(key).toLocaleUpperCase()}

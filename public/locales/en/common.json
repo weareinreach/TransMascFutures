@@ -24,7 +24,8 @@
 		"find-resources": "Find resources",
 		"gallery": "Gallery",
 		"share": "Share",
-		"switch-lang": "Haz clic aquí para cambiar a español."
+		"switch-lang": "Haz clic aquí para cambiar a español.",
+		"home": "Back to home"
 	},
 	"share": {
 		"download-button": "Link to Drive",
@@ -39,8 +40,9 @@
 		"elder": "Transmasc + Elder + Proud",
 		"gallery-joy": "Trans joy: Gallery",
 		"immigrant": "Transmasc + Immigrant + Proud",
-		"nonbinary": "Transmasc/Nonbinary + Proud",
+		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud",
 		"queer": "Transmasc + Queer + Proud",
 		"transman": "Trans man + Proud"
-	}
+	},
+	"see-x-stories": "See {{category}} stories"
 }

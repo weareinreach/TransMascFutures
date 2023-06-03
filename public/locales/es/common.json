@@ -23,9 +23,11 @@
 		"act": "Actúa",
 		"find-resources": "Encuentra recursos",
 		"gallery": "Galería",
+		"home": "Regresar al inicio",
 		"share": "Comparte",
 		"switch-lang": "Click here to switch to English."
 	},
+	"see-x-stories": "Ver historias {{category}}",
 	"share": {
 		"download-button": "Enlace al Drive",
 		"list1": "Múltiples gráficos PNG de 1080 x 1080",
@@ -39,8 +41,8 @@
 		"elder": "Transmasculino + Persona mayor + Con orgullo",
 		"gallery-joy": "Alegría trans: Galería",
 		"immigrant": "Transmasculino + Inmigrante + Con orgullo",
-		"nonbinary": "Transmasculino/Nonbinario + Con orgullo",
 		"queer": "Transmasculino + Queer + Con orgullo",
-		"transman": "Hombre trans + Con orgullo"
+		"transman": "Hombre trans + Con orgullo",
+		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud"
 	}
 }
