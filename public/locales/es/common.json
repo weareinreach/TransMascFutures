@@ -1,11 +1,14 @@
 {
 	"about": {
 		"campaign": "Esta campaña digital por personas trans organizada por InReach y GLAAD tiene como objetivo mostrar historias positivas de la comunidad trans masculina diversa y aumentar el acceso a recursos seguros y verificados a través de la aplicación gratuita InReach.",
-		"hollister": "<Text>Y un agradecimiento especial a <Link>The Hollister Confidence Fund<Link> por su apoyo.</Text>",
+		"hollister": "<Title>Y un agradecimiento especial a <Link>The Hollister Confidence Fund</Link> por su apoyo.</Title>",
 		"stats": {
-			"stat1": "<Title>56%</Title>\n<Text> de hombres trans y jóvenes trans masculinos han considerado el suicidio.</Text>",
-			"stat2": "<Title>1 in 5</Title>\n<Text> jóvenes transgénero y no binarios han intentado suicidarse.</Text>",
-			"stat3": "<Title>36%</Title>\n<Text> de la población trans de EE. UU. se identifica como hombre trans.</Text>"
+			"stat1-text": "de hombres trans y jóvenes trans masculinos han considerado el suicidio.",
+			"stat1-title": "56%",
+			"stat2-text": "jóvenes transgénero y no binarios han intentado suicidarse.",
+			"stat2-title": "1 en 5",
+			"stat3-text": "de la población trans de EE. UU. se identifica como hombre trans.",
+			"stat3-title": "36%"
 		},
 		"supporting-partners": "Socios que Apoyan"
 	},

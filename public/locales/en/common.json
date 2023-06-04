@@ -1,11 +1,14 @@
 {
 	"about": {
 		"campaign": "This trans-led digital campaign organized by InReach and GLAAD aims to showcase positive stories from the diverse transmasculine community and increase access to safe, verified resources through the free InReach App.",
-		"hollister": "<Text>And special thanks to <link>The Hollister Confidence Fund<link> for their support.</Text>",
+		"hollister": "<Title>And special thanks to <Link>The Hollister Confidence Fund</Link> for their support.</Title>",
 		"stats": {
-			"stat1": "<Title>56%</Title>\n<Text> of trans men and transmasculine youth have considered suicide.</Text>",
-			"stat2": "<Title>1 in 5</Title>\n<Text> transgender and nonbinary youth have attempted suicide.</Text>",
-			"stat3": "<Title>36%</Title>\n<Text> of the U.S. trans population identify as trans men.</Text>"
+			"stat1-text": "of trans men and transmasculine youth have considered suicide",
+			"stat1-title": "56%",
+			"stat2-text": "transgender and nonbinary youth have attempted suicide.",
+			"stat2-title": "1 in 5",
+			"stat3-text": "of the U.S. trans population identify as trans men.",
+			"stat3-title": "36%"
 		},
 		"supporting-partners": "Supporting Partners"
 	},

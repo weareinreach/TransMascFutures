@@ -1,12 +1,31 @@
-import { AspectRatio, Container, createStyles, Flex, rem, SimpleGrid, Text, Title } from '@mantine/core'
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import {
+	AspectRatio,
+	Center,
+	Container,
+	createStyles,
+	Divider,
+	em,
+	Flex,
+	Grid,
+	Group,
+	rem,
+	Stack,
+	Text,
+	Title,
+	useMantineTheme,
+} from '@mantine/core'
 import { type GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 
 import { Banner } from '~/components/Banner/Banner'
 import { StatisticCard } from '~/components/statisticCard/StatisticCard'
+import { getPartnerImage, partnerImages } from '~/data/partners'
 import { getServerSideTranslations } from '~/server/i18n'
+import { api } from '~/utils/api'
+import { trpcServerClient } from '~/utils/ssr'
 
 const useStyles = createStyles((theme) => ({
 	title: {
@@ -23,8 +42,8 @@ const useStyles = createStyles((theme) => ({
 		},
 	},
 	statistics: {
-		borderBottom: `${rem(10)} solid ${theme.other.colors.glaadGray}`,
-
+		// borderBottom: `${rem(10)} solid ${theme.other.colors.glaadGray}`,
+		flexWrap: 'nowrap',
 		[theme.fn.smallerThan('sm')]: {
 			flexDirection: 'column',
 			alignItems: 'center',
@@ -39,47 +58,119 @@ const useStyles = createStyles((theme) => ({
 			alignItems: 'center',
 		},
 	},
+	partnerImage: {
+		width: rem(300),
+		[theme.fn.smallerThan('md')]: {
+			width: rem(200),
+		},
+		[theme.fn.smallerThan('xs')]: {
+			width: rem(150),
+		},
+		[theme.fn.smallerThan(em(450))]: {
+			width: rem(125),
+		},
+	},
+	partnerGrid: {
+		alignItems: 'center',
+		justifyItems: 'center',
+	},
+	partnerHollister: {
+		width: rem(600),
+		[theme.fn.smallerThan('md')]: {
+			width: rem(400),
+		},
+		[theme.fn.smallerThan('xs')]: {
+			width: rem(200),
+		},
+	},
 }))
-const AboutPage = ({ partners }: AboutPageProps) => {
+const AboutPage = () => {
 	const { t } = useTranslation()
 	const { classes } = useStyles()
+	const theme = useMantineTheme()
+	const { data: partners } = api.partner.getAll.useQuery()
 	return (
-		<Container>
+		<>
 			<Head>
 				<title>{t('page-title.general-template', { page: '$t(nav.about)' })}</title>
 			</Head>
 			<Banner titleKey='nav.about' />
-
-			<Flex className={classes.statistics}>
-				<StatisticCard title={t('about.stats.stat1-title')} text={t('about.stats.stat1-text')} />
-				<StatisticCard title={t('about.stats.stat2-title')} text={t('about.stats.stat2-text')} />
-				<StatisticCard title={t('about.stats.stat3-title')} text={t('about.stats.stat3-text')} />
-			</Flex>
-			<Text fz='lg' className={classes.description}>
-				{t('about.campaign')}
-			</Text>
-			<Flex direction='column' align='center'>
-				<Title order={2}>{t('about.supporting-partners')}</Title>
-				<SimpleGrid cols={4} breakpoints={[{ maxWidth: 600, cols: 1 }]}>
+			<Container>
+				<Stack className={classes.statistics} align='center' justify='center' mx='auto'>
+					<Group className={classes.statistics}>
+						<StatisticCard title={t('about.stats.stat1-title')} text={t('about.stats.stat1-text')} />
+						<StatisticCard title={t('about.stats.stat2-title')} text={t('about.stats.stat2-text')} />
+						<StatisticCard title={t('about.stats.stat3-title')} text={t('about.stats.stat3-text')} />
+					</Group>
+					<Text fz={{ md: 'lg' }} className={classes.description} mx={{ lg: 0, base: 10, xs: 50 }}>
+						{t('about.campaign')}
+					</Text>
+				</Stack>
+			</Container>
+			<Divider size={10} color={theme.other.colors.glaadGray} my={40} mx={{ lg: 80, base: 15, xs: 40 }} />
+			<Flex direction='column' align='center' w='100%'>
+				<Title order={2} mb={40}>
+					{t('about.supporting-partners')}
+				</Title>
+				<Grid grow mx='auto' gutter={20}>
 					{partners &&
-						partners.map((partner, index) => (
-							<a href={partner.link} key={index}>
-								<Image src={partner.logo} alt='partner logo' />
-							</a>
-						))}
-				</SimpleGrid>
+						partners.map(({ id, href, name, order, tag }) => {
+							const image = getPartnerImage(tag)
+							if (!image) return null
+							return (
+								<Grid.Col
+									key={id}
+									span={6}
+									md={4}
+									// className={classes.partnerImage}
+								>
+									<Center inline w='100%' h='100%'>
+										<a href={href} target='_blank'>
+											<AspectRatio ratio={image.width / image.height} className={classes.partnerImage}>
+												<Image src={image} alt={name} fill />
+											</AspectRatio>
+										</a>
+									</Center>
+								</Grid.Col>
+							)
+						})}
+				</Grid>
+
+				<Trans
+					i18nKey='about.hollister'
+					components={{
+						Title: (
+							<Text my={40} ta='center' mx={{ lg: 0, base: 10, xs: 50, [em(450)]: 60 }} fw={500} fz={20}>
+								.
+							</Text>
+						),
+						Link: <a href='https://www.hollisterco.com/shop/us/purpose' target='_blank'></a>,
+					}}
+				/>
+				<Center>
+					<AspectRatio
+						ratio={partnerImages.hollister.width / partnerImages.hollister.height}
+						className={classes.partnerHollister}
+					>
+						<a href='https://www.hollisterco.com/shop/us/purpose' target='_blank'>
+							<Image src={partnerImages.hollister} alt='The Hollister Confidence Fund' fill />
+						</a>
+					</AspectRatio>
+				</Center>
 			</Flex>
-		</Container>
+		</>
 	)
 }
 
-type AboutPageProps = {
-	partners: { logo: string; link: string }[]
-}
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+	const ssg = await trpcServerClient({ session: null })
+
+	const [i18n] = await Promise.allSettled([getServerSideTranslations(locale), ssg.partner.getAll.prefetch()])
+
 	return {
 		props: {
-			...(await getServerSideTranslations(locale)),
+			trpcState: ssg.dehydrate(),
+			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
 		revalidate: 60 * 60 * 24, // 24 hours
 	}
