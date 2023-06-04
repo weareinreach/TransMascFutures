@@ -27,6 +27,9 @@
 		"share": "Comparte",
 		"switch-lang": "Click here to switch to English."
 	},
+	"page-title": {
+		"gallery": "Alegría Trans: Galería"
+	},
 	"see-x-stories": "Ver historias {{category}}",
 	"share": {
 		"download-button": "Enlace al Drive",

@@ -1,10 +1,10 @@
-import { Carousel } from '@mantine/carousel'
+import { Carousel, type CarouselProps } from '@mantine/carousel'
 import { createStyles, rem } from '@mantine/core'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import AutoHeight from 'embla-carousel-auto-height'
 import { type ReactNode } from 'react'
 
-type CarouselProps = {
+interface StoryPreviewCarouselProps extends CarouselProps {
 	children: ReactNode[]
 }
 const useStyles = createStyles((theme) => ({
@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
 		padding: `${rem(60)} ${rem(0)}`,
 	},
 }))
-export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
+export const StoryPreviewCarousel = ({ children, ...props }: StoryPreviewCarouselProps) => {
 	const { classes } = useStyles()
 	const slides = children.map((child, i) => <Carousel.Slide key={i}>{child}</Carousel.Slide>)
 	const [size, strokeWidth, color] = [64, 3, 'black']
@@ -37,6 +37,7 @@ export const StoryPreviewCarousel = ({ children }: CarouselProps) => {
 			plugins={[AutoHeight({ active: true })]}
 			controlSize={size}
 			classNames={classes}
+			{...props}
 		>
 			{slides}
 		</Carousel>
