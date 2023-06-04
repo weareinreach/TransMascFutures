@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Trans, useTranslation } from 'next-i18next'
 
+import { Banner } from '~/components/Banner/Banner'
 import { getServerSideTranslations } from '~/server/i18n'
 import AppImage from '~public/assets/act/app.png'
 import ParticipateImage from '~public/assets/act/participate.png'
 import SuggestImage from '~public/assets/act/suggest.png'
-import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
 export const Act: NextPage = () => {
 	const { t } = useTranslation()
@@ -24,21 +24,9 @@ export const Act: NextPage = () => {
 			<Head>
 				<title>{t('page-title.general-template', { page: '$t(nav.act)' })}</title>
 			</Head>
-			<Grid px='xl'>
-				<Grid.Col pl='xl' lg={3} md={12}>
-					<Title fw={900} order={1} size='30px !important' tt='capitalize'>
-						{t('nav.act')}
-					</Title>
-				</Grid.Col>
-				<Grid.Col span='auto'>
-					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750}>
-						<Image src={Logo} alt={t('logo-alt')} fill />
-					</AspectRatio>
-				</Grid.Col>
-				<Grid.Col lg={3} md={12}></Grid.Col>
-			</Grid>
+			<Banner titleKey='nav.act' />
 			<Grid p='md'>
-				<Grid.Col lg={4} md={12}>
+				<Grid.Col md={4}>
 					<Center>
 						<Card maw={450}>
 							<Card.Section>
@@ -58,7 +46,7 @@ export const Act: NextPage = () => {
 						</Card>
 					</Center>
 				</Grid.Col>
-				<Grid.Col lg={4} md={12}>
+				<Grid.Col md={4}>
 					<Center>
 						<Card maw={450}>
 							<Card.Section>
@@ -78,7 +66,7 @@ export const Act: NextPage = () => {
 						</Card>
 					</Center>
 				</Grid.Col>
-				<Grid.Col lg={4} md={12}>
+				<Grid.Col md={4}>
 					<Center>
 						<Card maw={450}>
 							<Card.Section>

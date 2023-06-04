@@ -8,7 +8,7 @@ export const Banner = ({ titleKey }: BannerProp) => {
 	const { t } = useTranslation()
 	return (
 		<Flex w='100%' justify='space-apart' align='center'>
-			<Title order={1} tt='uppercase' pl={40} py={20} mx='auto' fz={24} lts={4}>
+			<Title order={1} tt='uppercase' pl={40} py={20} mx='auto' fz={{ base: 20, xs: 24 }} lts={4}>
 				{t(titleKey)}
 			</Title>
 			<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750} w='50%'>

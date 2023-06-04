@@ -26,14 +26,6 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { fontIbmPlexSans } from '~/styles'
 import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
-const useStyles = createStyles((theme) => ({
-	fanOut: {
-		'&[data-hovered=true]': {
-			transform: 'translateY(attr(data-item px)) !important',
-		},
-	},
-}))
-
 const uesImageStyles = createStyles((theme) => ({
 	root: {},
 }))

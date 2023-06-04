@@ -1,4 +1,4 @@
-import { type AnchorStylesParams, type MantineThemeOverride, rem, type Styles } from '@mantine/core'
+import { type AnchorStylesParams, em, type MantineThemeOverride, rem, type Styles } from '@mantine/core'
 
 const themeCustomObj = {
 	colors: {
@@ -34,6 +34,13 @@ export const theme: MantineThemeOverride = {
 			h5: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
 			h6: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
 		},
+	},
+	breakpoints: {
+		xs: em(500),
+		sm: em(768),
+		md: em(1024),
+		lg: em(1200),
+		xl: em(1440),
 	},
 	components: {
 		Anchor: {
