@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 
 import { categories } from './seedData/categories'
+import { partnerData } from './seedData/partners'
 import { pronouns } from './seedData/pronouns'
 
 const prisma = new PrismaClient()
@@ -22,9 +23,13 @@ async function main() {
 		skipDuplicates: true,
 	})
 	console.log(`Pronoun records created: ${pronounResult.count}`)
+
+	const partnerResult = await prisma.partnerOrg.createMany({ data: partnerData, skipDuplicates: true })
+	console.log(`Partner records created: ${partnerResult.count}`)
 	const output: Record<string, unknown> = {
 		categories: await prisma.storyCategory.findMany(),
 		pronouns: await prisma.pronouns.findMany(),
+		partners: await prisma.partnerOrg.findMany(),
 	}
 
 	if (fs.existsSync(path.resolve(__dirname, './seedData/stories.ts'))) {

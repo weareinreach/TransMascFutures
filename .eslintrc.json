@@ -6,18 +6,21 @@
 			"parserOptions": {
 				"project": "tsconfig.json"
 			},
-			"rules": { "@typescript-eslint/no-unsafe-assignment": 0, "@typescript-eslint/no-unsafe-call": 0 }
+			"rules": {
+				"@typescript-eslint/no-unsafe-assignment": "off",
+				"@typescript-eslint/no-unsafe-call": "off"
+			}
 		},
 		{
 			"files": ["**/*.spec.ts", "**/*.d.ts"],
 			"rules": {
-				"import/no-unused-modules": 0
+				"import/no-unused-modules": "off"
 			}
 		},
 		{
 			"files": ["**/index.tsx?"],
 			"rules": {
-				"import/no-unused-modules": 0
+				"import/no-unused-modules": "off"
 			}
 		},
 		{
@@ -121,7 +124,7 @@
 		"@typescript-eslint/require-await": "off",
 		"no-return-await": "off",
 		"@typescript-eslint/return-await": "off",
-		"@typescript-eslint/no-unsafe-assignment": 0
+		"@typescript-eslint/no-unsafe-assignment": "off"
 	},
 	"ignorePatterns": ["!.*", "**/node_modules/**", "dist/", ".next/"],
 	"settings": {
