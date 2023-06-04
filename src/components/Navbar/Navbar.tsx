@@ -28,7 +28,7 @@ export const useStyles = createStyles((theme) => ({
 			fontSize: theme.fontSizes.lg,
 		},
 
-		[`@media (max-width: ${theme.breakpoints.md}px)`]: {
+		[theme.fn.smallerThan('md')]: {
 			display: 'none',
 		},
 	},
@@ -38,7 +38,7 @@ export const useStyles = createStyles((theme) => ({
 		alignItems: 'center',
 		height: '100%',
 
-		[`@media (min-width: ${theme.breakpoints.md}px)`]: {
+		[theme.fn.largerThan('md')]: {
 			display: 'none',
 		},
 	},

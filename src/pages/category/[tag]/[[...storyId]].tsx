@@ -15,6 +15,7 @@ import { CardDisplay } from '~/layouts/CardDisplay'
 import { IndividualStory } from '~/layouts/IndividualStory/IndividualStory'
 import { prisma } from '~/server/db'
 import { getServerSideTranslations } from '~/server/i18n'
+import { fontIbmPlexSans } from '~/styles'
 import { api, type RouterOutputs } from '~/utils/api'
 import { trpcServerClient } from '~/utils/ssr'
 import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
@@ -81,7 +82,15 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={4} md={4}>
-					<Title fw={100} order={1} fz={30} align='center' tt='uppercase'>
+					<Title
+						fw={100}
+						order={1}
+						fz={30}
+						align='center'
+						tt='uppercase'
+						style={fontIbmPlexSans.style}
+						lts={5}
+					>
 						{t(`story-gallery.${category}`)}
 					</Title>
 				</Grid.Col>
