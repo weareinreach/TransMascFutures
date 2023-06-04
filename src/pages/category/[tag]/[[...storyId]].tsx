@@ -81,7 +81,7 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 			</Head>
 			<Grid align='center' my='md'>
 				<Grid.Col lg={5} md={4} px={{ lg: 40 }}>
-					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw='70vw'>
+					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750}>
 						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
 				</Grid.Col>
