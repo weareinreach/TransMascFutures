@@ -1,9 +1,8 @@
-import { Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
+import { Anchor, Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
 import { IconArrowBigLeftFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { type Route } from 'nextjs-routes'
 import { useState } from 'react'
 
 const HEADER_HEIGHT = 75
@@ -62,7 +61,7 @@ export const useStyles = createStyles((theme) => ({
 	},
 }))
 
-type LinkData = { key: string; href: Route }
+// type LinkData = { key: string; href: Route }
 
 const NavLinks = () => {
 	const { classes } = useStyles()
@@ -110,6 +109,9 @@ type pathProp = { path?: string }
 const HamburgerMenu = ({ path }: pathProp) => {
 	const [opened, setOpened] = useState(false)
 	const { classes } = useStyles()
+	const router = useRouter()
+	const { asPath, pathname, query, locale } = router
+	const { t } = useTranslation()
 
 	return (
 		<Container className={classes.burger} sx={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
@@ -130,6 +132,16 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				})}
 			>
 				<NavLinks />
+				<Anchor
+					variant='category'
+					tt='uppercase'
+					// eslint-disable-next-line @typescript-eslint/no-misused-promises
+					onClick={() =>
+						router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
+					}
+				>
+					{t('nav.switch-lang-short')}
+				</Anchor>
 			</Drawer>
 			{path !== '/' ? <HomeButton /> : undefined}
 			<Burger
