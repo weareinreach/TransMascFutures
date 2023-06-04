@@ -1,6 +1,7 @@
 import { AspectRatio, Container, Grid, Loader, Modal, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { type GetStaticPaths, type GetStaticProps } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -75,10 +76,13 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 
 	return (
 		<Container fluid>
+			<Head>
+				<title>{t('page-title.general-template', { page: '$t(nav.stories)' })}</title>
+			</Head>
 			<Grid align='center' my='md'>
 				<Grid.Col lg={5} md={4} px={{ lg: 40 }}>
 					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw='70vw'>
-						<Image src={Logo} alt='transmasc logo' fill />
+						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={4} md={4}>

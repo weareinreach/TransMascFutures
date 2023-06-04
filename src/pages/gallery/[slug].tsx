@@ -1,5 +1,6 @@
 import { Group, Title } from '@mantine/core'
 import { type GetStaticPaths, type GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { type RoutedQuery } from 'nextjs-routes'
@@ -21,6 +22,9 @@ const ArtistDisplay = ({ artwork }: ArtistDisplayProps) => {
 
 	return (
 		<>
+			<Head>
+				<title>{t('page-title.general-template', { page: '$t(nav.gallery)' })}</title>
+			</Head>
 			<Group w='100%'>
 				<Title order={1} tt='uppercase' pl={40} py={20}>
 					{t('nav.gallery')}

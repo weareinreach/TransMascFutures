@@ -1,13 +1,26 @@
-import { Anchor, Center, Container, createStyles, Flex, Grid, Loader, rem, Stack, Title } from '@mantine/core'
+import {
+	Anchor,
+	AspectRatio,
+	Center,
+	Container,
+	createStyles,
+	Flex,
+	Grid,
+	Loader,
+	rem,
+	Stack,
+	Title,
+} from '@mantine/core'
 import { type GetStaticProps, type NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Trans } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 
 import { categoryImages, isValidCategoryImage } from '~/data/categoryImages'
 import { getServerSideTranslations } from '~/server/i18n'
 import { trpcServerClient } from '~/utils/ssr'
+import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
 // import { Button } from '../components/Button/Button'
 import { ModalForm } from '../components/ModalForm/ModalForm'
@@ -30,6 +43,7 @@ const useStyles = createStyles((theme) => {
 export const MainPage = ({ categories }: MainPageProps) => {
 	const router = useRouter()
 	const { classes } = useStyles()
+	const { t } = useTranslation()
 	const previewCards = categories.map(
 		({ categoryEN, categoryES, id, image, imageAltEN, imageAltES, tag }, i) => {
 			// aspect ratio 0.55
@@ -77,7 +91,9 @@ export const MainPage = ({ categories }: MainPageProps) => {
 				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
 				<Grid.Col lg={6} md={12}>
 					<Center>
-						<Image src='/assets/tmf-logo-rect-bw.png' alt='transmasc logo' width={400} height={150} />
+						<AspectRatio ratio={723 / 174} my={40} mx='auto' maw='70vw'>
+							<Image src={Logo} alt={t('logo-alt')} fill />
+						</AspectRatio>
 					</Center>
 				</Grid.Col>
 				<Grid.Col lg={3} md={12}>

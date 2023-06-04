@@ -1,4 +1,4 @@
-import { Anchor, Button, Group, MantineProvider } from '@mantine/core'
+import { Anchor, Button, createStyles, Group, MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -16,15 +16,25 @@ import { api } from '~/utils/api'
 
 import i18nConfig from '../../next-i18next.config'
 
+const useStyles = createStyles((theme, { showButton }: { showButton: boolean }) => ({
+	homeButton: {
+		opacity: showButton ? '1' : '0',
+		[theme.fn.smallerThan('md')]: {
+			opacity: 0,
+			display: 'none',
+		},
+	},
+}))
+
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
 	const router = useRouter()
 	const { asPath, pathname, query, locale } = router
 	const { t } = useTranslation()
+	const { classes } = useStyles({ showButton: router.pathname !== '/' })
 	return (
 		<>
 			<Head>
-				{/* eslint-disable-next-line i18next/no-literal-string */}
-				<title>#TransmascFutures - InReach x GLAAD</title>
+				<title>{t('page-title.general')}</title>
 				<meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width' />
 			</Head>
 			<MantineProvider
@@ -39,9 +49,9 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 						<Component {...pageProps} />
 						<Group position='apart' w='100%' p={40}>
 							<Button
-								style={{ opacity: router.pathname === '/' ? 0 : 1 }}
 								// eslint-disable-next-line @typescript-eslint/no-misused-promises
 								onClick={() => router.push('/')}
+								className={classes.homeButton}
 							>
 								{t('nav.home')}
 							</Button>

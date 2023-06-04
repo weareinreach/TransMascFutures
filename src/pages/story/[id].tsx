@@ -1,5 +1,7 @@
 import { type GetStaticPaths, type GetStaticProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { type RoutedQuery } from 'nextjs-routes'
 
 import { getCategoryImage } from '~/data/categoryImages'
@@ -12,7 +14,7 @@ import { trpcServerClient } from '~/utils/ssr'
 const Story = () => {
 	const router = useRouter<'/story/[id]'>()
 	const { data, isLoading } = api.story.getStoryById.useQuery({ id: router.query.id ?? '' })
-
+	const { t } = useTranslation()
 	if (!data || isLoading) return <>Loading...</>
 
 	const randomImage = data.categories.at(Math.floor(Math.random() * data.categories.length))?.category.image
@@ -29,7 +31,14 @@ const Story = () => {
 		response2: isEnglish ? data.response2EN : data.response2ES,
 	}
 
-	return <IndividualStory {...storyProps} />
+	return (
+		<>
+			<Head>
+				<title>{t('page-title.general-template', { page: '$t(nav.stories)' })}</title>
+			</Head>
+			<IndividualStory {...storyProps} />
+		</>
+	)
 }
 
 export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery<'/story/[id]'>> = async ({

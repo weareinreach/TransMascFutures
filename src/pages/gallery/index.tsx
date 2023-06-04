@@ -12,6 +12,7 @@ import {
 } from '@mantine/core'
 import { useHover, useMediaQuery } from '@mantine/hooks'
 import { type GetStaticProps } from 'next'
+import Head from 'next/head'
 import NextImage, { type ImageProps as NextImageProps } from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -153,10 +154,13 @@ const Gallery = () => {
 
 	return (
 		<Container fluid>
+			<Head>
+				<title>{t('page-title.general-template', { page: '$t(nav.gallery)' })}</title>
+			</Head>
 			<Grid align='center' my='md'>
 				<Grid.Col lg={5} md={4} px={{ lg: 40 }}>
 					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw='70vw'>
-						<Image src={Logo} alt='transmasc logo' fill />
+						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
 				</Grid.Col>
 				<Grid.Col lg={4} md={4}>

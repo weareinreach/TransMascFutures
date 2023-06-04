@@ -1,19 +1,20 @@
 {
 	"about": {
 		"campaign": "Esta campaña digital por personas trans organizada por InReach y GLAAD tiene como objetivo mostrar historias positivas de la comunidad trans masculina diversa y aumentar el acceso a recursos seguros y verificados a través de la aplicación gratuita InReach.",
-		"hollister": "<text>Y un agradecimiento especial a <link>The Hollister Confidence Fund<link> por su apoyo.</text>",
+		"hollister": "<Text>Y un agradecimiento especial a <Link>The Hollister Confidence Fund<Link> por su apoyo.</Text>",
 		"stats": {
-			"stat1": "<title>56%</title>\n<text> de hombres trans y jóvenes trans masculinos han considerado el suicidio.</text>",
-			"stat2": "<title>1 in 5</title>\n<text> jóvenes transgénero y no binarios han intentado suicidarse.</text>",
-			"stat3": "<title>36%</title>\n<text> de la población trans de EE. UU. se identifica como hombre trans.</text>"
+			"stat1": "<Title>56%</Title>\n<Text> de hombres trans y jóvenes trans masculinos han considerado el suicidio.</Text>",
+			"stat2": "<Title>1 in 5</Title>\n<Text> jóvenes transgénero y no binarios han intentado suicidarse.</Text>",
+			"stat3": "<Title>36%</Title>\n<Text> de la población trans de EE. UU. se identifica como hombre trans.</Text>"
 		},
 		"supporting-partners": "Socios que Apoyan"
 	},
 	"act": {
-		"card1": "<title>Participa en esta campaña</title>\n<text>Actualmente estamos aceptando envíos de hombres trans y adultos trans masculinos en EE. UU para poder compartir su historia.</text>\n<text>Haz click <link>aquí</link> para participar.</text>",
-		"card2": "<title>Ayuda a aumentar el acceso a recursos para la diversa comunidad trans masculina</title>\n<textInReach siempre está buscando nuevas sugerencias sobre recursos para ayudar a expandid nuestra aplicación gratuita. ¿Conoces una organización género afirmante y segura para las personas trans masculinas?</text>\n<text>Puedes sugerir un recurso para que se incluya en la aplicación gratuita de InReach <link>aquí</link>.</text>",
-		"card3": "<title>Accede a recursos afirmantes, 24/7</title>\n<text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo.</text>\n<text><link>Haz click aquí</link> y nuestro nuevo filtro 'ordenar por' de la comunidad trans masculina y de hombres trans se aplicará automáticamente a tu búsqueda!</text>"
+		"card1": "<Title>Participa en esta campaña</Title>\n<Text>Actualmente estamos aceptando envíos de hombres trans y adultos trans masculinos en EE. UU para poder compartir su historia.</Text>\n<Text>Haz click <Link>aquí</Link> para participar.</Text>",
+		"card2": "<Title>Ayuda a aumentar el acceso a recursos para la diversa comunidad trans masculina</Title>\n<TextInReach siempre está buscando nuevas sugerencias sobre recursos para ayudar a expandid nuestra aplicación gratuita. ¿Conoces una organización género afirmante y segura para las personas trans masculinas?</Text>\n<Text>Puedes sugerir un recurso para que se incluya en la aplicación gratuita de InReach <Link>aquí</Link>.</Text>",
+		"card3": "<Title>Accede a recursos afirmantes, 24/7</Title>\n<Text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo.</Text>\n<Text><Link>Haz click aquí</Link> y nuestro nuevo filtro 'ordenar por' de la comunidad trans masculina y de hombres trans se aplicará automáticamente a tu búsqueda!</Text>"
 	},
+	"logo-alt": "Logotipo de InReach & GLAAD #TransMascFutures",
 	"main-page": {
 		"tagline1": "Trans men and transmasculine adults share their stories of trans joy.",
 		"tagline2": "Trans futures are InReach."
@@ -25,10 +26,14 @@
 		"gallery": "Galería",
 		"home": "Regresar al inicio",
 		"share": "Comparte",
-		"switch-lang": "Click here to switch to English."
+		"stories": "Historias",
+		"switch-lang": "Click here to switch to English.",
+		"switch-lang-short": "Switch to English"
 	},
 	"page-title": {
-		"gallery": "Alegría Trans: Galería"
+		"gallery": "Alegría Trans: Galería",
+		"general": "#TransmascFutures - InReach x GLAAD",
+		"general-template": "{{page}} - #TransmascFutures - InReach x GLAAD"
 	},
 	"see-x-stories": "Ver historias {{category}}",
 	"share": {

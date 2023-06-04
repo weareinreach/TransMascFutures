@@ -19,7 +19,6 @@ declare module "nextjs-routes" {
     | DynamicRoute<"/gallery/[slug]", { "slug": string }>
     | StaticRoute<"/gallery">
     | StaticRoute<"/">
-    | StaticRoute<"/learn">
     | StaticRoute<"/share">
     | DynamicRoute<"/story/[id]", { "id": string }>;
 
