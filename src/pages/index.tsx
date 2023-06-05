@@ -40,6 +40,9 @@ const useStyles = createStyles((theme) => {
 				filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.fn.lighten(theme.other.colors.blue, 0)})`,
 			}),
 		},
+		header: {
+			justifyContent: 'center',
+		},
 	}
 })
 
@@ -88,9 +91,8 @@ export const MainPage = ({ categories }: MainPageProps) => {
 
 	return (
 		<Container fluid>
-			<Group w='100%'>
-				{/* <Center> */}
-				<Stack spacing={0} mt={20} mb={{ base: 20, md: 40 }} ml={'auto'} mr={{ base: 'auto', md: 0 }}>
+			<Group w='100%' spacing={0} className={classes.header} align='center'>
+				<Stack spacing={0} mt={20} mb={{ base: 20, md: 40 }} mx={{ base: 'auto', md: 0 }}>
 					<AspectRatio ratio={723 / 174} mx='auto' maw={750} w='75%'>
 						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
@@ -101,7 +103,6 @@ export const MainPage = ({ categories }: MainPageProps) => {
 						{t('main-page.tagline2')}
 					</Title>
 				</Stack>
-				{/* </Center> */}
 				<Stack mx={80} mb={20}>
 					<ModalForm />
 				</Stack>
