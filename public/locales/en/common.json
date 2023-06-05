@@ -18,13 +18,13 @@
 		"card2": "<Title>Help increase resource access for the diverse transmasculine community</Title>\n<Text>InReach is always looking for new resource suggestions to help expand our free app. Know an organization that is affirming and safe for transmasculine people?</Text>\n<Text>You can suggest a resource to be listed on the free InReach App <Link>here</Link>.</Text>",
 		"card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you.</Text>\n<Text><Link>Click here</Link> and our new trans men and transmasculine community 'sort by' filter will automatically be applied to your search!</Text>"
 	},
-	"back": "Back",
+	"back": "Previous",
 	"errors": {
 		"consent-all-3": "You must consent to all three.",
+		"min-21": "You must be at least 21 years old to participate.",
 		"other-val": "Please specify",
 		"select-min-one": "Select at least one item",
-		"verify-all-3": "You must verify that all three are true.",
-		"min-21": "You must be at least 21 years old to participate."
+		"verify-all-3": "You must verify that all three are true."
 	},
 	"logo-alt": "InReach & GLAAD #TransMascFutures logo",
 	"main-page": {
@@ -49,11 +49,12 @@
 		"general": "#TransmascFutures - InReach x GLAAD",
 		"general-template": "{{page}} - #TransmascFutures - InReach x GLAAD"
 	},
+	"participate": "Click here to participate",
 	"see-x-stories": "See {{category}} Stories",
 	"share": {
 		"download-button": "Download Kit",
 		"list1": "Multiple 1080 x 1080 PNG graphics",
-		"list2": "Google document with sample sharing language",
+		"list2": "PDF document with sample sharing language",
 		"subtitle": "For your sharing convenience:",
 		"title": "Use our #TransmascFutures social media toolkit."
 	},
@@ -71,6 +72,7 @@
 		"transman": "Trans man + Proud",
 		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud"
 	},
+	"submit": "Submit",
 	"survey-form": {
 		"eligiblity": "<Text>Participant eligiblity critera:</Text>\n<List><ListItem>You are a trans man or a transmasculine person</ListItem>\n<ListItem>You are 21 years old or over</ListItem>\n<ListItem>You are currently living anywhere in the United States</ListItem></List>",
 		"intro": "InReach is partnering with GLAAD to organize #TransmascFutures. This trans-led digital campaign aims to showcase positive stories from the diverse transmasculine community and increase access to safe, verified resources through the InReach App. The #TransmascFutures Campaign launched on June 7th, 2023. Submit this form to add your story to the campaign website.",
@@ -176,6 +178,5 @@
 		"step4": "Confirmation",
 		"switch-lang": "Haz clic aquí para la versión en español de la encuesta.",
 		"thank-you": "<strong>Thank you for sharing your story!</strong><br/>Assuming your submission meets our participant eligibility criteria, we will add your story to our campaign website shortly. In the meantime, be sure to follow @weareinreach on social media for updates and download our campaign social media toolkit to share the campaign.<br/><br/>If you have any questions, please email marketing@inreach.org."
-	},
-	"submit": "Submit"
+	}
 }

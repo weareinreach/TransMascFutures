@@ -1,6 +1,7 @@
 import {
 	Anchor,
 	AspectRatio,
+	Button,
 	Center,
 	Container,
 	createStyles,
@@ -23,7 +24,6 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { trpcServerClient } from '~/utils/ssr'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
-import { ModalForm } from '../components/ModalForm/ModalForm'
 import { api, type RouterOutputs } from '../utils/api'
 
 const useStyles = createStyles((theme) => {
@@ -104,7 +104,9 @@ export const MainPage = ({ categories }: MainPageProps) => {
 					</Title>
 				</Stack>
 				<Stack mx={80} mb={20}>
-					<ModalForm />
+					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
+						{t('participate')}
+					</Button>
 				</Stack>
 			</Group>
 
