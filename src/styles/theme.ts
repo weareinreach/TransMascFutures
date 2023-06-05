@@ -1,4 +1,18 @@
-import { type AnchorStylesParams, em, type MantineThemeOverride, rem, type Styles } from '@mantine/core'
+import {
+	type AnchorStylesParams,
+	type CheckboxStylesNames,
+	type CheckboxStylesParams,
+	em,
+	type InputWrapperStylesNames,
+	type MantineThemeOverride,
+	type RadioStylesNames,
+	type RadioStylesParams,
+	rem,
+	type StepperStylesNames,
+	type StepperStylesParams,
+	type Styles,
+	type TextInputStylesNames,
+} from '@mantine/core'
 
 const themeCustomObj = {
 	colors: {
@@ -105,6 +119,53 @@ export const theme: MantineThemeOverride = {
 					},
 				}),
 			},
+		},
+		TextInput: {
+			styles: (theme) =>
+				({
+					input: {
+						maxWidth: rem(300),
+					},
+				} satisfies Styles<TextInputStylesNames>),
+		},
+		Textarea: {
+			styles: (theme) => ({
+				input: {
+					maxWidth: rem(450),
+				},
+			}),
+		},
+		InputWrapper: {
+			styles: (theme) =>
+				({
+					label: { marginBottom: rem(4) },
+				} satisfies Styles<InputWrapperStylesNames>),
+		},
+		Checkbox: {
+			styles: (themes) =>
+				({
+					body: {
+						margin: `${rem(8)} 0`,
+					},
+				} satisfies Styles<CheckboxStylesNames, CheckboxStylesParams>),
+		},
+		Radio: {
+			styles: (themes) =>
+				({
+					body: {
+						margin: `${rem(8)} 0`,
+					},
+				} satisfies Styles<RadioStylesNames, RadioStylesParams>),
+		},
+		Stepper: {
+			styles: (theme) =>
+				({
+					content: {
+						// padding: `${rem(16)} ${rem(80)} ${rem()} ${rem()}`,
+						maxWidth: rem(800),
+						margin: `${rem(40)} auto 0 auto`,
+					},
+				} satisfies Styles<StepperStylesNames, StepperStylesParams>),
 		},
 	},
 	other: themeCustomObj,

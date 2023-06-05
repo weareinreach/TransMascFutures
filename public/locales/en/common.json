@@ -19,6 +19,13 @@
 		"card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you.</Text>\n<Text><Link>Click here</Link> and our new trans men and transmasculine community 'sort by' filter will automatically be applied to your search!</Text>"
 	},
 	"back": "Back",
+	"errors": {
+		"consent-all-3": "You must consent to all three.",
+		"other-val": "Please specify",
+		"select-min-one": "Select at least one item",
+		"verify-all-3": "You must verify that all three are true.",
+		"min-21": "You must be at least 21 years old to participate."
+	},
 	"logo-alt": "InReach & GLAAD #TransMascFutures logo",
 	"main-page": {
 		"tagline1": "Trans men and transmasculine adults share their stories of trans joy.",
@@ -74,7 +81,7 @@
 			"01_over21": "I am at least 21 years old",
 			"02_us": "I currently live in the United States"
 		},
-		"q10": "Which gender-related terms best describe your personal identity? Select all that apply.",
+		"q10": "Which gender-related terms best describe your personal identity?<br/><em>(Select all that apply.)</em>",
 		"q10-opts": {
 			"00_transman": "Trans man or male",
 			"01_transmasc": "Transmasculine ",
@@ -83,7 +90,7 @@
 			"04_afab": "Assigned Female at Birth (AFAB)",
 			"05_other": "Other (please specify)"
 		},
-		"q11": "Select how you describe your sexual orientation. Select all that apply.",
+		"q11": "Select how you describe your sexual orientation.<br/><em>(Select all that apply.)</em>",
 		"q11-opts": {
 			"00_straight": "Straight/Heterosexual",
 			"01_gay": "Gay",
@@ -92,9 +99,9 @@
 			"04_pansexual": "Pansexual",
 			"05_asexual": "Asexual/Demisexual/Ace",
 			"06_queer": "Queer",
-			"07_no-answer": "Other (please specify)>"
+			"07_other": "Other (please specify)"
 		},
-		"q12": "Select how you identify your race/ethnicity. Select all that apply.",
+		"q12": "Select how you identify your race/ethnicity.<br/><em>(Select all that apply.)</em>",
 		"q12-opts": {
 			"00_indigenous": "American Indian/Native American/Indigenous People",
 			"01_asian": "Asian/Asian American",
@@ -104,7 +111,7 @@
 			"05_AME": "Middle Eastern/North African",
 			"06_hawaii-pacific": "Native Hawaiian/Pacific Islander",
 			"07_south-asian": "South Asian",
-			"08_white": "white ",
+			"08_white": "White",
 			"09_no-answer": "Prefer not to answer",
 			"10_other": "Other (please specify)"
 		},
@@ -119,7 +126,7 @@
 			"06_no-answer": "Prefer not to answer"
 		},
 		"q14": "Select which U.S. state you live in.",
-		"q15": "Do you identify as any of the following? Select all that apply.",
+		"q15": "Do you identify as any of the following?<br/><em>(Select all that apply.)</em>",
 		"q15-opts": {
 			"00_asylum-seeker": "Asylum seeker",
 			"01_asylee": "Asylee (received asylum)",
@@ -136,8 +143,8 @@
 			"02_media": "Media/Press"
 		},
 		"q3": "Please provide your email address if you would like to stay updated on the status of the #TransmascFutures Campaign.",
-		"q4": " Please enter your name as you would like it to appear on the campaign website.\n(Only a first name will be displayed. Aliases are welcome.)",
-		"q5": "Please select all that apply to you\nI identify as:",
+		"q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
+		"q5": "I identify as:<br/><em>(Please select all that apply to you)</em>",
 		"q5-opts": {
 			"00_transman": "Trans Man ",
 			"01_transmasc": "Nonbinary/Transmasculine",
@@ -169,5 +176,6 @@
 		"step4": "Confirmation",
 		"switch-lang": "Haz clic aquí para la versión en español de la encuesta.",
 		"thank-you": "<strong>Thank you for sharing your story!</strong><br/>Assuming your submission meets our participant eligibility criteria, we will add your story to our campaign website shortly. In the meantime, be sure to follow @weareinreach on social media for updates and download our campaign social media toolkit to share the campaign.<br/><br/>If you have any questions, please email marketing@inreach.org."
-	}
+	},
+	"submit": "Submit"
 }

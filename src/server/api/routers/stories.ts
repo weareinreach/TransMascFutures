@@ -1,37 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { z } from 'zod'
+
+import { SurveySchema } from '~/pages/survey'
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
 export const storyRouter = createTRPCRouter({
-	// recentNine: publicProcedure
-	// 	.input(
-	// 		z
-	// 			.object({
-	// 				category: z.string(),
-	// 			})
-	// 			.optional()
-	// 	)
-	// 	.query(async ({ ctx, input }) => {
-	// 		const filter: Prisma.StoryWhereInput = {
-	// 			published: true,
-	// 			categories: { some: { category: { categoryEN: input?.category } } },
-	// 		}
-
-	// 		const stories = await ctx.prisma.story.findMany({
-	// 			where: filter,
-	// 			orderBy: { createdAt: 'desc' },
-	// 			take: 9,
-	// 			include: {
-	// 				image: true,
-	// 				categories: !input?.category ? { include: { category: true } } : false,
-	// 			},
-	// 		})
-
-	// 		if (stories.length === 0) throw new TRPCError({ code: 'NOT_FOUND' })
-
-	// 		return stories
-	// 	}),
-
 	getStoryBySlug: publicProcedure
 		.input(
 			z.object({
@@ -126,4 +100,16 @@ export const storyRouter = createTRPCRouter({
 			})
 			return stories
 		}),
+	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
+		const submission = await ctx.prisma.storySubmission.create({
+			data: {
+				responses: input,
+				userId: ctx.session?.user?.id ?? 'noUserId',
+			},
+			select: {
+				id: true,
+			},
+		})
+		return submission
+	}),
 })
