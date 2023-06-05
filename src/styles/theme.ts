@@ -10,7 +10,7 @@ const themeCustomObj = {
 		pink: '#F5A9B8',
 	},
 } as const
-
+const hoverAlpha = 0.5
 export const theme: MantineThemeOverride = {
 	colorScheme: 'light',
 	fontFamily:
@@ -64,17 +64,20 @@ export const theme: MantineThemeOverride = {
 			variants: {
 				primary: (theme) => ({
 					root: {
-						borderRadius: 0,
+						borderRadius: rem(8),
 						fontWeight: 600,
 						height: 'auto',
 						padding: rem(15),
 						textAlign: 'center',
 						width: rem(175),
-						color: theme.other.colors.white,
-						backgroundColor: theme.other.colors.black,
-						['&:hover']: {
-							backgroundColor: theme.other.colors.midGray,
-						},
+						color: theme.other.colors.black,
+						backgroundColor: theme.other.colors.pink,
+						// ['&:hover']: {
+						// 	backgroundColor: theme.other.colors.blue,
+						// },
+						...theme.fn.hover({
+							background: `linear-gradient(210deg, rgba(91,206,250,${hoverAlpha}) 0%, rgba(245,169,184,${hoverAlpha}) 25%, rgba(255,255,255,${hoverAlpha}) 50%, rgba(245,169,184,${hoverAlpha}) 75%, rgba(91,206,250,${hoverAlpha}) 100%);`,
+						}),
 					},
 					label: {
 						whiteSpace: 'normal',
@@ -82,16 +85,19 @@ export const theme: MantineThemeOverride = {
 				}),
 				secondary: (theme) => ({
 					root: {
-						borderRadius: 0,
 						fontWeight: 600,
 						height: 'auto',
 						padding: rem(15),
 						textAlign: 'center',
 						width: rem(175),
-						backgroundColor: theme.other.colors.midGray,
-						['&:hover']: {
-							backgroundColor: theme.other.colors.black,
-						},
+						backgroundColor: theme.other.colors.blue,
+						borderRadius: rem(8),
+						// ['&:hover']: {
+						// 	backgroundColor: theme.other.colors.pink,
+						// },
+						...theme.fn.hover({
+							background: `linear-gradient(210deg, rgba(91,206,250,${hoverAlpha}) 0%, rgba(245,169,184,${hoverAlpha}) 25%, rgba(255,255,255,${hoverAlpha}) 50%, rgba(245,169,184,${hoverAlpha}) 75%, rgba(91,206,250,${hoverAlpha}) 100%);`,
+						}),
 					},
 					label: {
 						whiteSpace: 'normal',
