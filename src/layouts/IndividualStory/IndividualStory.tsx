@@ -62,7 +62,7 @@ export const IndividualStory = ({
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
 			<Group className={classes.imageContainer}>
-				<Image src={image} alt={'photo of individual'} height={300} width={Math.round(300 * 0.55)} />
+				<Image src={image} alt={'photo of individual'} height={350} width={Math.round(350 * 0.6923)} />
 			</Group>
 
 			<Group className={classes.content}>

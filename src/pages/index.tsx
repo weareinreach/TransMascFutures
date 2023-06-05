@@ -71,7 +71,7 @@ export const MainPage = ({ categories }: MainPageProps) => {
 							src={imageSrc}
 							alt={altText}
 							height={300}
-							width={Math.round(300 * 0.55)}
+							width={Math.round(300 * 0.6923)}
 							className={classes.categoryImage}
 						/>
 					</Anchor>
