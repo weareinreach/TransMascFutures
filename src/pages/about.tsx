@@ -102,8 +102,30 @@ const AboutPage = () => {
 						<StatisticCard title={t('about.stats.stat2-title')} text={t('about.stats.stat2-text')} />
 						<StatisticCard title={t('about.stats.stat3-title')} text={t('about.stats.stat3-text')} />
 					</Group>
-					<Text fz={{ md: 'lg' }} className={classes.description} mx={{ lg: 0, base: 10, xs: 50 }}>
-						{t('about.campaign')}
+					<Text
+						fz={{ md: 'lg' }}
+						className={classes.description}
+						mx={{ lg: 0, base: 10, xs: 50 }}
+						fs='oblique'
+						fw={500}
+					>
+						<Trans
+							i18nKey='about.campaign'
+							components={{
+								Link1: <a href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'></a>,
+								Link2: <a href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'></a>,
+								Link3: <a href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'></a>,
+							}}
+						/>
+					</Text>
+					<Text
+						fz={{ md: 'lg' }}
+						className={classes.description}
+						mx={{ lg: 0, base: 10, xs: 50 }}
+						fs='oblique'
+						fw={600}
+					>
+						{t('about.trans-people')}
 					</Text>
 				</Stack>
 			</Container>
@@ -125,7 +147,7 @@ const AboutPage = () => {
 									// className={classes.partnerImage}
 								>
 									<Center inline w='100%' h='100%'>
-										<a href={href} target='_blank'>
+										<a href={href} target='_blank' rel='noopener noreferrer'>
 											<AspectRatio ratio={image.width / image.height} className={classes.partnerImage}>
 												<Image src={image} alt={name} fill />
 											</AspectRatio>
@@ -144,7 +166,13 @@ const AboutPage = () => {
 								.
 							</Text>
 						),
-						Link: <a href='https://www.hollisterco.com/shop/us/purpose' target='_blank'></a>,
+						Link: (
+							<a
+								href='https://www.hollisterco.com/shop/us/purpose'
+								target='_blank'
+								rel='noopener noreferrer'
+							></a>
+						),
 					}}
 				/>
 				<Center>
@@ -152,7 +180,7 @@ const AboutPage = () => {
 						ratio={partnerImages.hollister.width / partnerImages.hollister.height}
 						className={classes.partnerHollister}
 					>
-						<a href='https://www.hollisterco.com/shop/us/purpose' target='_blank'>
+						<a href='https://www.hollisterco.com/shop/us/purpose' target='_blank' rel='noopener noreferrer'>
 							<Image src={partnerImages.hollister} alt='The Hollister Confidence Fund' fill />
 						</a>
 					</AspectRatio>

@@ -1,6 +1,6 @@
 {
 	"about": {
-		"campaign": "Esta campaña digital por personas trans organizada por InReach y GLAAD tiene como objetivo mostrar historias positivas de la comunidad trans masculina diversa y aumentar el acceso a recursos seguros y verificados a través de la aplicación gratuita InReach.",
+		"campaign": "Esta campaña digital por personas trans organizada por <Link1>InReach</Link1> y <Link2>GLAAD</Link2> tiene como objetivo mostrar historias positivas de la comunidad trans masculina diversa y aumentar el acceso a recursos seguros y verificados a través de la <Link3>aplicación gratuita InReach</Link3>.",
 		"hollister": "<Title>Y un agradecimiento especial a <Link>The Hollister Confidence Fund</Link> por su apoyo.</Title>",
 		"stats": {
 			"stat1-text": "de hombres trans y jóvenes trans masculinos han considerado el suicidio.",
@@ -10,7 +10,8 @@
 			"stat3-text": "de la población trans de EE. UU. se identifica como hombre trans.",
 			"stat3-title": "36%"
 		},
-		"supporting-partners": "Socios que Apoyan"
+		"supporting-partners": "Socios que Apoyan",
+		"trans-people": "Las personas trans están en todas partes. Esta campaña incluye historias de hombres trans y adultos transmasculinos por todo el país."
 	},
 	"act": {
 		"card1": "<Title>Participa en esta campaña</Title>\n<Text>Actualmente estamos aceptando envíos de hombres trans y adultos trans masculinos en EE. UU para poder compartir su historia.</Text>\n<Text>Haz click <Link>aquí</Link> para participar.</Text>",
