@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import {
 	Anchor,
+	AspectRatio,
 	Button,
 	Checkbox,
 	Container,
@@ -16,14 +17,17 @@ import {
 } from '@mantine/core'
 import { useForm, zodResolver } from '@mantine/form'
 import { type GetStaticProps } from 'next'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Trans, useTranslation } from 'next-i18next'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { z } from 'zod'
 
 import { Banner } from '~/components'
+import { stateOptions } from '~/data/states'
 import { getServerSideTranslations } from '~/server/i18n'
 import { api } from '~/utils/api'
+import ShareWide from '~public/assets/share-wide.jpg'
 
 export const SurveySchema = (ts?: (key: string) => string) =>
 	z
@@ -36,7 +40,7 @@ export const SurveySchema = (ts?: (key: string) => string) =>
 				.string()
 				.array()
 				.length(3, ts ? ts('errors.consent-all-3') : undefined),
-			q3: z.string().email(),
+			q3: z.string().email().optional(),
 			q4: z.string().min(1),
 			q5: z
 				.string()
@@ -52,7 +56,8 @@ export const SurveySchema = (ts?: (key: string) => string) =>
 							(val) => !isNaN(parseInt(val)) && parseInt(val) >= 21,
 							ts ? ts('errors.min-21') : undefined
 						)
-				),
+				)
+				.optional(),
 			q7: z
 				.string()
 				.array()
@@ -67,7 +72,7 @@ export const SurveySchema = (ts?: (key: string) => string) =>
 			q12: z.string().array().optional(),
 			q12other: z.string().optional(),
 			q13: z.string().optional(),
-			q14: z.string().optional(),
+			q14: z.string().nullish(),
 			q15: z.string().array().optional(),
 		})
 		.superRefine((val, ctx) => {
@@ -107,10 +112,8 @@ const Survey = () => {
 		initialValues: {
 			q1: [],
 			q2: [],
-			q3: '',
 			q4: '',
 			q5: [],
-			q6: '',
 			q7: [],
 			q8: '',
 			q9: '',
@@ -120,7 +123,6 @@ const Survey = () => {
 	const [activeStep, setActiveStep] = useState(0)
 	const scrollRef = useRef<HTMLDivElement>(null)
 	const nextStep = () => {
-		console.log('next step')
 		setActiveStep((current) => (current < 3 ? current + 1 : current))
 		scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
 	}
@@ -138,10 +140,6 @@ const Survey = () => {
 		if (activeStep === 1) {
 			return ['q4', 'q5', 'q6', 'q7', 'q7other', 'q8', 'q9'].every((q) => form.isValid(q))
 		}
-		// if (activeStep === 2) {
-		// 	console.log(form.isValid(), form.errors)
-		// 	return form.isValid()
-		// }
 
 		return true
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -174,9 +172,12 @@ const Survey = () => {
 	})
 
 	const ControlButtons = () => {
+		const isFirst = activeStep === 0
+		const isLast = activeStep === 3
+
 		return (
 			<Group noWrap w='100%' py={40} style={{ justifyContent: 'space-between' }} maw={800} mx='auto'>
-				<Button onClick={prevStep} style={activeStep === 0 ? { opacity: 0 } : undefined} variant='secondary'>
+				<Button onClick={prevStep} style={isFirst || isLast ? { opacity: 0 } : undefined} variant='secondary'>
 					{t('back')}
 				</Button>
 				<Button
@@ -187,9 +188,10 @@ const Survey = () => {
 							nextStep()
 						}
 					}}
-					style={activeStep === 3 ? { opacity: 0 } : undefined}
+					style={isLast ? { opacity: 0 } : undefined}
 					variant='secondary'
 					disabled={!okToProceed}
+					loading={submitStory.isLoading}
 				>
 					{activeStep === 2 ? t('submit') : t('next')}
 				</Button>
@@ -198,6 +200,12 @@ const Survey = () => {
 	}
 
 	const [statePNA, setStatePNA] = useState(false)
+
+	const stateSelectOptions = useMemo(
+		() =>
+			stateOptions.map(({ value, labelEN, labelES }) => ({ value, label: isEnglish ? labelEN : labelES })),
+		[isEnglish]
+	)
 
 	return (
 		<>
@@ -269,7 +277,7 @@ const Survey = () => {
 								))}
 							</Checkbox.Group>
 							{/* How old are you */}
-							<TextInput label={t('survey-form.q6')} {...form.getInputProps('q6')} required type='number' />
+							<TextInput label={t('survey-form.q6')} {...form.getInputProps('q6')} type='number' />
 							{/* Select pronouns */}
 							<Stack spacing={0}>
 								<Checkbox.Group {...form.getInputProps('q7')} label={t('survey-form.q7')} required>
@@ -362,9 +370,12 @@ const Survey = () => {
 								<Select
 									label={t('survey-form.q14')}
 									{...form.getInputProps('q14')}
-									data={[]}
+									data={stateSelectOptions}
 									maw={300}
 									disabled={statePNA}
+									searchable
+									clearable
+									hoverOnSearchChange
 								/>
 								<Checkbox
 									label={t('survey-form.prefer-not-answer')}
@@ -399,6 +410,9 @@ const Survey = () => {
 					</Stepper.Step>
 
 					<Stepper.Step label={t('survey-form.step4')}>
+						<AspectRatio ratio={ShareWide.width / ShareWide.height} w='100%' mx='auto' mb={40}>
+							<Image src={ShareWide} alt='Person holding a Trans flag overhead in a downtown area.' fill />
+						</AspectRatio>
 						<Trans i18nKey='survey-form.thank-you' />
 					</Stepper.Step>
 				</Stepper>
@@ -421,10 +435,10 @@ export default Survey
 interface FormData {
 	q1: string[]
 	q2: string[]
-	q3: string
+	q3?: string
 	q4: string
 	q5: string[]
-	q6: string
+	q6?: string
 	q7: string[]
 	q7other?: string
 	q8: string
@@ -436,6 +450,6 @@ interface FormData {
 	q12?: string[]
 	q12other?: string
 	q13?: string
-	q14?: string
+	q14?: string | null
 	q15?: string[]
 }
