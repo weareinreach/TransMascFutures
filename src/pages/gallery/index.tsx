@@ -5,7 +5,9 @@ import {
 	createStyles,
 	type DefaultProps,
 	Grid,
+	MediaQuery,
 	Modal,
+	rem,
 	Stack,
 	Title,
 	useMantineTheme,
@@ -52,7 +54,7 @@ Image.displayName = 'NextImage'
 const Gallery = () => {
 	const router = useRouter()
 	const theme = useMantineTheme()
-	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`)
+	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
 	const { hovered, ref } = useHover()
 	const isEnglish = router.locale === 'en'
 	const { t } = useTranslation()
@@ -68,7 +70,8 @@ const Gallery = () => {
 	)
 
 	const slides = artData.map((art) => {
-		if (!Array.isArray(art.src))
+		if (!Array.isArray(art.src)) {
+			const { height, src, width } = art.src
 			return (
 				<Stack align='center' key={art.artist} h='100%' justify='space-evenly'>
 					<Link
@@ -77,8 +80,22 @@ const Gallery = () => {
 						scroll={false}
 						style={{ textDecoration: 'none', margin: 'auto' }}
 					>
-						<AspectRatio ratio={art.src.width / art.src.height} w={`min(${art.src.width}px, 25vw)`}>
-							<Image src={art.src} alt={isEnglish ? art.altEN : art.altES} fill />
+						<AspectRatio
+							ratio={width / height}
+							// w={`min(${art.src.width}px, 25vw)`}
+							sx={(theme) => ({
+								// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+								width: `min(${width}px, 80vw)`,
+								[theme.fn.largerThan('xs')]: {
+									width: `min(${width}px, 40vw)`,
+								},
+								[theme.fn.largerThan('sm')]: {
+									// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+									width: `min(${width}px, 25vw)`,
+								},
+							})}
+						>
+							<Image src={src} alt={isEnglish ? art.altEN : art.altES} fill />
 						</AspectRatio>
 					</Link>
 					<Link
@@ -87,12 +104,13 @@ const Gallery = () => {
 						scroll={false}
 						style={{ textDecoration: 'none' }}
 					>
-						<Title order={3} tt='uppercase'>
+						<Title order={3} tt='uppercase' py={40}>
 							{art.artist}
 						</Title>
 					</Link>
 				</Stack>
 			)
+		}
 
 		return (
 			<Stack align='center' key={art.artist} ref={ref} h='100%' justify='space-evenly'>
@@ -104,29 +122,42 @@ const Gallery = () => {
 				>
 					<Stack pos='relative'>
 						{art.src.map((image, i, arr) => (
-							<Image
+							<AspectRatio
 								key={`${art.artist}-${i}`}
-								src={image}
-								alt={isEnglish ? art.altEN : art.altES}
-								height={500}
+								ratio={image.width / image.height}
+								// w={{ base: `min(${image.width}px, 80vw)`, md: `min(${image.width}px, 25vw)` }}
 								sx={(theme) => ({
+									width: `min(${image.width}px, 80vw)`,
 									zIndex: 10 - i,
 									position: i === 0 ? 'relative' : 'absolute',
 									top: 0,
-									transform: `translateX(${20 * i}px) translateY(${10 * i}px) rotate(-${
-										(arr.length - i) * 2
-									}deg)`,
-									transition: 'transform .5s ease-in-out',
-									'&[data-hovered=true]': {
-										transform: `translateX(${30 * i}px) translateY(${15 * i}px) rotate(-${
-											(arr.length - i) * 4
-										}deg)`,
+									[theme.fn.largerThan('xs')]: {
+										width: `min(${image.width}px, 40vw)`,
+									},
+									[theme.fn.largerThan('sm')]: {
+										width: `min(${image.width}px, 25vw)`,
 									},
 								})}
-								data-hovered={hovered}
-								data-item={i}
-								// className={classes.fanOut}
-							/>
+							>
+								<Image
+									src={image}
+									alt={isEnglish ? art.altEN : art.altES}
+									sx={(theme) => ({
+										transform: `translateX(${20 * i}px) translateY(${10 * i}px) rotate(-${
+											(arr.length - i) * 2
+										}deg)`,
+										transition: 'transform .5s ease-in-out',
+										'&[data-hovered=true]': {
+											transform: `translateX(${30 * i}px) translateY(${15 * i}px) rotate(-${
+												(arr.length - i) * 4
+											}deg)`,
+										},
+									})}
+									data-hovered={hovered}
+									data-item={i}
+									// className={classes.fanOut}
+								/>
+							</AspectRatio>
 						))}
 					</Stack>
 				</Link>
@@ -136,7 +167,7 @@ const Gallery = () => {
 					scroll={false}
 					style={{ textDecoration: 'none', margin: 'auto', zIndex: 11, backgroundColor: 'inherit' }}
 				>
-					<Title order={3} tt='uppercase'>
+					<Title order={3} tt='uppercase' py={40}>
 						{art.artist}
 					</Title>
 				</Link>
@@ -155,7 +186,7 @@ const Gallery = () => {
 						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
 				</Grid.Col>
-				<Grid.Col lg={4} md={4}>
+				<Grid.Col md={4}>
 					<Title
 						fw={300}
 						order={1}
@@ -172,9 +203,20 @@ const Gallery = () => {
 					<ModalForm />
 				</Grid.Col>
 			</Grid>
-			<StoryPreviewCarousel slidesToScroll='auto' align='center' slideSize='33%' height='100%'>
-				{slides}
-			</StoryPreviewCarousel>
+			<MediaQuery smallerThan='md' styles={{ display: 'none' }}>
+				<StoryPreviewCarousel slidesToScroll='auto' align='center' slideSize='33%' height='100%'>
+					{slides}
+				</StoryPreviewCarousel>
+			</MediaQuery>
+			<MediaQuery largerThan='md' styles={{ display: 'none' }}>
+				<Grid>
+					{slides.map((slide, i) => (
+						<Grid.Col key={i} sm={4} xs={6}>
+							{slide}
+						</Grid.Col>
+					))}
+				</Grid>
+			</MediaQuery>
 			<Modal
 				opened={!!popupArt}
 				// eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -185,7 +227,17 @@ const Gallery = () => {
 				closeButtonProps={{ size: isMobile ? 'xl' : 'lg' }}
 				radius='xl'
 				fullScreen={isMobile}
-				styles={{ content: { minHeight: '90vh' } }}
+				styles={(theme) => ({
+					content: isMobile
+						? {
+								marginTop: rem(160),
+								paddingBottom: rem(160),
+								height: `calc(100vh - ${rem(160)})`,
+								borderTopLeftRadius: `${rem(16)} !important`,
+								borderTopRightRadius: `${rem(16)} !important`,
+						  }
+						: { paddingBottom: rem(40) },
+				})}
 			>
 				{popupArt && (
 					<ArtItem
