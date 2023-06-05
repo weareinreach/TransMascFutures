@@ -6,6 +6,7 @@ import {
 	createStyles,
 	Flex,
 	Grid,
+	Group,
 	Loader,
 	rem,
 	Stack,
@@ -22,15 +23,17 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { trpcServerClient } from '~/utils/ssr'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
-// import { Button } from '../components/Button/Button'
 import { ModalForm } from '../components/ModalForm/ModalForm'
-// import { PreviewCard } from '../components/storyPreviewCard/PreviewCard'
-// import { CardDisplay } from '../layouts/CardDisplay'
 import { api, type RouterOutputs } from '../utils/api'
 
 const useStyles = createStyles((theme) => {
 	return {
-		categoryCard: {},
+		cardGroup: {
+			[theme.fn.smallerThan(rem(850))]: {
+				flexDirection: 'column',
+				margin: '0 auto',
+			},
+		},
 		categoryImage: {
 			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`,
 			...theme.fn.hover({
@@ -54,7 +57,7 @@ export const MainPage = ({ categories }: MainPageProps) => {
 			const altText = router.locale === 'es' ? (imageAltES ? imageAltES : '') : imageAltEN ? imageAltEN : ''
 			const categoryName = router.locale === 'es' ? categoryES : categoryEN
 			return (
-				<Stack justify='space-between' align='center' w={250} key={id} className={classes.categoryCard}>
+				<Stack justify='space-between' align='center' w={250} key={id} mx='auto'>
 					<Anchor
 						variant='category'
 						component={Link}
@@ -82,32 +85,35 @@ export const MainPage = ({ categories }: MainPageProps) => {
 			)
 		}
 	)
-	const row1 = previewCards.splice(0, 4)
-	const row2 = previewCards
 
 	return (
 		<Container fluid>
-			<Grid justify='center' align='center'>
-				<Grid.Col p={0} lg={3} md={12}></Grid.Col>
-				<Grid.Col lg={6} md={12}>
-					<Center>
-						<AspectRatio ratio={723 / 174} my={40} mx='auto' maw='70vw'>
-							<Image src={Logo} alt={t('logo-alt')} fill />
-						</AspectRatio>
-					</Center>
-				</Grid.Col>
-				<Grid.Col lg={3} md={12}>
-					<Flex justify='center'>
-						<ModalForm />
-					</Flex>
-				</Grid.Col>
+			<Group w='100%'>
+				{/* <Center> */}
+				<Stack spacing={0} mt={20} mb={{ base: 20, md: 40 }} ml={'auto'} mr={{ base: 'auto', md: 0 }}>
+					<AspectRatio ratio={723 / 174} mx='auto' maw={750} w='75%'>
+						<Image src={Logo} alt={t('logo-alt')} fill />
+					</AspectRatio>
+					<Title order={3} ta='center' py={0} fw={500} lts={2} fs='oblique'>
+						{t('main-page.tagline1')}
+					</Title>
+					<Title order={3} ta='center' pb={0} pt={8} fw={500} lts={2} fs='oblique'>
+						{t('main-page.tagline2')}
+					</Title>
+				</Stack>
+				{/* </Center> */}
+				<Stack mx={80} mb={20}>
+					<ModalForm />
+				</Stack>
+			</Group>
+
+			<Grid grow mx='auto'>
+				{previewCards.map((card, i) => (
+					<Grid.Col key={i} lg={3} md={4} xs={6} mx='auto'>
+						{card}
+					</Grid.Col>
+				))}
 			</Grid>
-			<Flex justify='space-between' w='100%'>
-				{row1}
-			</Flex>
-			<Flex justify='space-evenly' w='100%'>
-				{row2}
-			</Flex>
 		</Container>
 	)
 }

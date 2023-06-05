@@ -31,8 +31,6 @@ const Survey = () => {
 	const router = useRouter()
 	const isEnglish = router.locale === 'en'
 
-	console.log(t('survey-form.q1-opts', { returnObjects: true }))
-
 	const ControlButtons = ({ noBack, noNext }: { noBack?: boolean; noNext?: boolean }) => (
 		<Group noWrap w='100%' py={40} style={{ justifyContent: 'space-between' }}>
 			<Button onClick={prevStep} style={noBack ? { opacity: 0 } : undefined}>

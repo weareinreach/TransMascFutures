@@ -1,4 +1,4 @@
-import { Center, Container, createStyles, Flex, Grid, MediaQuery, rem } from '@mantine/core'
+import { Center, Container, createStyles, Grid, MediaQuery, rem } from '@mantine/core'
 import { type ReactNode, useMemo } from 'react'
 
 import { StoryPreviewCarousel } from '../components/storyPreviewCarousel/StoryPreviewCarousel'
@@ -95,13 +95,19 @@ export const CardDisplay = ({ children }: CardDisplayProps) => {
 				</div>
 			</MediaQuery>
 			<MediaQuery largerThan='md' styles={{ display: 'none' }}>
-				<Flex direction='column' align='center'>
+				<Grid style={{ justifyContent: 'center', gap: rem(10) }}>
 					{children.map((child, i) => (
-						<div key={i} className={mobileBorders.at(i)}>
+						<Grid.Col
+							sm={5}
+							key={i}
+							className={mobileBorders.at(i)}
+							// style={{ marginLeft: rem(10), marginRight: rem(10) }}
+							mx='auto'
+						>
 							{child}
-						</div>
+						</Grid.Col>
 					))}
-				</Flex>
+				</Grid>
 			</MediaQuery>
 		</Container>
 	)

@@ -57,19 +57,18 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 			)
 			const storyText = router.locale === 'es' ? response1ES ?? response2ES : response1EN ?? response2EN
 			return (
-				<Container key={id}>
-					<Link
-						href={{
-							pathname: '/category/[tag]/[[...storyId]]',
-							query: { tag: router.query.tag ?? '', storyId: [id] },
-						}}
-						as={`/story/${id}`}
-						scroll={false}
-						style={{ textDecoration: 'none' }}
-					>
-						<PreviewCard title={name} subtitle={pronounList.join(', ')} text={storyText} />
-					</Link>
-				</Container>
+				<Link
+					key={id}
+					href={{
+						pathname: '/category/[tag]/[[...storyId]]',
+						query: { tag: router.query.tag ?? '', storyId: [id] },
+					}}
+					as={`/story/${id}`}
+					scroll={false}
+					style={{ textDecoration: 'none' }}
+				>
+					<PreviewCard title={name} subtitle={pronounList.join(', ')} text={storyText} />
+				</Link>
 			)
 		}
 	)
