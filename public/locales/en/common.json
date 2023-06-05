@@ -17,6 +17,7 @@
 		"card2": "<Title>Help increase resource access for the diverse transmasculine community</Title>\n<Text>InReach is always looking for new resource suggestions to help expand our free app. Know an organization that is affirming and safe for transmasculine people?</Text>\n<Text>You can suggest a resource to be listed on the free InReach App <Link>here</Link>.</Text>",
 		"card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you.</Text>\n<Text><Link>Click here</Link> and our new trans men and transmasculine community 'sort by' filter will automatically be applied to your search!</Text>"
 	},
+	"back": "Back",
 	"logo-alt": "InReach & GLAAD #TransMascFutures logo",
 	"main-page": {
 		"tagline1": "Trans men and transmasculine adults share their stories of trans joy.",
@@ -29,10 +30,12 @@
 		"gallery": "Gallery",
 		"home": "Back to home",
 		"share": "Share",
+		"share-your-story": "Share your story",
 		"stories": "Stories",
 		"switch-lang": "Haz clic aquí para cambiar a español.",
 		"switch-lang-short": "Cambiar a español"
 	},
+	"next": "Next",
 	"page-title": {
 		"gallery": "Trans Joy: Gallery",
 		"general": "#TransmascFutures - InReach x GLAAD",
@@ -59,5 +62,111 @@
 		"queer": "Transmasc + Queer + Proud",
 		"transman": "Trans man + Proud",
 		"transmasc-nonbinary": "Transmasc/Nonbinary + Proud"
+	},
+	"survey-form": {
+		"eligiblity": "<Text>Participant eligiblity critera:</Text>\n<List><ListItem>You are a trans man or a transmasculine person</ListItem>\n<ListItem>You are 21 years old or over</ListItem>\n<ListItem>You are currently living anywhere in the United States</ListItem></List>",
+		"intro": "InReach is partnering with GLAAD to organize #TransmascFutures. This trans-led digital campaign aims to showcase positive stories from the diverse transmasculine community and increase access to safe, verified resources through the InReach App. The #TransmascFutures Campaign launched on June 7th, 2023. Submit this form to add your story to the campaign website.",
+		"prefer-not-answer": "Prefer not to answer",
+		"q1": "You verify that the following is true (check all that apply):",
+		"q1-opts": {
+			"00_transmasc": "I am a trans man or transmasculine person",
+			"01_over21": "I am at least 21 years old",
+			"02_us": "I currently live in the United States"
+		},
+		"q10": "Which gender-related terms best describe your personal identity? Select all that apply.",
+		"q10-opts": {
+			"00_transman": "Trans man or male",
+			"01_transmasc": "Transmasculine ",
+			"02_nonbinary": "Nonbinary",
+			"03_genderfluid": "Genderfluid or Genderqueer",
+			"04_afab": "Assigned Female at Birth (AFAB)",
+			"05_other": "Other (please specify)"
+		},
+		"q11": "Select how you describe your sexual orientation. Select all that apply.",
+		"q11-opts": {
+			"00_straight": "Straight/Heterosexual",
+			"01_gay": "Gay",
+			"02_lesbian": "Lesbian",
+			"03_bisexual": "Bisexual",
+			"04_pansexual": "Pansexual",
+			"05_asexual": "Asexual/Demisexual/Ace",
+			"06_queer": "Queer",
+			"07_no-answer": "Other (please specify)>"
+		},
+		"q12": "Select how you identify your race/ethnicity. Select all that apply.",
+		"q12-opts": {
+			"00_indigenous": "American Indian/Native American/Indigenous People",
+			"01_asian": "Asian/Asian American",
+			"02_biracial": "Biracial/Multiracial",
+			"03_black": "Black/African American",
+			"04_latinx": "Latino/a/x/e/Hispanic",
+			"05_AME": "Middle Eastern/North African",
+			"06_hawaii-pacific": "Native Hawaiian/Pacific Islander",
+			"07_south-asian": "South Asian",
+			"08_white": "white ",
+			"09_no-answer": "Prefer not to answer",
+			"10_other": "Other (please specify)"
+		},
+		"q13": "Select which U.S. region you live in.",
+		"q13-opts": {
+			"00_northeast": "Northeast",
+			"01_midwest": "Midwest",
+			"02_southeast": "Southeast",
+			"03_southwest": "Southwest",
+			"04_west": "West Coast ",
+			"05_territories": "U.S. Territories ",
+			"06_no-answer": "Prefer not to answer"
+		},
+		"q14": "Select which U.S. state you live in.",
+		"q15": "Do you identify as any of the following? Select all that apply.",
+		"q15-opts": {
+			"00_asylum-seeker": "Asylum seeker",
+			"01_asylee": "Asylee (received asylum)",
+			"02_daca": "DACA recipient",
+			"03_resettled": "Resettled refugee",
+			"04_other": "Other immigrant",
+			"05_no-answer": "Prefer not to answer",
+			"06_none": "I do not identify as any of these"
+		},
+		"q2": "I consent to having my submission shared by InReach via",
+		"q2-opts": {
+			"00_website": "#TransmascFutures Campaign Website",
+			"01_social": "Social Media (@weareinreach across socials) ",
+			"02_media": "Media/Press"
+		},
+		"q3": "Please provide your email address if you would like to stay updated on the status of the #TransmascFutures Campaign.",
+		"q4": " Please enter your name as you would like it to appear on the campaign website.\n(Only a first name will be displayed. Aliases are welcome.)",
+		"q5": "Please select all that apply to you\nI identify as:",
+		"q5-opts": {
+			"00_transman": "Trans Man ",
+			"01_transmasc": "Nonbinary/Transmasculine",
+			"02_queer": "Queer (i.e., identify your sexual orientation as something other than heterosexual)",
+			"03_elder": "Elder (i.e., came out or transitioned before the year 2000)",
+			"04_disabled": "Disabled (i.e., physical, mental, invisible disability",
+			"05_immigrant": "Immigrant (i.e., asylum seeker, asylee, resettled refugee, DACA recipient, etc.)",
+			"06_bipoc": "BIPOC (i.e., non-white, Person of Color)"
+		},
+		"q6": "How old are you?",
+		"q7": "Select which pronouns you use:",
+		"q7-opts": {
+			"00_he": "He/Him/His",
+			"01_they": "They/Them/Theirs",
+			"02_ze": "Ze/Hir/Hirs",
+			"03_xe": "Xe/Xem/Xyr",
+			"04_ey": "Ey/Em/Eir",
+			"05_none": "No Pronouns",
+			"06_any": "Any Pronouns",
+			"07_other": "Other (please specify)"
+		},
+		"q8": "Describe the first moment you could see your future as a trans man or transmasculine person.",
+		"q9": "What resources have helped you see your future as a trans man or transmasculine adult?<br/><em>*Note: To maximize safety, please refrain from sharing personally identifying information, such as naming specific doctors or small clinics.</em>",
+		"section2": "This section will ask you questions about yourself and your experiences. <strong>Please limit your responses to each question to 250 words or less.</strong>",
+		"section3": "This section helps to ensure diversity within our responses to represent the range of differences in transmasculine experiences.",
+		"step1": "Campaign Participation Requirements and Consent",
+		"step2": "Campaign Story Questions",
+		"step3": "Demographic Information (optional)",
+		"step4": "Confirmation",
+		"switch-lang": "Haz clic aquí para la versión en español de la encuesta.",
+		"thank-you": "<strong>Thank you for sharing your story!</strong><br/>Assuming your submission meets our participant eligibility criteria, we will add your story to our campaign website shortly. In the meantime, be sure to follow @weareinreach on social media for updates and download our campaign social media toolkit to share the campaign.<br/><br/>If you have any questions, please email marketing@inreach.org."
 	}
 }

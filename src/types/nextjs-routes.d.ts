@@ -20,7 +20,8 @@ declare module "nextjs-routes" {
     | StaticRoute<"/gallery">
     | StaticRoute<"/">
     | StaticRoute<"/share">
-    | DynamicRoute<"/story/[id]", { "id": string }>;
+    | DynamicRoute<"/story/[id]", { "id": string }>
+    | StaticRoute<"/survey">;
 
   interface StaticRoute<Pathname> {
     pathname: Pathname;
