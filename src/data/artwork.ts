@@ -66,17 +66,6 @@ export const artData: ArtData[] = [
 		src: artwork.alexandercj,
 	},
 	{
-		artist: 'Scott W.',
-		slug: slug('Scott W.'),
-		descriptionEN:
-			"As above, so below. Baphomet is already a gender ambiguous symbol, and one I connect to deeply. It represents equality, intellectualism, balance, and my favorite; Individual expression. Despite Baphomet's scary appearance, I think the message and symbolism is beautiful.",
-		descriptionES:
-			'Como arriba, así abajo. Baphomet es ya un símbolo de género ambiguo, y con el que me conecto profundamente. Representa la igualdad, el intelectualismo, el equilibrio y mi favorito; Expresión individual. A pesar de la aparencia de Baphomet que puede generar miedo, creo que el mensaje y el simbolismo son hermosos.',
-		altEN: '',
-		altES: '',
-		src: artwork.scottw,
-	},
-	{
 		artist: 'Eli H.',
 		slug: slug('Eli H.'),
 		descriptionEN:
@@ -86,6 +75,17 @@ export const artData: ArtData[] = [
 		altEN: '',
 		altES: '',
 		src: artwork.elih,
+	},
+	{
+		artist: 'Scott W.',
+		slug: slug('Scott W.'),
+		descriptionEN:
+			"As above, so below. Baphomet is already a gender ambiguous symbol, and one I connect to deeply. It represents equality, intellectualism, balance, and my favorite; Individual expression. Despite Baphomet's scary appearance, I think the message and symbolism is beautiful.",
+		descriptionES:
+			'Como arriba, así abajo. Baphomet es ya un símbolo de género ambiguo, y con el que me conecto profundamente. Representa la igualdad, el intelectualismo, el equilibrio y mi favorito; Expresión individual. A pesar de la aparencia de Baphomet que puede generar miedo, creo que el mensaje y el simbolismo son hermosos.',
+		altEN: '',
+		altES: '',
+		src: artwork.scottw,
 	},
 	{
 		artist: 'Chava D.',
