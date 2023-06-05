@@ -162,11 +162,15 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 				</Stack>
 
 				<Flex direction='column' gap='1rem'>
-					{description && (
+					{description ? (
 						<div className='quote-wrapper'>
 							<Text>{description}</Text>
 						</div>
-					)}
+					) : alt ? (
+						<div className='quote-wrapper'>
+							<Text>{alt}</Text>
+						</div>
+					) : null}
 				</Flex>
 			</Group>
 		</Flex>
