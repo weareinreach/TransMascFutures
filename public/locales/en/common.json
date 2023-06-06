@@ -16,7 +16,7 @@
 	"act": {
 		"card1": "<Title>Participate in this campaign</Title>\n<Text>We're currently accepting submissions from trans men and trans masculine adults in the U.S. to share their story.</Text>\n<Text>Click <Link>here</Link> to participate.</Text>",
 		"card2": "<Title>Help increase resource access for the diverse trans masculine community</Title>\n<Text>InReach is always looking for new resource suggestions to help expand our free app. Know an organization that is affirming and safe for trans masculine people?</Text>\n<Text>You can suggest a resource to be listed on the free InReach App <Link>here</Link>.</Text>",
-		"card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you.</Text>\n<Text><Link>Click here</Link> and our new trans men and trans masculine community 'sort by' filter will automatically be applied to your search!</Text>"
+		"card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you. <Link>Click here</Link> to find resources. Stay tuned for our new trans men and trans masculine community 'sort by' filter coming soon!</Text>"
 	},
 	"artist-credit": "Character drawings by Joey Borrelli.",
 	"back": "Previous",
