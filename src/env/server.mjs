@@ -4,7 +4,7 @@
  * to be a `.mjs`-file to be imported there.
  */
 import { env as clientEnv, formatErrors } from './client.mjs'
-import { serverSchema, serverEnv } from './schema.mjs'
+import { serverEnv, serverSchema } from './schema.mjs'
 
 const _serverEnv = serverSchema.safeParse(serverEnv)
 

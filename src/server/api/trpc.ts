@@ -16,13 +16,12 @@
  * These allow you to access things like the database, the session, etc, when processing a request
  */
 import { initTRPC, TRPCError } from '@trpc/server'
+import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
+import { type Session } from 'next-auth'
 import superjson from 'superjson'
 
 import { getServerAuthSession } from '../auth'
 import { prisma } from '../db'
-
-import type { CreateNextContextOptions } from '@trpc/server/adapters/next'
-import type { Session } from 'next-auth'
 
 type CreateContextOptions = {
 	session: Session | null
@@ -39,7 +38,7 @@ type CreateContextOptions = {
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (opts: CreateContextOptions) => {
 	return {
 		session: opts.session,
 		prisma,
@@ -120,3 +119,28 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed)
+
+const adminUser = t.middleware(({ ctx, next }) => {
+	if (!ctx.session || !ctx.session.user) {
+		throw new TRPCError({ code: 'UNAUTHORIZED' })
+	}
+	if (!ctx.session.user.permissions.includes('glaadAdmin')) {
+		throw new TRPCError({ code: 'FORBIDDEN' })
+	}
+	return next({
+		ctx: {
+			// infers the `session` as non-nullable
+			session: { ...ctx.session, user: ctx.session.user },
+		},
+	})
+})
+
+/**
+ * Protected (admin) procedure
+ *
+ * If you want a query or mutation to ONLY be accessible to logged in **administrators**, use this. It
+ * verifies the session is valid, checks for admin permission, and guarantees ctx.session.user is not null
+ *
+ * @see https://trpc.io/docs/procedures
+ */
+export const adminProcedure = t.procedure.use(adminUser)

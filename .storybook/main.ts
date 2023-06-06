@@ -1,13 +1,12 @@
+import { type StorybookConfig } from '@storybook/nextjs'
 import { merge } from 'merge-anything'
-
-import type { StorybookConfig } from '@storybook/nextjs'
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 	staticDirs: [
 		{
 			from: '../public',
-			to: 'public',
+			to: '/',
 		},
 	],
 	addons: [
@@ -25,7 +24,7 @@ const config: StorybookConfig = {
 	},
 	typescript: {
 		check: true,
-		reactDocgen: 'react-docgen-typescript',
+		reactDocgen: false, //'react-docgen-typescript',
 		reactDocgenTypescriptOptions: {
 			shouldExtractLiteralValuesFromEnum: true,
 			shouldExtractValuesFromUnion: true,
@@ -38,7 +37,7 @@ const config: StorybookConfig = {
 		const configAdditions: typeof config = {
 			resolve: {
 				alias: {
-					'next-i18next': 'react-i18next',
+					// 'next-i18next': 'react-i18next',
 				},
 			},
 		}
