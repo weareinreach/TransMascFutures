@@ -1,20 +1,35 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowImportingTsExtensions": true,
 		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"declaration": false,
+		"declarationMap": false,
 		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
+		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
+		"inlineSourceMap": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true,
-		"noUncheckedIndexedAccess": true
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"noUncheckedIndexedAccess": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "es2017",
+		"paths": {
+			"~/*": ["./src/*"],
+			"~public/*": ["./public/*"]
+		}
 	},
 	"include": [
 		"next-env.d.ts",
@@ -24,7 +39,8 @@
 		"**/*.mjs",
 		".*.js",
 		".lib/*.ts",
-		".storybook/*"
+		".storybook/*",
+		".next/types/**/*.ts"
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules/**"]
 }

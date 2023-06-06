@@ -1,8 +1,7 @@
+import { type GetServerSidePropsContext } from 'next'
 import { getServerSession } from 'next-auth'
 
 import { authOptions } from '../pages/api/auth/[...nextauth]'
-
-import type { GetServerSidePropsContext } from 'next'
 
 /**
  * Wrapper for unstable_getServerSession, used in trpc createContext and the restricted API route

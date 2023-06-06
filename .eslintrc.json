@@ -5,42 +5,90 @@
 			"files": ["*.ts", "*.tsx"],
 			"parserOptions": {
 				"project": "tsconfig.json"
+			},
+			"rules": {
+				"@typescript-eslint/no-unsafe-assignment": "off",
+				"@typescript-eslint/no-unsafe-call": "off"
 			}
 		},
 		{
 			"files": ["**/*.spec.ts", "**/*.d.ts"],
 			"rules": {
-				"import/no-unused-modules": 0
+				"import/no-unused-modules": "off"
+			}
+		},
+		{
+			"files": ["**/index.tsx?"],
+			"rules": {
+				"import/no-unused-modules": "off"
+			}
+		},
+		{
+			"files": ["**/*.js"],
+			"parserOptions": { "project": null },
+			"rules": {
+				"@typescript-eslint/require-await": "off",
+				"@typescript-eslint/return-await": "off"
 			}
 		}
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"project": "./tsconfig.json"
+		"project": "./tsconfig.json",
+		"babelOptions": {
+			"presets": ["next/babel"]
+		}
 	},
-	"plugins": ["codegen", "@typescript-eslint", "i18next", "storybook"],
+	"plugins": ["codegen", "@typescript-eslint", "turbo", "node", "import", "i18next", "storybook"],
 	"extends": [
 		"next/core-web-vitals",
 		"plugin:@typescript-eslint/recommended",
-		"prettier",
-		"plugin:storybook/recommended"
+		"plugin:storybook/recommended",
+		"plugin:import/typescript",
+		"prettier"
 	],
 	"rules": {
-		"@typescript-eslint/consistent-type-imports": "warn",
+		"@typescript-eslint/consistent-type-imports": [
+			"error",
+			{
+				"prefer": "type-imports",
+				"fixStyle": "inline-type-imports"
+			}
+		],
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				"varsIgnorePattern": "^_",
+				"args": "none",
+				"ignoreRestSiblings": true
+			}
+		],
 		"i18next/no-literal-string": 1,
+		"no-duplicate-imports": "off",
+		"react/no-unescaped-entities": ["off"],
+		"turbo/no-undeclared-env-vars": "warn",
 		"codegen/codegen": "error",
 		"import/first": "error",
 		"import/newline-after-import": "error",
+		"import/no-absolute-path": "error",
 		"import/no-duplicates": "error",
 		"import/no-empty-named-blocks": "error",
-		"import/no-extraneous-dependencies": "error",
 		"import/no-unused-modules": [
 			"warn",
 			{
 				"missingExports": true
 			}
 		],
-		"import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+		"import/no-useless-path-segments": "error",
+		"sort-imports": [
+			"error",
+			{
+				"ignoreCase": true,
+				"ignoreDeclarationSort": true
+			}
+		],
+		"import/consistent-type-specifier-style": ["error", "prefer-inline"],
 		"import/order": [
 			"warn",
 			{
@@ -48,13 +96,51 @@
 				"distinctGroup": false,
 				"newlines-between": "always",
 				"alphabetize": {
-					"order": "asc"
+					"order": "asc",
+					"orderImportKind": "asc",
+					"caseInsensitive": true
 				}
 			}
-		]
+		],
+		"import/no-self-import": "error",
+		"no-restricted-imports": [
+			"error",
+			{
+				"paths": [
+					{
+						"name": "react-i18next",
+						"importNames": ["useTranslation", "Trans", "Translation"],
+						"message": "Please import from 'next-i18next'"
+					},
+					{
+						"name": "next-i18next/serverSideTranslations",
+						"importNames": ["serverSideTranslations"],
+						"message": "Please import 'getServerSideTranslations' from '~/server/i18n'"
+					}
+				]
+			}
+		],
+		"require-await": "off",
+		"@typescript-eslint/require-await": "off",
+		"no-return-await": "off",
+		"@typescript-eslint/return-await": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off"
 	},
 	"ignorePatterns": ["!.*", "**/node_modules/**", "dist/", ".next/"],
 	"settings": {
-		"import/extensions": [".js", ".jsx", ".cjs", ".mjs", ".ts", ".mts", ".tsx"]
+		"import/extensions": [".js", ".jsx", ".cjs", ".mjs", ".ts", ".mts", ".tsx"],
+		"import/resolver": {
+			"node": true,
+			"typescript": {
+				"alwaysTryTypes": true
+			}
+		},
+		"import/cache": {
+			"lifetime": 10
+		}
+	},
+	"env": {
+		"node": true,
+		"browser": true
 	}
 }

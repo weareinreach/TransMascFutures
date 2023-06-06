@@ -2,98 +2,161 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["extendedWhereUnique", "fieldReference", "jsonProtocol", "postgresqlExtensions", "views"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("PRISMA_SHADOW_DB") // used for migrations
 }
 
 //
 // NextAuth tables
 //
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+// model Account {
+//   id                String  @id @default(cuid())
+//   userId            String
+//   type              String
+//   provider          String
+//   providerAccountId String
+//   refresh_token     String? @db.Text
+//   access_token      String? @db.Text
+//   expires_at        Int?
+//   token_type        String?
+//   scope             String?
+//   id_token          String? @db.Text
+//   session_state     String?
+//   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, providerAccountId])
-}
+//   @@unique([provider, providerAccountId])
+// }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
+// model Session {
+//   id           String   @id @default(cuid())
+//   sessionToken String   @unique
+//   userId       String
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
 
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-}
+// model User {
+//   id            String    @id @default(cuid())
+//   name          String?
+//   email         String?   @unique
+//   emailVerified DateTime?
+//   image         String?
+//   accounts      Account[]
+//   sessions      Session[]
+// }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+// model VerificationToken {
+//   identifier String
+//   token      String   @unique
+//   expires    DateTime
 
-  @@unique([identifier, token])
-}
+//   @@unique([identifier, token])
+// }
 
 //
 // End of NextAuth tables
 //
 
 model DefaultImage {
-  id          String @id @default(cuid())
-  description String
-  image       String
+  id    String @id @default(cuid())
+  altEN String
+  altES String
+  src   String
 
   story Story[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Artwork {
+  id            String  @id @default(cuid())
+  src           String
+  altEN         String
+  altES         String
+  titleEN       String
+  titleES       String
+  artist        String
+  descriptionEN String?
+  descriptionES String?
+  height        Int
+  width         Int
+
+  isVideo Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model StoryCategory {
+  id  String @id @default(cuid())
+  tag String @unique
+
+  categoryEN String
+  categoryES String
+
+  order Int?
+
+  image      String?
+  imageAltEN String?
+  imageAltES String?
+
+  stories   StoryToCategory[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model Pronouns {
   id String @id @default(cuid())
 
-  category    String
-  categoryKey String
+  pronounsEN String
+  pronounsES String
 
-  stories StoryToCategory[]
+  stories PronounsToStory[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PronounsToStory {
+  pronoun   Pronouns @relation(fields: [pronounId], references: [id])
+  pronounId String
+  story     Story    @relation(fields: [storyId], references: [id])
+  storyId   String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([storyId, pronounId])
 }
 
 model Story {
   id String @id @default(cuid())
 
-  name      String
-  pronouns  String
-  birthYear Int
+  name String
 
-  storyJoy    String
-  keyJoy      String
-  storyAccess String
-  keyAccess   String
+  response1EN String?
+  response2EN String?
+  response1ES String?
+  response2ES String?
 
-  // User provided image or use from our provided images
-  image          String?
-  defaultImage   DefaultImage? @relation(fields: [defaultImageId], references: [id])
-  defaultImageId String?
+  userId String? // Not linked - using app auth
+
+  image   DefaultImage? @relation(fields: [imageId], references: [id])
+  imageId String?
+
+  pronouns   PronounsToStory[]
+  categories StoryToCategory[]
+
+  isInfluencer Boolean @default(false)
+  publicSlug   String? @unique
 
   published Boolean @default(false)
 
@@ -102,12 +165,8 @@ model Story {
   textToxicity    Float? // from https://perspectiveapi.com/
   imageModeration Json? // from https://docs.aws.amazon.com/rekognition/latest/dg/procedure-moderate-images.html
 
-  isInfluencer Boolean @default(false)
-  publicSlug   String? @unique
-
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
-  categories StoryToCategory[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model StoryToCategory {
@@ -115,17 +174,32 @@ model StoryToCategory {
   categoryId String
   story      Story         @relation(fields: [storyId], references: [id])
   storyId    String
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
 
   @@id([categoryId, storyId])
 }
 
 model PartnerOrg {
-  id      String  @id @default(cuid())
-  name    String
-  href    String
-  image   String
-  order   Int
-  visible Boolean @default(true)
+  id       String  @id @default(cuid())
+  name     String  @unique
+  href     String
+  tag      String
+  imageSrc String?
+  order    Int
+  visible  Boolean @default(true)
+  height   Int?
+  width    Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StorySubmission {
+  id     String @id @default(cuid())
+  userId String
+
+  responses Json
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

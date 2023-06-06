@@ -1,9 +1,7 @@
-import { Modal, Group, TextInput, FileInput, Select } from '@mantine/core'
+import { Button, FileInput, Group, Modal, Select, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { useMediaQuery } from '@mantine/hooks'
-import { useState, useRef } from 'react'
-
-import { Button } from '../Button/Button'
+import { useRef, useState } from 'react'
 
 export const ModalForm = () => {
 	const [opened, setOpened] = useState(false)

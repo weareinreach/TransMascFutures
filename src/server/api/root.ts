@@ -1,4 +1,5 @@
 import { adminRouter } from './routers/admin'
+import { partnerRouter } from './routers/partner'
 import { storyRouter } from './routers/stories'
 import { createTRPCRouter } from './trpc'
 
@@ -10,6 +11,7 @@ import { createTRPCRouter } from './trpc'
 export const appRouter = createTRPCRouter({
 	story: storyRouter,
 	admin: adminRouter,
+	partner: partnerRouter,
 })
 
 // export type definition of API

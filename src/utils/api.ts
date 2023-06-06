@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 /**
  * This is the client-side entrypoint for your tRPC API. It's used to create the `api` object which contains
  * the Next.js App-wrapper as well as your typesafe react-query hooks.
@@ -6,10 +7,10 @@
  */
 import { httpBatchLink, loggerLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
+import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server'
 import superjson from 'superjson'
 
-import type { AppRouter } from '../server/api/root'
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
+import { type AppRouter } from '../server/api/root'
 
 const getBaseUrl = () => {
 	if (typeof window !== 'undefined') return '' // browser should use relative url

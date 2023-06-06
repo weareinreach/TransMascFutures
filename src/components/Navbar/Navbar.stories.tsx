@@ -1,6 +1,6 @@
-import { Navbar } from './Navbar'
+import { type Meta } from '@storybook/react'
 
-import type { Meta } from '@storybook/react'
+import { Navbar } from './Navbar'
 
 export default {
 	title: 'Components/Navbar',

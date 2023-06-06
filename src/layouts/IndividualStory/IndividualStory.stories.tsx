@@ -1,26 +1,21 @@
-import { IndividualStory } from './IndividualStory'
+import { type Meta, type StoryObj } from '@storybook/react'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import { categoryImages } from '~/data/categoryImages'
+
+import { IndividualStory } from './IndividualStory'
 
 const meta: Meta<typeof IndividualStory> = {
 	title: 'Layouts/Individual Story',
 	component: IndividualStory,
 	tags: ['autodocs'],
 	args: {
-		age: 18,
-		image: 'https://i.ibb.co/r4RLjcM/Screen-Shot-2023-02-13-at-10-04-32-PM.png',
+		image: categoryImages.bipoc,
 		name: 'Name',
-		pronouns: 'Pronouns',
-		quotes: [
-			{
-				label: 'Joy',
-				text: "When I first came out, I was told I couldn't feel that way about myself because of my disability - but now, after I found my place around people who care about me, being trans is something I wouldn't trade for anything.",
-			},
-			{
-				label: 'Access',
-				text: 'When I was able to access HRT, my life changed for the better and I was immediately happier in my own skin.',
-			},
-		],
+		pronouns: ['Pronouns'],
+		response1:
+			'Lomo snackwave taiyaki hashtag activated charcoal distillery humblebrag pickled master cleanse. Next level intelligentsia forage, bicycle rights hoodie sartorial edison bulb portland mixtape chillwave. Vexillologist jianbing vice shabby chic, marxism +1 cold-pressed godard portland mlkshk. VHS woke godard gastropub 3 wolf moon. Meh tattooed knausgaard man bun, kale chips tumblr poke photo booth sriracha pour-over poutine pork belly hoodie raclette.',
+		response2:
+			'Skateboard gochujang big mood seitan, lumbersexual pitchfork succulents church-key fit tonx retro. Tumblr selfies unicorn gorpcore crucifix celiac. Occupy bicycle rights grailed, pabst umami hexagon ethical blue bottle. Man braid DIY forage tumblr. Lo-fi vegan pork belly tbh tote bag leggings asymmetrical mukbang mustache cupping.',
 	},
 }
 

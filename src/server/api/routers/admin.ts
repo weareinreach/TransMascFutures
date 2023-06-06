@@ -1,9 +1,8 @@
+import { type StoryToCategory } from '@prisma/client'
 import { z } from 'zod'
 
 import { nanoUrl } from '../../nanoIdUrl'
-import { createTRPCRouter, adminProcedure } from '../trpc'
-
-import type { StoryToCategory } from '@prisma/client'
+import { adminProcedure, createTRPCRouter } from '../trpc'
 
 export const adminRouter = createTRPCRouter({
 	approveStory: adminProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
@@ -108,7 +107,7 @@ export const adminRouter = createTRPCRouter({
 				// Add not asssociated categories to the story from the categories array
 				if (categories) {
 					const storyCategoryIDs = updatedStory.categories.map(({ categoryId }) => categoryId)
-					const newCategories: StoryToCategory[] = []
+					const newCategories: Omit<StoryToCategory, 'createdAt' | 'updatedAt'>[] = []
 
 					categories.map((categoryId) => {
 						storyCategoryIDs.indexOf(categoryId) === -1 && newCategories.push({ categoryId, storyId: id })

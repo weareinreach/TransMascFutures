@@ -1,16 +1,30 @@
-import { rem, em } from '@mantine/core'
-
-import type { MantineThemeOverride, DefaultProps } from '@mantine/core'
-import type { PolymorphicComponentProps } from '@mantine/utils'
+import {
+	type AnchorStylesParams,
+	type CheckboxStylesNames,
+	type CheckboxStylesParams,
+	em,
+	type InputWrapperStylesNames,
+	type MantineThemeOverride,
+	type RadioStylesNames,
+	type RadioStylesParams,
+	rem,
+	type StepperStylesNames,
+	type StepperStylesParams,
+	type Styles,
+	type TextInputStylesNames,
+} from '@mantine/core'
 
 const themeCustomObj = {
 	colors: {
 		glaadGray: '#BEBEBE',
 		midGray: '#65676B',
 		black: '#000000',
+		white: '#FFFFFF',
+		blue: '#5BCEFA',
+		pink: '#F5A9B8',
 	},
 } as const
-
+const hoverAlpha = 0.5
 export const theme: MantineThemeOverride = {
 	colorScheme: 'light',
 	fontFamily:
@@ -35,16 +49,126 @@ export const theme: MantineThemeOverride = {
 			h6: { fontSize: rem(16), lineHeight: 1.25, fontWeight: 600 },
 		},
 	},
+	breakpoints: {
+		xs: em(500),
+		sm: em(768),
+		md: em(1024),
+		lg: em(1200),
+		xl: em(1440),
+	},
+	components: {
+		Anchor: {
+			variants: {
+				category: (theme) =>
+					({
+						root: {
+							fontSize: rem(15),
+							color: theme.other.colors.black,
+							fontWeight: 500,
+							textDecoration: 'underline',
+							...theme.fn.hover({ textDecoration: 'none' }),
+						},
+					} satisfies Styles<'root', AnchorStylesParams>),
+			},
+		},
+		Button: {
+			defaultProps: {
+				variant: 'primary',
+			},
+			variants: {
+				primary: (theme) => ({
+					root: {
+						borderRadius: rem(8),
+						fontWeight: 600,
+						height: 'auto',
+						padding: rem(15),
+						textAlign: 'center',
+						width: rem(175),
+						color: theme.other.colors.black,
+						backgroundColor: theme.other.colors.pink,
+						// ['&:hover']: {
+						// 	backgroundColor: theme.other.colors.blue,
+						// },
+						...theme.fn.hover({
+							background: `linear-gradient(210deg, rgba(91,206,250,${hoverAlpha}) 0%, rgba(245,169,184,${hoverAlpha}) 25%, rgba(255,255,255,${hoverAlpha}) 50%, rgba(245,169,184,${hoverAlpha}) 75%, rgba(91,206,250,${hoverAlpha}) 100%);`,
+						}),
+					},
+					label: {
+						whiteSpace: 'normal',
+					},
+				}),
+				secondary: (theme) => ({
+					root: {
+						fontWeight: 600,
+						height: 'auto',
+						padding: rem(15),
+						textAlign: 'center',
+						width: rem(175),
+						backgroundColor: theme.other.colors.blue,
+						borderRadius: rem(8),
+						// ['&:hover']: {
+						// 	backgroundColor: theme.other.colors.pink,
+						// },
+						...theme.fn.hover({
+							background: `linear-gradient(210deg, rgba(91,206,250,${hoverAlpha}) 0%, rgba(245,169,184,${hoverAlpha}) 25%, rgba(255,255,255,${hoverAlpha}) 50%, rgba(245,169,184,${hoverAlpha}) 75%, rgba(91,206,250,${hoverAlpha}) 100%);`,
+						}),
+					},
+					label: {
+						whiteSpace: 'normal',
+						textTransform: 'uppercase',
+					},
+				}),
+			},
+		},
+		TextInput: {
+			styles: (theme) =>
+				({
+					input: {
+						maxWidth: rem(300),
+					},
+				} satisfies Styles<TextInputStylesNames>),
+		},
+		Textarea: {
+			styles: (theme) => ({
+				input: {
+					maxWidth: rem(450),
+				},
+			}),
+		},
+		InputWrapper: {
+			styles: (theme) =>
+				({
+					label: { marginBottom: rem(4) },
+				} satisfies Styles<InputWrapperStylesNames>),
+		},
+		Checkbox: {
+			styles: (themes) =>
+				({
+					body: {
+						margin: `${rem(8)} 0`,
+					},
+				} satisfies Styles<CheckboxStylesNames, CheckboxStylesParams>),
+		},
+		Radio: {
+			styles: (themes) =>
+				({
+					body: {
+						margin: `${rem(8)} 0`,
+					},
+				} satisfies Styles<RadioStylesNames, RadioStylesParams>),
+		},
+		Stepper: {
+			styles: (theme) =>
+				({
+					content: {
+						// padding: `${rem(16)} ${rem(80)} ${rem()} ${rem()}`,
+						maxWidth: rem(800),
+						margin: `${rem(40)} auto 0 auto`,
+					},
+				} satisfies Styles<StepperStylesNames, StepperStylesParams>),
+		},
+	},
 	other: themeCustomObj,
 }
 
-export type PolyComponent<ComponentProps extends DefaultProps> = PolymorphicComponentProps<
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
-	ComponentProps
->
-type ThemeCustomObject = typeof themeCustomObj
-declare module '@mantine/core' {
-	// eslint-disable-next-line @typescript-eslint/no-empty-interface
-	export interface MantineThemeOther extends ThemeCustomObject {}
-}
+export type ThemeCustomObject = typeof themeCustomObj

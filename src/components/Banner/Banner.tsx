@@ -1,24 +1,21 @@
-import { Container, Grid, Title, AspectRatio } from '@mantine/core'
+import { AspectRatio, Flex, Title } from '@mantine/core'
 import Image from 'next/image'
+import { useTranslation } from 'next-i18next'
 
-export const Banner = ({ title }: BannerProp) => {
+import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
+
+export const Banner = ({ titleKey }: BannerProp) => {
+	const { t } = useTranslation()
 	return (
-		<Container fluid p={'xl'}>
-			<Grid px='xl'>
-				<Grid.Col pl='xl' lg={3} md={12}>
-					<Title fw={900} order={1} size='30px !important' tt='uppercase'>
-						{title}
-					</Title>
-				</Grid.Col>
-				<Grid.Col span='auto'>
-					<AspectRatio ratio={800 / 300}>
-						<Image src='/assets/tmf-logo-rect-bw.png' alt='transmasc logo' width={800} height={300} />
-					</AspectRatio>
-				</Grid.Col>
-				<Grid.Col lg={3} md={12}></Grid.Col>
-			</Grid>
-		</Container>
+		<Flex w='100%' justify='space-apart' align='center'>
+			<Title order={1} tt='uppercase' pl={40} py={20} mx='auto' fz={{ base: 20, xs: 24 }} lts={4}>
+				{t(titleKey)}
+			</Title>
+			<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750} w='50%'>
+				<Image src={Logo} alt={t('logo-alt')} fill />
+			</AspectRatio>
+		</Flex>
 	)
 }
 
-type BannerProp = { title: string }
+type BannerProp = { titleKey: string }

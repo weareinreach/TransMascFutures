@@ -1,56 +1,54 @@
-import { faker } from '@faker-js/faker'
+/* eslint-disable import/no-unused-modules */
+
 import { PrismaClient } from '@prisma/client'
 
+import fs from 'fs'
+import path from 'path'
+
+import { categories } from './seedData/categories'
+import { partnerData } from './seedData/partners'
+import { pronouns } from './seedData/pronouns'
+
 const prisma = new PrismaClient()
-const categories = ['queer', 'bipoc', 'disabled']
 
 async function main() {
-	const defaultImage = await prisma.defaultImage.create({
-		data: {
-			description: 'default',
-			image: '/assets/tmf-logo-sw-color.png',
-		},
+	const categoryResult = await prisma.storyCategory.createMany({
+		data: categories,
+		skipDuplicates: true,
 	})
+	console.log(`Categories created: ${categoryResult.count}`)
 
-	while ((await prisma.story.findMany()).length < 20) {
-		const categoryName = categories[Math.floor(Math.random() * categories.length)]
-		const category = await prisma.storyCategory.findFirst({ where: { category: categoryName } })
-		const hasDefaultImage = faker.datatype.number(100) % 3
-		const connectDefaultImage = { defaultImage: {} }
-		if (hasDefaultImage % 2 === 0) connectDefaultImage.defaultImage = { connect: { id: defaultImage.id } }
+	const pronounResult = await prisma.pronouns.createMany({
+		data: pronouns,
+		skipDuplicates: true,
+	})
+	console.log(`Pronoun records created: ${pronounResult.count}`)
 
-		if (typeof categoryName === 'string') {
-			await prisma.story.create({
-				data: {
-					name: faker.name.firstName(),
-					pronouns: 'Cat/Kitten',
-					birthYear: faker.datatype.number({ min: 1, max: 20 }),
-					storyJoy: faker.lorem.sentences(6),
-					keyJoy: '',
-					storyAccess: faker.lorem.sentences(3),
-					keyAccess: '',
-					image: hasDefaultImage === 0 ? undefined : 'http://placekitten.com/g/480/355',
-					defaultImage: connectDefaultImage.defaultImage,
-					published: true,
-					categories: {
-						create: {
-							category: {
-								connectOrCreate: {
-									where: {
-										id: (category && category.id) || 'test',
-									},
-									create: {
-										category: categoryName,
-										categoryKey: categoryName,
-									},
-								},
-							},
-						},
-					},
-				},
-			})
-		}
+	const partnerResult = await prisma.partnerOrg.createMany({ data: partnerData, skipDuplicates: true })
+	console.log(`Partner records created: ${partnerResult.count}`)
+	const output: Record<string, unknown> = {
+		categories: await prisma.storyCategory.findMany(),
+		pronouns: await prisma.pronouns.findMany(),
+		partners: await prisma.partnerOrg.findMany(),
 	}
+
+	if (fs.existsSync(path.resolve(__dirname, './seedData/stories.ts'))) {
+		const stories = await import('./seedData/stories')
+		const storiesResult = await prisma.story.createMany({ data: stories.stories, skipDuplicates: true })
+		console.log(`Stories created: ${storiesResult.count}`)
+		const linkCategories = await prisma.storyToCategory.createMany({
+			data: stories.links.categories,
+			skipDuplicates: true,
+		})
+		const linkPronouns = await prisma.pronounsToStory.createMany({
+			data: stories.links.pronouns,
+			skipDuplicates: true,
+		})
+		console.log(`Links -> categories: ${linkCategories.count}, pronouns: ${linkPronouns.count}`)
+		output.storiesResult = await prisma.story.findMany({ select: { id: true, name: true } })
+	}
+
+	fs.writeFileSync(path.resolve(__dirname, 'seedresult.json'), JSON.stringify(output))
 }
 
 main()

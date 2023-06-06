@@ -1,8 +1,8 @@
-import { Header, Container, createStyles, Burger, Drawer, Text, Button } from '@mantine/core'
-import { IconArrowBigLeftFilled } from '@tabler/icons-react'
+import { Anchor, Burger, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 
 const HEADER_HEIGHT = 75
 
@@ -26,7 +26,7 @@ export const useStyles = createStyles((theme) => ({
 			fontSize: theme.fontSizes.lg,
 		},
 
-		[`@media (max-width: ${theme.breakpoints.md}px)`]: {
+		[theme.fn.smallerThan('md')]: {
 			display: 'none',
 		},
 	},
@@ -36,7 +36,7 @@ export const useStyles = createStyles((theme) => ({
 		alignItems: 'center',
 		height: '100%',
 
-		[`@media (min-width: ${theme.breakpoints.md}px)`]: {
+		[theme.fn.largerThan('md')]: {
 			display: 'none',
 		},
 	},
@@ -46,6 +46,8 @@ export const useStyles = createStyles((theme) => ({
 		display: 'flex',
 		width: '100%',
 		height: '100%',
+		fontWeight: 600,
+		fontSize: rem(32),
 		fontStyle: 'italic',
 		flexDirection: 'column',
 		marginTop: theme.spacing.md,
@@ -58,24 +60,38 @@ export const useStyles = createStyles((theme) => ({
 	},
 }))
 
-type LinkData = Array<[string, string]>
-
-const NavLinks = () => {
+const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>> }) => {
 	const { classes } = useStyles()
+	const { t } = useTranslation()
+	const router = useRouter()
+	const linksInfo = [
+		{ key: 'nav.home', href: '/' as const },
+		{ key: 'nav.gallery', href: '/gallery' as const },
+		{ key: 'nav.act', href: '/act' as const },
+		{ key: 'nav.about', href: '/about' as const },
+		{ key: 'nav.share', href: '/share' as const },
+		{ key: 'nav.find-resources', href: 'https://app.inreach.org' as const },
+	] //satisfies Array<Readonly<LinkData>>
 
-	const linksInfo: LinkData = [
-		['learn', '#'],
-		['act', '#'],
-		['about', '#'],
-		['share', '#'],
-		['find resources', '#'],
-	]
+	useEffect(() => {
+		router.events.on('routeChangeComplete', () => setOpened && setOpened(false))
 
-	const links = linksInfo.map((linkInfo) => {
-		const [title, href] = linkInfo
+		return router.events.off('routeChangeComplete', () => setOpened && setOpened(false))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [router.asPath])
+
+	const links = linksInfo.map(({ key, href }) => {
+		if (href === 'https://app.inreach.org') {
+			return (
+				<a key={key} href={href} className={classes.navlink}>
+					{t(key).toLocaleUpperCase()}
+				</a>
+			)
+		}
+
 		return (
-			<Link key={title} href={href} className={classes.navlink}>
-				{title.toUpperCase()}
+			<Link key={key} href={href} className={classes.navlink}>
+				{t(key).toLocaleUpperCase()}
 			</Link>
 		)
 	})
@@ -83,13 +99,13 @@ const NavLinks = () => {
 	return <>{links}</>
 }
 
-const HomeButton = () => (
-	<Link href='/'>
-		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
-			{' Home'}
-		</Button>
-	</Link>
-)
+// const HomeButton = () => (
+// 	<Link href='/'>
+// 		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
+// 			{' Home'}
+// 		</Button>
+// 	</Link>
+// )
 
 // This type is only needed when trying to make a story for a page
 // to check whether the button to go to the main page works
@@ -98,6 +114,9 @@ type pathProp = { path?: string }
 const HamburgerMenu = ({ path }: pathProp) => {
 	const [opened, setOpened] = useState(false)
 	const { classes } = useStyles()
+	const router = useRouter()
+	const { asPath, pathname, query, locale } = router
+	const { t } = useTranslation()
 
 	return (
 		<Container className={classes.burger} sx={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
@@ -115,11 +134,24 @@ const HamburgerMenu = ({ path }: pathProp) => {
 					content: {
 						backgroundColor: theme.other.colors.glaadGray,
 					},
+					header: {
+						backgroundColor: theme.other.colors.glaadGray,
+					},
 				})}
 			>
-				<NavLinks />
+				<NavLinks setOpened={setOpened} />
+				<Anchor
+					variant='category'
+					tt='uppercase'
+					// eslint-disable-next-line @typescript-eslint/no-misused-promises
+					onClick={() =>
+						router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
+					}
+				>
+					{t('nav.switch-lang-short')}
+				</Anchor>
 			</Drawer>
-			{path !== '/' ? <HomeButton /> : undefined}
+			{/* {path !== '/' ? <HomeButton /> : undefined} */}
 			<Burger
 				opened={opened}
 				onClick={() => setOpened((o) => !o)}

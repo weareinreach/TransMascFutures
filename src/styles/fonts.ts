@@ -1,7 +1,7 @@
-import { Work_Sans } from '@next/font/google'
+import { IBM_Plex_Sans, Work_Sans } from 'next/font/google'
 
 export const fontWorkSans = Work_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], display: 'swap' })
-
+export const fontIbmPlexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['300', '400'], display: 'swap' })
 export const storybookFont = {
 	'@font-face': [
 		{

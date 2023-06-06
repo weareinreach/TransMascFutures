@@ -1,6 +1,6 @@
-import { ModalForm } from './ModalForm'
+import { type Meta } from '@storybook/react'
 
-import type { Meta } from '@storybook/react'
+import { ModalForm } from './ModalForm'
 
 export default {
 	title: 'Components/ModalForm',

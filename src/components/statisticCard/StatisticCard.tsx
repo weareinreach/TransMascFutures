@@ -1,4 +1,4 @@
-import { Card, Text, Title, createStyles, rem } from '@mantine/core'
+import { Card, createStyles, rem, Text, Title } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
 	card: {
@@ -6,14 +6,17 @@ const useStyles = createStyles((theme) => ({
 	},
 	title: {
 		marginBottom: `${rem(0)} !important`,
-		[theme.fn.smallerThan(theme.breakpoints.md)]: {
-			fontSize: theme.fontSizes.md,
+		[theme.fn.smallerThan('md')]: {
+			fontSize: rem(24),
 		},
 	},
 	text: {
 		paddingLeft: theme.spacing.xl,
 		paddingRight: theme.spacing.xl,
 		fontSize: theme.fontSizes.xl,
+		[theme.fn.smallerThan('md')]: {
+			fontSize: rem(18),
+		},
 	},
 }))
 

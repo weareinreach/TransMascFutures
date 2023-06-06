@@ -16,13 +16,12 @@
  * These allow you to access things like the database, the session, etc, when processing a request
  */
 import { initTRPC, TRPCError } from '@trpc/server'
+import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
+import { type Session } from 'next-auth'
 import superjson from 'superjson'
 
 import { getServerAuthSession } from '../auth'
 import { prisma } from '../db'
-
-import type { CreateNextContextOptions } from '@trpc/server/adapters/next'
-import type { Session } from 'next-auth'
 
 type CreateContextOptions = {
 	session: Session | null
@@ -39,7 +38,7 @@ type CreateContextOptions = {
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (opts: CreateContextOptions) => {
 	return {
 		session: opts.session,
 		prisma,
