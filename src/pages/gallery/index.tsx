@@ -1,6 +1,7 @@
 import {
 	AspectRatio,
 	Box,
+	Button,
 	Container,
 	createStyles,
 	type DefaultProps,
@@ -21,7 +22,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { forwardRef, useMemo } from 'react'
 
-import { ModalForm, StoryPreviewCarousel } from '~/components'
+import { StoryPreviewCarousel } from '~/components'
 import { artData, getArtData } from '~/data/artwork'
 import { ArtItem } from '~/layouts/ArtItem'
 import { getServerSideTranslations } from '~/server/i18n'
@@ -200,7 +201,9 @@ const Gallery = () => {
 					</Title>
 				</Grid.Col>
 				<Grid.Col lg={3} md={4}>
-					<ModalForm />
+					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
+						{t('participate')}
+					</Button>
 				</Grid.Col>
 			</Grid>
 			<MediaQuery smallerThan='md' styles={{ display: 'none' }}>

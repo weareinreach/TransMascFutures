@@ -1,4 +1,4 @@
-import { AspectRatio, Container, Grid, Loader, Modal, Title, useMantineTheme } from '@mantine/core'
+import { AspectRatio, Button, Container, Grid, Loader, Modal, Title, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -9,7 +9,6 @@ import { useTranslation } from 'next-i18next'
 import { type RoutedQuery } from 'nextjs-routes'
 import { useMemo } from 'react'
 
-import { ModalForm } from '~/components/ModalForm/ModalForm'
 import { PreviewCard } from '~/components/storyPreviewCard/PreviewCard'
 import { getCategoryImage } from '~/data/categoryImages'
 import { CardDisplay } from '~/layouts/CardDisplay'
@@ -98,7 +97,9 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 					</Title>
 				</Grid.Col>
 				<Grid.Col lg={3} md={4}>
-					<ModalForm />
+					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
+						{t('participate')}
+					</Button>
 				</Grid.Col>
 			</Grid>
 			{Boolean(previewCards.length) && <CardDisplay>{previewCards}</CardDisplay>}
