@@ -15,8 +15,8 @@
 	},
 	"act": {
 		"card1": "<Title>Participa en esta campaña</Title>\n<Text>Actualmente estamos aceptando envíos de hombres trans y adultos trans masculinos en EE. UU para poder compartir su historia.</Text>\n<Text>Haz click <Link>aquí</Link> para participar.</Text>",
-		"card2": "<Title>Ayuda a aumentar el acceso a recursos para la diversa comunidad trans masculina</Title>\n<Text>InReach siempre está buscando nuevas sugerencias sobre recursos para ayudar a expandid nuestra aplicación gratuita. ¿Conoces una organización género afirmante y segura para las personas trans masculinas?</Text>\n<Text>Puedes sugerir un recurso para que se incluya en la aplicación gratuita de InReach <Link>aquí</Link>.</Text>",
-		"card3": "<Title>Accede a Recursos Afirmativos 24/7</Title>\n<Text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo. <Link>Haz click aquí</Link> para encontrar recursos. Mantente antente a nuestro nuevo filtro 'ordenar por' recursos para hombres trans y la comunidad transmasculina!</Text>"
+		"card2": "<Title>Ayuda a aumentar el acceso a recursos para la diversa comunidad trans masculina</Title>\n<Text>InReach siempre está buscando nuevas sugerencias de recursos para expandir nuestra app gratuita. ¿Conoces una organización afirmativa y segura para las personas trans masculinas?</Text>\n<Text>Puedes sugerir un recurso para que se incluya en la app gratuita de InReach <Link>aquí</Link>.</Text>",
+		"card3": "<Title>Accede a Recursos Afirmativos 24/7</Title>\n<Text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo. <Link>Haz click aquí</Link> para encontrar recursos. ¡Mantente antente a nuestro nuevo filtro 'ordenar por' recursos para hombres trans y la comunidad transmasculina!</Text>"
 	},
 	"artist-credit": "Dibujos por Joey Borrelli.",
 	"back": "Anterior",
