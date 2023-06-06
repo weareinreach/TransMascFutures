@@ -80,6 +80,7 @@ export const MainPage = ({ categories }: MainPageProps) => {
 							variant='category'
 							component={Link}
 							href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
+							style={{ textAlign: 'center' }}
 						>
 							<Trans i18nKey='see-x-stories' values={{ category: categoryName }} shouldUnescape={true} />
 						</Anchor>

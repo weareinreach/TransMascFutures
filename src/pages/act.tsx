@@ -28,11 +28,13 @@ export const Act: NextPage = () => {
 			<Grid p='md'>
 				<Grid.Col md={4}>
 					<Center>
-						<Card maw={450}>
+						<Card maw={450} h='100%'>
 							<Card.Section>
-								<Center>
+								<Center h={400}>
 									<AspectRatio ratio={ParticipateImage.width / ParticipateImage.height} w={400}>
-										<Image src={ParticipateImage} alt='' fill />
+										<Link href={{ pathname: '/' }}>
+											<Image src={ParticipateImage} alt='' fill />
+										</Link>
 									</AspectRatio>
 								</Center>
 							</Card.Section>
@@ -50,9 +52,11 @@ export const Act: NextPage = () => {
 					<Center>
 						<Card maw={450}>
 							<Card.Section>
-								<Center>
-									<AspectRatio ratio={SuggestImage.width / SuggestImage.height} w={242} h={400}>
-										<Image src={SuggestImage} alt='' fill />
+								<Center h={400}>
+									<AspectRatio ratio={SuggestImage.width / SuggestImage.height} w={300} h={400}>
+										<a href='https://app.inreach.org/suggest'>
+											<Image src={SuggestImage} alt='' fill />
+										</a>
 									</AspectRatio>
 								</Center>
 							</Card.Section>
@@ -70,9 +74,11 @@ export const Act: NextPage = () => {
 					<Center>
 						<Card maw={450}>
 							<Card.Section>
-								<Center>
+								<Center h={400}>
 									<AspectRatio ratio={AppImage.width / AppImage.height} w={200} h={400}>
-										<Image src={AppImage} alt='' fill />
+										<a href='https://app.inreach.org'>
+											<Image src={AppImage} alt='' fill />
+										</a>
 									</AspectRatio>
 								</Center>
 							</Card.Section>

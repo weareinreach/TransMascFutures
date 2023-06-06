@@ -181,13 +181,13 @@ const Gallery = () => {
 			<Head>
 				<title>{t('page-title.general-template', { page: '$t(nav.gallery)' })}</title>
 			</Head>
-			<Grid align='center' my='md'>
-				<Grid.Col lg={5} md={4} px={{ lg: 40 }}>
+			<Grid align='center' my='md' grow>
+				<Grid.Col sm={6} lg={5} md={4} px={{ lg: 40 }}>
 					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750}>
 						<Image src={Logo} alt={t('logo-alt')} fill />
 					</AspectRatio>
 				</Grid.Col>
-				<Grid.Col md={4}>
+				<Grid.Col sm={6} md={4}>
 					<Title
 						fw={300}
 						order={1}
@@ -200,8 +200,15 @@ const Gallery = () => {
 						{t('page-title.gallery')}
 					</Title>
 				</Grid.Col>
-				<Grid.Col lg={3} md={4}>
-					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
+				<Grid.Col span={6} lg={3} md={4}>
+					<Button
+						component={Link}
+						href={{ pathname: '/survey' }}
+						tt='uppercase'
+						variant='secondary'
+						display='block'
+						mx='auto'
+					>
 						{t('participate')}
 					</Button>
 				</Grid.Col>

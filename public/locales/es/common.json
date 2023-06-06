@@ -16,27 +16,29 @@
 	"act": {
 		"card1": "<Title>Participa en esta campaña</Title>\n<Text>Actualmente estamos aceptando envíos de hombres trans y adultos trans masculinos en EE. UU para poder compartir su historia.</Text>\n<Text>Haz click <Link>aquí</Link> para participar.</Text>",
 		"card2": "<Title>Ayuda a aumentar el acceso a recursos para la diversa comunidad trans masculina</Title>\n<TextInReach siempre está buscando nuevas sugerencias sobre recursos para ayudar a expandid nuestra aplicación gratuita. ¿Conoces una organización género afirmante y segura para las personas trans masculinas?</Text>\n<Text>Puedes sugerir un recurso para que se incluya en la aplicación gratuita de InReach <Link>aquí</Link>.</Text>",
-		"card3": "<Title>Accede a recursos afirmantes, 24/7</Title>\n<Text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo.</Text>\n<Text><Link>Haz click aquí</Link> y nuestro nuevo filtro 'ordenar por' de la comunidad trans masculina y de hombres trans se aplicará automáticamente a tu búsqueda!</Text>"
+		"card3": "<Title>Accede a Recursos Afirmativos 24/7</Title>\n<Text>Usa la aplicación gratuita InReach para acceder a servicios sociales, médicos, legales, médicos y de salud mental seguros y verificados de forma independiente cerca tuyo.</Text>\n<Text><Link>Haz click aquí</Link> y nuestro nuevo filtro 'ordenar por' de la comunidad trans masculina y de hombres trans se aplicará automáticamente a tu búsqueda!</Text>"
 	},
+	"artist-credit": "Dibujos por Joey Borrelli.",
 	"back": "Anterior",
+	"donate": "Donar",
 	"errors": {
-		"consent-all-3": "Debes consentir a los tres.",
-		"min-21": "Debes tener al menos 21 años para participar.",
-		"other-val": "Por favor especifica",
-		"select-min-one": "Seleccione al menos un elemento",
-		"verify-all-3": "Debe verificar que los tres son verdaderos."
+		"consent-all-3": "Debes dar tu consentimiento a todos los tres",
+		"min-21": "Debes tener por lo menos 21 años para participar",
+		"other-val": "Por favor, especifica",
+		"select-min-one": "Selecciona por lo menos un elemento",
+		"verify-all-3": "Debes comprobar que los tres son verdaderos"
 	},
 	"logo-alt": "Logotipo de InReach & GLAAD #TransMascFutures",
 	"main-page": {
-		"tagline1": "Trans men and transmasculine adults share their stories of trans joy.",
-		"tagline2": "Trans futures are InReach."
+		"tagline1": "Hombres Trans y Adultos Trans Masculinos comparten sus historias de alegría trans.",
+		"tagline2": "Los futuros trans son InReach."
 	},
 	"nav": {
 		"about": "Acerca de",
 		"act": "Actúa",
 		"find-resources": "Encuentra recursos",
 		"gallery": "Galería",
-		"home": "Regresar al inicio",
+		"home": "Inicio",
 		"share": "Comparte",
 		"share-your-story": "Comparte tu historia",
 		"stories": "Historias",
@@ -46,8 +48,8 @@
 	"next": "Próximo",
 	"page-title": {
 		"gallery": "Alegría Trans: Galería",
-		"general": "#TransmascFutures - InReach x GLAAD",
-		"general-template": "{{page}} - #TransmascFutures - InReach x GLAAD"
+		"general": "#TransMascFutures - InReach x GLAAD",
+		"general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
 	},
 	"participate": "Haz click aquí para partcipar",
 	"see-x-stories": "Ver Historias sobre {{category}}",
@@ -56,7 +58,7 @@
 		"list1": "Múltiples gráficos PNG de 1080 x 1080",
 		"list2": "Documento de PDF con una muestra compartiendo lenguaje",
 		"subtitle": "Para tu conveniencia al compartir:",
-		"title": "Usa nuestro kit de herramientas de redes sociales #TransmascFutures"
+		"title": "Usa nuestro kit de herramientas de redes sociales Trans MascFutures"
 	},
 	"story": {
 		"prompt1": "El primer momento en el cual pude ver mi futuro como un hombre trans o una persona transmasculina fue...",
@@ -70,12 +72,12 @@
 		"immigrant": "Transmasculino + Inmigrante + Con orgullo",
 		"queer": "Transmasculino + Queer + Con orgullo",
 		"transman": "Hombre trans + Con orgullo",
-		"transmasc-nonbinary": "Transmasculino/No binario + Con orgullo"
+		"transmasc-nonbinary": "Transmasculino / No binario + Con orgullo"
 	},
-	"submit": "enviar",
+	"submit": "Entregar",
 	"survey-form": {
 		"eligiblity": "<Text>Criterios de elegibilidad de las personas participando:</Text>\n<List><ListItem>Eres un hombre trans o una persona trans masculina</ListItem>\n<ListItem>Tienes 21 años o más</ListItem>\n<ListItem>Actualmente vives en algún lugar de los Estados Unidos.</ListItem></List>",
-		"intro": "InReach se asocia con GLAAD para organizar #TransmascFutures. Esta campaña digital dirigida por personas trans tiene como objetivo mostrar historias positivas de la diversa comunidad trans masculina y aumentar el acceso a recursos seguros y verificados a través de la aplicación InReach. La campaña #TransmascFutures se lanzó el 7 de junio de 2023. Envía este formulario para agregar tu historia al sitio web de la campaña.",
+		"intro": "InReach se asocia con GLAAD para organizar Trans MascFutures. Esta campaña digital dirigida por personas trans tiene como objetivo mostrar historias positivas de la diversa comunidad trans masculina y aumentar el acceso a recursos seguros y verificados a través de la aplicación InReach. La campaña Trans MascFutures se lanzó el 7 de junio de 2023. Envía este formulario para agregar tu historia al sitio web de la campaña.",
 		"prefer-not-answer": "Prefiero no responder",
 		"q1": "Verifica que lo siguiente es verdadero (marca todo lo que corresponda):",
 		"q1-opts": {
@@ -140,11 +142,11 @@
 		},
 		"q2": "Doy mi consentimiento para que InReach comparta mi historia a través de:",
 		"q2-opts": {
-			"00_website": "Sitio web de la campaña #TransmascFutures",
+			"00_website": "Sitio web de la campaña Trans MascFutures",
 			"01_social": "Redes sociales (@weareinreach en las redes sociales)",
 			"02_media": "Medios/Prensa"
 		},
-		"q3": "Proporciona tu dirección de correo electrónico si deseas mantenerte al tanto sobre el estado de la campaña #TransmascFutures.",
+		"q3": "Proporciona tu dirección de correo electrónico si deseas mantenerte al tanto sobre el estado de la campaña Trans MascFutures.",
 		"q4": "Ingresa tu nombre como te gustaría que apareciera en el sitio web de la campaña.<br/>(Solo se mostrará un nombre. Los alias son bienvenidos).",
 		"q5": "Me identifico como:<br/><em>(Por favor selecciona toda opción que aplica a tí.)</em>",
 		"q5-opts": {

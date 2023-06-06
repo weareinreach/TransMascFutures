@@ -1,4 +1,4 @@
-import { Anchor, Button, createStyles, Group, MantineProvider } from '@mantine/core'
+import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 import { Notifications } from '@mantine/notifications'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -16,7 +16,7 @@ import { api } from '~/utils/api'
 
 import i18nConfig from '../../next-i18next.config'
 
-const useStyles = createStyles((theme, { showButton }: { showButton: boolean }) => ({
+const useStyles = createStyles((theme, { showButton, isHome }: { showButton: boolean; isHome: boolean }) => ({
 	homeButton: {
 		opacity: showButton ? '1' : '0',
 		[theme.fn.smallerThan('md')]: {
@@ -24,13 +24,16 @@ const useStyles = createStyles((theme, { showButton }: { showButton: boolean }) 
 			display: 'none',
 		},
 	},
+	artistCredit: {
+		opacity: isHome ? '1' : '0',
+	},
 }))
 
 const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { session, ...pageProps } }) => {
 	const router = useRouter()
 	const { asPath, pathname, query, locale } = router
 	const { t } = useTranslation()
-	const { classes } = useStyles({ showButton: router.pathname !== '/' })
+	const { classes } = useStyles({ showButton: router.pathname !== '/', isHome: router.pathname === '/' })
 	return (
 		<>
 			<Head>
@@ -49,12 +52,17 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 						<Component {...pageProps} />
 						<Group position='apart' w='100%' p={40}>
 							<Button
-								// eslint-disable-next-line @typescript-eslint/no-misused-promises
-								onClick={() => router.push('/')}
+								component='a'
+								href='https://inreach.kindful.com/'
+								target='_blank'
+								rel='noreferrer'
 								className={classes.homeButton}
 							>
-								{t('nav.home')}
+								{t('donate')}
 							</Button>
+							<Text className={classes.artistCredit} fw={500}>
+								{t('artist-credit')}
+							</Text>
 							<Anchor
 								variant='category'
 								tt='uppercase'
