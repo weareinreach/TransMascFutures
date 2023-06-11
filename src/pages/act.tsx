@@ -32,7 +32,7 @@ export const Act: NextPage = () => {
 							<Card.Section>
 								<Center h={400}>
 									<AspectRatio ratio={ParticipateImage.width / ParticipateImage.height} w={400}>
-										<Link href={{ pathname: '/' }}>
+										<Link href={{ pathname: '/survey' }}>
 											<Image src={ParticipateImage} alt='' fill />
 										</Link>
 									</AspectRatio>
@@ -42,7 +42,7 @@ export const Act: NextPage = () => {
 								i18nKey='act.card1'
 								components={{
 									...commonComponents,
-									Link: <Link href={{ pathname: '/' }}>.</Link>,
+									Link: <Link href={{ pathname: '/survey' }}>.</Link>,
 								}}
 							/>
 						</Card>

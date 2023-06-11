@@ -15,7 +15,7 @@ export const categoryImages = {
 	immigrant,
 	queer,
 	transman,
-	transmasc,
+	'transmasc-nonbinary': transmasc,
 } as const
 
 export const isValidCategoryImage = (category: unknown): category is keyof typeof categoryImages =>
