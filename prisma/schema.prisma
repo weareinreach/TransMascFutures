@@ -128,7 +128,7 @@ model Pronouns {
 model PronounsToStory {
   pronoun   Pronouns @relation(fields: [pronounId], references: [id])
   pronounId String
-  story     Story    @relation(fields: [storyId], references: [id])
+  story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
   storyId   String
 
   createdAt DateTime @default(now())
@@ -172,7 +172,7 @@ model Story {
 model StoryToCategory {
   category   StoryCategory @relation(fields: [categoryId], references: [id])
   categoryId String
-  story      Story         @relation(fields: [storyId], references: [id])
+  story      Story         @relation(fields: [storyId], references: [id], onDelete: Cascade)
   storyId    String
   createdAt  DateTime      @default(now())
   updatedAt  DateTime      @updatedAt
@@ -203,4 +203,13 @@ model StorySubmission {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model DataMigration {
+  id          String   @id @default(cuid())
+  jobId       String   @unique
+  title       String
+  description String?
+  createdBy   String
+  appliedAt   DateTime @default(now())
 }
