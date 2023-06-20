@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery
 	}
 }
 export const getStaticPaths: GetStaticPaths = async ({ locales = ['en', 'es'] }) => {
-	const stories = await prisma.story.findMany({ select: { id: true } })
+	const stories = await prisma.story.findMany({ select: { id: true }, where: { published: true } })
 
 	return {
 		paths: stories.flatMap(({ id }) => locales.map((locale) => ({ params: { id }, locale }))),
