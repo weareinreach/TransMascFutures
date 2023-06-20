@@ -32,9 +32,8 @@ const config = {
 /**
  * Wraps NextJS config with the Bundle Analyzer config.
  *
- * @template {typeof config} T
- * @param {T} config
- * @returns {T}
+ * @param {typeof config} config
+ * @returns {typeof config}
  */
 function defineNextConfig(config) {
 	return withBundleAnalyzer(withRoutes(config))
