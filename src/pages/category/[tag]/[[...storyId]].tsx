@@ -181,7 +181,7 @@ export const getStaticPaths: GetStaticPaths<{ tag: string; storyId?: string[] }>
 	locales = ['en', 'es'],
 }) => {
 	const categories = await prisma.storyCategory.findMany({
-		select: { tag: true, stories: { select: { storyId: true } } },
+		select: { tag: true, stories: { select: { storyId: true }, where: { story: { published: true } } } },
 	})
 
 	const paths = categories.flatMap(({ tag, stories }) => [
