@@ -116,6 +116,7 @@ model StoryCategory {
 model Pronouns {
   id String @id @default(cuid())
 
+  tag        String @unique
   pronounsEN String
   pronounsES String
 
