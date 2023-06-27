@@ -21,7 +21,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
         with:
-          node-version: 16
+          node-version: 18
       - uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd # v2.2.4
         name: Install pnpm
         id: pnpm-install
@@ -43,7 +43,7 @@ jobs:
         run: pnpm install
         # 👇 Runs Chromatic CLI in ./packages/ui
       - name: Publish to Chromatic
-        uses: chromaui/action@422cd01724d9a94e7d32d3d1e04ed5b044e90ba3 # v1
+        uses: chromaui/action@44caff7e88d584b04f79f04e31e819f9a95d4d8f # v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
