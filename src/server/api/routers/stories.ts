@@ -110,6 +110,21 @@ export const storyRouter = createTRPCRouter({
 				id: true,
 			},
 		})
+		await ctx.prisma.story.create({
+			data: {
+				name: input.q4,
+				response1EN: input.q8,
+				response2EN: input.q9,
+				categories: {
+					create: input.q5.map((tag) => ({ category: { connect: { tag } } })),
+				},
+				pronouns: {
+					create: input.q7.map((tag) => ({ pronoun: { connect: { tag } } })),
+				},
+				published: false,
+			},
+		})
+
 		return submission
 	}),
 })
