@@ -27,9 +27,10 @@
 		"lint:staged": "lint-staged",
 		"prepare": "tsx ./.lib/prepare.ts",
 		"start": "next start",
-		"with-env": "dotenv -e ../../.env --"
+		"with-env": "dotenv -e ./.env --"
 	},
 	"dependencies": {
+		"@crowdin/crowdin-api-client": "1.23.3",
 		"@emotion/react": "11.11.1",
 		"@emotion/server": "11.11.0",
 		"@mantine/carousel": "6.0.15",
