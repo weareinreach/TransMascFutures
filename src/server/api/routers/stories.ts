@@ -2,6 +2,7 @@
 import { z } from 'zod'
 
 import { SurveySchema } from '~/pages/survey'
+import { crowdin } from '~/server/crowdin'
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
 
@@ -110,7 +111,7 @@ export const storyRouter = createTRPCRouter({
 				id: true,
 			},
 		})
-		await ctx.prisma.story.create({
+		const storyRecord = await ctx.prisma.story.create({
 			data: {
 				name: input.q4,
 				response1EN: input.q8,
@@ -125,6 +126,39 @@ export const storyRouter = createTRPCRouter({
 			},
 		})
 
+		const crowdinAdditions: CrowdinBatchAdd[] = []
+		if (storyRecord.response1EN) {
+			crowdinAdditions.push({
+				op: 'add',
+				path: '/-',
+				value: { text: storyRecord.response1EN, identifier: `${storyRecord.id}.response1`, fileId: 2653 },
+			})
+		}
+		if (storyRecord.response2EN) {
+			crowdinAdditions.push({
+				op: 'add',
+				path: '/-',
+				value: { text: storyRecord.response2EN, identifier: `${storyRecord.id}.response2`, fileId: 2653 },
+			})
+		}
+
+		if (crowdinAdditions.length) {
+			try {
+				await crowdin.sourceStringsApi.stringBatchOperations(14, crowdinAdditions)
+			} catch (e) {
+				console.error(e)
+			}
+		}
 		return submission
 	}),
 })
+
+type CrowdinBatchAdd = {
+	op: 'add'
+	path: string
+	value: {
+		text: string
+		identifier: string
+		fileId: number
+	}
+}
