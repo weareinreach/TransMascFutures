@@ -180,5 +180,6 @@
 		"step4": "Confirmation",
 		"switch-lang": "Haz clic aquí para la versión en español de la encuesta.",
 		"thank-you": "<strong>Thank you for sharing your story!</strong><br/>Assuming your submission meets our participant eligibility criteria, we will add your story to our campaign website shortly. In the meantime, be sure to follow @weareinreach on social media for updates and download our campaign social media toolkit to share the campaign.<br/><br/>If you have any questions, please email marketing@inreach.org."
-	}
+	},
+	"vercel": "Powered by Vercel"
 }
