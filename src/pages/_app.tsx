@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { type AppType } from 'next/app'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
@@ -15,6 +16,7 @@ import { fontWorkSans, styleCache, theme } from '~/styles'
 import { api } from '~/utils/api'
 
 import i18nConfig from '../../next-i18next.config'
+import VercelLogo from '../../public/powered-by-vercel.svg'
 
 const useStyles = createStyles((theme, { showButton, isHome }: { showButton: boolean; isHome: boolean }) => ({
 	homeButton: {
@@ -77,6 +79,11 @@ const MyApp: AppType<{ session: Session | null }> = ({ Component, pageProps: { s
 							>
 								{t('nav.switch-lang')}
 							</Anchor>
+						</Group>
+						<Group position='right' w='100%' p={40} pt={0}>
+							<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
+								<Image src={VercelLogo} alt={t('vercel')} />
+							</a>
 						</Group>
 					</SessionProvider>
 				</ModalsProvider>
