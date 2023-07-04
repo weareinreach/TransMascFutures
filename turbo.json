@@ -1,7 +1,7 @@
 {
 	"$schema": "https://turbo.build/schema.json",
 	"globalDotEnv": ["./.env"],
-	"globalEnv": ["POSTGRES_URL_NON_POOLING", "POSTGRES_PRISMA_URL", "NEXTAUTH_SECRET"],
+	"globalEnv": ["POSTGRES_URL_NON_POOLING", "POSTGRES_PRISMA_URL", "NEXTAUTH_SECRET", "CROWDIN_API"],
 	"pipeline": {
 		"build:next": {
 			"dependsOn": ["db:deploy", "db:dataMigrate"],
