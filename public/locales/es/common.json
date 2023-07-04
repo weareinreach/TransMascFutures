@@ -180,5 +180,6 @@
 		"step4": "Confirmación",
 		"switch-lang": "Click here for the English version of the survey.",
 		"thank-you": "<strong>¡Gracias por compartir tu historia!</strong>Suponiendo que lo que has enviado cumple con nuestros criterios de elegibilidad de participantes, agregaremos tu historia al sitio web de nuestra campaña en breve. Mientras tanto, asegúrate de seguir @weareinreach en las redes sociales para obtener actualizaciones y descargar nuestro kit de herramientas de redes sociales de la campaña para compartir la campaña.<br/><br/>Si tienes alguna pregunta, envía un correo electrónico a marketing@inreach.org."
-	}
+	},
+	"vercel": "Powered by Vercel"
 }
