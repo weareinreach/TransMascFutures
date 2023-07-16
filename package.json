@@ -30,7 +30,7 @@
 		"with-env": "dotenv -e ./.env --"
 	},
 	"dependencies": {
-		"@crowdin/crowdin-api-client": "1.23.3",
+		"@crowdin/crowdin-api-client": "1.23.4",
 		"@emotion/react": "11.11.1",
 		"@emotion/server": "11.11.0",
 		"@mantine/carousel": "6.0.16",
@@ -51,8 +51,8 @@
 		"@next/bundle-analyzer": "13.4.10",
 		"@prisma/client": "5.0.0",
 		"@tabler/icons-react": "2.25.0",
-		"@tanstack/react-query": "4.29.19",
-		"@tanstack/react-query-devtools": "4.29.19",
+		"@tanstack/react-query": "4.29.25",
+		"@tanstack/react-query-devtools": "4.29.25",
 		"@tiptap/extension-link": "2.0.3",
 		"@tiptap/react": "2.0.3",
 		"@tiptap/starter-kit": "2.0.3",
@@ -107,7 +107,7 @@
 		"chromatic": "6.19.9",
 		"dotenv": "16.3.1",
 		"dotenv-cli": "7.2.1",
-		"eslint": "8.44.0",
+		"eslint": "8.45.0",
 		"eslint-config-next": "13.4.10",
 		"eslint-config-prettier": "8.8.0",
 		"eslint-formatter-github": "1.1.4",
@@ -132,7 +132,7 @@
 		"storybook": "7.0.27",
 		"tsx": "3.12.7",
 		"turbo": "1.10.7",
-		"type-fest": "3.13.0",
+		"type-fest": "3.13.1",
 		"typescript": "5.1.6"
 	},
 	"packageManager": "pnpm@8.6.7",
