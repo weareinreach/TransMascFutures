@@ -132,7 +132,7 @@
 		"storybook": "7.0.27",
 		"tsx": "3.12.7",
 		"turbo": "1.10.7",
-		"type-fest": "3.13.1",
+		"type-fest": "4.0.0",
 		"typescript": "5.1.6"
 	},
 	"packageManager": "pnpm@8.6.7",
