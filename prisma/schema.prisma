@@ -7,10 +7,10 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("PRISMA_SHADOW_DB") // used for migrations
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  //shadowDatabaseUrl = env("PRISMA_SHADOW_DB") // used for migrations
 }
 
 //
@@ -136,6 +136,7 @@ model PronounsToStory {
   updatedAt DateTime @updatedAt
 
   @@id([storyId, pronounId])
+  @@index([storyId])
 }
 
 model Story {
@@ -179,6 +180,8 @@ model StoryToCategory {
   updatedAt  DateTime      @updatedAt
 
   @@id([categoryId, storyId])
+  @@index([storyId])
+  @@index([categoryId])
 }
 
 model PartnerOrg {
