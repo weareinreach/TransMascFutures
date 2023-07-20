@@ -26,6 +26,11 @@ const config = {
 		remotePatterns: [{ protocol: 'https', hostname: 'placehold.co', pathname: '/**' }],
 		// domains: ['placehold.co'],
 	},
+	experimental: {
+		outputFileTracingExcludes: {
+			'*': ['**swc+core**', '**esbuild**'],
+		},
+	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
 }
