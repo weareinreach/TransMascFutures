@@ -68,7 +68,7 @@ export const theme: MantineThemeOverride = {
 							textDecoration: 'underline',
 							...theme.fn.hover({ textDecoration: 'none' }),
 						},
-					} satisfies Styles<'root', AnchorStylesParams>),
+					}) satisfies Styles<'root', AnchorStylesParams>,
 			},
 		},
 		Button: {
@@ -126,7 +126,7 @@ export const theme: MantineThemeOverride = {
 					input: {
 						maxWidth: rem(300),
 					},
-				} satisfies Styles<TextInputStylesNames>),
+				}) satisfies Styles<TextInputStylesNames>,
 		},
 		Textarea: {
 			styles: (theme) => ({
@@ -139,7 +139,7 @@ export const theme: MantineThemeOverride = {
 			styles: (theme) =>
 				({
 					label: { marginBottom: rem(4) },
-				} satisfies Styles<InputWrapperStylesNames>),
+				}) satisfies Styles<InputWrapperStylesNames>,
 		},
 		Checkbox: {
 			styles: (themes) =>
@@ -147,7 +147,7 @@ export const theme: MantineThemeOverride = {
 					body: {
 						margin: `${rem(8)} 0`,
 					},
-				} satisfies Styles<CheckboxStylesNames, CheckboxStylesParams>),
+				}) satisfies Styles<CheckboxStylesNames, CheckboxStylesParams>,
 		},
 		Radio: {
 			styles: (themes) =>
@@ -155,7 +155,7 @@ export const theme: MantineThemeOverride = {
 					body: {
 						margin: `${rem(8)} 0`,
 					},
-				} satisfies Styles<RadioStylesNames, RadioStylesParams>),
+				}) satisfies Styles<RadioStylesNames, RadioStylesParams>,
 		},
 		Stepper: {
 			styles: (theme) =>
@@ -165,7 +165,7 @@ export const theme: MantineThemeOverride = {
 						maxWidth: rem(800),
 						margin: `${rem(40)} auto 0 auto`,
 					},
-				} satisfies Styles<StepperStylesNames, StepperStylesParams>),
+				}) satisfies Styles<StepperStylesNames, StepperStylesParams>,
 		},
 	},
 	other: themeCustomObj,
