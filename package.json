@@ -124,7 +124,7 @@
 		"listr2": "6.6.0",
 		"merge-anything": "5.1.7",
 		"prettier": "2.8.8",
-		"prettier-plugin-jsdoc": "0.4.2",
+		"prettier-plugin-jsdoc": "1.0.1",
 		"prettier-plugin-packagejson": "2.4.5",
 		"prettier-plugin-prisma": "5.0.0",
 		"prisma": "5.0.0",
