@@ -56,6 +56,7 @@ export const getStaticProps: GetStaticProps<ArtistDisplayProps, RoutedQuery<'/ga
 			artwork,
 			...(await getServerSideTranslations(locale)),
 		},
+		revalidate: 60 * 60 * 24 * 7, // 1 week
 	}
 }
 
@@ -67,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 			{ params: { slug }, locale: 'en' },
 			{ params: { slug }, locale: 'es' },
 		]),
-		fallback: false,
+		fallback: 'blocking',
 	}
 }
 

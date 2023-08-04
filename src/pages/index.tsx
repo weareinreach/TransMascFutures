@@ -165,6 +165,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 60 * 60 * 24, // 24 hours
+		revalidate: 60 * 60 * 24 * 7, // 1 week
 	}
 }
