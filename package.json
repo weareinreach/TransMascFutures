@@ -120,7 +120,7 @@
 		"eslint-plugin-storybook": "0.6.13",
 		"eslint-plugin-turbo": "1.10.12",
 		"husky": "8.0.3",
-		"lint-staged": "13.3.0",
+		"lint-staged": "14.0.0",
 		"listr2": "6.6.1",
 		"merge-anything": "5.1.7",
 		"prettier": "3.0.1",
