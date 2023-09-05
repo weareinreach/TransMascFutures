@@ -43,7 +43,7 @@ jobs:
         run: pnpm install
         # 👇 Runs Chromatic CLI in ./packages/ui
       - name: Publish to Chromatic
-        uses: chromaui/action@48ebd055a3613e6a5a8b73f053d4aabd9f3530fa # v1
+        uses: chromaui/action@ebe6961baace1e0d9cc098eb14ae41ab96394958 # v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
