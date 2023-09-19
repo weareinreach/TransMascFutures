@@ -146,15 +146,6 @@
 	"pnpm": {
 		"overrides": {
 			"eslint-plugin-import": "npm:eslint-plugin-i"
-		},
-		"peerDependencyRules": {
-			"allowedVersions": {
-				"react": "18",
-				"next": "13",
-				"react-i18next": "12",
-				"i18next-browser-languagedetector": "7",
-				"i18next-http-backend": "2"
-			}
 		}
 	}
 }
