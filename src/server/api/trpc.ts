@@ -15,20 +15,14 @@
  *
  * These allow you to access things like the database, the session, etc, when processing a request
  */
-import { initTRPC, TRPCError } from '@trpc/server'
+import { initTRPC } from '@trpc/server'
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
-import { type NextApiRequest, type NextApiResponse } from 'next'
-import { type Session } from 'next-auth'
 import superjson from 'superjson'
+import { ZodError } from 'zod'
 
-import { getServerAuthSession } from '../auth'
 import { prisma } from '../db'
 
-type CreateContextOptions = {
-	session: Session | null
-	req?: NextApiRequest
-	res?: NextApiResponse
-}
+type CreateContextOptions = Record<string, never>
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export it from
@@ -41,12 +35,9 @@ type CreateContextOptions = {
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-export const createInnerTRPCContext = (opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
 	return {
-		session: opts.session,
 		prisma,
-		req: opts.req,
-		res: opts.res,
 	}
 }
 
@@ -56,17 +47,8 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  *
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-	const { req, res } = opts
-
-	// Get the session from the server using the unstable_getServerSession wrapper function
-	const session = await getServerAuthSession({ req, res })
-
-	return createInnerTRPCContext({
-		session,
-		req,
-		res,
-	})
+export const createTRPCContext = (opts: CreateNextContextOptions) => {
+	return createInnerTRPCContext({})
 }
 
 /**
@@ -77,8 +59,14 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
 	transformer: superjson,
-	errorFormatter({ shape }) {
-		return shape
+	errorFormatter({ shape, error }) {
+		return {
+			...shape,
+			data: {
+				...shape.data,
+				zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+			},
+		}
 	},
 })
 
@@ -103,51 +91,3 @@ export const createTRPCRouter = t.router
  * that a user querying is authorized, but you can still access user session data if they are logged in
  */
 export const publicProcedure = t.procedure
-
-/** Reusable middleware that enforces users are logged in before running the procedure */
-const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-	if (!ctx.session || !ctx.session.user) {
-		throw new TRPCError({ code: 'UNAUTHORIZED' })
-	}
-	return next({
-		ctx: {
-			// infers the `session` as non-nullable
-			session: { ...ctx.session, user: ctx.session.user },
-		},
-	})
-})
-
-/**
- * Protected (authed) procedure
- *
- * If you want a query or mutation to ONLY be accessible to logged in users, use this. It verifies the session
- * is valid and guarantees ctx.session.user is not null
- *
- * @see https://trpc.io/docs/procedures
- */
-export const protectedProcedure = t.procedure.use(enforceUserIsAuthed)
-
-const adminUser = t.middleware(({ ctx, next }) => {
-	if (!ctx.session || !ctx.session.user) {
-		throw new TRPCError({ code: 'UNAUTHORIZED' })
-	}
-	if (!ctx.session.user.permissions.includes('glaadAdmin')) {
-		throw new TRPCError({ code: 'FORBIDDEN' })
-	}
-	return next({
-		ctx: {
-			// infers the `session` as non-nullable
-			session: { ...ctx.session, user: ctx.session.user },
-		},
-	})
-})
-
-/**
- * Protected (admin) procedure
- *
- * If you want a query or mutation to ONLY be accessible to logged in **administrators**, use this. It
- * verifies the session is valid, checks for admin permission, and guarantees ctx.session.user is not null
- *
- * @see https://trpc.io/docs/procedures
- */
-export const adminProcedure = t.procedure.use(adminUser)

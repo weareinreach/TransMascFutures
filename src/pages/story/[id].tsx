@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery
 	locale,
 	params,
 }) => {
-	const ssg = await trpcServerClient({ session: null })
+	const ssg = trpcServerClient()
 	if (!params?.id) return { notFound: true }
 
 	const [i18n] = await Promise.allSettled([

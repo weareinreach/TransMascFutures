@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
 	AspectRatio,
 	Center,
@@ -191,7 +190,7 @@ const AboutPage = () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	const ssg = await trpcServerClient({ session: null })
+	const ssg = trpcServerClient()
 
 	const [i18n] = await Promise.allSettled([getServerSideTranslations(locale), ssg.partner.getAll.prefetch()])
 

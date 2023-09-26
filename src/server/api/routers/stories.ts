@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { z } from 'zod'
 
 import { SurveySchema } from '~/pages/survey'
 import { crowdin } from '~/server/crowdin'
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc'
+import { createTRPCRouter, publicProcedure } from '../trpc'
 
 export const storyRouter = createTRPCRouter({
 	getStoryBySlug: publicProcedure
@@ -56,14 +55,14 @@ export const storyRouter = createTRPCRouter({
 			})
 			return story
 		}),
-	unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
-		const { id } = input
-		// Check if story belongs to user
-		return await ctx.prisma.story.update({
-			where: { id },
-			data: { published: false },
-		})
-	}),
+	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
+	// 	const { id } = input
+	// 	// Check if story belongs to user
+	// 	return await ctx.prisma.story.update({
+	// 		where: { id },
+	// 		data: { published: false },
+	// 	})
+	// }),
 	getCategories: publicProcedure.query(async ({ ctx }) => {
 		const categories = await ctx.prisma.storyCategory.findMany({
 			select: {
@@ -105,7 +104,7 @@ export const storyRouter = createTRPCRouter({
 		const submission = await ctx.prisma.storySubmission.create({
 			data: {
 				responses: input,
-				userId: ctx.session?.user?.id ?? 'noUserId',
+				userId: 'noUserId',
 			},
 			select: {
 				id: true,

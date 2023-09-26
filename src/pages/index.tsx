@@ -153,7 +153,7 @@ const Home: NextPage = () => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	const ssg = await trpcServerClient({ session: null })
+	const ssg = trpcServerClient()
 
 	const [i18n] = await Promise.allSettled([
 		getServerSideTranslations(locale),

@@ -158,7 +158,7 @@ export const getStaticProps: GetStaticProps<
 	Record<string, unknown>,
 	RoutedQuery<'/category/[tag]/[[...storyId]]'>
 > = async ({ locale, params }) => {
-	const ssg = await trpcServerClient({ session: null })
+	const ssg = trpcServerClient()
 	if (!params?.tag) return { notFound: true }
 
 	const storyId = Array.isArray(params.storyId) && params.storyId.length ? params.storyId.at(0) : undefined
@@ -174,7 +174,7 @@ export const getStaticProps: GetStaticProps<
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 60 * 60 * 24 * 7, // 1 week
+		revalidate: 604800, // 1 week
 	}
 }
 export const getStaticPaths: GetStaticPaths<{ tag: string; storyId?: string[] }> = async ({
