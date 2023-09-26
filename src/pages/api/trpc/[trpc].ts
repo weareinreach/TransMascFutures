@@ -15,7 +15,7 @@ export default createNextApiHandler({
 			  }
 			: undefined,
 	responseMeta(opts) {
-		const { ctx, errors, type } = opts
+		const { errors, type } = opts
 		// assuming you have all your public routes with the keyword `public` in them
 		// checking that no procedures errored
 		const allOk = errors.length === 0
@@ -24,7 +24,7 @@ export default createNextApiHandler({
 		// cache request for 1 day + revalidate once every second
 		const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 		const ONE_HOUR_IN_SECONDS = 60 * 60
-		if (ctx?.res && allOk && isQuery) {
+		if (allOk && isQuery) {
 			return {
 				headers: {
 					'cache-control': `s-maxage=${ONE_HOUR_IN_SECONDS}, stale-while-revalidate=${ONE_DAY_IN_SECONDS}`,
