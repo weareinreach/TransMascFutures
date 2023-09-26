@@ -128,6 +128,12 @@
 	"ct3aMetadata": {
 		"initVersion": "7.3.2"
 	},
+	"nextBundleAnalysis": {
+		"budget": 358400,
+		"budgetPercentIncreaseRed": 20,
+		"minimumChangeThreshold": 0,
+		"showDetails": true
+	},
 	"pnpm": {
 		"overrides": {
 			"eslint-plugin-import": "npm:eslint-plugin-i"
