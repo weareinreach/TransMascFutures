@@ -8,7 +8,7 @@ import i18nConfig from './next-i18next.config.js'
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful for
  * Docker builds.
  */
-// eslint-disable-next-line turbo/no-undeclared-env-vars
+
 !process.env.SKIP_ENV_VALIDATION && (await import('./src/env/server.mjs'))
 
 const withRoutes = nextRoutes({ outDir: 'src/types' })
