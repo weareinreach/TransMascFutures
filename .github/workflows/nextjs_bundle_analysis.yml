@@ -26,20 +26,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: pnpm
 
-      # If pnpm is used, you need to switch the previous step with the following one. pnpm does not create a package-lock.json
-      # so the step above will fail to pull dependencies
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: true
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Restore next build
         uses: actions/cache@v3
