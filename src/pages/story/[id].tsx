@@ -13,22 +13,20 @@ import { trpcServerClient } from '~/utils/ssr'
 
 const Story = () => {
 	const router = useRouter<'/story/[id]'>()
-	const { data, isLoading } = api.story.getStoryById.useQuery({ id: router.query.id ?? '' })
+	const locale = ['en', 'es'].includes(router.locale) ? router.locale : 'en'
+	const { data, isLoading } = api.story.getStoryById.useQuery({ id: router.query.id ?? '', locale })
 	const { t } = useTranslation()
 	if (!data || isLoading) return <>Loading...</>
 
 	const randomImage = data.categories.at(Math.floor(Math.random() * data.categories.length))?.category.image
 	const image = getCategoryImage(randomImage ?? '')
-	const isEnglish = router.locale === 'en'
 
 	const storyProps: IndividualStoryProps = {
 		name: data.name,
 		image,
-		pronouns: isEnglish
-			? data.pronouns.map(({ pronoun }) => pronoun.pronounsEN)
-			: data.pronouns.map(({ pronoun }) => pronoun.pronounsES),
-		response1: isEnglish ? data.response1EN : data.response2EN,
-		response2: isEnglish ? data.response2EN : data.response2ES,
+		pronouns: data.pronouns.map(({ pronoun }) => pronoun),
+		response1: data.response2,
+		response2: data.response2,
 	}
 
 	return (
@@ -42,15 +40,16 @@ const Story = () => {
 }
 
 export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery<'/story/[id]'>> = async ({
-	locale,
+	locale: ssrLocale,
 	params,
 }) => {
+	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
 	const ssg = trpcServerClient()
 	if (!params?.id) return { notFound: true }
 
 	const [i18n] = await Promise.allSettled([
 		getServerSideTranslations(locale),
-		ssg.story.getStoryById.prefetch({ id: params.id }),
+		ssg.story.getStoryById.prefetch({ id: params.id, locale }),
 	])
 
 	return {

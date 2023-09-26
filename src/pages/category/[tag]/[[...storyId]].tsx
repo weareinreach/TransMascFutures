@@ -25,7 +25,7 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`)
 	const category = router.query.tag
-	const isEnglish = router.locale === 'en'
+	const locale = ['en', 'es'].includes(router.locale) ? router.locale : 'en'
 	const popupStory = useMemo(
 		() =>
 			Array.isArray(router.query.storyId) && router.query.storyId.length
@@ -37,11 +37,11 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 	)
 
 	const { data: stories } = api.story.getByCategory.useQuery(
-		{ tag: router.query.tag ?? '' },
+		{ tag: router.query.tag ?? '', locale },
 		{ enabled: Boolean(router.query.tag) }
 	)
 	const { data: singleStory } = api.story.getStoryById.useQuery(
-		{ id: popupStory ?? '' },
+		{ id: popupStory ?? '', locale },
 		{ enabled: typeof popupStory === 'string' }
 	)
 
@@ -49,28 +49,24 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 
 	if (!category || !stories) return <Loader />
 
-	const previewCards = stories.map(
-		({ name, pronouns, response1EN, response1ES, response2EN, response2ES, id }, i) => {
-			const pronounList = pronouns.map(({ pronoun }) =>
-				router.locale === 'es' ? pronoun.pronounsES : pronoun.pronounsEN
-			)
-			const storyText = router.locale === 'es' ? response1ES ?? response2ES : response1EN ?? response2EN
-			return (
-				<Link
-					key={id}
-					href={{
-						pathname: '/category/[tag]/[[...storyId]]',
-						query: { tag: router.query.tag ?? '', storyId: [id] },
-					}}
-					as={`/story/${id}`}
-					scroll={false}
-					style={{ textDecoration: 'none' }}
-				>
-					<PreviewCard title={name} subtitle={pronounList.join(', ')} text={storyText} />
-				</Link>
-			)
-		}
-	)
+	const previewCards = stories.map(({ name, pronouns, response1, response2, id }, i) => {
+		const pronounList = pronouns.map(({ pronoun }) => pronoun)
+		const storyText = response1 ?? response2
+		return (
+			<Link
+				key={id}
+				href={{
+					pathname: '/category/[tag]/[[...storyId]]',
+					query: { tag: router.query.tag ?? '', storyId: [id] },
+				}}
+				as={`/story/${id}`}
+				scroll={false}
+				style={{ textDecoration: 'none' }}
+			>
+				<PreviewCard title={name} subtitle={pronounList.join(', ')} text={storyText} />
+			</Link>
+		)
+	})
 
 	return (
 		<Container fluid>
@@ -135,13 +131,9 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 					<IndividualStory
 						name={singleStory.name}
 						image={getCategoryImage(category)}
-						pronouns={
-							isEnglish
-								? singleStory.pronouns.map(({ pronoun }) => pronoun.pronounsEN)
-								: singleStory.pronouns.map(({ pronoun }) => pronoun.pronounsES)
-						}
-						response1={isEnglish ? singleStory.response1EN : singleStory.response1ES}
-						response2={isEnglish ? singleStory.response2EN : singleStory.response2ES}
+						pronouns={singleStory.pronouns.map(({ pronoun }) => pronoun)}
+						response1={singleStory.response1}
+						response2={singleStory.response2}
 					/>
 				)}
 			</Modal>
@@ -157,7 +149,8 @@ type CategoryPageProps = {
 export const getStaticProps: GetStaticProps<
 	Record<string, unknown>,
 	RoutedQuery<'/category/[tag]/[[...storyId]]'>
-> = async ({ locale, params }) => {
+> = async ({ locale: ssrLocale, params }) => {
+	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
 	const ssg = trpcServerClient()
 	if (!params?.tag) return { notFound: true }
 
@@ -165,8 +158,8 @@ export const getStaticProps: GetStaticProps<
 
 	const [i18n] = await Promise.allSettled([
 		getServerSideTranslations(locale),
-		ssg.story.getByCategory.prefetch({ tag: params?.tag }),
-		...(storyId ? [ssg.story.getStoryById.prefetch({ id: storyId })] : []),
+		ssg.story.getByCategory.prefetch({ tag: params?.tag, locale }),
+		...(storyId ? [ssg.story.getStoryById.prefetch({ id: storyId, locale })] : []),
 	])
 
 	return {

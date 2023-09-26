@@ -23,16 +23,58 @@ export const storyRouter = createTRPCRouter({
 		.input(
 			z.object({
 				id: z.string(),
+				locale: z.enum(['en', 'es']),
 			})
 		)
 		.query(async ({ ctx, input }) => {
+			const isEN = input.locale === 'en'
+			if (isEN) {
+				const story = await ctx.prisma.story.findUniqueOrThrow({
+					where: { id: input.id, published: true },
+					select: {
+						id: true,
+						name: true,
+						response1EN: true,
+						response2EN: true,
+						categories: {
+							select: {
+								category: {
+									select: {
+										id: true,
+										image: true,
+										imageAltEN: true,
+										categoryEN: true,
+										tag: true,
+									},
+								},
+							},
+						},
+						pronouns: { select: { pronoun: { select: { pronounsEN: true } } } },
+					},
+				})
+				const { categories, pronouns, response1EN, response2EN, ...rest } = story
+				const formatted = {
+					...rest,
+					response1: response1EN,
+					response2: response2EN,
+					categories: categories.map(({ category }) => ({
+						category: {
+							id: category.id,
+							image: category.image,
+							imageAlt: category.imageAltEN,
+							category: category.categoryEN,
+							tag: category.tag,
+						},
+					})),
+					pronouns: pronouns.map(({ pronoun }) => ({ pronoun: pronoun.pronounsEN })),
+				}
+				return formatted
+			}
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { id: input.id, published: true },
 				select: {
 					id: true,
 					name: true,
-					response1EN: true,
-					response2EN: true,
 					response1ES: true,
 					response2ES: true,
 					categories: {
@@ -41,19 +83,33 @@ export const storyRouter = createTRPCRouter({
 								select: {
 									id: true,
 									image: true,
-									imageAltEN: true,
 									imageAltES: true,
-									categoryEN: true,
 									categoryES: true,
 									tag: true,
 								},
 							},
 						},
 					},
-					pronouns: { select: { pronoun: { select: { pronounsEN: true, pronounsES: true } } } },
+					pronouns: { select: { pronoun: { select: { pronounsES: true } } } },
 				},
 			})
-			return story
+			const { categories, pronouns, response1ES, response2ES, ...rest } = story
+			const formatted = {
+				...rest,
+				response1: response1ES,
+				response2: response2ES,
+				categories: categories.map(({ category }) => ({
+					category: {
+						id: category.id,
+						image: category.image,
+						imageAlt: category.imageAltES,
+						category: category.categoryES,
+						tag: category.tag,
+					},
+				})),
+				pronouns: pronouns.map(({ pronoun }) => ({ pronoun: pronoun.pronounsES })),
+			}
+			return formatted
 		}),
 	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
 	// 	const { id } = input
@@ -79,8 +135,42 @@ export const storyRouter = createTRPCRouter({
 		return categories
 	}),
 	getByCategory: publicProcedure
-		.input(z.object({ tag: z.string(), take: z.number().optional() }))
+		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es']) }))
 		.query(async ({ ctx, input }) => {
+			if (input.locale === 'en') {
+				const stories = await ctx.prisma.story.findMany({
+					where: {
+						published: true,
+						categories: { some: { category: { tag: input.tag } } },
+					},
+					select: {
+						id: true,
+						name: true,
+						categories: {
+							select: { category: { select: { categoryEN: true, id: true } } },
+						},
+						pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true } } } },
+						response1EN: true,
+						response2EN: true,
+					},
+					...(input.take ? { take: input.take } : {}),
+				})
+				const formatted = stories.map(({ categories, pronouns, response1EN, response2EN, ...rest }) => ({
+					...rest,
+					response1: response1EN,
+					response2: response2EN,
+					categories: categories.map(({ category }) => ({
+						category: {
+							id: category.id,
+							category: category.categoryEN,
+						},
+					})),
+					pronouns: pronouns.map(({ pronoun }) => ({
+						pronoun: pronoun.pronounsEN,
+					})),
+				}))
+				return formatted
+			}
 			const stories = await ctx.prisma.story.findMany({
 				where: {
 					published: true,
@@ -89,16 +179,28 @@ export const storyRouter = createTRPCRouter({
 				select: {
 					id: true,
 					name: true,
-					categories: { select: { category: { select: { categoryEN: true, categoryES: true, id: true } } } },
-					pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true, pronounsES: true } } } },
-					response1EN: true,
+					categories: { select: { category: { select: { categoryES: true, id: true } } } },
+					pronouns: { select: { pronoun: { select: { id: true, pronounsES: true } } } },
 					response1ES: true,
-					response2EN: true,
 					response2ES: true,
 				},
 				...(input.take ? { take: input.take } : {}),
 			})
-			return stories
+			const formatted = stories.map(({ categories, pronouns, response1ES, response2ES, ...rest }) => ({
+				...rest,
+				response1: response1ES,
+				response2: response2ES,
+				categories: categories.map(({ category }) => ({
+					category: {
+						id: category.id,
+						category: category.categoryES,
+					},
+				})),
+				pronouns: pronouns.map(({ pronoun }) => ({
+					pronoun: pronoun.pronounsES,
+				})),
+			}))
+			return formatted
 		}),
 	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
 		const submission = await ctx.prisma.storySubmission.create({
