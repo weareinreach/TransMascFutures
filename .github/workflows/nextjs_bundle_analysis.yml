@@ -24,7 +24,7 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
 
       - uses: pnpm/action-setup@d882d12c64e032187b2edb46d3a0d003b7a43598 # v2.4.0
         name: Install pnpm
@@ -114,14 +114,14 @@ jobs:
           body-includes: '<!-- __NEXTJS_BUNDLE -->'
 
       - name: Create Comment
-        uses: peter-evans/create-or-update-comment@67dcc547d311b736a8e6c5c236542148a47adc3d # v2
+        uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # v3
         if: success() && github.event.number && steps.fc.outputs.comment-id == 0
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
 
       - name: Update Comment
-        uses: peter-evans/create-or-update-comment@67dcc547d311b736a8e6c5c236542148a47adc3d # v2
+        uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # v3
         if: success() && github.event.number && steps.fc.outputs.comment-id != 0
         with:
           issue-number: ${{ github.event.number }}
