@@ -47,48 +47,45 @@ const useStyles = createStyles((theme) => {
 })
 
 export const MainPage = ({ categories }: MainPageProps) => {
-	const router = useRouter()
 	const { classes } = useStyles()
 	const { t } = useTranslation()
-	const previewCards = categories.map(
-		({ categoryEN, categoryES, id, image, imageAltEN, imageAltES, tag }, i) => {
-			// aspect ratio 0.55
+	const previewCards = categories.map(({ category, id, image, imageAlt, tag }, i) => {
+		// aspect ratio 0.55
 
-			const imageSrc = isValidCategoryImage(image)
-				? categoryImages[image]
-				: `https://placehold.co/300x${Math.round(300 * 0.55)}`
-			const altText = router.locale === 'es' ? (imageAltES ? imageAltES : '') : imageAltEN ? imageAltEN : ''
-			const categoryName = router.locale === 'es' ? categoryES : categoryEN
-			return (
-				<Stack justify='space-between' align='center' w={250} key={id} mx='auto'>
+		const imageSrc = isValidCategoryImage(image)
+			? categoryImages[image]
+			: `https://placehold.co/300x${Math.round(300 * 0.55)}`
+		const altText = imageAlt ?? ''
+		const categoryName = category
+		return (
+			<Stack justify='space-between' align='center' w={250} key={id} mx='auto'>
+				<Anchor
+					variant='category'
+					component={Link}
+					href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
+					style={{ textDecoration: 'none', marginBottom: 'auto' }}
+				>
+					<Image
+						src={imageSrc}
+						alt={altText}
+						height={300}
+						width={Math.round(300 * 0.6923)}
+						className={classes.categoryImage}
+					/>
+				</Anchor>
+				<Center>
 					<Anchor
 						variant='category'
 						component={Link}
 						href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
-						style={{ textDecoration: 'none', marginBottom: 'auto' }}
+						style={{ textAlign: 'center' }}
 					>
-						<Image
-							src={imageSrc}
-							alt={altText}
-							height={300}
-							width={Math.round(300 * 0.6923)}
-							className={classes.categoryImage}
-						/>
+						<Trans i18nKey='see-x-stories' values={{ category: categoryName }} shouldUnescape={true} />
 					</Anchor>
-					<Center>
-						<Anchor
-							variant='category'
-							component={Link}
-							href={{ pathname: '/category/[tag]/[[...storyId]]', query: { tag } }}
-							style={{ textAlign: 'center' }}
-						>
-							<Trans i18nKey='see-x-stories' values={{ category: categoryName }} shouldUnescape={true} />
-						</Anchor>
-					</Center>
-				</Stack>
-			)
-		}
-	)
+				</Center>
+			</Stack>
+		)
+	})
 
 	return (
 		<Container fluid>
@@ -127,7 +124,8 @@ export type MainPageProps = {
 }
 
 const Home: NextPage = () => {
-	const { data, status } = api.story.getCategories.useQuery()
+	const router = useRouter()
+	const { data, status } = api.story.getCategories.useQuery({ locale: router.locale })
 	if (data === undefined) {
 		return (
 			<Center style={{ width: '100%', height: '100%' }}>
@@ -152,12 +150,13 @@ const Home: NextPage = () => {
 
 export default Home
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale: ssrLocale }) => {
+	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
 	const ssg = trpcServerClient()
 
 	const [i18n] = await Promise.allSettled([
 		getServerSideTranslations(locale),
-		ssg.story.getCategories.prefetch(),
+		ssg.story.getCategories.prefetch({ locale }),
 	])
 
 	return {

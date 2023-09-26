@@ -119,21 +119,45 @@ export const storyRouter = createTRPCRouter({
 	// 		data: { published: false },
 	// 	})
 	// }),
-	getCategories: publicProcedure.query(async ({ ctx }) => {
-		const categories = await ctx.prisma.storyCategory.findMany({
-			select: {
-				categoryEN: true,
-				categoryES: true,
-				id: true,
-				image: true,
-				imageAltEN: true,
-				imageAltES: true,
-				tag: true,
-			},
-			orderBy: { order: 'asc' },
-		})
-		return categories
-	}),
+	getCategories: publicProcedure
+		.input(z.object({ locale: z.enum(['en', 'es']) }))
+		.query(async ({ ctx, input }) => {
+			if (input.locale === 'en') {
+				const categories = await ctx.prisma.storyCategory.findMany({
+					select: {
+						categoryEN: true,
+						id: true,
+						image: true,
+						imageAltEN: true,
+						tag: true,
+					},
+					orderBy: { order: 'asc' },
+				})
+				const formatted = categories.map(({ categoryEN, imageAltEN, ...rest }) => ({
+					...rest,
+					category: categoryEN,
+					imageAlt: imageAltEN,
+				}))
+				return formatted
+			}
+
+			const categories = await ctx.prisma.storyCategory.findMany({
+				select: {
+					categoryES: true,
+					id: true,
+					image: true,
+					imageAltES: true,
+					tag: true,
+				},
+				orderBy: { order: 'asc' },
+			})
+			const formatted = categories.map(({ categoryES, imageAltES, ...rest }) => ({
+				...rest,
+				category: categoryES,
+				imageAlt: imageAltES,
+			}))
+			return formatted
+		}),
 	getByCategory: publicProcedure
 		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es']) }))
 		.query(async ({ ctx, input }) => {
