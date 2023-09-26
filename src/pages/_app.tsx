@@ -1,6 +1,4 @@
 import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
-import { ModalsProvider } from '@mantine/modals'
-import { Notifications } from '@mantine/notifications'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { type AppType } from 'next/app'
@@ -50,40 +48,37 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 				theme={{ ...theme, fontFamily: fontWorkSans.style.fontFamily }}
 				emotionCache={styleCache}
 			>
-				<ModalsProvider>
-					<Navbar />
-					<Component {...pageProps} />
-					<Group position='apart' w='100%' p={40}>
-						<Button
-							component='a'
-							href='https://inreach.kindful.com/'
-							target='_blank'
-							rel='noreferrer'
-							className={classes.homeButton}
-						>
-							{t('donate')}
-						</Button>
-						<Text className={classes.artistCredit} fw={500}>
-							{t('artist-credit')}
-						</Text>
-						<Anchor
-							variant='category'
-							tt='uppercase'
-							// eslint-disable-next-line @typescript-eslint/no-misused-promises
-							onClick={() =>
-								router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
-							}
-						>
-							{t('nav.switch-lang')}
-						</Anchor>
-					</Group>
-					<Group position='right' w='100%' p={40} pt={0}>
-						<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
-							<Image src={VercelLogo} alt={t('vercel')} />
-						</a>
-					</Group>
-				</ModalsProvider>
-				<Notifications />
+				<Navbar />
+				<Component {...pageProps} />
+				<Group position='apart' w='100%' p={40}>
+					<Button
+						component='a'
+						href='https://inreach.kindful.com/'
+						target='_blank'
+						rel='noreferrer'
+						className={classes.homeButton}
+					>
+						{t('donate')}
+					</Button>
+					<Text className={classes.artistCredit} fw={500}>
+						{t('artist-credit')}
+					</Text>
+					<Anchor
+						variant='category'
+						tt='uppercase'
+						// eslint-disable-next-line @typescript-eslint/no-misused-promises
+						onClick={() =>
+							router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
+						}
+					>
+						{t('nav.switch-lang')}
+					</Anchor>
+				</Group>
+				<Group position='right' w='100%' p={40} pt={0}>
+					<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
+						<Image src={VercelLogo} alt={t('vercel')} />
+					</a>
+				</Group>
 			</MantineProvider>
 			<Analytics />
 			<ReactQueryDevtools initialIsOpen={false} />
