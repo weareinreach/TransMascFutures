@@ -39,8 +39,8 @@ dependencies:
     specifier: 5.3.1
     version: 5.3.1(prisma@5.3.1)
   '@tabler/icons-react':
-    specifier: 2.35.0
-    version: 2.35.0(react@18.2.0)
+    specifier: 2.36.0
+    version: 2.36.0(react@18.2.0)
   '@tanstack/react-query':
     specifier: 4.35.3
     version: 4.35.3(react-dom@18.2.0)(react@18.2.0)
@@ -105,8 +105,8 @@ dependencies:
     specifier: 1.6.6
     version: 1.6.6
   superjson:
-    specifier: 1.13.1
-    version: 1.13.1
+    specifier: 1.13.3
+    version: 1.13.3
   zod:
     specifier: 3.22.2
     version: 3.22.2
@@ -4654,18 +4654,18 @@ packages:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: true
 
-  /@tabler/icons-react@2.35.0(react@18.2.0):
-    resolution: {integrity: sha512-jK2zgtMF2+LSjtbjYsfer+ryz72TwyJqv3MsmCfEpQwP37u01xvmTlVhJ+ox3bV+trsgjojsldVDuB05JuXLaw==}
+  /@tabler/icons-react@2.36.0(react@18.2.0):
+    resolution: {integrity: sha512-IyJISQOuageoi+TbnkzUyC2tVjW/ABnMy4GFL+WpUVxawxQF1Hx2Lusbp53eHMwVhHnTI5lHPdOlB7OwANX8Tg==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.35.0
+      '@tabler/icons': 2.36.0
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
-  /@tabler/icons@2.35.0:
-    resolution: {integrity: sha512-qW/itKdmFvfGw6mAQ+cZy+2MYTXb0XdGAVhO3obYLJEfsSPMwQRO0S9ckFk1xMQX/Tj7REC3TEmWUBWNi3/o3g==}
+  /@tabler/icons@2.36.0:
+    resolution: {integrity: sha512-pgUAALzzr3sDQ1m0s240LrwVxeUgkFuP6oZnwd1zTB5V7sgvgVUt0Uf0/qYwUQkoqt0oDgGQngXriCCp7AOvrg==}
     dev: false
 
   /@tanstack/match-sorter-utils@8.8.4:
@@ -4690,7 +4690,7 @@ packages:
       '@tanstack/react-query': 4.35.3(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      superjson: 1.13.1
+      superjson: 1.13.3
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
@@ -12376,8 +12376,8 @@ packages:
     resolution: {integrity: sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==}
     dev: false
 
-  /superjson@1.13.1:
-    resolution: {integrity: sha512-AVH2eknm9DEd3qvxM4Sq+LTCkSXE2ssfh1t11MHMXyYXFQyQ1HLgVvV+guLTsaQnJU3gnaVo34TohHPulY/wLg==}
+  /superjson@1.13.3:
+    resolution: {integrity: sha512-mJiVjfd2vokfDxsQPOwJ/PtanO87LhpYY88ubI5dUB1Ab58Txbyje3+jpm+/83R/fevaq/107NNhtYBLuoTrFg==}
     engines: {node: '>=10'}
     dependencies:
       copy-anything: 3.0.5
