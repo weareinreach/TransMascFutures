@@ -20,8 +20,6 @@ import { initTRPC } from '@trpc/server'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
 
-import { prisma } from '../db'
-
 // type CreateContextOptions = Record<string, never>
 
 /**
@@ -36,9 +34,7 @@ import { prisma } from '../db'
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
 export const createInnerTRPCContext = () => {
-	return {
-		prisma,
-	}
+	return {}
 }
 
 /**

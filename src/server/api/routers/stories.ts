@@ -2,6 +2,7 @@ import { z } from 'zod'
 
 import { SurveySchema } from '~/pages/survey'
 import { crowdin } from '~/server/crowdin'
+import { prisma } from '~db/client'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
@@ -13,7 +14,7 @@ export const storyRouter = createTRPCRouter({
 			})
 		)
 		.query(async ({ ctx, input }) => {
-			const story = await ctx.prisma.story.findUniqueOrThrow({
+			const story = await prisma.story.findUniqueOrThrow({
 				where: { publicSlug: input.publicSlug },
 				include: { categories: { include: { category: true } } },
 			})
@@ -29,7 +30,7 @@ export const storyRouter = createTRPCRouter({
 		.query(async ({ ctx, input }) => {
 			const isEN = input.locale === 'en'
 			if (isEN) {
-				const story = await ctx.prisma.story.findUniqueOrThrow({
+				const story = await prisma.story.findUniqueOrThrow({
 					where: { id: input.id, published: true },
 					select: {
 						id: true,
@@ -70,7 +71,7 @@ export const storyRouter = createTRPCRouter({
 				}
 				return formatted
 			}
-			const story = await ctx.prisma.story.findUniqueOrThrow({
+			const story = await prisma.story.findUniqueOrThrow({
 				where: { id: input.id, published: true },
 				select: {
 					id: true,
@@ -114,7 +115,7 @@ export const storyRouter = createTRPCRouter({
 	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
 	// 	const { id } = input
 	// 	// Check if story belongs to user
-	// 	return await ctx.prisma.story.update({
+	// 	return await prisma.story.update({
 	// 		where: { id },
 	// 		data: { published: false },
 	// 	})
@@ -123,7 +124,7 @@ export const storyRouter = createTRPCRouter({
 		.input(z.object({ locale: z.enum(['en', 'es']) }))
 		.query(async ({ ctx, input }) => {
 			if (input.locale === 'en') {
-				const categories = await ctx.prisma.storyCategory.findMany({
+				const categories = await prisma.storyCategory.findMany({
 					select: {
 						categoryEN: true,
 						id: true,
@@ -141,7 +142,7 @@ export const storyRouter = createTRPCRouter({
 				return formatted
 			}
 
-			const categories = await ctx.prisma.storyCategory.findMany({
+			const categories = await prisma.storyCategory.findMany({
 				select: {
 					categoryES: true,
 					id: true,
@@ -162,7 +163,7 @@ export const storyRouter = createTRPCRouter({
 		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es']) }))
 		.query(async ({ ctx, input }) => {
 			if (input.locale === 'en') {
-				const stories = await ctx.prisma.story.findMany({
+				const stories = await prisma.story.findMany({
 					where: {
 						published: true,
 						categories: { some: { category: { tag: input.tag } } },
@@ -195,7 +196,7 @@ export const storyRouter = createTRPCRouter({
 				}))
 				return formatted
 			}
-			const stories = await ctx.prisma.story.findMany({
+			const stories = await prisma.story.findMany({
 				where: {
 					published: true,
 					categories: { some: { category: { tag: input.tag } } },
@@ -227,7 +228,7 @@ export const storyRouter = createTRPCRouter({
 			return formatted
 		}),
 	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
-		const submission = await ctx.prisma.storySubmission.create({
+		const submission = await prisma.storySubmission.create({
 			data: {
 				responses: input,
 				userId: 'noUserId',
@@ -236,7 +237,7 @@ export const storyRouter = createTRPCRouter({
 				id: true,
 			},
 		})
-		const storyRecord = await ctx.prisma.story.create({
+		const storyRecord = await prisma.story.create({
 			data: {
 				name: input.q4,
 				response1EN: input.q8,
