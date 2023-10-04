@@ -26,15 +26,19 @@ declare global {
 	var prisma: PrismaClient | undefined
 }
 const createClient = () => {
-	const pool = new Pool({ connectionString: process.env.POSTGRES_PRISMA_URL, log: console.info })
-	const adapter = new PrismaNeon(pool)
-	return new PrismaClient({
-		adapter,
-		log:
-			process.env.NODE_ENV === 'development' && process.env.PRISMA_DEBUG
-				? ['query', 'error', 'warn']
-				: ['error'],
-	})
+	if (process.env.VERCEL_ENV) {
+		const pool = new Pool({ connectionString: process.env.POSTGRES_PRISMA_URL })
+		const adapter = new PrismaNeon(pool)
+		return new PrismaClient({
+			adapter,
+			log:
+				process.env.NODE_ENV === 'development' && process.env.PRISMA_DEBUG
+					? ['query', 'error', 'warn']
+					: ['error'],
+		})
+	} else {
+		return new PrismaClient()
+	}
 }
 export const prisma = global.prisma || createClient()
 // new PrismaClient({
