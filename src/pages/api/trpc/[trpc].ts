@@ -36,9 +36,9 @@ import { createTRPCContext } from '../../../server/api/trpc'
 // 		return {}
 // 	},
 // })
-export const config = {
-	runtime: 'edge',
-}
+// export const config = {
+// 	runtime: 'edge',
+// }
 export default async function handler(req: NextRequest) {
 	return fetchRequestHandler({
 		endpoint: '/api/trpc',
