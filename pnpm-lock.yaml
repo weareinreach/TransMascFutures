@@ -105,8 +105,8 @@ dependencies:
     specifier: 1.6.6
     version: 1.6.6
   superjson:
-    specifier: 1.13.3
-    version: 1.13.3
+    specifier: 2.0.0
+    version: 2.0.0
   zod:
     specifier: 3.22.4
     version: 3.22.4
@@ -12348,6 +12348,13 @@ packages:
   /superjson@1.13.3:
     resolution: {integrity: sha512-mJiVjfd2vokfDxsQPOwJ/PtanO87LhpYY88ubI5dUB1Ab58Txbyje3+jpm+/83R/fevaq/107NNhtYBLuoTrFg==}
     engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.5
+    dev: false
+
+  /superjson@2.0.0:
+    resolution: {integrity: sha512-W3n+NJ7TFjaLle8ihIIvsr/bbuKpnxeatsyjmhy7iSkom+/cshaHziCQAWXrHGWJVQSQFDOuES6C3nSEvcbrQg==}
+    engines: {node: '>=16'}
     dependencies:
       copy-anything: 3.0.5
     dev: false
