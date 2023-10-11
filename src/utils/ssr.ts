@@ -7,7 +7,7 @@ import { createInnerTRPCContext } from '~/server/api/trpc'
 export const trpcServerClient = () => {
 	return createServerSideHelpers({
 		router: appRouter,
-		ctx: createInnerTRPCContext({}),
+		ctx: createInnerTRPCContext(),
 		transformer: superjson,
 	})
 }

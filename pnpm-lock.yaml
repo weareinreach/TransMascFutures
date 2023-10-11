@@ -39,8 +39,8 @@ dependencies:
     specifier: 13.5.4
     version: 13.5.4
   '@prisma/adapter-neon':
-    specifier: 5.4.0
-    version: 5.4.0(@neondatabase/serverless@0.6.0)
+    specifier: 5.4.2
+    version: 5.4.2(@neondatabase/serverless@0.6.0)
   '@prisma/client':
     specifier: 5.4.2
     version: 5.4.2(prisma@5.4.2)
@@ -117,8 +117,8 @@ dependencies:
     specifier: 1.13.3
     version: 1.13.3
   undici:
-    specifier: 5.25.4
-    version: 5.25.4
+    specifier: 5.26.3
+    version: 5.26.3
   zod:
     specifier: 3.22.4
     version: 3.22.4
@@ -159,7 +159,7 @@ devDependencies:
     version: 0.2.2
   '@tomfreudenberg/next-auth-mock':
     specifier: 0.5.6
-    version: 0.5.6(next-auth@4.23.1)(react@18.2.0)
+    version: 0.5.6(next-auth@4.23.2)(react@18.2.0)
   '@types/luxon':
     specifier: 3.3.2
     version: 3.3.2
@@ -1665,6 +1665,13 @@ packages:
     dependencies:
       regenerator-runtime: 0.14.0
 
+  /@babel/runtime@7.23.2:
+    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: true
+
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
     engines: {node: '>=6.9.0'}
@@ -2716,13 +2723,13 @@ packages:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
     dev: false
 
-  /@prisma/adapter-neon@5.4.0(@neondatabase/serverless@0.6.0):
-    resolution: {integrity: sha512-Jj0oIycCfEVErn+Kr03AwUhRZJGoWerB5jotN8Iszae+fZHRtc940KyPaIQwFapv3j8hjChXmrDZ+m6jwRm1iA==}
+  /@prisma/adapter-neon@5.4.2(@neondatabase/serverless@0.6.0):
+    resolution: {integrity: sha512-FIgKk4rtD9IuyI/sOMzYpIRt50FApXvjKnnkGqzG7c4zne2VReFq8NoqV+q/EfHg0LQXFtEfOhkwIL52VsBWSw==}
     peerDependencies:
       '@neondatabase/serverless': ^0.6.0
     dependencies:
       '@neondatabase/serverless': 0.6.0
-      '@prisma/driver-adapter-utils': 5.4.0
+      '@prisma/driver-adapter-utils': 5.4.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2741,8 +2748,8 @@ packages:
       prisma: 5.4.2
     dev: false
 
-  /@prisma/driver-adapter-utils@5.4.0:
-    resolution: {integrity: sha512-lOdrHuCdOVbUy/jDfG5fqIEwtULRkY0HBS0RoXuV8Sy9D75ZphZOOg/HTBpWk6EiLcXK60o38goEQazNdN4xUA==}
+  /@prisma/driver-adapter-utils@5.4.2:
+    resolution: {integrity: sha512-V+mtlBXBxQuiOufaSH98S3x2j9G1G0+tgnx3lAlfd6YEeceTCcFFhg85rESW9UIshHvULeGFJsG7+qScgGX0Ng==}
     dependencies:
       debug: 4.3.4
     transitivePeerDependencies:
@@ -4776,13 +4783,13 @@ packages:
       '@testing-library/dom': 9.3.3
     dev: true
 
-  /@tomfreudenberg/next-auth-mock@0.5.6(next-auth@4.23.1)(react@18.2.0):
+  /@tomfreudenberg/next-auth-mock@0.5.6(next-auth@4.23.2)(react@18.2.0):
     resolution: {integrity: sha512-fSZJY5rUyj8GIcJI450ZV7FV/CMzpjUUGhPiaRyQo9l7l5mLvrnNe1MymzOnLpgXIkFja+CF/UHFGW807QcwmA==}
     peerDependencies:
       next-auth: ^4.12.3
       react: ^18
     dependencies:
-      next-auth: 4.23.1(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
+      next-auth: 4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: true
 
@@ -9427,8 +9434,8 @@ packages:
     hasBin: true
     dev: true
 
-  /jose@4.14.6:
-    resolution: {integrity: sha512-EqJPEUlZD0/CSUMubKtMaYUOtWe91tZXTWMJZoKSbLk+KtdhNdcvppH8lA9XwVu2V4Ailvsj0GBZJ2ZwDjfesQ==}
+  /jose@4.15.3:
+    resolution: {integrity: sha512-RZJdL9Qjd1sqNdyiVteRGV/bnWtik/+PJh1JP4kT6+x1QQMn+7ryueRys5BEueuayvSVY8CWGCisCDazeRLTuw==}
     dev: true
 
   /js-tokens@4.0.0:
@@ -10293,8 +10300,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-auth@4.23.1(next@13.5.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-mL083z8KgRtlrIV6CDca2H1kduWJuK/3pTS0Fe2og15KOm4v2kkLGdSDfc2g+019aEBrJUT0pPW2Xx42ImN1WA==}
+  /next-auth@4.23.2(next@13.5.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VRmInu0r/yZNFQheDFeOKtiugu3bt90Po3owAQDnFQ3YLQFmUKgFjcE2+3L0ny5jsJpBXaKbm7j7W2QTc6Ye2A==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
@@ -10304,15 +10311,15 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@babel/runtime': 7.22.15
+      '@babel/runtime': 7.23.2
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
-      jose: 4.14.6
+      jose: 4.15.3
       next: 13.5.4(@babel/core@7.22.20)(react-dom@18.2.0)(react@18.2.0)
       oauth: 0.9.15
-      openid-client: 5.5.0
-      preact: 10.17.1
-      preact-render-to-string: 5.2.6(preact@10.17.1)
+      openid-client: 5.6.1
+      preact: 10.18.1
+      preact-render-to-string: 5.2.6(preact@10.18.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
@@ -10665,10 +10672,10 @@ packages:
     hasBin: true
     dev: false
 
-  /openid-client@5.5.0:
-    resolution: {integrity: sha512-Y7Xl8BgsrkzWLHkVDYuroM67hi96xITyEDSkmWaGUiNX6CkcXC3XyQGdv5aWZ6dukVKBFVQCADi9gCavOmU14w==}
+  /openid-client@5.6.1:
+    resolution: {integrity: sha512-PtrWsY+dXg6y8mtMPyL/namZSYVz8pjXz3yJiBNZsEdCnu9miHLB4ELVC85WvneMKo2Rg62Ay7NkuCpM0bgiLQ==}
     dependencies:
-      jose: 4.14.6
+      jose: 4.15.3
       lru-cache: 6.0.0
       object-hash: 2.2.0
       oidc-token-hash: 5.0.3
@@ -11101,17 +11108,17 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /preact-render-to-string@5.2.6(preact@10.17.1):
+  /preact-render-to-string@5.2.6(preact@10.18.1):
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
       preact: '>=10'
     dependencies:
-      preact: 10.17.1
+      preact: 10.18.1
       pretty-format: 3.8.0
     dev: true
 
-  /preact@10.17.1:
-    resolution: {integrity: sha512-X9BODrvQ4Ekwv9GURm9AKAGaomqXmip7NQTZgY7gcNmr7XE83adOMJvd3N42id1tMFU7ojiynRsYnY6/BRFxLA==}
+  /preact@10.18.1:
+    resolution: {integrity: sha512-mKUD7RRkQQM6s7Rkmi7IFkoEHjuFqRQUaXamO61E6Nn7vqF/bo7EZCmSyrUnp2UWHw0O7XjZ2eeXis+m7tf4lg==}
     dev: true
 
   /prelude-ls@1.2.1:
@@ -12958,8 +12965,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici@5.25.4:
-    resolution: {integrity: sha512-450yJxT29qKMf3aoudzFpIciqpx6Pji3hEWaXqXmanbXF58LTAGCKxcJjxMXWu3iG+Mudgo3ZUfDB6YDFd/dAw==}
+  /undici@5.26.3:
+    resolution: {integrity: sha512-H7n2zmKEWgOllKkIUkLvFmsJQj062lSm3uA4EYApG8gLuiOM0/go9bIoC3HVaSnfg4xunowDE2i9p8drkXuvDw==}
     engines: {node: '>=14.0'}
     dependencies:
       '@fastify/busboy': 2.0.0
