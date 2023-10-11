@@ -66,8 +66,8 @@
 		"react-dom": "18.2.0",
 		"react-i18next": "13.2.2",
 		"slugify": "1.6.6",
-		"undici": "5.26.3",
 		"superjson": "2.0.0",
+		"undici": "5.26.3",
 		"zod": "3.22.4"
 	},
 	"devDependencies": {
