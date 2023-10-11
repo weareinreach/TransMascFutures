@@ -21,6 +21,7 @@ const config = {
 	swcMinify: true,
 	compiler: {
 		...(process.env.VERCEL_ENV === 'production' ? { removeConsole: { exclude: ['error'] } } : {}),
+		emotion: true,
 	},
 	images: {
 		remotePatterns: [{ protocol: 'https', hostname: 'placehold.co', pathname: '/**' }],

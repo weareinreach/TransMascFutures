@@ -1,7 +1,8 @@
 import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { type AppType } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -27,6 +28,13 @@ const useStyles = createStyles((theme, { showButton, isHome }: { showButton: boo
 	},
 }))
 
+const ReactQueryDevtools =
+	// eslint-disable-next-line turbo/no-undeclared-env-vars
+	process.env.NODE_ENV === 'development'
+		? dynamic(() => import('@tanstack/react-query-devtools').then((m) => m.ReactQueryDevtools), {
+				loading: () => null,
+		  })
+		: () => null
 const MyApp: AppType = ({ Component, pageProps }) => {
 	const router = useRouter()
 	const { asPath, pathname, query, locale } = router
