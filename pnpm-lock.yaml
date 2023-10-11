@@ -2715,6 +2715,7 @@ packages:
   /@polka/url@1.0.0-next.23:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}
     dev: false
+
   /@prisma/adapter-neon@5.4.0(@neondatabase/serverless@0.6.0):
     resolution: {integrity: sha512-Jj0oIycCfEVErn+Kr03AwUhRZJGoWerB5jotN8Iszae+fZHRtc940KyPaIQwFapv3j8hjChXmrDZ+m6jwRm1iA==}
     peerDependencies:
@@ -2739,6 +2740,7 @@ packages:
       '@prisma/engines-version': 5.4.1-2.ac9d7041ed77bcc8a8dbd2ab6616b39013829574
       prisma: 5.4.2
     dev: false
+
   /@prisma/driver-adapter-utils@5.4.0:
     resolution: {integrity: sha512-lOdrHuCdOVbUy/jDfG5fqIEwtULRkY0HBS0RoXuV8Sy9D75ZphZOOg/HTBpWk6EiLcXK60o38goEQazNdN4xUA==}
     dependencies:
@@ -5043,7 +5045,6 @@ packages:
 
   /@types/node@18.18.4:
     resolution: {integrity: sha512-t3rNFBgJRugIhackit2mVcLfF6IRc0JE4oeizPQL8Zrm8n2WY/0wOdpOPhdtG0V9Q2TlW/axbF1MJ6z+Yj/kKQ==}
-    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -5055,7 +5056,7 @@ packages:
   /@types/pg@8.6.6:
     resolution: {integrity: sha512-O2xNmXebtwVekJDD+02udOncjVcMZQuTEQEMpKJ0ZRf5E7/9JJX3izhKUcUifBkyKpljyUM6BTgy2trmviKlpw==}
     dependencies:
-      '@types/node': 18.18.3
+      '@types/node': 18.18.4
       pg-protocol: 1.6.0
       pg-types: 2.2.0
     dev: false
