@@ -5,7 +5,7 @@
  *
  * We also create a few inference helpers for input and output types
  */
-import { httpBatchLink, loggerLink } from '@trpc/client'
+import { unstable_httpBatchStreamLink as httpBatchStreamLink, loggerLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
 import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server'
 import superjson from 'superjson'
@@ -17,10 +17,11 @@ const getBaseUrl = () => {
 	if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` // SSR should use vercel url
 	return `http://localhost:${process.env.PORT ?? 3000}` // dev SSR should use localhost
 }
-
+const isServer = typeof window === 'undefined'
 /** A set of typesafe react-query hooks for your tRPC API */
 export const api = createTRPCNext<AppRouter>({
-	config() {
+	config(opts) {
+		const { ctx } = opts
 		return {
 			/**
 			 * Transformer used for data de-serialization from the server
@@ -40,8 +41,20 @@ export const api = createTRPCNext<AppRouter>({
 						process.env.NODE_ENV === 'development' ||
 						(opts.direction === 'down' && opts.result instanceof Error),
 				}),
-				httpBatchLink({
+				httpBatchStreamLink({
 					url: `${getBaseUrl()}/api/trpc`,
+					...(isServer
+						? {
+								headers() {
+									if (!ctx?.req?.headers) {
+										return {}
+									}
+									return {
+										cookie: ctx.req.headers.cookie,
+									}
+								},
+						  }
+						: {}),
 				}),
 			],
 		}
