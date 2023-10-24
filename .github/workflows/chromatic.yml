@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Publish to Chromatic
-        uses: chromaui/action@0b0d3df01fda65d7b89f09d02f18e1457a8d84b9 # v1
+        uses: chromaui/action@723135c179d14b28039985d79da5c3d6ee1ac32e # v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
