@@ -30,6 +30,7 @@ const config = {
 		outputFileTracingExcludes: {
 			'*': ['**swc+core**', '**esbuild**'],
 		},
+		webpackBuildWorker: true,
 	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
