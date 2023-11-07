@@ -149,8 +149,8 @@ devDependencies:
     specifier: 0.5.6
     version: 0.5.6(next-auth@4.23.1)(react@18.2.0)
   '@types/luxon':
-    specifier: 3.3.3
-    version: 3.3.3
+    specifier: 3.3.4
+    version: 3.3.4
   '@types/node':
     specifier: 18.18.8
     version: 18.18.8
@@ -200,8 +200,8 @@ devDependencies:
     specifier: 3.6.1
     version: 3.6.1(@typescript-eslint/parser@6.10.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-i@2.29.0)(eslint@8.53.0)
   eslint-plugin-codegen:
-    specifier: 0.17.0
-    version: 0.17.0
+    specifier: 0.18.1
+    version: 0.18.1
   eslint-plugin-i18next:
     specifier: 6.0.3
     version: 6.0.3
@@ -3973,7 +3973,7 @@ packages:
       find-cache-dir: 3.3.2
       find-up: 5.0.0
       fs-extra: 11.1.1
-      glob: 10.3.4
+      glob: 10.3.10
       handlebars: 4.7.8
       lazy-universal-dotenv: 4.0.0
       node-fetch: 2.7.0
@@ -4886,8 +4886,8 @@ packages:
     resolution: {integrity: sha512-trNJ/vtMZYMLhfN45uLq4ShQSw0/S7xCTLLVM+WM1rmFpba/VS42jVUgaO3w/NOLiWR/09lnYk0yMaA/atdIsg==}
     dev: true
 
-  /@types/luxon@3.3.3:
-    resolution: {integrity: sha512-/BJF3NT0pRMuxrenr42emRUF67sXwcZCd+S1ksG/Fcf9O7C3kKCY4uJSbKBE4KDUIYr3WMsvfmWD8hRjXExBJQ==}
+  /@types/luxon@3.3.4:
+    resolution: {integrity: sha512-H9OXxv4EzJwE75aTPKpiGXJq+y4LFxjpsdgKwSmr503P5DkWc3AG7VAFYrFNVvqemT5DfgZJV9itYhqBHSGujA==}
     dev: true
 
   /@types/mdast@4.0.1:
@@ -7450,8 +7450,9 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-codegen@0.17.0:
-    resolution: {integrity: sha512-6DDDob+7PjyNJyy9ynHFFsLp0+aUtWbXiiT/SfU161NCxo1zevewq7VvtDiJh15gMBvVZSFs6hXqYJWT3NUZvA==}
+  /eslint-plugin-codegen@0.18.1:
+    resolution: {integrity: sha512-Sy5nJ7tMahHWygM02w2gAO70MX6Lp0ZK0PD9kMpPPGtoQhyS2n1oN7s9zLpDx5pmFDf3woj6LadqztNpJ5RepQ==}
+    engines: {node: '>=12.0.0'}
     dependencies:
       '@babel/core': 7.22.20
       '@babel/generator': 7.12.17
@@ -7459,7 +7460,7 @@ packages:
       '@babel/traverse': 7.22.20
       expect: 26.6.2
       fp-ts: 2.16.1
-      glob: 7.2.3
+      glob: 10.3.10
       io-ts: 2.2.20(fp-ts@2.16.1)
       io-ts-extra: 0.11.6
       js-yaml: 3.14.1
@@ -8348,13 +8349,13 @@ packages:
   /glob-to-regexp@0.4.1:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
 
-  /glob@10.3.4:
-    resolution: {integrity: sha512-6LFElP3A+i/Q8XQKEvZjkEWEOTgAIALR9AO2rwT8bgPhDd1anmqDJDZ6lLddI4ehxxxR1S5RIqKe1uapMQfYaQ==}
+  /glob@10.3.10:
+    resolution: {integrity: sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
       foreground-child: 3.1.1
-      jackspeak: 2.3.3
+      jackspeak: 2.3.6
       minimatch: 9.0.3
       minipass: 7.0.3
       path-scurry: 1.10.1
@@ -9177,8 +9178,8 @@ packages:
       set-function-name: 2.0.1
     dev: true
 
-  /jackspeak@2.3.3:
-    resolution: {integrity: sha512-R2bUw+kVZFS/h1AZqBKrSgDmdmjApzgY0AlCPumopFiAlbUxE2gf+SCuBzQ0cP5hHmUmFYF5yw55T97Th5Kstg==}
+  /jackspeak@2.3.6:
+    resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
     dependencies:
       '@isaacs/cliui': 8.0.2
