@@ -176,8 +176,8 @@ devDependencies:
     specifier: 7.1.1
     version: 7.1.1
   chromatic:
-    specifier: 7.6.0
-    version: 7.6.0
+    specifier: 9.0.0
+    version: 9.0.0
   dotenv:
     specifier: 16.3.1
     version: 16.3.1
@@ -6240,8 +6240,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic@7.6.0:
-    resolution: {integrity: sha512-4MwlX8EDMyfQKf1NXTdUhJ2b0EYueByaVrF75pdFaOzHH7n3OhzknmQYbUSegLiFhKvHuvM8nZvf9SCajO+Cow==}
+  /chromatic@9.0.0:
+    resolution: {integrity: sha512-PczbWYOfqsf/SM0yIzI3ZOpFznEyf9Fc96EkxoYkhztFaA9CEOcpA9nk8zpmNgPUQWmIWNyG7z4xEK40sApFzw==}
     hasBin: true
     dev: true
 
