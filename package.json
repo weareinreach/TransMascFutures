@@ -85,8 +85,8 @@
 		"@types/react": "18.2.37",
 		"@types/react-dom": "18.2.15",
 		"@types/umami": "0.1.5",
-		"@typescript-eslint/eslint-plugin": "6.10.0",
-		"@typescript-eslint/parser": "6.10.0",
+		"@typescript-eslint/eslint-plugin": "6.11.0",
+		"@typescript-eslint/parser": "6.11.0",
 		"boxen": "7.1.1",
 		"chromatic": "9.0.0",
 		"dotenv": "16.3.1",
@@ -120,7 +120,7 @@
 		"type-fest": "4.7.1",
 		"typescript": "5.2.2"
 	},
-	"packageManager": "pnpm@8.10.3",
+	"packageManager": "pnpm@8.10.4",
 	"engines": {
 		"node": "^18.0.0",
 		"pnpm": "^8.0.0"
