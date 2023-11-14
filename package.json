@@ -40,7 +40,7 @@
 		"@mantine/hooks": "6.0.21",
 		"@mantine/next": "6.0.21",
 		"@next/bundle-analyzer": "14.0.2",
-		"@prisma/client": "5.5.2",
+		"@prisma/client": "5.6.0",
 		"@tabler/icons-react": "2.40.0",
 		"@tanstack/react-query": "4.36.1",
 		"@tanstack/react-query-devtools": "4.36.1",
@@ -112,15 +112,15 @@
 		"prettier-plugin-jsdoc": "1.1.1",
 		"prettier-plugin-packagejson": "2.4.6",
 		"prettier-plugin-prisma": "5.0.0",
-		"prisma": "5.5.2",
+		"prisma": "5.6.0",
 		"react-docgen-typescript": "2.2.2",
 		"storybook": "7.5.3",
-		"tsx": "4.1.1",
+		"tsx": "4.1.2",
 		"turbo": "1.10.16",
 		"type-fest": "4.7.1",
 		"typescript": "5.2.2"
 	},
-	"packageManager": "pnpm@8.10.4",
+	"packageManager": "pnpm@8.10.5",
 	"engines": {
 		"node": "^18.0.0",
 		"pnpm": "^8.0.0"
