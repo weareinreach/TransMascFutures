@@ -9,8 +9,8 @@ overrides:
 
 dependencies:
   '@crowdin/crowdin-api-client':
-    specifier: 1.26.0
-    version: 1.26.0
+    specifier: 1.27.0
+    version: 1.27.0
   '@emotion/react':
     specifier: 11.11.1
     version: 11.11.1(@types/react@18.2.37)(react@18.2.0)
@@ -85,7 +85,7 @@ dependencies:
     version: 14.0.2(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
   next-i18next:
     specifier: 15.0.0
-    version: 15.0.0(i18next@23.7.6)(next@14.0.2)(react-i18next@13.4.1)(react@18.2.0)
+    version: 15.0.0(i18next@23.7.6)(next@14.0.2)(react-i18next@13.5.0)(react@18.2.0)
   next-sitemap:
     specifier: 4.2.3
     version: 4.2.3(next@14.0.2)
@@ -99,8 +99,8 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   react-i18next:
-    specifier: 13.4.1
-    version: 13.4.1(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 13.5.0
+    version: 13.5.0(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0)
   slugify:
     specifier: 1.6.6
     version: 1.6.6
@@ -1677,8 +1677,8 @@ packages:
     resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: false
 
-  /@crowdin/crowdin-api-client@1.26.0:
-    resolution: {integrity: sha512-1ZkBqOwnTmTkh3U5JTHxrVrw5kTu5Xs1aFPGnV0c3zXz+7QDvKLGJeoS0n97qptl4mudoPSisd2104GDqHCHWA==}
+  /@crowdin/crowdin-api-client@1.27.0:
+    resolution: {integrity: sha512-XuWMK8mCCaVwQr+tfYWIdZIyFOR63zRDLAvw4co4uPu04EAgtDNPixcQd0gtH22gV4EZN/Wzrr7L74x1krjO0g==}
     engines: {node: '>=12.9.0'}
     dependencies:
       axios: 1.6.2
@@ -10244,7 +10244,7 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /next-i18next@15.0.0(i18next@23.7.6)(next@14.0.2)(react-i18next@13.4.1)(react@18.2.0):
+  /next-i18next@15.0.0(i18next@23.7.6)(next@14.0.2)(react-i18next@13.5.0)(react@18.2.0):
     resolution: {integrity: sha512-9iGEU4dt1YCC5CXh6H8YHmDpmeWKjxES6XfoABxy9mmfaLLJcqS92F56ZKmVuZUPXEOLtgY/JtsnxsHYom9J4g==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -10261,7 +10261,7 @@ packages:
       i18next-fs-backend: 2.3.0
       next: 14.0.2(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-i18next: 13.4.1(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0)
+      react-i18next: 13.5.0(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /next-sitemap@4.2.3(next@14.0.2):
@@ -11311,8 +11311,8 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /react-i18next@13.4.1(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-z02JvLbt6Gavbuhr4CBOI6vasLypo+JSLvMgUOGeOMPv1g6spngfAb9jWAPwvuavPlKYU4dro9yRduflwyBeyA==}
+  /react-i18next@13.5.0(i18next@23.7.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CFJ5NDGJ2MUyBohEHxljOq/39NQ972rh1ajnadG9BjTk+UXbHLq4z5DKEbEQBDoIhUmmbuS/fIMJKo6VOax1HA==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
