@@ -31,7 +31,7 @@
 		"with-env": "dotenv -e ./.env --"
 	},
 	"dependencies": {
-		"@crowdin/crowdin-api-client": "1.26.0",
+		"@crowdin/crowdin-api-client": "1.27.0",
 		"@emotion/react": "11.11.1",
 		"@emotion/server": "11.11.0",
 		"@mantine/carousel": "6.0.21",
@@ -61,7 +61,7 @@
 		"nextjs-routes": "2.1.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-i18next": "13.4.1",
+		"react-i18next": "13.5.0",
 		"slugify": "1.6.6",
 		"superjson": "2.2.1",
 		"zod": "3.22.4"
