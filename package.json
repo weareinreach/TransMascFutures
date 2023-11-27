@@ -105,7 +105,7 @@
 		"eslint-plugin-turbo": "1.10.16",
 		"husky": "8.0.3",
 		"lint-staged": "15.1.0",
-		"listr2": "6.6.1",
+		"listr2": "8.0.0",
 		"luxon": "3.4.4",
 		"merge-anything": "5.1.7",
 		"prettier": "3.1.0",
