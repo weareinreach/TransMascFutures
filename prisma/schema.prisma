@@ -3,7 +3,7 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions", "views"]
+  previewFeatures = ["postgresqlExtensions", "views", "driverAdapters", "relationJoins", "nativeDistinct"]
 }
 
 datasource db {

@@ -17,7 +17,7 @@ const config = {
 	defaultNS: 'common',
 	localePath: path.resolve('./public/locales'),
 	reloadOnPrerender: process.env.NODE_ENV !== 'production',
-	debug: process.env.NODE_ENV !== 'production',
+	debug: false, //process.env.NODE_ENV !== 'production',
 	nonExplicitSupportedLngs: true,
 	cleanCode: true,
 	react: { useSuspense: false },
