@@ -1,6 +1,7 @@
 import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { type AppType } from 'next/app'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -81,6 +82,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 				</Group>
 			</MantineProvider>
 			<Analytics />
+			<SpeedInsights />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</>
 	)
