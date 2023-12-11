@@ -43,7 +43,7 @@
 		"@next/bundle-analyzer": "14.0.4",
 		"@prisma/adapter-neon": "5.7.0",
 		"@prisma/client": "5.7.0",
-		"@tabler/icons-react": "2.42.0",
+		"@tabler/icons-react": "2.44.0",
 		"@tanstack/react-query": "4.36.1",
 		"@tanstack/react-query-devtools": "4.36.1",
 		"@trpc/client": "10.44.1",
@@ -66,7 +66,7 @@
 		"react-i18next": "13.5.0",
 		"slugify": "1.6.6",
 		"superjson": "2.2.1",
-		"ws": "8.14.2",
+		"ws": "8.15.0",
 		"zod": "3.22.4"
 	},
 	"devDependencies": {
@@ -85,7 +85,7 @@
 		"@types/luxon": "3.3.7",
 		"@types/node": "20.10.4",
 		"@types/prettier": "2.7.3",
-		"@types/react": "18.2.42",
+		"@types/react": "18.2.43",
 		"@types/react-dom": "18.2.17",
 		"@types/umami": "0.1.5",
 		"@types/ws": "8.5.10",
@@ -112,7 +112,7 @@
 		"listr2": "8.0.0",
 		"luxon": "3.4.4",
 		"merge-anything": "5.1.7",
-		"prettier": "3.1.0",
+		"prettier": "3.1.1",
 		"prettier-plugin-jsdoc": "1.1.1",
 		"prettier-plugin-packagejson": "2.4.7",
 		"prettier-plugin-prisma": "5.0.0",
@@ -124,7 +124,7 @@
 		"type-fest": "4.8.3",
 		"typescript": "5.3.3"
 	},
-	"packageManager": "pnpm@8.11.0",
+	"packageManager": "pnpm@8.12.0",
 	"engines": {
 		"node": "^20.0.0",
 		"pnpm": "^8.0.0"
