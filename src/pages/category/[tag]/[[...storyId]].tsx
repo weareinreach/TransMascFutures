@@ -31,8 +31,8 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 			Array.isArray(router.query.storyId) && router.query.storyId.length
 				? router.query.storyId.at(0)
 				: typeof router.query.storyId === 'string'
-				? router.query.storyId
-				: undefined,
+					? router.query.storyId
+					: undefined,
 		[router.query.storyId]
 	)
 
