@@ -1,6 +1,7 @@
 import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { type AppType } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
@@ -33,7 +34,7 @@ const ReactQueryDevtools =
 	process.env.NODE_ENV === 'development'
 		? dynamic(() => import('@tanstack/react-query-devtools').then((m) => m.ReactQueryDevtools), {
 				loading: () => null,
-		  })
+			})
 		: () => null
 const MyApp: AppType = ({ Component, pageProps }) => {
 	const router = useRouter()
@@ -89,6 +90,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 				</Group>
 			</MantineProvider>
 			<Analytics />
+			<SpeedInsights />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</>
 	)

@@ -33,7 +33,7 @@ jobs:
       - name: 🏷 Apply repo labels
         uses: tinkurlab/monorepo-pr-labeler-action@6242ef35f78e617d14982c66ab715fa400b7ab25 # 4.1.4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACT_PAT }}
           BASE_DIRS: 'apps|packages'
         with:
           prefix: '📦'
