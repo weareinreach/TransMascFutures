@@ -2,9 +2,9 @@
 import { neonConfig, Pool } from '@neondatabase/serverless'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import { PrismaClient } from '@prisma/client'
-import { WebSocket } from 'undici'
+import ws from 'ws'
 
-neonConfig.webSocketConstructor = WebSocket
+neonConfig.webSocketConstructor = ws
 neonConfig.poolQueryViaFetch = true
 // if (!process.env.VERCEL_ENV) {
 // neonConfig.wsProxy = (host) => {
