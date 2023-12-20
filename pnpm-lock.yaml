@@ -242,8 +242,8 @@ devDependencies:
     specifier: 15.2.0
     version: 15.2.0
   listr2:
-    specifier: 8.0.0
-    version: 8.0.0
+    specifier: 8.0.1
+    version: 8.0.1
   luxon:
     specifier: 3.4.4
     version: 3.4.4
@@ -9688,6 +9688,18 @@ packages:
 
   /listr2@8.0.0:
     resolution: {integrity: sha512-u8cusxAcyqAiQ2RhYvV7kRKNLgUvtObIbhOX2NCXqvp1UU32xIg5CT22ykS2TPKJXZWJwtK3IKLiqAGlGNE+Zg==}
+    engines: {node: '>=18.0.0'}
+    dependencies:
+      cli-truncate: 4.0.0
+      colorette: 2.0.20
+      eventemitter3: 5.0.1
+      log-update: 6.0.0
+      rfdc: 1.3.0
+      wrap-ansi: 9.0.0
+    dev: true
+
+  /listr2@8.0.1:
+    resolution: {integrity: sha512-ovJXBXkKGfq+CwmKTjluEqFi3p4h8xvkxGQQAQan22YCgef4KZ1mKGjzfGh6PL6AW5Csw0QiQPNuQyH+6Xk3hA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       cli-truncate: 4.0.0
