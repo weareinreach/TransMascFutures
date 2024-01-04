@@ -78,8 +78,8 @@ dependencies:
     specifier: 7.1.0
     version: 7.1.0(react@18.2.0)
   i18next:
-    specifier: 23.7.15
-    version: 23.7.15
+    specifier: 23.7.16
+    version: 23.7.16
   i18next-browser-languagedetector:
     specifier: 7.2.0
     version: 7.2.0
@@ -94,7 +94,7 @@ dependencies:
     version: 14.0.4(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
   next-i18next:
     specifier: 15.1.2
-    version: 15.1.2(i18next@23.7.15)(next@14.0.4)(react-i18next@14.0.0)(react@18.2.0)
+    version: 15.1.2(i18next@23.7.16)(next@14.0.4)(react-i18next@14.0.0)(react@18.2.0)
   next-sitemap:
     specifier: 4.2.3
     version: 4.2.3(next@14.0.4)
@@ -109,7 +109,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   react-i18next:
     specifier: 14.0.0
-    version: 14.0.0(i18next@23.7.15)(react-dom@18.2.0)(react@18.2.0)
+    version: 14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0)
   slugify:
     specifier: 1.6.6
     version: 1.6.6
@@ -161,8 +161,8 @@ devDependencies:
     specifier: 0.5.6
     version: 0.5.6(next-auth@4.24.5)(react@18.2.0)
   '@types/luxon':
-    specifier: 3.3.7
-    version: 3.3.7
+    specifier: 3.3.8
+    version: 3.3.8
   '@types/node':
     specifier: 20.10.6
     version: 20.10.6
@@ -4925,8 +4925,8 @@ packages:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
-  /@types/luxon@3.3.7:
-    resolution: {integrity: sha512-gKc9P2d4g5uYwmy4s/MO/yOVPmvHyvzka1YH6i5dM03UrFofHSmgc0D0ymbDRStFWHusk6cwwF6nhLm/ckBbbQ==}
+  /@types/luxon@3.3.8:
+    resolution: {integrity: sha512-jYvz8UMLDgy3a5SkGJne8H7VA7zPV2Lwohjx0V8V31+SqAjNmurWMkk9cQhfvlcnXWudBpK9xPM1n4rljOcHYQ==}
     dev: true
 
   /@types/mdast@3.0.15:
@@ -8812,8 +8812,8 @@ packages:
       - encoding
     dev: false
 
-  /i18next@23.7.15:
-    resolution: {integrity: sha512-WukNgiqkUgU7xSaY8k2B4nXNesD+O8O4ta5g344U5B6Ag7mG61A1EBcDmktFgc4aL447V0cmpjw5l18v58KUfg==}
+  /i18next@23.7.16:
+    resolution: {integrity: sha512-SrqFkMn9W6Wb43ZJ9qrO6U2U4S80RsFMA7VYFSqp7oc7RllQOYDCdRfsse6A7Cq/V8MnpxKvJCYgM8++27n4Fw==}
     dependencies:
       '@babel/runtime': 7.23.2
     dev: false
@@ -10341,7 +10341,7 @@ packages:
       uuid: 8.3.2
     dev: true
 
-  /next-i18next@15.1.2(i18next@23.7.15)(next@14.0.4)(react-i18next@14.0.0)(react@18.2.0):
+  /next-i18next@15.1.2(i18next@23.7.16)(next@14.0.4)(react-i18next@14.0.0)(react@18.2.0):
     resolution: {integrity: sha512-HfGVe0TRba9b+9jU9w7DJmOXobV7PTFxEeTEBYom/7HhKbTCspLzxAfzfhdaQSlCIbCJmXNeQAoWzXQ5wffsmA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -10354,11 +10354,11 @@ packages:
       '@types/hoist-non-react-statics': 3.3.5
       core-js: 3.33.2
       hoist-non-react-statics: 3.3.2
-      i18next: 23.7.15
+      i18next: 23.7.16
       i18next-fs-backend: 2.3.1
       next: 14.0.4(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-i18next: 14.0.0(i18next@23.7.15)(react-dom@18.2.0)(react@18.2.0)
+      react-i18next: 14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /next-sitemap@4.2.3(next@14.0.4):
@@ -11499,7 +11499,7 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /react-i18next@14.0.0(i18next@23.7.15)(react-dom@18.2.0)(react@18.2.0):
+  /react-i18next@14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-OCrS8rHNAmnr8ggGRDxjakzihrMW7HCbsplduTm3EuuQ6fyvWGT41ksZpqbduYoqJurBmEsEVZ1pILSUWkHZng==}
     peerDependencies:
       i18next: '>= 23.2.3'
@@ -11514,7 +11514,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.2
       html-parse-stringify: 3.0.1
-      i18next: 23.7.15
+      i18next: 23.7.16
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
