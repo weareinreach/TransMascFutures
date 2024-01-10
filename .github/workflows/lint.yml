@@ -20,7 +20,7 @@ jobs:
 
       - name: Import GPG key
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@82a020f1f7f605c65dd2449b392a52c3fcfef7ef # v6
+        uses: crazy-max/ghaction-import-gpg@01dd5d3ca463c7f10f7f4f7b4f177225ac661ee4 # v6
         with:
           gpg_private_key: ${{ secrets.BOT_GPG_KEY }}
           git_user_signingkey: true
@@ -35,7 +35,7 @@ jobs:
           # standalone: true
 
       - name: Install Node.js
-        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
