@@ -1,25 +1,7 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
-import { neonConfig, Pool } from '@neondatabase/serverless'
+import { Pool } from '@neondatabase/serverless'
 import { PrismaNeon } from '@prisma/adapter-neon'
-import { PrismaClient } from '@prisma/client'
-import ws from 'ws'
-
-neonConfig.webSocketConstructor = ws
-neonConfig.poolQueryViaFetch = true
-// if (!process.env.VERCEL_ENV) {
-// neonConfig.wsProxy = (host) => {
-// 	console.log('proxying to', host)
-// 	// return `${host}:5433/v1`
-// 	return host
-// }
-// neonConfig.fetchEndpoint = (host, port) => {
-// 	console.log('proxying to', host, port)
-// 	return `http://${host}:5433/v1`
-// }
-// neonConfig.useSecureWebSocket = false
-// neonConfig.pipelineTLS = false
-// neonConfig.pipelineConnect = false
-// }
+import { PrismaClient } from '@prisma/client/edge'
 
 declare global {
 	// eslint-disable-next-line no-var

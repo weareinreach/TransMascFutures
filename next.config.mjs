@@ -35,6 +35,12 @@ const config = {
 	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
+	webpack(config) {
+		config.experiments ??= {}
+		config.experiments.asyncWebAssembly = true
+
+		return config
+	},
 }
 /**
  * Wraps NextJS config with the Bundle Analyzer config.
