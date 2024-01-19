@@ -1,4 +1,5 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["local>weareinreach/renovate-config"]
+	"extends": ["local>weareinreach/renovate-config"],
+	"schedule": ["before 4am on Monday", "before 4am on Thursday"]
 }
