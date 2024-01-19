@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"analyze": "ANALYZE=true pnpm build",
+		"analyze": "ANALYZE=true pnpm build:next",
 		"build": "turbo build:next",
 		"postbuild": "next-sitemap",
 		"build-storybook": "storybook build",
