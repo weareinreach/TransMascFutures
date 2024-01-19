@@ -43,7 +43,7 @@ jobs:
         run: pnpm install
 
       - name: Restore next build
-        uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3
+        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4
         id: restore-build-cache
         env:
           cache-name: cache-next-build
@@ -66,7 +66,7 @@ jobs:
         run: npx -p nextjs-bundle-analysis report
 
       - name: Upload bundle
-        uses: actions/upload-artifact@c7d193f32edcb7bfad88892161225aeda64e9392 # v4
+        uses: actions/upload-artifact@694cdabd8bdb0f10b2cea11669e1bf5453eed0a6 # v4
         with:
           name: bundle
           path: .next/analyze/__bundle_analysis.json
@@ -104,6 +104,7 @@ jobs:
           echo "body<<EOF" >> $GITHUB_OUTPUT
           echo "$(cat .next/analyze/__bundle_analysis_comment.txt)" >> $GITHUB_OUTPUT
           echo EOF >> $GITHUB_OUTPUT
+          echo "$(cat .next/analyze/__bundle_analysis_comment.txt)" >> $GITHUB_STEP_SUMMARY
 
       - name: Find Comment
         uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2
