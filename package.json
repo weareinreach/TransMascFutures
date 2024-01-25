@@ -26,7 +26,7 @@
 		"lint:fix": "next lint --fix",
 		"lint:staged": "lint-staged",
 		"notify:install": "tsx ./.lib/runInstall.ts",
-		"prepare": "tsx ./.lib/prepare.ts",
+		"prepare": "husky",
 		"start": "next start",
 		"with-env": "dotenv -e ./.env --"
 	},
