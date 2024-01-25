@@ -26,7 +26,7 @@
 		"lint:fix": "next lint --fix",
 		"lint:staged": "lint-staged",
 		"notify:install": "tsx ./.lib/runInstall.ts",
-		"prepare": "tsx ./.lib/prepare.ts",
+		"prepare": "husky",
 		"start": "next start",
 		"with-env": "dotenv -e ./.env --"
 	},
@@ -108,7 +108,7 @@
 		"eslint-plugin-react": "7.33.2",
 		"eslint-plugin-storybook": "0.6.15",
 		"eslint-plugin-turbo": "1.11.3",
-		"husky": "8.0.3",
+		"husky": "9.0.3",
 		"lint-staged": "15.2.0",
 		"listr2": "8.0.1",
 		"luxon": "3.4.4",
