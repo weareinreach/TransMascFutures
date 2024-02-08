@@ -63,7 +63,7 @@ export const ModalForm = () => {
 						]}
 						{...form.getInputProps('keyJoy')}
 					/>
-					<FileInput ref={imageInput} placeholder='Pick an image' label='Image' withAsterisk />
+					<FileInput ref={imageInput} /*placeholder='Pick an image'*/ label='Image' withAsterisk />
 
 					<Group position='right' mt='md'>
 						<Button type='submit'>{'Submit'}</Button>

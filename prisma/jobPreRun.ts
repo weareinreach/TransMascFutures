@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { ListrTaskEventType } from 'listr2'
 import { DateTime } from 'luxon'
 
@@ -23,7 +21,7 @@ const logFile = (file: string, output: string) => {
 export const createLogger = (task: PassedTask, jobId: string) => {
 	const timestamp = getTimestamp()
 	const logFilename = `${jobId}_${timestamp}.log`
-	task.task.on(ListrTaskEventType.OUTPUT, (output) => logFile(logFilename, output))
+	task.task.on(ListrTaskEventType.OUTPUT, (output: string) => logFile(logFilename, output))
 }
 
 export const jobPreRunner = async (jobDef: JobDef, task: PassedTask) => {
