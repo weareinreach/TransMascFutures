@@ -18,7 +18,7 @@ const Story = () => {
 	const { t } = useTranslation()
 	if (!data || isLoading) return <>Loading...</>
 
-	const randomImage = data.categories.at(Math.floor(Math.random() * data.categories.length))?.category.image
+	const randomImage = data.categories.at(Math.floor(Math.random() * data.categories.length))?.category?.image
 	const image = getCategoryImage(randomImage ?? '')
 
 	const storyProps: IndividualStoryProps = {
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 60 * 60 * 24 * 7, // 1 week
+		// revalidate: 60 * 60 * 24 * 7, // 1 week
 	}
 }
 export const getStaticPaths: GetStaticPaths = async ({ locales = ['en', 'es'] }) => {
