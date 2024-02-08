@@ -86,6 +86,7 @@ model PronounsToStory {
 
   @@id([storyId, pronounId])
   @@index([storyId])
+  @@index([pronounId, storyId])
 }
 
 model Story {
@@ -118,6 +119,8 @@ model Story {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([published, id])
 }
 
 model StoryToCategory {
@@ -131,6 +134,7 @@ model StoryToCategory {
   @@id([categoryId, storyId])
   @@index([storyId])
   @@index([categoryId])
+  @@index([storyId, categoryId])
 }
 
 model PartnerOrg {
@@ -146,6 +150,8 @@ model PartnerOrg {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([visible])
 }
 
 model StorySubmission {

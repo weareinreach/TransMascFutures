@@ -31,8 +31,8 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 			Array.isArray(router.query.storyId) && router.query.storyId.length
 				? router.query.storyId.at(0)
 				: typeof router.query.storyId === 'string'
-				? router.query.storyId
-				: undefined,
+					? router.query.storyId
+					: undefined,
 		[router.query.storyId]
 	)
 
@@ -167,7 +167,7 @@ export const getStaticProps: GetStaticProps<
 			trpcState: ssg.dehydrate(),
 			...(i18n.status === 'fulfilled' ? i18n.value : {}),
 		},
-		revalidate: 604800, // 1 week
+		// revalidate: 604800, // 1 week
 	}
 }
 export const getStaticPaths: GetStaticPaths<{ tag: string; storyId?: string[] }> = async ({

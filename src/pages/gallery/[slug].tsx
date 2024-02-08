@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<ArtistDisplayProps, RoutedQuery<'/ga
 			artwork,
 			...(await getServerSideTranslations(locale)),
 		},
-		revalidate: 60 * 60 * 24 * 7, // 1 week
+		// revalidate: 60 * 60 * 24 * 7, // 1 week
 	}
 }
 
