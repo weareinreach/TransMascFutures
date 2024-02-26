@@ -93,7 +93,7 @@
 		"@typescript-eslint/eslint-plugin": "7.0.2",
 		"@typescript-eslint/parser": "7.0.2",
 		"boxen": "7.1.1",
-		"chromatic": "10.9.6",
+		"chromatic": "11.0.0",
 		"dotenv": "16.4.5",
 		"dotenv-cli": "7.3.0",
 		"eslint": "8.57.0",
