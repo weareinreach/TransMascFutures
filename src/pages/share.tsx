@@ -45,6 +45,10 @@ const useStyles = createStyles((theme) => ({
 			fontSize: rem(16),
 		},
 	},
+	pressReleaseBtn: {
+		textTransform: 'none',
+		whiteSpace: 'normal',
+	},
 }))
 const SharePage = () => {
 	const { t } = useTranslation()
@@ -91,8 +95,20 @@ const SharePage = () => {
 								<List.Item>{t('share.list1')}</List.Item>
 								<List.Item>{t('share.list2')}</List.Item>
 							</List>
+						</Stack>
+						<Stack w='100%' align='center' spacing={20}>
 							<Button component='a' href='/assets/media-kit.zip' target='_blank' rel='noopener noreferrer'>
 								{t('share.download-button')}
+							</Button>
+							<Button
+								component='a'
+								href='https://glaad.org/inreach-and-glaad-launch-the-transmascfutures-campaign'
+								target='_blank'
+								rel='noopener noreferrer'
+								variant='secondary'
+								classNames={{ label: classes.pressReleaseBtn }}
+							>
+								{t('share.press-release')}
 							</Button>
 						</Stack>
 					</Grid.Col>
