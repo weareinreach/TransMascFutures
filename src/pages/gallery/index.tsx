@@ -65,8 +65,8 @@ const Gallery = () => {
 			router.query.artist && typeof router.query.artist === 'string'
 				? getArtData(router.query.artist)
 				: Array.isArray(router.query.artist) && router.query.artist.length
-				? getArtData(router.query.artist.at(0))
-				: undefined,
+					? getArtData(router.query.artist.at(0))
+					: undefined,
 		[router.query.artist]
 	)
 
@@ -245,7 +245,7 @@ const Gallery = () => {
 								height: `calc(100vh - ${rem(160)})`,
 								borderTopLeftRadius: `${rem(16)} !important`,
 								borderTopRightRadius: `${rem(16)} !important`,
-						  }
+							}
 						: { paddingBottom: rem(40) },
 				})}
 			>
