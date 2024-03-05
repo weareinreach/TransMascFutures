@@ -53,7 +53,7 @@ export const api = createTRPCNext<AppRouter>({
 										cookie: ctx.req.headers.cookie,
 									}
 								},
-						  }
+							}
 						: {}),
 				}),
 			],
