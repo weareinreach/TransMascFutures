@@ -31,7 +31,7 @@
 		"with-env": "dotenv -e ./.env --"
 	},
 	"dependencies": {
-		"@crowdin/crowdin-api-client": "1.30.0",
+		"@crowdin/crowdin-api-client": "1.31.0",
 		"@emotion/react": "11.11.4",
 		"@emotion/server": "11.11.0",
 		"@mantine/carousel": "6.0.21",
@@ -86,7 +86,7 @@
 		"@types/luxon": "3.4.2",
 		"@types/node": "20.11.30",
 		"@types/prettier": "2.7.3",
-		"@types/react": "18.2.67",
+		"@types/react": "18.2.70",
 		"@types/react-dom": "18.2.22",
 		"@types/umami": "0.1.5",
 		"@types/ws": "8.5.10",
@@ -122,7 +122,7 @@
 		"storybook": "7.6.17",
 		"tsx": "4.7.1",
 		"turbo": "1.13.0",
-		"type-fest": "4.13.1",
+		"type-fest": "4.14.0",
 		"typescript": "5.4.3"
 	},
 	"packageManager": "pnpm@8.15.5",
