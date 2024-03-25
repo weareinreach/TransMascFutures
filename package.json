@@ -85,7 +85,6 @@
 		"@tomfreudenberg/next-auth-mock": "0.5.6",
 		"@types/luxon": "3.4.2",
 		"@types/node": "20.11.30",
-		"@types/prettier": "2.7.3",
 		"@types/react": "18.2.70",
 		"@types/react-dom": "18.2.22",
 		"@types/umami": "0.1.5",

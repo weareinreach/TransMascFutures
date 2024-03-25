@@ -163,9 +163,6 @@ devDependencies:
   '@types/node':
     specifier: 20.11.30
     version: 20.11.30
-  '@types/prettier':
-    specifier: 2.7.3
-    version: 2.7.3
   '@types/react':
     specifier: 18.2.70
     version: 18.2.70
@@ -4991,10 +4988,6 @@ packages:
       pg-protocol: 1.6.0
       pg-types: 2.2.0
     dev: false
-
-  /@types/prettier@2.7.3:
-    resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
-    dev: true
 
   /@types/pretty-hrtime@1.0.3:
     resolution: {integrity: sha512-nj39q0wAIdhwn7DGUyT9irmsKK1tV0bd5WFEhgpqNTMFZ8cE+jieuTphCW0tfdm47S2zVT5mr09B28b1chmQMA==}
