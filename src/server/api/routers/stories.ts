@@ -256,14 +256,24 @@ export const storyRouter = createTRPCRouter({
 			crowdinAdditions.push({
 				op: 'add',
 				path: '/-',
-				value: { text: storyRecord.response1EN, identifier: `${storyRecord.id}.response1`, fileId: 2653 },
+				value: {
+					text: storyRecord.response1EN,
+					identifier: `${storyRecord.id}.response1`,
+					fileId: 2653,
+					context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join('/')}"`,
+				},
 			})
 		}
 		if (storyRecord.response2EN) {
 			crowdinAdditions.push({
 				op: 'add',
 				path: '/-',
-				value: { text: storyRecord.response2EN, identifier: `${storyRecord.id}.response2`, fileId: 2653 },
+				value: {
+					text: storyRecord.response2EN,
+					identifier: `${storyRecord.id}.response2`,
+					fileId: 2653,
+					context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join('/')}"`,
+				},
 			})
 		}
 
@@ -285,5 +295,6 @@ type CrowdinBatchAdd = {
 		text: string
 		identifier: string
 		fileId: number
+		context?: string
 	}
 }

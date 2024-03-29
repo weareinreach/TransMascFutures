@@ -25,7 +25,7 @@ const Story = () => {
 		name: data.name,
 		image,
 		pronouns: data.pronouns.map(({ pronoun }) => pronoun),
-		response1: data.response2,
+		response1: data.response1,
 		response2: data.response2,
 	}
 
