@@ -1,0 +1,23 @@
+version = 1
+
+exclude_patterns = [
+  "prisma/migrations/**",
+  "prisma/data-migrations/**",
+  "prisma/_queries/**"
+]
+
+[[analyzers]]
+name = "secrets"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = ["react"]
+  environment = [
+    "nodejs",
+    "browser"
+  ]
+
+[[transformers]]
+name = "prettier"
