@@ -7,9 +7,9 @@ import {
 	type ListrTask as ListrTaskObj,
 	type ListrTaskWrapper,
 	PRESET_TIMER,
-} from 'listr2'
+} from "listr2";
 
-import * as jobList from './data-migrations'
+import * as jobList from "./data-migrations";
 
 /**
  * Job Runner
@@ -21,13 +21,16 @@ const renderOptions = {
 	bottomBar: 10,
 	persistentOutput: true,
 	timer: PRESET_TIMER,
-} satisfies ListrJob['options']
-const injectOptions = (job: ListrJob): ListrJob => ({ ...job, options: renderOptions })
+} satisfies ListrJob["options"];
+const injectOptions = (job: ListrJob): ListrJob => ({
+	...job,
+	options: renderOptions,
+});
 const jobs = new Listr<Context>(
 	Object.values(jobList).map((job) => injectOptions(job)),
 	{
 		rendererOptions: {
-			formatOutput: 'wrap',
+			formatOutput: "wrap",
 			timer: PRESET_TIMER,
 			suffixSkips: true,
 		},
@@ -36,17 +39,17 @@ const jobs = new Listr<Context>(
 		},
 		exitOnError: false,
 		forceColor: true,
-	}
-)
+	},
+);
 
-jobs.run()
+jobs.run();
 
 export type Context = {
-	error?: boolean
-}
-export type PassedTask = ListrTaskWrapper<Context, ListrDefaultRenderer>
-export type ListrJob = ListrTaskObj<Context, ListrDefaultRenderer>
+	error?: boolean;
+};
+export type PassedTask = ListrTaskWrapper<Context, ListrDefaultRenderer>;
+export type ListrJob = ListrTaskObj<Context, ListrDefaultRenderer>;
 export type ListrTask = (
 	ctx: Context,
-	task: PassedTask
-) => void | Promise<void | Listr<Context, any, any>> | Listr<Context, any, any>
+	task: PassedTask,
+) => void | Promise<void | Listr<Context, any, any>> | Listr<Context, any, any>;

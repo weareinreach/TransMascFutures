@@ -1,9 +1,10 @@
-import { customAlphabet } from 'nanoid'
+import { customAlphabet } from "nanoid";
 
-const alphaChoices = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+const alphaChoices =
+	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-export const slugSize = 10
+export const slugSize = 10;
 
-export const nanoUrlRegex = /(?:^\w{10}$)/
+export const nanoUrlRegex = /(?:^\w{10}$)/;
 
-export const nanoUrl = customAlphabet(alphaChoices, slugSize)
+export const nanoUrl = customAlphabet(alphaChoices, slugSize);

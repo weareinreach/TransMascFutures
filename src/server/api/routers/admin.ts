@@ -130,4 +130,4 @@
 // 			return updatedPartnerOrg
 // 		}),
 // })
-export const x = {}
+export const x = {};

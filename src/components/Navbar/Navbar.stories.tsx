@@ -1,24 +1,24 @@
-import { type Meta } from '@storybook/react'
+import { type Meta } from "@storybook/react";
 
-import { Navbar } from './Navbar'
+import { Navbar } from "./Navbar";
 
 export default {
-	title: 'Components/Navbar',
+	title: "Components/Navbar",
 	component: Navbar,
 	parameters: {
-		layout: 'fullscreen',
+		layout: "fullscreen",
 	},
 	args: {
-		path: '/',
+		path: "/",
 	},
-} as Meta<typeof Navbar>
+} as Meta<typeof Navbar>;
 
-export const Default = {}
+export const Default = {};
 
 export const Mobile = {
 	parameters: {
 		viewport: {
-			defaultViewport: 'iphonex',
+			defaultViewport: "iphonex",
 		},
 	},
-}
+};

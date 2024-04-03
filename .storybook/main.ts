@@ -1,28 +1,28 @@
-import { type StorybookConfig } from '@storybook/nextjs'
-import { merge } from 'merge-anything'
+import { type StorybookConfig } from "@storybook/nextjs";
+import { merge } from "merge-anything";
 
-import { dirname, join } from 'path'
+import { dirname, join } from "path";
 
 const config: StorybookConfig = {
-	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+	stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
 	staticDirs: [
 		{
-			from: '../public',
-			to: '/',
+			from: "../public",
+			to: "/",
 		},
 	],
 	addons: [
-		getAbsolutePath('@storybook/addon-a11y'),
-		getAbsolutePath('@storybook/addon-links'),
-		getAbsolutePath('@storybook/addon-essentials'),
-		getAbsolutePath('@storybook/addon-interactions'),
+		getAbsolutePath("@storybook/addon-a11y"),
+		getAbsolutePath("@storybook/addon-links"),
+		getAbsolutePath("@storybook/addon-essentials"),
+		getAbsolutePath("@storybook/addon-interactions"),
 	],
 	framework: {
-		name: '@storybook/nextjs',
+		name: "@storybook/nextjs",
 		options: {},
 	},
 	docs: {
-		autodocs: 'tag',
+		autodocs: "tag",
 	},
 	typescript: {
 		check: true,
@@ -42,14 +42,14 @@ const config: StorybookConfig = {
 					// 'next-i18next': 'react-i18next',
 				},
 			},
-		}
-		const mergedConfig = merge(config, configAdditions)
-		return mergedConfig
+		};
+		const mergedConfig = merge(config, configAdditions);
+		return mergedConfig;
 	},
-}
+};
 
-export default config
+export default config;
 
 function getAbsolutePath(value: string): string {
-	return dirname(require.resolve(join(value, 'package.json')))
+	return dirname(require.resolve(join(value, "package.json")));
 }

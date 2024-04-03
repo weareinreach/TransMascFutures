@@ -12,23 +12,23 @@ import {
 	type StepperStylesParams,
 	type Styles,
 	type TextInputStylesNames,
-} from '@mantine/core'
+} from "@mantine/core";
 
 const themeCustomObj = {
 	colors: {
-		glaadGray: '#BEBEBE',
-		midGray: '#65676B',
-		black: '#000000',
-		white: '#FFFFFF',
-		blue: '#5BCEFA',
-		pink: '#F5A9B8',
+		glaadGray: "#BEBEBE",
+		midGray: "#65676B",
+		black: "#000000",
+		white: "#FFFFFF",
+		blue: "#5BCEFA",
+		pink: "#F5A9B8",
 	},
-} as const
-const hoverAlpha = 0.5
+} as const;
+const hoverAlpha = 0.5;
 export const theme: MantineThemeOverride = {
-	colorScheme: 'light',
+	colorScheme: "light",
 	fontFamily:
-		'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+		"Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
 	fontSizes: {
 		xs: rem(12),
 		sm: rem(14),
@@ -38,7 +38,7 @@ export const theme: MantineThemeOverride = {
 	},
 	headings: {
 		fontFamily:
-			'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+			"Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
 		fontWeight: 500,
 		sizes: {
 			h1: { fontSize: rem(40), lineHeight: 1.25, fontWeight: undefined },
@@ -65,24 +65,24 @@ export const theme: MantineThemeOverride = {
 							fontSize: rem(15),
 							color: theme.other.colors.black,
 							fontWeight: 500,
-							textDecoration: 'underline',
-							...theme.fn.hover({ textDecoration: 'none' }),
+							textDecoration: "underline",
+							...theme.fn.hover({ textDecoration: "none" }),
 						},
-					}) satisfies Styles<'root', AnchorStylesParams>,
+					}) satisfies Styles<"root", AnchorStylesParams>,
 			},
 		},
 		Button: {
 			defaultProps: {
-				variant: 'primary',
+				variant: "primary",
 			},
 			variants: {
 				primary: (theme) => ({
 					root: {
 						borderRadius: rem(8),
 						fontWeight: 600,
-						height: 'auto',
+						height: "auto",
 						padding: rem(15),
-						textAlign: 'center',
+						textAlign: "center",
 						width: rem(175),
 						color: theme.other.colors.black,
 						backgroundColor: theme.other.colors.pink,
@@ -94,15 +94,15 @@ export const theme: MantineThemeOverride = {
 						}),
 					},
 					label: {
-						whiteSpace: 'normal',
+						whiteSpace: "normal",
 					},
 				}),
 				secondary: (theme) => ({
 					root: {
 						fontWeight: 600,
-						height: 'auto',
+						height: "auto",
 						padding: rem(15),
-						textAlign: 'center',
+						textAlign: "center",
 						width: rem(175),
 						backgroundColor: theme.other.colors.blue,
 						borderRadius: rem(8),
@@ -114,8 +114,8 @@ export const theme: MantineThemeOverride = {
 						}),
 					},
 					label: {
-						whiteSpace: 'normal',
-						textTransform: 'uppercase',
+						whiteSpace: "normal",
+						textTransform: "uppercase",
 					},
 				}),
 			},
@@ -169,6 +169,6 @@ export const theme: MantineThemeOverride = {
 		},
 	},
 	other: themeCustomObj,
-}
+};
 
-export type ThemeCustomObject = typeof themeCustomObj
+export type ThemeCustomObject = typeof themeCustomObj;

@@ -15,14 +15,14 @@
  *
  * These allow you to access things like the database, the session, etc, when processing a request
  */
-import { initTRPC } from '@trpc/server'
-import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
-import superjson from 'superjson'
-import { ZodError } from 'zod'
+import { initTRPC } from "@trpc/server";
+import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import superjson from "superjson";
+import { ZodError } from "zod";
 
-import { prisma } from '../db'
+import { prisma } from "../db";
 
-type CreateContextOptions = Record<string, never>
+type CreateContextOptions = Record<string, never>;
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export it from
@@ -38,8 +38,8 @@ type CreateContextOptions = Record<string, never>
 export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
 	return {
 		prisma,
-	}
-}
+	};
+};
 
 /**
  * This is the actual context you'll use in your router. It will be used to process every request that goes
@@ -48,8 +48,8 @@ export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = (opts: CreateNextContextOptions) => {
-	return createInnerTRPCContext({})
-}
+	return createInnerTRPCContext({});
+};
 
 /**
  * 2. INITIALIZATION
@@ -64,11 +64,12 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 			...shape,
 			data: {
 				...shape.data,
-				zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+				zodError:
+					error.cause instanceof ZodError ? error.cause.flatten() : null,
 			},
-		}
+		};
 	},
-})
+});
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
@@ -82,7 +83,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
  *
  * @see https://trpc.io/docs/router
  */
-export const createTRPCRouter = t.router
+export const createTRPCRouter = t.router;
 
 /**
  * Public (unauthed) procedure
@@ -90,4 +91,4 @@ export const createTRPCRouter = t.router
  * This is the base piece you use to build new queries and mutations on your tRPC API. It does not guarantee
  * that a user querying is authorized, but you can still access user session data if they are logged in
  */
-export const publicProcedure = t.procedure
+export const publicProcedure = t.procedure;

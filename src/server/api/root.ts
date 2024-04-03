@@ -1,7 +1,7 @@
 // import { adminRouter } from './routers/admin'
-import { partnerRouter } from './routers/partner'
-import { storyRouter } from './routers/stories'
-import { createTRPCRouter } from './trpc'
+import { partnerRouter } from "./routers/partner";
+import { storyRouter } from "./routers/stories";
+import { createTRPCRouter } from "./trpc";
 
 /**
  * This is the primary router for your server.
@@ -12,7 +12,7 @@ export const appRouter = createTRPCRouter({
 	story: storyRouter,
 	// admin: adminRouter,
 	partner: partnerRouter,
-})
+});
 
 // export type definition of API
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;
