@@ -1,5 +1,5 @@
 // @ts-check
-import { z } from "zod";
+import { z } from 'zod'
 
 /**
  * Specify your server-side environment variables schema here. This way you can ensure the app isn't built
@@ -8,7 +8,7 @@ import { z } from "zod";
 export const serverSchema = z.object({
 	POSTGRES_PRISMA_URL: z.string().url().optional(),
 	POSTGRES_URL_NON_POOLING: z.string().url().optional(),
-	NODE_ENV: z.enum(["development", "test", "production"]),
+	NODE_ENV: z.enum(['development', 'test', 'production']),
 	NEXTAUTH_SECRET: z.string().optional(),
 	NEXTAUTH_URL: z
 		.preprocess(
@@ -18,10 +18,10 @@ export const serverSchema = z.object({
 			(str) => process.env.VERCEL_URL ?? str,
 			// VERCEL_URL doesn't include `https` so it cant be validated as a URL
 			// eslint-disable-next-line turbo/no-undeclared-env-vars
-			process.env.VERCEL ? z.string() : z.string().url(),
+			process.env.VERCEL ? z.string() : z.string().url()
 		)
 		.optional(),
-});
+})
 
 /**
  * You can't destruct `process.env` as a regular object in the Next.js middleware, so you have to do it
@@ -37,7 +37,7 @@ export const serverEnv = {
 	NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
 	// eslint-disable-next-line turbo/no-undeclared-env-vars
 	NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-};
+}
 
 /**
  * Specify your client-side environment variables schema here. This way you can ensure the app isn't built
@@ -45,7 +45,7 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
 	// NEXT_PUBLIC_CLIENTVAR: z.string(),
-});
+})
 
 /**
  * You can't destruct `process.env` as a regular object, so you have to do it manually here. This is because
@@ -55,4 +55,4 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
 	// NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-};
+}

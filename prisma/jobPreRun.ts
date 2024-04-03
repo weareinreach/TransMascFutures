@@ -1,61 +1,56 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { ListrTaskEventType } from "listr2";
-import { DateTime } from "luxon";
+import { ListrTaskEventType } from 'listr2'
+import { DateTime } from 'luxon'
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs'
+import path from 'path'
 
-import { prisma } from "~db/client";
+import { prisma } from '~db/client'
 
-import { type PassedTask } from "./dataMigrationRunner";
+import { type PassedTask } from './dataMigrationRunner'
 
-const getTimestamp = () =>
-	DateTime.now()
-		.toLocaleString(DateTime.TIME_24_WITH_SECONDS)
-		.replaceAll(":", ".");
+const getTimestamp = () => DateTime.now().toLocaleString(DateTime.TIME_24_WITH_SECONDS).replaceAll(':', '.')
 
 const logFile = (file: string, output: string) => {
-	const timestamp = DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss");
-	const outFile = path.resolve(__dirname, "./migration-logs/", file);
-	const formattedOutput = `[${timestamp}] ${output}\n`;
-	fs.writeFileSync(outFile, formattedOutput, { flag: "a" });
-};
+	const timestamp = DateTime.now().toFormat('yyyy-MM-dd HH:mm:ss')
+	const outFile = path.resolve(__dirname, './migration-logs/', file)
+	const formattedOutput = `[${timestamp}] ${output}\n`
+	fs.writeFileSync(outFile, formattedOutput, { flag: 'a' })
+}
 
 export const createLogger = (task: PassedTask, jobId: string) => {
-	const timestamp = getTimestamp();
-	const logFilename = `${jobId}_${timestamp}.log`;
-	task.task.on(ListrTaskEventType.OUTPUT, (output: string) =>
-		logFile(logFilename, output),
-	);
-};
+	const timestamp = getTimestamp()
+	const logFilename = `${jobId}_${timestamp}.log`
+	task.task.on(ListrTaskEventType.OUTPUT, (output: string) => logFile(logFilename, output))
+}
 
 export const jobPreRunner = async (jobDef: JobDef, task: PassedTask) => {
 	try {
 		const exists = await prisma.dataMigration.findUnique({
 			where: { jobId: jobDef.jobId },
 			select: { id: true },
-		});
+		})
 		if (exists?.id) {
-			return true;
+			return true
 		}
-		createLogger(task, jobDef.jobId);
-		return false;
+		createLogger(task, jobDef.jobId)
+		return false
 	} catch (err) {
-		return true;
+		return true
 	}
-};
+}
 
 export const jobPostRunner = async (jobDef: JobDef) => {
 	try {
-		await prisma.dataMigration.create({ data: jobDef });
+		await prisma.dataMigration.create({ data: jobDef })
 	} catch (err) {
-		console.error(err);
-		throw err;
+		console.error(err)
+		throw err
 	}
-};
+}
 export interface JobDef {
-	jobId: string;
-	title: string;
-	description?: string;
-	createdBy: string;
+	jobId: string
+	title: string
+	description?: string
+	createdBy: string
 }

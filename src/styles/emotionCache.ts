@@ -1,3 +1,3 @@
-import { createEmotionCache } from "@mantine/core";
+import { createEmotionCache } from '@mantine/core'
 
-export const styleCache = createEmotionCache({ key: "glaad" });
+export const styleCache = createEmotionCache({ key: 'glaad' })

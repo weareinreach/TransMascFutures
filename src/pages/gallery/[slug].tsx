@@ -1,35 +1,33 @@
-import { Group, Title } from "@mantine/core";
-import { type GetStaticPaths, type GetStaticProps } from "next";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import { type RoutedQuery } from "nextjs-routes";
+import { Group, Title } from '@mantine/core'
+import { type GetStaticPaths, type GetStaticProps } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { type RoutedQuery } from 'nextjs-routes'
 
-import { artData, type ArtData, getArtData } from "~/data/artwork";
-import { ArtItem } from "~/layouts/ArtItem";
-import { getServerSideTranslations } from "~/server/i18n";
+import { artData, type ArtData, getArtData } from '~/data/artwork'
+import { ArtItem } from '~/layouts/ArtItem'
+import { getServerSideTranslations } from '~/server/i18n'
 
 interface ArtistDisplayProps {
-	artwork: ArtData;
+	artwork: ArtData
 }
 
 const ArtistDisplay = ({ artwork }: ArtistDisplayProps) => {
-	const router = useRouter<"/gallery/[slug]">();
-	const isEnglish = router.locale === "en";
-	const { t } = useTranslation();
+	const router = useRouter<'/gallery/[slug]'>()
+	const isEnglish = router.locale === 'en'
+	const { t } = useTranslation()
 
-	if (!artwork) return router.replace({ pathname: "/gallery" });
+	if (!artwork) return router.replace({ pathname: '/gallery' })
 
 	return (
 		<>
 			<Head>
-				<title>
-					{t("page-title.general-template", { page: "$t(nav.gallery)" })}
-				</title>
+				<title>{t('page-title.general-template', { page: '$t(nav.gallery)' })}</title>
 			</Head>
-			<Group w="100%">
-				<Title order={1} tt="uppercase" pl={40} py={20}>
-					{t("nav.gallery")}
+			<Group w='100%'>
+				<Title order={1} tt='uppercase' pl={40} py={20}>
+					{t('nav.gallery')}
 				</Title>
 			</Group>
 			<ArtItem
@@ -39,19 +37,19 @@ const ArtistDisplay = ({ artwork }: ArtistDisplayProps) => {
 				description={isEnglish ? artwork.descriptionEN : artwork.descriptionES}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export const getStaticProps: GetStaticProps<
-	ArtistDisplayProps,
-	RoutedQuery<"/gallery/[slug]">
-> = async ({ locale, params }) => {
-	const artwork = getArtData(params?.slug);
+export const getStaticProps: GetStaticProps<ArtistDisplayProps, RoutedQuery<'/gallery/[slug]'>> = async ({
+	locale,
+	params,
+}) => {
+	const artwork = getArtData(params?.slug)
 
 	if (!artwork)
 		return {
 			notFound: true,
-		};
+		}
 
 	return {
 		props: {
@@ -59,19 +57,19 @@ export const getStaticProps: GetStaticProps<
 			...(await getServerSideTranslations(locale)),
 		},
 		// revalidate: 60 * 60 * 24 * 7, // 1 week
-	};
-};
+	}
+}
 
 export const getStaticPaths: GetStaticPaths = () => {
-	const slugs = artData.map(({ slug }) => slug);
+	const slugs = artData.map(({ slug }) => slug)
 
 	return {
 		paths: slugs.flatMap((slug) => [
-			{ params: { slug }, locale: "en" },
-			{ params: { slug }, locale: "es" },
+			{ params: { slug }, locale: 'en' },
+			{ params: { slug }, locale: 'es' },
 		]),
-		fallback: "blocking",
-	};
-};
+		fallback: 'blocking',
+	}
+}
 
-export default ArtistDisplay;
+export default ArtistDisplay
