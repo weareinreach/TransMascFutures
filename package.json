@@ -122,7 +122,7 @@
 		"tsx": "4.7.2",
 		"turbo": "1.13.2",
 		"type-fest": "4.15.0",
-		"typescript": "5.4.3"
+		"typescript": "5.4.4"
 	},
 	"packageManager": "pnpm@8.15.6",
 	"engines": {
