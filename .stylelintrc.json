@@ -1,0 +1,14 @@
+{
+	"extends": ["stylelint-config-standard-scss"],
+	"rules": {
+		"scss/at-mixin-pattern": null,
+		"scss/at-rule-no-unknown": null,
+		"scss/no-duplicate-mixins": null,
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"ignorePseudoClasses": ["global"]
+			}
+		]
+	}
+}
