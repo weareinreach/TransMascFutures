@@ -1,6 +1,8 @@
-import { AspectRatio, Card, createStyles, rem, Stack, Text } from '@mantine/core'
+import { AspectRatio, Card, Stack, Text } from '@mantine/core'
 import Image from 'next/image'
 import { type ReactNode } from 'react'
+
+import classes from './PreviewCard.module.css'
 
 type CardProps = {
 	title: string
@@ -10,25 +12,7 @@ type CardProps = {
 	imgSrc?: string
 }
 
-const useStyles = createStyles((theme) => ({
-	card: {
-		background: 'transparent',
-		maxWidth: rem(480),
-		['& a']: {
-			textDecoration: 'underline',
-			color: 'inherit',
-		},
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	subheading: {
-		color: theme.fn.lighten(theme.other.colors.black, 0.2),
-	},
-}))
-
 export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps) => {
-	const { classes } = useStyles()
 	const lineclamp = { lineClamp: typeof text === 'string' ? 5 : undefined }
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>
@@ -39,7 +23,7 @@ export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps
 					</AspectRatio>
 				)}
 			</Card.Section>
-			<Stack spacing={0}>
+			<Stack gap={0}>
 				<Text fw={700} fz='lg' tt='uppercase'>
 					{title}
 				</Text>

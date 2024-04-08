@@ -1,0 +1,17 @@
+.card {
+	background: 'transparent';
+	max-width: rem(480);
+
+	& a {
+		text-decoration: 'underline';
+			color: 'inherit';
+	}
+
+	display: 'flex';
+	flex-direction: 'column';
+	align-items: 'center';
+}
+
+.subheading {
+	color: rgb(51 51 51);
+}
