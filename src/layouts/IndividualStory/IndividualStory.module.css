@@ -1,13 +1,13 @@
 .story {
 	@mixin smaller-than $mantine-breakpoint-sm {
-	flex-direction: 'column';
+		flex-direction: "column";
 	}
 }
 
 .content {
 	padding: rem(20);
 
-	& [data-isModal='true'] {
+	& [data-isModal="true"] {
 		padding: 0;
 	}
 
@@ -15,7 +15,7 @@
 		padding: rem(40);
 		max-width: 66%;
 
-		& [data-isModal='true'] {
+		& [data-isModal="true"] {
 			padding: 0 0 rem(40) 0;
 		}
 	}

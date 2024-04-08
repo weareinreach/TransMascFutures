@@ -1,15 +1,15 @@
 .card {
-	background: 'transparent';
+	background: "transparent";
 	max-width: rem(480);
 
 	& a {
-		text-decoration: 'underline';
-			color: 'inherit';
+		text-decoration: "underline";
+		color: "inherit";
 	}
 
-	display: 'flex';
-	flex-direction: 'column';
-	align-items: 'center';
+	display: "flex";
+	flex-direction: "column";
+	align-items: "center";
 }
 
 .subheading {

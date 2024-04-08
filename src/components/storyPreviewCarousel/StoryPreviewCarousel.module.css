@@ -1,9 +1,9 @@
 .viewport {
-	padding: rem(60) rem(0),
+	padding: rem(60) rem(0);
 }
 
 .carousel {
-	border: 'none';
-	background-color: 'transparent';
-	box-shadow: 'none';
+	border: "none";
+	background-color: "transparent";
+	box-shadow: "none";
 }
