@@ -1,67 +1,15 @@
-import { Anchor, Burger, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
+import { Anchor, Burger, Container, Drawer, Text } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 
-const HEADER_HEIGHT = 75
+import classes from './Navbar.module.css'
 
-export const useStyles = createStyles((theme) => ({
-	glaadGray: {
-		backgroundColor: theme.other.colors.glaadGray,
-	},
+// const HEADER_HEIGHT = 75
 
-	navbar: {
-		display: 'flex',
-		justifyContent: 'space-around',
-		alignItems: 'center',
-		height: '100%',
-
-		['& a']: {
-			color: theme.colors.gray[0],
-			flexDirection: 'row',
-			textAlign: 'center',
-			justifyContent: 'center',
-			alignItems: 'center',
-			fontSize: theme.fontSizes.lg,
-		},
-
-		[theme.fn.smallerThan('md')]: {
-			display: 'none',
-		},
-	},
-
-	burger: {
-		display: 'flex',
-		alignItems: 'center',
-		height: '100%',
-
-		[theme.fn.largerThan('md')]: {
-			display: 'none',
-		},
-	},
-
-	navlink: {
-		color: theme.colors.gray[0],
-		display: 'flex',
-		width: '100%',
-		height: '100%',
-		fontWeight: 600,
-		fontSize: rem(32),
-		fontStyle: 'italic',
-		flexDirection: 'column',
-		marginTop: theme.spacing.md,
-		marginBottom: theme.spacing.md,
-		textDecoration: 'none',
-
-		['&:active, &:hover']: {
-			textDecoration: 'underline',
-		},
-	},
-}))
-
-const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>> }) => {
-	const { classes } = useStyles()
+const NavLinks = ({ drawerHandler }: { drawerHandler?: ReturnType<typeof useDisclosure>[1] }) => {
 	const { t } = useTranslation()
 	const router = useRouter()
 	const linksInfo = [
@@ -74,9 +22,11 @@ const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>>
 	] //satisfies Array<Readonly<LinkData>>
 
 	useEffect(() => {
-		router.events.on('routeChangeComplete', () => setOpened && setOpened(false))
+		const drawerCloser = (_: unknown) => drawerHandler && drawerHandler.close()
 
-		return router.events.off('routeChangeComplete', () => setOpened && setOpened(false))
+		router.events.on('routeChangeComplete', drawerCloser)
+
+		return router.events.off('routeChangeComplete', drawerCloser)
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.asPath])
 
@@ -99,62 +49,51 @@ const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>>
 	return <>{links}</>
 }
 
-// const HomeButton = () => (
-// 	<Link href='/'>
-// 		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
-// 			{' Home'}
-// 		</Button>
-// 	</Link>
-// )
-
 // This type is only needed when trying to make a story for a page
 // to check whether the button to go to the main page works
 type pathProp = { path?: string }
 
 const HamburgerMenu = ({ path }: pathProp) => {
-	const [opened, setOpened] = useState(false)
-	const { classes } = useStyles()
+	const [opened, handler] = useDisclosure(false)
 	const router = useRouter()
 	const { asPath, pathname, query, locale } = router
 	const { t } = useTranslation()
 
+	const switchLang = useCallback(
+		() => router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' }),
+		[router, locale, asPath, query, pathname]
+	)
+
 	return (
-		<Container className={classes.burger} sx={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
+		<Container className={classes.burger} style={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
 			<Drawer
 				opened={opened}
-				onClose={() => setOpened(false)}
+				onClose={handler.close}
 				title={
-					<Text fz='md' fw={900} color='gray.0'>
+					<Text fz='md' fw={900} c='gray.0'>
 						{'InReach X GLAAD'}
 					</Text>
 				}
 				size='sm'
 				padding='xl'
-				styles={(theme) => ({
-					content: {
-						backgroundColor: theme.other.colors.glaadGray,
-					},
-					header: {
-						backgroundColor: theme.other.colors.glaadGray,
-					},
-				})}
+				classNames={{
+					content: classes['drawer-bg'],
+					header: classes['drawer-bg'],
+				}}
 			>
-				<NavLinks setOpened={setOpened} />
+				<NavLinks drawerHandler={handler} />
 				<Anchor
 					variant='category'
 					tt='uppercase'
 					// eslint-disable-next-line @typescript-eslint/no-misused-promises
-					onClick={() =>
-						router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
-					}
+					onClick={switchLang}
 				>
 					{t('nav.switch-lang-short')}
 				</Anchor>
 			</Drawer>
-			{/* {path !== '/' ? <HomeButton /> : undefined} */}
 			<Burger
 				opened={opened}
-				onClick={() => setOpened((o) => !o)}
+				onClick={handler.toggle}
 				size='lg'
 				color='#FEFEFF'
 				aria-label='burgerButton'
@@ -165,14 +104,15 @@ const HamburgerMenu = ({ path }: pathProp) => {
 }
 
 export const Navbar = ({ path }: pathProp) => {
-	const { classes } = useStyles()
 	const router = useRouter()
 	return (
-		<Header height={HEADER_HEIGHT} className={classes.glaadGray}>
+		// <Header height={HEADER_HEIGHT} className={classes.glaadGray}>
+		<>
 			<Container className={classes.navbar} fluid>
 				<NavLinks />
 			</Container>
-			<HamburgerMenu path={path || router.pathname} />
-		</Header>
+			<HamburgerMenu path={path ?? router.pathname} />
+		</>
+		// </Header>
 	)
 }
