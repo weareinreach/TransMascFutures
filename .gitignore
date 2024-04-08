@@ -54,3 +54,4 @@ storybook-static/
 
 /public/robots.txt
 /public/sitemap.xml
+.stylelintcache
