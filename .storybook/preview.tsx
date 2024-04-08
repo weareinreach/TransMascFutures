@@ -1,4 +1,4 @@
-import { Global, MantineProvider, TypographyStylesProvider } from '@mantine/core'
+import { Global, MantineProvider } from '@mantine/core'
 import { type MantineProviderProps } from '@mantine/core'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import { type StoryFn } from '@storybook/react'
@@ -10,7 +10,6 @@ import { storybookFont } from '../src/styles'
 import { theme } from '../src/styles/theme'
 
 export const parameters = {
-	actions: { argTypesRegex: '^on[A-Z].*' },
 	layout: 'centered',
 	controls: {
 		matchers: {
