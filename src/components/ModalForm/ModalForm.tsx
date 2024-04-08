@@ -65,16 +65,16 @@ export const ModalForm = () => {
 					/>
 					<FileInput ref={imageInput} /*placeholder='Pick an image'*/ label='Image' withAsterisk />
 
-					<Group position='right' mt='md'>
+					<Group justify='right' mt='md'>
 						<Button type='submit'>{'Submit'}</Button>
 					</Group>
 				</form>
 			</Modal>
 
-			<Group position='center'>
-				<div onClick={() => setOpened(true)}>
-					<Button variant='secondary'>{'CLICK HERE TO PARTICIPATE'}</Button>
-				</div>
+			<Group justify='center'>
+				<Button variant='secondary' onClick={() => setOpened(true)}>
+					{'CLICK HERE TO PARTICIPATE'}
+				</Button>
 			</Group>
 		</>
 	)
