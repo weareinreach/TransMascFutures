@@ -1,0 +1,21 @@
+.card {
+	max-width: rem(320px);
+}
+
+.title {
+	margin-bottom: rem(0px) !important;
+
+	@mixin smaller-than $mantine-breakpoint-md {
+		font-size: rem(24px);
+	}
+}
+
+.text {
+	padding-left: var(--mantine-spacing-xl);
+	padding-right: var(--mantine-spacing-xl);
+	font-size: var(--mantine-font-size-xl)
+
+	@mixin smaller-than $mantine-breakpoint-md {
+		font-size: rem(18px);
+	}
+}
