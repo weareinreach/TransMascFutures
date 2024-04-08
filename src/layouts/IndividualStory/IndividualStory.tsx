@@ -1,40 +1,9 @@
-import { Blockquote, createStyles, Flex, Group, rem, Stack, Text, Title } from '@mantine/core'
+import { Blockquote, Flex, Group, rem, Stack, Text, Title } from '@mantine/core'
 import Image, { type StaticImageData } from 'next/image'
 import { useTranslation } from 'next-i18next'
 import { type ComponentPropsWithoutRef } from 'react'
 
-const useStyles = createStyles((theme, { isModal }: { isModal?: boolean }) => ({
-	story: {
-		[theme.fn.smallerThan('sm')]: {
-			flexDirection: 'column',
-		},
-	},
-	content: {
-		padding: isModal ? rem(0) : rem(20),
-		[theme.fn.largerThan('sm')]: {
-			padding: isModal ? `${rem(0)} ${rem(0)} ${rem(40)} ${rem(0)}` : rem(40),
-			maxWidth: '66%',
-		},
-		[theme.fn.largerThan('lg')]: {
-			maxWidth: '50%',
-		},
-	},
-	label: {
-		fontSize: rem(18),
-		fontStyle: 'italic',
-		paddingBottom: rem(8),
-		fontWeight: 500,
-	},
-	text: {},
-	imageContainer: {
-		[theme.fn.largerThan('sm')]: {
-			maxWidth: '33%',
-		},
-		[theme.fn.largerThan('lg')]: {
-			maxWidth: '50%',
-		},
-	},
-}))
+import classes from './IndividualStory.module.css'
 
 const QuoteIcon = (props: ComponentPropsWithoutRef<'svg'> & { height?: number; width?: number }) => (
 	<svg
@@ -57,16 +26,16 @@ export const IndividualStory = ({
 	isModal,
 }: IndividualStoryProps) => {
 	const { t } = useTranslation()
-	const { classes } = useStyles({ isModal })
+	// const { classes } = useStyles({ isModal })
 
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
-			<Group className={classes.imageContainer}>
+			<Group className={classes['image-container']}>
 				<Image src={image} alt={'photo of individual'} height={350} width={Math.round(350 * 0.6923)} />
 			</Group>
 
-			<Group className={classes.content}>
-				<Stack spacing={4} pb={{ xs: 0, lg: 16 }}>
+			<Group className={classes.content} data-isModal={isModal}>
+				<Stack gap={4} pb={{ xs: 0, lg: 16 }}>
 					<Title order={1} tt='uppercase' fw={700}>
 						{name}
 					</Title>
