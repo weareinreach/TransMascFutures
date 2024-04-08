@@ -1,17 +1,16 @@
-import { Global, MantineProvider, TypographyStylesProvider } from '@mantine/core'
-import { type MantineProviderProps } from '@mantine/core'
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
-import { type StoryFn } from '@storybook/react'
-import { type ReactNode } from 'react'
-import { I18nextProvider } from 'react-i18next'
+import { Global, MantineProvider } from "@mantine/core";
+import { type MantineProviderProps } from "@mantine/core";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { type StoryFn } from "@storybook/react";
+import { type ReactNode } from "react";
+import { I18nextProvider } from "react-i18next";
 
-import { i18n, i18nLocales } from './i18next'
-import { storybookFont } from '../src/styles'
-import { theme } from '../src/styles/theme'
+import { i18n, i18nLocales } from "./i18next";
+import { storybookFont } from "../src/styles";
+import { theme } from "../src/styles/theme";
 
 export const parameters = {
-	actions: { argTypesRegex: '^on[A-Z].*' },
-	layout: 'centered',
+	layout: "centered",
 	controls: {
 		matchers: {
 			color: /(background|color)$/i,
@@ -19,17 +18,17 @@ export const parameters = {
 		},
 	},
 	i18n,
-	locale: 'en',
+	locale: "en",
 	locales: i18nLocales,
 	viewport: {
 		viewports: INITIAL_VIEWPORTS,
 	},
-}
-const mantineProviderProps: Omit<MantineProviderProps, 'children'> = {
+};
+const mantineProviderProps: Omit<MantineProviderProps, "children"> = {
 	withCSSVariables: false,
 	withGlobalStyles: true,
 	withNormalizeCSS: false,
-}
+};
 
 const ThemeWrapper = ({ children }: DecoratorProps) => {
 	return (
@@ -39,8 +38,8 @@ const ThemeWrapper = ({ children }: DecoratorProps) => {
 			<I18nextProvider i18n={i18n}>{children}</I18nextProvider>
 			{/* </TypographyStylesProvider> */}
 		</MantineProvider>
-	)
-}
+	);
+};
 
 export const decorators = [
 	(Story: StoryFn) => (
@@ -48,8 +47,8 @@ export const decorators = [
 			<Story />
 		</ThemeWrapper>
 	),
-]
+];
 
 type DecoratorProps = {
-	children: ReactNode
-}
+	children: ReactNode;
+};
