@@ -178,6 +178,7 @@ export const storyRouter = createTRPCRouter({
 						response2EN: true,
 					},
 					...(input.take ? { take: input.take } : {}),
+					orderBy: { createdAt: 'desc' },
 				})
 				const formatted = stories.map(({ categories, pronouns, response1EN, response2EN, ...rest }) => ({
 					...rest,
@@ -209,6 +210,7 @@ export const storyRouter = createTRPCRouter({
 					response2ES: true,
 				},
 				...(input.take ? { take: input.take } : {}),
+				orderBy: { createdAt: 'desc' },
 			})
 			const formatted = stories.map(({ categories, pronouns, response1ES, response2ES, ...rest }) => ({
 				...rest,
