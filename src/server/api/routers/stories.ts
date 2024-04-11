@@ -1,33 +1,33 @@
-import { z } from "zod";
+import { z } from 'zod'
 
-import { SurveySchema } from "~/pages/survey";
-import { crowdin } from "~/server/crowdin";
+import { SurveySchema } from '~/pages/survey'
+import { crowdin } from '~/server/crowdin'
 
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from '../trpc'
 
 export const storyRouter = createTRPCRouter({
 	getStoryBySlug: publicProcedure
 		.input(
 			z.object({
 				publicSlug: z.string(),
-			}),
+			})
 		)
 		.query(async ({ ctx, input }) => {
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { publicSlug: input.publicSlug },
 				include: { categories: { include: { category: true } } },
-			});
-			return story;
+			})
+			return story
 		}),
 	getStoryById: publicProcedure
 		.input(
 			z.object({
 				id: z.string(),
-				locale: z.enum(["en", "es"]),
-			}),
+				locale: z.enum(['en', 'es']),
+			})
 		)
 		.query(async ({ ctx, input }) => {
-			const isEN = input.locale === "en";
+			const isEN = input.locale === 'en'
 			if (isEN) {
 				const story = await ctx.prisma.story.findUniqueOrThrow({
 					where: { id: input.id, published: true },
@@ -51,9 +51,8 @@ export const storyRouter = createTRPCRouter({
 						},
 						pronouns: { select: { pronoun: { select: { pronounsEN: true } } } },
 					},
-				});
-				const { categories, pronouns, response1EN, response2EN, ...rest } =
-					story;
+				})
+				const { categories, pronouns, response1EN, response2EN, ...rest } = story
 				const formatted = {
 					...rest,
 					response1: response1EN,
@@ -70,8 +69,8 @@ export const storyRouter = createTRPCRouter({
 					pronouns: pronouns.map(({ pronoun }) => ({
 						pronoun: pronoun.pronounsEN,
 					})),
-				};
-				return formatted;
+				}
+				return formatted
 			}
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { id: input.id, published: true },
@@ -95,8 +94,8 @@ export const storyRouter = createTRPCRouter({
 					},
 					pronouns: { select: { pronoun: { select: { pronounsES: true } } } },
 				},
-			});
-			const { categories, pronouns, response1ES, response2ES, ...rest } = story;
+			})
+			const { categories, pronouns, response1ES, response2ES, ...rest } = story
 			const formatted = {
 				...rest,
 				response1: response1ES,
@@ -113,8 +112,8 @@ export const storyRouter = createTRPCRouter({
 				pronouns: pronouns.map(({ pronoun }) => ({
 					pronoun: pronoun.pronounsES,
 				})),
-			};
-			return formatted;
+			}
+			return formatted
 		}),
 	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
 	// 	const { id } = input
@@ -125,9 +124,9 @@ export const storyRouter = createTRPCRouter({
 	// 	})
 	// }),
 	getCategories: publicProcedure
-		.input(z.object({ locale: z.enum(["en", "es"]) }))
+		.input(z.object({ locale: z.enum(['en', 'es']) }))
 		.query(async ({ ctx, input }) => {
-			if (input.locale === "en") {
+			if (input.locale === 'en') {
 				const categories = await ctx.prisma.storyCategory.findMany({
 					select: {
 						categoryEN: true,
@@ -136,16 +135,14 @@ export const storyRouter = createTRPCRouter({
 						imageAltEN: true,
 						tag: true,
 					},
-					orderBy: { order: "asc" },
-				});
-				const formatted = categories.map(
-					({ categoryEN, imageAltEN, ...rest }) => ({
-						...rest,
-						category: categoryEN,
-						imageAlt: imageAltEN,
-					}),
-				);
-				return formatted;
+					orderBy: { order: 'asc' },
+				})
+				const formatted = categories.map(({ categoryEN, imageAltEN, ...rest }) => ({
+					...rest,
+					category: categoryEN,
+					imageAlt: imageAltEN,
+				}))
+				return formatted
 			}
 
 			const categories = await ctx.prisma.storyCategory.findMany({
@@ -156,27 +153,25 @@ export const storyRouter = createTRPCRouter({
 					imageAltES: true,
 					tag: true,
 				},
-				orderBy: { order: "asc" },
-			});
-			const formatted = categories.map(
-				({ categoryES, imageAltES, ...rest }) => ({
-					...rest,
-					category: categoryES,
-					imageAlt: imageAltES,
-				}),
-			);
-			return formatted;
+				orderBy: { order: 'asc' },
+			})
+			const formatted = categories.map(({ categoryES, imageAltES, ...rest }) => ({
+				...rest,
+				category: categoryES,
+				imageAlt: imageAltES,
+			}))
+			return formatted
 		}),
 	getByCategory: publicProcedure
 		.input(
 			z.object({
 				tag: z.string(),
 				take: z.number().optional(),
-				locale: z.enum(["en", "es"]),
-			}),
+				locale: z.enum(['en', 'es']),
+			})
 		)
 		.query(async ({ ctx, input }) => {
-			if (input.locale === "en") {
+			if (input.locale === 'en') {
 				const stories = await ctx.prisma.story.findMany({
 					where: {
 						published: true,
@@ -195,25 +190,23 @@ export const storyRouter = createTRPCRouter({
 						response2EN: true,
 					},
 					...(input.take ? { take: input.take } : {}),
-					orderBy: { createdAt: "desc" },
-				});
-				const formatted = stories.map(
-					({ categories, pronouns, response1EN, response2EN, ...rest }) => ({
-						...rest,
-						response1: response1EN,
-						response2: response2EN,
-						categories: categories.map(({ category }) => ({
-							category: {
-								id: category.id,
-								category: category.categoryEN,
-							},
-						})),
-						pronouns: pronouns.map(({ pronoun }) => ({
-							pronoun: pronoun.pronounsEN,
-						})),
-					}),
-				);
-				return formatted;
+					orderBy: { createdAt: 'desc' },
+				})
+				const formatted = stories.map(({ categories, pronouns, response1EN, response2EN, ...rest }) => ({
+					...rest,
+					response1: response1EN,
+					response2: response2EN,
+					categories: categories.map(({ category }) => ({
+						category: {
+							id: category.id,
+							category: category.categoryEN,
+						},
+					})),
+					pronouns: pronouns.map(({ pronoun }) => ({
+						pronoun: pronoun.pronounsEN,
+					})),
+				}))
+				return formatted
 			}
 			const stories = await ctx.prisma.story.findMany({
 				where: {
@@ -233,100 +226,93 @@ export const storyRouter = createTRPCRouter({
 					response2ES: true,
 				},
 				...(input.take ? { take: input.take } : {}),
-				orderBy: { createdAt: "desc" },
-			});
-			const formatted = stories.map(
-				({ categories, pronouns, response1ES, response2ES, ...rest }) => ({
-					...rest,
-					response1: response1ES,
-					response2: response2ES,
-					categories: categories.map(({ category }) => ({
-						category: {
-							id: category.id,
-							category: category.categoryES,
-						},
-					})),
-					pronouns: pronouns.map(({ pronoun }) => ({
-						pronoun: pronoun.pronounsES,
-					})),
-				}),
-			);
-			return formatted;
+				orderBy: { createdAt: 'desc' },
+			})
+			const formatted = stories.map(({ categories, pronouns, response1ES, response2ES, ...rest }) => ({
+				...rest,
+				response1: response1ES,
+				response2: response2ES,
+				categories: categories.map(({ category }) => ({
+					category: {
+						id: category.id,
+						category: category.categoryES,
+					},
+				})),
+				pronouns: pronouns.map(({ pronoun }) => ({
+					pronoun: pronoun.pronounsES,
+				})),
+			}))
+			return formatted
 		}),
-	submit: publicProcedure
-		.input(SurveySchema())
-		.mutation(async ({ ctx, input }) => {
-			const submission = await ctx.prisma.storySubmission.create({
-				data: {
-					responses: input,
-					userId: "noUserId",
+	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
+		const submission = await ctx.prisma.storySubmission.create({
+			data: {
+				responses: input,
+				userId: 'noUserId',
+			},
+			select: {
+				id: true,
+			},
+		})
+		const storyRecord = await ctx.prisma.story.create({
+			data: {
+				name: input.q4,
+				response1EN: input.q8,
+				response2EN: input.q9,
+				categories: {
+					create: input.q5.map((tag) => ({ category: { connect: { tag } } })),
 				},
-				select: {
-					id: true,
+				pronouns: {
+					create: input.q7.map((tag) => ({ pronoun: { connect: { tag } } })),
 				},
-			});
-			const storyRecord = await ctx.prisma.story.create({
-				data: {
-					name: input.q4,
-					response1EN: input.q8,
-					response2EN: input.q9,
-					categories: {
-						create: input.q5.map((tag) => ({ category: { connect: { tag } } })),
-					},
-					pronouns: {
-						create: input.q7.map((tag) => ({ pronoun: { connect: { tag } } })),
-					},
-					published: false,
-				},
-			});
+				published: false,
+			},
+		})
 
-			const crowdinAdditions: CrowdinBatchAdd[] = [];
-			if (storyRecord.response1EN) {
-				crowdinAdditions.push({
-					op: "add",
-					path: "/-",
-					value: {
-						text: storyRecord.response1EN,
-						identifier: `${storyRecord.id}.response1`,
-						fileId: 2653,
-						context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join("/")}"`,
-					},
-				});
-			}
-			if (storyRecord.response2EN) {
-				crowdinAdditions.push({
-					op: "add",
-					path: "/-",
-					value: {
-						text: storyRecord.response2EN,
-						identifier: `${storyRecord.id}.response2`,
-						fileId: 2653,
-						context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join("/")}"`,
-					},
-				});
-			}
+		const crowdinAdditions: CrowdinBatchAdd[] = []
+		if (storyRecord.response1EN) {
+			crowdinAdditions.push({
+				op: 'add',
+				path: '/-',
+				value: {
+					text: storyRecord.response1EN,
+					identifier: `${storyRecord.id}.response1`,
+					fileId: 2653,
+					context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join('/')}"`,
+				},
+			})
+		}
+		if (storyRecord.response2EN) {
+			crowdinAdditions.push({
+				op: 'add',
+				path: '/-',
+				value: {
+					text: storyRecord.response2EN,
+					identifier: `${storyRecord.id}.response2`,
+					fileId: 2653,
+					context: `Submitter's Name: "${input.q4}" | Pronouns: "${input.q7.join('/')}"`,
+				},
+			})
+		}
 
-			if (crowdinAdditions.length) {
-				try {
-					await crowdin.sourceStringsApi.stringBatchOperations(
-						14,
-						crowdinAdditions,
-					);
-				} catch (e) {
-					console.error(e);
-				}
+		if (crowdinAdditions.length) {
+			try {
+				await crowdin.sourceStringsApi.stringBatchOperations(14, crowdinAdditions)
+			} catch (e) {
+				console.error(e)
 			}
-			return submission;
-		}),
-});
+		}
+		return submission
+	}),
+})
 
 type CrowdinBatchAdd = {
-	op: "add";
-	path: string;
+	op: 'add'
+	path: string
 	value: {
-		text: string;
-		identifier: string;
-		fileId: number;
-		context?: string;
-	};
-};
+		text: string
+		identifier: string
+		fileId: number
+		context?: string
+	}
+}
