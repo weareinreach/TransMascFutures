@@ -2,5 +2,9 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"markdownlint.config": {
 		"MD033": false
+	},
+	"sonarlint.connectedMode.project": {
+		"connectionId": "inreach",
+		"projectKey": "weareinreach_GLAAD"
 	}
 }

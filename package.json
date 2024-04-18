@@ -74,6 +74,7 @@
 	"devDependencies": {
 		"@faker-js/faker": "7.6.0",
 		"@paralleldrive/cuid2": "2.2.2",
+		"@relative-ci/agent": "4.2.6",
 		"@storybook/addon-a11y": "8.0.8",
 		"@storybook/addon-essentials": "8.0.8",
 		"@storybook/addon-interactions": "8.0.8",

@@ -1,6 +1,7 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 // @ts-check
 import bundleAnalyze from '@next/bundle-analyzer'
+import { RelativeCiAgentWebpackPlugin } from '@relative-ci/agent'
 import nextRoutes from 'nextjs-routes/config'
 
 import i18nConfig from './next-i18next.config.js'
@@ -34,6 +35,12 @@ const config = {
 	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
+	webpack: (config, { dev, isServer }) => {
+		if (!dev && !isServer) {
+			config.plugins.push(new RelativeCiAgentWebpackPlugin())
+		}
+		return config
+	},
 }
 /**
  * Wraps NextJS config with the Bundle Analyzer config.
