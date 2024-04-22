@@ -123,8 +123,8 @@ importers:
         specifier: 8.16.0
         version: 8.16.0
       zod:
-        specifier: 3.22.5
-        version: 3.22.5
+        specifier: 3.23.0
+        version: 3.23.0
     devDependencies:
       '@faker-js/faker':
         specifier: 7.6.0
@@ -155,7 +155,7 @@ importers:
         version: 8.0.8(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@storybook/nextjs':
         specifier: 8.0.8
-        version: 8.0.8(babel-plugin-macros@3.1.0)(esbuild@0.19.12)(next@14.2.2(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(type-fest@4.15.0)(typescript@5.4.5)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))
+        version: 8.0.8(babel-plugin-macros@3.1.0)(esbuild@0.19.12)(next@14.2.2(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(type-fest@4.16.0)(typescript@5.4.5)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))
       '@storybook/react':
         specifier: 8.0.8
         version: 8.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)
@@ -280,8 +280,8 @@ importers:
         specifier: 1.13.2
         version: 1.13.2
       type-fest:
-        specifier: 4.15.0
-        version: 4.15.0
+        specifier: 4.16.0
+        version: 4.16.0
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -6903,8 +6903,8 @@ packages:
     resolution: {integrity: sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==}
     engines: {node: '>=12.20'}
 
-  type-fest@4.15.0:
-    resolution: {integrity: sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==}
+  type-fest@4.16.0:
+    resolution: {integrity: sha512-z7Rf5PXxIhbI6eJBTwdqe5bO02nUUmctq4WqviFSstBAWV0YNtEQRhEnZw73WJ8sZOqgFG6Jdl8gYZu7NBJZnA==}
     engines: {node: '>=16'}
 
   type-is@1.6.18:
@@ -7292,8 +7292,8 @@ packages:
     peerDependencies:
       zod: ^3.18.0
 
-  zod@3.22.5:
-    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
+  zod@3.23.0:
+    resolution: {integrity: sha512-OFLT+LTocvabn6q76BTwVB0hExEBS0IduTr3cqZyMqEDbOnYmcU+y0tUAYbND4uwclpBGi4I4UUBGzylWpjLGA==}
 
 snapshots:
 
@@ -8701,7 +8701,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.14.0)(type-fest@4.15.0)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.14.0)(type-fest@4.16.0)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))':
     dependencies:
       ansi-html-community: 0.0.8
       common-path-prefix: 3.0.0
@@ -8715,7 +8715,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.91.0(esbuild@0.19.12)
     optionalDependencies:
-      type-fest: 4.15.0
+      type-fest: 4.16.0
       webpack-hot-middleware: 2.26.1
 
   '@pnpm/constants@7.1.1': {}
@@ -9461,7 +9461,7 @@ snapshots:
 
   '@storybook/manager@8.0.8': {}
 
-  '@storybook/nextjs@8.0.8(babel-plugin-macros@3.1.0)(esbuild@0.19.12)(next@14.2.2(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(type-fest@4.15.0)(typescript@5.4.5)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))':
+  '@storybook/nextjs@8.0.8(babel-plugin-macros@3.1.0)(esbuild@0.19.12)(next@14.2.2(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(type-fest@4.16.0)(typescript@5.4.5)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))':
     dependencies:
       '@babel/core': 7.24.3
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.24.3)
@@ -9476,7 +9476,7 @@ snapshots:
       '@babel/preset-react': 7.24.1(@babel/core@7.24.3)
       '@babel/preset-typescript': 7.24.1(@babel/core@7.24.3)
       '@babel/runtime': 7.24.1
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(type-fest@4.15.0)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.0)(type-fest@4.16.0)(webpack-hot-middleware@2.26.1)(webpack@5.91.0(esbuild@0.19.12))
       '@storybook/addon-actions': 8.0.8
       '@storybook/builder-webpack5': 8.0.8(esbuild@0.19.12)(typescript@5.4.5)
       '@storybook/core-common': 8.0.8
@@ -13119,8 +13119,8 @@ snapshots:
       strip-json-comments: 5.0.1
       summary: 2.1.0
       typescript: 5.4.5
-      zod: 3.22.5
-      zod-validation-error: 3.1.0(zod@3.22.5)
+      zod: 3.23.0
+      zod-validation-error: 3.1.0(zod@3.23.0)
     transitivePeerDependencies:
       - bluebird
       - domexception
@@ -15355,7 +15355,7 @@ snapshots:
 
   type-fest@2.19.0: {}
 
-  type-fest@4.15.0: {}
+  type-fest@4.16.0: {}
 
   type-is@1.6.18:
     dependencies:
@@ -15769,8 +15769,8 @@ snapshots:
 
   yocto-queue@1.0.0: {}
 
-  zod-validation-error@3.1.0(zod@3.22.5):
+  zod-validation-error@3.1.0(zod@3.23.0):
     dependencies:
-      zod: 3.22.5
+      zod: 3.23.0
 
-  zod@3.22.5: {}
+  zod@3.23.0: {}

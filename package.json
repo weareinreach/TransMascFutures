@@ -69,7 +69,7 @@
 		"slugify": "1.6.6",
 		"superjson": "2.2.1",
 		"ws": "8.16.0",
-		"zod": "3.22.5"
+		"zod": "3.23.0"
 	},
 	"devDependencies": {
 		"@faker-js/faker": "7.6.0",
@@ -123,13 +123,13 @@
 		"storybook": "8.0.8",
 		"tsx": "4.7.2",
 		"turbo": "1.13.2",
-		"type-fest": "4.15.0",
+		"type-fest": "4.16.0",
 		"typescript": "5.4.5"
 	},
-	"packageManager": "pnpm@9.0.4",
+	"packageManager": "pnpm@9.0.5",
 	"engines": {
 		"node": "20.12.2",
-		"pnpm": "9.0.4"
+		"pnpm": "9.0.5"
 	},
 	"ct3aMetadata": {
 		"initVersion": "7.3.2"
