@@ -128,8 +128,8 @@
 	},
 	"packageManager": "pnpm@9.0.6",
 	"engines": {
-		"node": "20.12.2",
-		"pnpm": "9.0.6"
+		"node": "^20.12.2",
+		"pnpm": "^9.0.0"
 	},
 	"ct3aMetadata": {
 		"initVersion": "7.3.2"
