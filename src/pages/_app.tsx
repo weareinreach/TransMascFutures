@@ -54,7 +54,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 				<Group position='apart' w='100%' p={40}>
 					<Button
 						component='a'
-						href='https://inreach.kindful.com/'
+						href='https://inreach.kindful.com/?campaign=1296613'
 						target='_blank'
 						rel='noreferrer'
 						className={classes.homeButton}
