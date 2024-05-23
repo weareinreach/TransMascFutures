@@ -24,7 +24,7 @@ const withBundleAnalyzer = bundleAnalyze({
 })
 
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
 	i18n: i18nConfig.i18n,
 	reactStrictMode: true,
 	swcMinify: true,
@@ -60,11 +60,11 @@ const config = {
 /**
  * Wraps NextJS config with the Bundle Analyzer config.
  *
- * @param {typeof config} config
- * @returns {typeof config}
+ * @param {typeof nextConfig} config
+ * @returns {typeof nextConfig}
  */
 function defineNextConfig(config) {
 	return withBundleAnalyzer(withRoutes(config))
 }
 
-export default defineNextConfig(config)
+export default defineNextConfig(nextConfig)
