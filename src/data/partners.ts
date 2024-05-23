@@ -5,6 +5,7 @@ import Hollister from '~public/assets/partners/hollister.png'
 import ImmigrationEquality from '~public/assets/partners/immigrationEquality.png'
 import KYLP from '~public/assets/partners/kylp_t.png'
 import LambdaLegal from '~public/assets/partners/lambaLegal_t.png'
+import Lush from '~public/assets/partners/lush.png'
 import MTPC from '~public/assets/partners/mtpc.png'
 import NQAPIA from '~public/assets/partners/nqapia_t.png'
 import OasisLegal from '~public/assets/partners/oasisLegal.png'
@@ -14,14 +15,15 @@ import TAVA from '~public/assets/partners/tava.png'
 
 export const partnerImages = {
 	glaad: Glaad,
-	lambdaLegal: LambdaLegal,
-	sage: Sage,
-	immigrationEquality: ImmigrationEquality,
-	nqapia: NQAPIA,
 	hollister: Hollister,
+	immigrationEquality: ImmigrationEquality,
 	kylp: KYLP,
+	lambdaLegal: LambdaLegal,
+	lush: Lush,
 	mtpc: MTPC,
+	nqapia: NQAPIA,
 	oasisLegal: OasisLegal,
+	sage: Sage,
 	standWithTrans: StandWithTrans,
 	tava: TAVA,
 }
