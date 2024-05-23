@@ -17,6 +17,7 @@ import {
 import { type GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Trans, useTranslation } from 'next-i18next'
 
 import { Banner } from '~/components/Banner/Banner'
@@ -74,13 +75,14 @@ const useStyles = createStyles((theme) => ({
 		justifyItems: 'center',
 	},
 	partnerHollister: {
-		width: rem(600),
+		maxWidth: '80vw',
+		width: rem(400),
 		[theme.fn.smallerThan('md')]: {
-			width: rem(400),
+			width: rem(300),
 		},
-		[theme.fn.smallerThan('xs')]: {
-			width: rem(200),
-		},
+		// [theme.fn.smallerThan('xs')]: {
+		// 	width: rem(200),
+		// },
 	},
 }))
 const AboutPage = () => {
@@ -111,9 +113,8 @@ const AboutPage = () => {
 						<Trans
 							i18nKey='about.campaign'
 							components={{
-								Link1: <a href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'></a>,
-								Link2: <a href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'></a>,
-								Link3: <a href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'></a>,
+								// @ts-expect-error props are passed in from json string
+								Link: <Link />,
 							}}
 						/>
 					</Text>
@@ -133,11 +134,13 @@ const AboutPage = () => {
 				<Title order={2} mb={40}>
 					{t('about.supporting-partners')}
 				</Title>
-				<Grid grow mx='auto' gutter={20}>
-					{partners &&
-						partners.map(({ id, href, name, order, tag }) => {
+				<Grid grow mx='auto' gutter={20} mb={40}>
+					{Boolean(partners?.length) &&
+						partners?.map(({ id, href, name, tag }) => {
 							const image = getPartnerImage(tag)
-							if (!image) return null
+							if (!image) {
+								return null
+							}
 							return (
 								<Grid.Col
 									key={id}
@@ -157,33 +160,43 @@ const AboutPage = () => {
 						})}
 				</Grid>
 
-				<Trans
-					i18nKey='about.hollister'
-					components={{
-						Title: (
-							<Text my={40} ta='center' mx={{ lg: 0, base: 10, xs: 50, [em(450)]: 60 }} fw={500} fz={20}>
-								.
-							</Text>
-						),
-						Link: (
-							<a
-								href='https://www.hollisterco.com/shop/us/purpose'
-								target='_blank'
-								rel='noopener noreferrer'
-							></a>
-						),
-					}}
-				/>
-				<Center>
-					<AspectRatio
-						ratio={partnerImages.hollister.width / partnerImages.hollister.height}
-						className={classes.partnerHollister}
-					>
-						<a href='https://www.hollisterco.com/shop/us/purpose' target='_blank' rel='noopener noreferrer'>
-							<Image src={partnerImages.hollister} alt='The Hollister Confidence Fund' fill />
-						</a>
-					</AspectRatio>
-				</Center>
+				<Title order={2} mb={40}>
+					{t('about.supporting-funders')}
+				</Title>
+				<Grid grow mx='auto' gutter={20} w='100%'>
+					<Grid.Col span={6}>
+						<Center inline w='100%' h='100%'>
+							<AspectRatio
+								ratio={partnerImages.hollister.width / partnerImages.hollister.height}
+								className={classes.partnerHollister}
+							>
+								<a
+									href='https://www.hollisterco.com/shop/us/purpose'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<Image src={partnerImages.hollister} alt='The Hollister Confidence Fund' fill />
+								</a>
+							</AspectRatio>
+						</Center>
+					</Grid.Col>
+					<Grid.Col span={6}>
+						<Center inline w='100%' h='100%'>
+							<AspectRatio
+								ratio={partnerImages.lush.width / partnerImages.lush.height}
+								className={classes.partnerHollister}
+							>
+								<a
+									href='https://www.lush.com/us/en_us/a/how-lush-gives-back'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<Image src={partnerImages.lush} alt='LUSH Retail' fill />
+								</a>
+							</AspectRatio>
+						</Center>
+					</Grid.Col>
+				</Grid>
 			</Flex>
 		</>
 	)
