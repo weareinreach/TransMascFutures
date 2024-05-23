@@ -237,6 +237,9 @@ importers:
       husky:
         specifier: 9.0.11
         version: 9.0.11
+      i18next-hmr:
+        specifier: 3.1.2
+        version: 3.1.2
       knip:
         specifier: 5.16.0
         version: 5.16.0(@types/node@20.12.12)(typescript@5.4.5)
@@ -4503,6 +4506,9 @@ packages:
 
   i18next-fs-backend@2.3.1:
     resolution: {integrity: sha512-tvfXskmG/9o+TJ5Fxu54sSO5OkY6d+uMn+K6JiUGLJrwxAVfer+8V3nU8jq3ts9Pe5lXJv4b1N7foIjJ8Iy2Gg==}
+
+  i18next-hmr@3.1.2:
+    resolution: {integrity: sha512-N5MDJXH3habVh9rwr+1OvMug/Eo7HAQ2N0q5gtR3xRFBjMoqgpocgHj10KJoqDGy7axdzEhqseQGQtZUBjpmDA==}
 
   i18next-http-backend@2.5.2:
     resolution: {integrity: sha512-+K8HbDfrvc1/2X8jpb7RLhI9ZxBDpx3xogYkQwGKlWAUXLSEGXzgdt3EcUjLlBCdMwdQY+K+EUF6oh8oB6rwHw==}
@@ -12687,6 +12693,8 @@ snapshots:
       '@babel/runtime': 7.24.5
 
   i18next-fs-backend@2.3.1: {}
+
+  i18next-hmr@3.1.2: {}
 
   i18next-http-backend@2.5.2:
     dependencies:

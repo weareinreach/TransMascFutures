@@ -2,7 +2,11 @@
 // @ts-check
 import bundleAnalyze from '@next/bundle-analyzer'
 import { RelativeCiAgentWebpackPlugin } from '@relative-ci/agent'
+import { I18NextHMRPlugin } from 'i18next-hmr/webpack'
 import nextRoutes from 'nextjs-routes/config'
+
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import i18nConfig from './next-i18next.config.js'
 /**
@@ -12,6 +16,8 @@ import i18nConfig from './next-i18next.config.js'
 
 !process.env.SKIP_ENV_VALIDATION && (await import('./src/env/server.mjs'))
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const withRoutes = nextRoutes({ outDir: 'src/types' })
 const withBundleAnalyzer = bundleAnalyze({
 	enabled: process.env.ANALYZE === 'true',
@@ -40,6 +46,13 @@ const config = {
 	webpack: (config, { dev, isServer }) => {
 		if (!dev && !isServer) {
 			config.plugins.push(new RelativeCiAgentWebpackPlugin())
+		}
+		if (dev && !isServer) {
+			config.plugins.push(
+				new I18NextHMRPlugin({
+					localesDir: path.resolve(__dirname, './public/locales'),
+				})
+			)
 		}
 		return config
 	},
