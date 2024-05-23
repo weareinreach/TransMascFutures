@@ -3,6 +3,25 @@
 // @ts-check
 /* eslint-disable import/no-unused-modules */
 const path = require('path')
+
+const isBrowser = typeof window !== 'undefined'
+const plugins = () => {
+	/** @type {any[]} */
+	const pluginsToUse = []
+	if (process.env.NODE_ENV === 'development') {
+		if (isBrowser) {
+			import('i18next-hmr/plugin').then(({ HMRPlugin }) =>
+				pluginsToUse.push(new HMRPlugin({ webpack: { client: true } }))
+			)
+		} else {
+			import('i18next-hmr/plugin').then(({ HMRPlugin }) =>
+				pluginsToUse.push(new HMRPlugin({ webpack: { server: true } }))
+			)
+		}
+	}
+	return pluginsToUse
+}
+
 /**
  * @template {import('next-i18next').UserConfig} T
  * @type {import('next-i18next').UserConfig}
@@ -23,6 +42,7 @@ const config = {
 	react: { useSuspense: false },
 	joinArrays: '',
 	serializeConfig: false,
+	use: plugins(),
 	interpolation: {
 		skipOnVariables: false,
 		alwaysFormat: true,
