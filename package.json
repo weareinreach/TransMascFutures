@@ -123,7 +123,7 @@
 		"react-docgen-typescript": "2.2.2",
 		"storybook": "8.2.9",
 		"tsx": "4.17.0",
-		"turbo": "1.13.4",
+		"turbo": "2.0.12",
 		"type-fest": "4.24.0",
 		"typescript": "5.5.4"
 	},
