@@ -1,16 +1,16 @@
 {
     "about": {
-        "campaign": "This trans-led digital campaign organized by <Link href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'>InReach</Link> and <Link href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'>GLAAD</Link> aims to showcase positive stories from the diverse trans masculine community and increase access to safe, verified resources through the <Link href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'>free InReach App</Link>.",
+        "campaign": "Esta campaña digital por personas trans organizada por <Link href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'>InReach</Link> y <Link href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'>GLAAD</Link> tiene como objetivo mostrar historias positivas de la comunidad trans masculina diversa y aumentar el acceso a recursos seguros y verificados a través de la <Link href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'>aplicación gratuita InReach</Link>.",
         "hollister": "<Title>Y un agradecimiento especial a <Link>The Hollister Confidence Fund</Link> por su apoyo.</Title>",
         "stats": {
-            "stat1-text": "of trans men and trans masculine youth have considered suicide.",
+            "stat1-text": "de hombres trans y jóvenes trans masculinos han considerado el suicidio.",
             "stat1-title": "52%",
             "stat2-text": "jóvenes transgénero y no binarios han intentado suicidarse.",
-            "stat2-title": "1 in 7",
+            "stat2-title": "1 en 7",
             "stat3-text": "de la población trans de EE. UU. se identifica como hombre trans.",
             "stat3-title": "36%"
         },
-        "supporting-funders": "Supporting Funders",
+        "supporting-funders": "Financiado por",
         "supporting-partners": "Socios que Apoyan",
         "trans-people": "Las personas trans están en todas partes. Esta campaña incluye historias de hombres trans y adultos transmasculinos por todo el país."
     },
