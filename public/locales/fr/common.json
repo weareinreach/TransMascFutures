@@ -1,186 +1,187 @@
 {
     "about": {
-        "campaign": "This trans-led digital campaign organized by <Link1>InReach</Link1> and <Link2>GLAAD</Link2> aims to showcase positive stories from the diverse trans masculine community and increase access to safe, verified resources through the <Link3>free InReach App</Link3>.",
-        "hollister": "<Title>And special thanks to <Link>The Hollister Confidence Fund</Link> for their support.</Title>",
+        "campaign": "This trans-led digital campaign organized by <Link href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'>InReach</Link> and <Link href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'>GLAAD</Link> aims to showcase positive stories from the diverse trans masculine community and increase access to safe, verified resources through the <Link href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'>free InReach App</Link>.",
+        "hollister": "<Title>Et un merci tout spécial à <Link>Le Hollister Confidence Fund</Link> pour son soutien.</Title>",
         "stats": {
-            "stat1-text": "of trans men and trans masculine youth have considered suicide",
-            "stat1-title": "56%",
-            "stat2-text": "transgender and nonbinary youth have attempted suicide.",
-            "stat2-title": "1 in 5",
-            "stat3-text": "of the U.S. trans population identify as trans men.",
+            "stat1-text": "of trans men and trans masculine youth have considered suicide.",
+            "stat1-title": "52%",
+            "stat2-text": "les jeunes transgenres et non binaires ont tenté de se suicider.",
+            "stat2-title": "1 in 7",
+            "stat3-text": "de la population trans dans les États-Unis identifiés comme des hommes trans.",
             "stat3-title": "36%"
         },
-        "supporting-partners": "Supporting Partners",
-        "trans-people": "Trans people are everywhere. This campaign includes stories from trans men and trans masculine adults across the country."
+        "supporting-funders": "Supporting Funders",
+        "supporting-partners": "Partenaires de soutien",
+        "trans-people": "Les trans sont partout. Cette campagne comprend des histoires d'hommes trans et d'adultes masculins à travers le pays."
     },
     "act": {
-        "card1": "<Title>Participate in this campaign</Title>\n<Text>We're currently accepting submissions from trans men and trans masculine adults in the U.S. to share their story.</Text>\n<Text>Click <Link>here</Link> to participate.</Text>",
-        "card2": "<Title>Help increase resource access for the diverse trans masculine community</Title>\n<Text>InReach is always looking for new resource suggestions to help expand our free app. Know an organization that is affirming and safe for trans masculine people?</Text>\n<Text>You can suggest a resource to be listed on the free InReach App <Link>here</Link>.</Text>",
-        "card3": "<Title>Access affirming resources, 24/7</Title>\n<Text>Use the free InReach App to access safe, independently verified legal, medical, mental health and social services near you. <Link>Click here</Link> to find resources. Stay tuned for our new trans men and trans masculine community 'sort by' filter coming soon!</Text>"
+        "card1": "<Title>Participez à cette campagne</Title>\n<Text>Nous acceptons actuellement les soumissions d'hommes trans et d'adultes trans masculins aux États-Unis pour partager leur histoire.</Text>\n<Text>Cliquez sur <Link>ici</Link> pour participer.</Text>",
+        "card2": "<Title>Aide à augmenter l'accès aux ressources pour la communauté masculine diversifiée</Title>\n<Text>InReach est toujours à la recherche de nouvelles suggestions de ressources pour aider à développer notre application gratuite. Vous connaissez une organisation qui affirme et sécurise pour les hommes trans ?</Text>\n<Text>Vous pouvez suggérer une ressource à lister sur l'application gratuite InReach <Link>ici</Link>.</Text>",
+        "card3": "<Title>Accédez à des ressources affirmantes,</Title>\n<Text>Utilisez l'application InReach gratuite pour accéder en toute sécurité des services juridiques, médicaux, de santé mentale et sociaux vérifiés de façon indépendante près de chez vous. <Link>Cliquez ici</Link> pour trouver des ressources. Restez à l'écoute de nos nouveaux homme trans et trans communauté masculine « triez par » filtre à venir bientôt !</Text>"
     },
-    "artist-credit": "Character drawings by Joey Borrelli.",
-    "back": "Previous",
-    "donate": "Donate",
+    "artist-credit": "Dessin de personnage par Joey Borrelli.",
+    "back": "Précédent",
+    "donate": "Faire un don",
     "errors": {
-        "consent-all-3": "You must consent to all three.",
-        "min-21": "You must be at least 21 years old to participate.",
-        "other-val": "Please specify",
-        "select-min-one": "Select at least one item",
-        "verify-all-3": "You must verify that all three are true."
+        "consent-all-3": "Vous devez accepter les trois.",
+        "min-21": "Vous devez avoir au moins 21 ans pour participer.",
+        "other-val": "Veuillez spécifier",
+        "select-min-one": "Sélectionnez au moins un élément",
+        "verify-all-3": "Vous devez vérifier que les trois sont vraies."
     },
     "logo-alt": "InReach & GLAAD #TransMascFutures logo",
     "main-page": {
-        "tagline1": "Trans men and trans masculine adults share their stories of trans joy.",
-        "tagline2": "Trans futures are InReach."
+        "tagline1": "Les trans hommes et adultes trans partagent leurs histoires de joie trans.",
+        "tagline2": "Les trans contrats à terme sont InReach."
     },
     "nav": {
-        "about": "About",
-        "act": "Act",
-        "find-resources": "Find resources",
-        "gallery": "Gallery",
-        "home": "Home",
-        "share": "Share",
-        "share-your-story": "Share your story",
-        "stories": "Stories",
-        "switch-lang": "Haz clic aquí para cambiar a español.",
-        "switch-lang-short": "Cambiar a español"
+        "about": "À propos de",
+        "act": "Agir",
+        "find-resources": "Trouver des ressources",
+        "gallery": "Galerie",
+        "home": "Domicile",
+        "share": "Partager",
+        "share-your-story": "Partagez votre histoire",
+        "stories": "Histoires",
+        "switch-lang": "Cliquer ici pour changer en espanol.",
+        "switch-lang-short": "Changer en espanol"
     },
-    "next": "Next",
+    "next": "Suivant",
     "page-title": {
-        "gallery": "Trans Joy: Gallery",
+        "gallery": "Joie Trans: Galerie",
         "general": "#TransMascFutures - InReach x GLAAD",
         "general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
     },
-    "participate": "Click here to participate",
-    "see-x-stories": "See {{category}} Stories",
+    "participate": "Cliquez ici pour participer",
+    "see-x-stories": "Voir les histoires {{category}}",
     "share": {
-        "download-button": "Download Kit",
-        "list1": "Multiple 1080 x 1080 PNG graphics",
-        "list2": "PDF document with sample sharing language",
-        "press-release": "Press Release",
-        "subtitle": "For your sharing convenience:",
-        "title": "Use our #TransMascFutures social media toolkit."
+        "download-button": "Télécharger le kit",
+        "list1": "Multiples graphiques PNG 1080 x 1080",
+        "list2": "Document PDF avec exemple de langage de partage",
+        "press-release": "Communiqué de presse",
+        "subtitle": "Pour votre commodité de partage :",
+        "title": "Utilisez notre boîte à outils de médias sociaux #TransMascFutures."
     },
     "story": {
-        "prompt1": "The first moment I could see my future as a trans man or trans masculine person was...",
-        "prompt2": "Resources that helped me..."
+        "prompt1": "Le premier moment où je pouvais voir mon avenir comme un homme trans, ou un homme trans, était...",
+        "prompt2": "Des ressources qui m'ont aidé..."
     },
     "story-gallery": {
-        "bipoc": "Trans Masc + BIPOC + Proud",
-        "disabled": "Trans Masc + Disabled + Proud",
-        "elder": "Trans Masc + Elder + Proud",
-        "gallery-joy": "Trans joy: Gallery",
-        "immigrant": "Trans Masc + Immigrant + Proud",
-        "queer": "Trans Masc + Queer + Proud",
-        "transman": "Trans man + Proud",
-        "transmasc": "Trans Masc / Nonbinary + Proud"
+        "bipoc": "Masque Trans + BIPOC + Fier",
+        "disabled": "Masque Trans + Désactivé + Fier",
+        "elder": "Masque Trans + Ancien + Fier",
+        "gallery-joy": "Trans joie: Galerie",
+        "immigrant": "Masque Trans + Immigrant + Fier",
+        "queer": "Masque Trans + Queer + Fier",
+        "transman": "Homme Trans + Fier",
+        "transmasc": "Masque Trans / Non binaire + Fier"
     },
-    "submit": "Submit",
+    "submit": "Soumettre",
     "survey-form": {
-        "eligiblity": "<Text>Participant eligiblity critera:</Text>\n<List><ListItem>You are a trans man or a trans masculine person</ListItem>\n<ListItem>You are 21 years old or over</ListItem>\n<ListItem>You are currently living anywhere in the United States</ListItem></List>",
-        "intro": "InReach is partnering with GLAAD to organize #TransMascFutures. This trans-led digital campaign aims to showcase positive stories from the diverse trans masculine community and increase access to safe, verified resources through the InReach App. The #TransMascFutures Campaign launched on June 7th, 2023. Submit this form to add your story to the campaign website.",
-        "prefer-not-answer": "Prefer not to answer",
-        "q1": "You verify that the following is true (check all that apply):",
+        "eligiblity": "<Text>Éligibilité du participant a :</Text>\n<List><ListItem>Vous êtes un homme trans, une personne trans masculine</ListItem>\n<ListItem>Vous avez 21 ans ou plus</ListItem>\n<ListItem>Vous habitez actuellement partout aux États-Unis</ListItem></List>",
+        "intro": "InReach s'associe à GLAAD pour organiser #TransMascFutures. Cette campagne numérique dirigée par les trans vise à présenter des histoires positives de la diversité de la communauté trans masculine et à accroître l'accès à des ressources sûres et vérifiées via l'application InReach. La campagne #TransMascFutures a été lancée le 7 juin 2023. Soumettez ce formulaire pour ajouter votre histoire sur le site Web de la campagne.",
+        "prefer-not-answer": "Préférer ne pas répondre",
+        "q1": "Vous vérifiez que ce qui suit est vrai (cochez toutes les cases qui s'appliquent):",
         "q1-opts": {
-            "00_transmasc": "I am a trans man or trans masculine person",
-            "01_over21": "I am at least 21 years old",
-            "02_us": "I currently live in the United States"
+            "00_transmasc": "Je suis un homme de trans ou trans masculin",
+            "01_over21": "J'ai au moins 21 ans",
+            "02_us": "Je vis actuellement aux États-Unis"
         },
-        "q10": "Which gender-related terms best describe your personal identity?<br/><em>(Select all that apply.)</em>",
+        "q10": "Quels termes liés au genre décrivent le mieux votre identité personnelle ?<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
         "q10-opts": {
-            "00_transman": "Trans man or male",
-            "01_transmasc": "Trans Masculine ",
-            "02_nonbinary": "Nonbinary",
+            "00_transman": "Homme ou homme Trans",
+            "01_transmasc": "Masculine Trans ",
+            "02_nonbinary": "Non binaire",
             "03_genderfluid": "Genderfluid or Genderqueer",
-            "04_afab": "Assigned Female at Birth (AFAB)",
-            "05_other": "Other (please specify)"
+            "04_afab": "Femme assignée à la naissance (AFAB)",
+            "05_other": "Autre (merci de préciser)"
         },
-        "q11": "Select how you describe your sexual orientation.<br/><em>(Select all that apply.)</em>",
+        "q11": "Sélectionnez comment vous décrivez votre orientation sexuelle.<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
         "q11-opts": {
-            "00_straight": "Straight/Heterosexual",
-            "01_gay": "Gay",
+            "00_straight": "Droit/Hétérosexuel",
+            "01_gay": "Gai",
             "02_lesbian": "Lesbian",
-            "03_bisexual": "Bisexual",
+            "03_bisexual": "Bisexuel",
             "04_pansexual": "Pansexual",
-            "05_asexual": "Asexual/Demisexual/Ace",
+            "05_asexual": "Asexuel/Démisexuel/As",
             "06_queer": "Queer",
-            "07_other": "Other (please specify)"
+            "07_other": "Autre (merci de préciser)"
         },
-        "q12": "Select how you identify your race/ethnicity.<br/><em>(Select all that apply.)</em>",
+        "q12": "Sélectionnez la façon dont vous identifiez votre course/ethnicité.<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
         "q12-opts": {
-            "00_indigenous": "American Indian/Native American/Indigenous People",
-            "01_asian": "Asian/Asian American",
-            "02_biracial": "Biracial/Multiracial",
-            "03_black": "Black/African American",
-            "04_latinx": "Latino/a/x/e/Hispanic",
-            "05_AME": "Middle Eastern/North African",
-            "06_hawaii-pacific": "Native Hawaiian/Pacific Islander",
-            "07_south-asian": "South Asian",
-            "08_white": "White",
-            "09_no-answer": "Prefer not to answer",
-            "10_other": "Other (please specify)"
+            "00_indigenous": "Peuples indiens/indigènes et autochtones américains",
+            "01_asian": "Asiatique/Asiatique",
+            "02_biracial": "Biracial/multiracial",
+            "03_black": "Noir/Africain américain",
+            "04_latinx": "Latino/a/x/e/Hispanique",
+            "05_AME": "Moyen Orient/Afrique du Nord",
+            "06_hawaii-pacific": "Ile hawaïenne/pacifique autochtone",
+            "07_south-asian": "Sud-asiatique",
+            "08_white": "Blancs",
+            "09_no-answer": "Préférer ne pas répondre",
+            "10_other": "Autre (merci de préciser)"
         },
-        "q13": "Select which U.S. region you live in.",
+        "q13": "Sélectionnez la région dans laquelle vous habitez.",
         "q13-opts": {
-            "00_northeast": "Northeast",
+            "00_northeast": "Nord-Est",
             "01_midwest": "Midwest",
-            "02_southeast": "Southeast",
-            "03_southwest": "Southwest",
-            "04_west": "West Coast ",
-            "05_territories": "U.S. Territories ",
-            "06_no-answer": "Prefer not to answer"
+            "02_southeast": "Sud-Est",
+            "03_southwest": "Sud-Ouest",
+            "04_west": "Côte Ouest ",
+            "05_territories": "Territoires américains ",
+            "06_no-answer": "Préférer ne pas répondre"
         },
-        "q14": "Select which U.S. state you live in.",
-        "q15": "Do you identify as any of the following?<br/><em>(Select all that apply.)</em>",
+        "q14": "Sélectionnez dans quel État des États-Unis vous résidez.",
+        "q15": "Vous vous identifiez comme l'un des éléments suivants ?<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
         "q15-opts": {
-            "00_asylum-seeker": "Asylum seeker",
-            "01_asylee": "Asylee (received asylum)",
-            "02_daca": "DACA recipient",
-            "03_resettled": "Resettled refugee",
-            "04_other": "Other immigrant",
-            "05_no-answer": "Prefer not to answer",
-            "06_none": "I do not identify as any of these"
+            "00_asylum-seeker": "Chercheur d'asile",
+            "01_asylee": "Demandeur d'asile (asile reçu)",
+            "02_daca": "Destinataire de DACA",
+            "03_resettled": "Réfugié réinstallé",
+            "04_other": "Autre immigrant",
+            "05_no-answer": "Préférer ne pas répondre",
+            "06_none": "Je ne les identifie pas"
         },
-        "q2": "I consent to having my submission shared by InReach via",
+        "q2": "Je consens à ce que ma soumission soit partagée par InReach via",
         "q2-opts": {
-            "00_website": "#TransMascFutures Campaign Website",
-            "01_social": "Social Media (@weareinreach across socials) ",
-            "02_media": "Media/Press"
+            "00_website": "#site web de la campagne TransMascFutures",
+            "01_social": "Réseaux sociaux (@weareinreach across socials) ",
+            "02_media": "Média/Presse"
         },
-        "q3": "Please provide your email address if you would like to stay updated on the status of the #TransMascFutures Campaign.",
-        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
-        "q5": "I identify as:<br/><em>(Please select all that apply to you)</em>",
+        "q3": "Veuillez fournir votre adresse e-mail si vous souhaitez rester au courant de l'état de la campagne #TransMascFutures.",
+        "q4": " Veuillez entrer votre nom comme vous souhaitez qu'il apparaisse sur le site web de la campagne.<br/>(Seul un prénom sera affiché. Les alias sont les bienvenus.)",
+        "q5": "Je m'identifie en tant que<br/><em>(Veuillez sélectionner tout ce qui s'applique à vous)</em>",
         "q5-opts": {
-            "00_transman": "Trans Man ",
+            "00_transman": "Homme Trans ",
             "01_transmasc": "Nonbinary/Trans Masculine",
-            "02_queer": "Queer (i.e., identify your sexual orientation as something other than heterosexual)",
-            "03_elder": "Elder (i.e., came out or transitioned before the year 2000)",
-            "04_disabled": "Disabled (i.e., physical, mental, invisible disability",
-            "05_immigrant": "Immigrant (i.e., asylum seeker, asylee, resettled refugee, DACA recipient, etc.)",
-            "06_bipoc": "BIPOC (i.e., non-white, Person of Color)"
+            "02_queer": "Queer (c.-à-d. identifier votre orientation sexuelle comme autre chose que l'hétérosexuel)",
+            "03_elder": "Aîné (c'est-à-dire qui est sorti ou a fait la transition avant l'an 2000)",
+            "04_disabled": "Désactivé (c.-à-d. une incapacité physique, mentale, invisible",
+            "05_immigrant": "Immigrant (c'est-à-dire demandeur d'asile, bénéficiaire d'asile, réfugié réinstallé, destinataire du DACA, etc.)",
+            "06_bipoc": "BIPOC (c'est-à-dire non blanc, personne de couleur)"
         },
-        "q6": "How old are you?",
-        "q7": "Select which pronouns you use:",
+        "q6": "Quel âge avez-vous ?",
+        "q7": "Sélectionnez le pronom que vous utilisez:",
         "q7-opts": {
-            "00_he": "He/Him/His",
-            "01_they": "They/Them/Theirs",
+            "00_he": "Il/Lui/Son",
+            "01_they": "Iel/Eux/Leur",
             "02_ze": "Ze/Hir/Hirs",
             "03_xe": "Xe/Xem/Xyr",
             "04_ey": "Ey/Em/Eir",
-            "05_none": "No Pronouns",
-            "06_any": "Any Pronouns",
-            "07_other": "Other (please specify)"
+            "05_none": "Pas de Pronouns",
+            "06_any": "Tous les Pronouns",
+            "07_other": "Autre (merci de préciser)"
         },
-        "q8": "Describe the first moment you could see your future as a trans man or trans masculine person.",
-        "q9": "What resources have helped you see your future as a trans man or trans masculine adult?<br/><em>*Note: To maximize safety, please refrain from sharing personally identifying information, such as naming specific doctors or small clinics.</em>",
-        "section2": "This section will ask you questions about yourself and your experiences. <strong>Please limit your responses to each question to 250 words or less.</strong>",
-        "section3": "This section helps to ensure diversity within our responses to represent the range of differences in trans masculine experiences.",
-        "step1": "Campaign Participation Requirements and Consent",
-        "step2": "Campaign Story Questions",
-        "step3": "Demographic Information (optional)",
-        "step4": "Confirmation",
-        "switch-lang": "Haz clic aquí para la versión en español de la encuesta.",
-        "thank-you": "<strong>Thank you for sharing your story!</strong><br/>Assuming your submission meets our participant eligibility criteria, we will add your story to our campaign website shortly. In the meantime, be sure to follow @weareinreach on social media for updates and download our campaign social media toolkit to share the campaign.<br/><br/>If you have any questions, please email marketing@inreach.org."
+        "q8": "Décrivez le premier moment où vous pouviez voir votre avenir comme un homme trans ou trans.",
+        "q9": "Quelles ressources vous ont aidé à envisager votre avenir en tant qu’homme trans ou adulte trans masculin ?<br/><em>*Remarque : Pour maximiser la sécurité, veuillez vous abstenir de partager des informations d'identification personnelle, telles que le nom de médecins spécifiques ou de petites cliniques.</em>",
+        "section2": "Cette section vous posera des questions sur vous et vos expériences. <strong>Veuillez limiter vos réponses à chaque question à 250 mots ou moins.</strong>",
+        "section3": "Cette section contribue à assurer la diversité de nos réponses afin de représenter les différences entre les expériences masculines trans.",
+        "step1": "Exigences de participation à la campagne et consentement",
+        "step2": "Questions sur l'histoire de la campagne",
+        "step3": "Informations démographiques (facultatif)",
+        "step4": "Valider",
+        "switch-lang": "Cliquez ici pour la version en espagnol de l'enquête.",
+        "thank-you": "<strong>Merci d'avoir partagé votre histoire!</strong><br/>En supposant que votre candidature réponde à nos critères d'éligibilité des participants, nous ajouterons prochainement votre histoire sur le site Web de notre campagne. En attendant, assurez-vous de suivre @weareinreach sur les réseaux sociaux pour les mises à jour et téléchargez notre boîte à outils de campagne sur les réseaux sociaux pour partager la campagne.<br/><br/>Si vous avez des questions, veuillez envoyer un e-mail à marketing@inreach.org."
     },
-    "vercel": "Powered by Vercel"
+    "vercel": "Propulsé par Vercel"
 }
