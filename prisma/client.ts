@@ -1,15 +1,13 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
-import { neonConfig, Pool } from '@neondatabase/serverless'
+import { Pool } from '@neondatabase/serverless'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import { PrismaClient } from '@prisma/client'
-import ws from 'ws'
 
 declare global {
 	// eslint-disable-next-line no-var
 	var prisma: PrismaClient | undefined
 }
-neonConfig.webSocketConstructor = ws
-const connectionString = `${process.env.DATABASE_URL}`
+const connectionString = `${process.env.POSTGRES_PRISMA_URL}`
 const pool = new Pool({ connectionString })
 const adapter = new PrismaNeon(pool)
 export const prisma =
