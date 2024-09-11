@@ -34,10 +34,7 @@
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"project": "./tsconfig.json",
-		"babelOptions": {
-			"presets": ["next/babel"]
-		}
+		"project": true
 	},
 	"plugins": ["codegen", "@typescript-eslint", "turbo", "node", "import", "i18next", "storybook"],
 	"extends": [
