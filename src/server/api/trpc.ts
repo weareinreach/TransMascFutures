@@ -16,13 +16,10 @@
  * These allow you to access things like the database, the session, etc, when processing a request
  */
 import { initTRPC } from '@trpc/server'
-import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
 
 import { prisma } from '../db'
-
-type CreateContextOptions = Record<string, never>
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export it from
@@ -35,9 +32,10 @@ type CreateContextOptions = Record<string, never>
  *
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (opts: { headers: Headers }) => {
 	return {
 		prisma,
+		...opts,
 	}
 }
 
@@ -47,8 +45,11 @@ export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  *
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: CreateNextContextOptions) => {
-	return createInnerTRPCContext({})
+export const createTRPCContext = (opts: { headers: Headers }) => {
+	return {
+		prisma,
+		...opts,
+	}
 }
 
 /**
@@ -69,6 +70,12 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 		}
 	},
 })
+/**
+ * Create a server-side caller.
+ *
+ * @see https://trpc.io/docs/server/server-side-calls
+ */
+export const createCallerFactory = t.createCallerFactory
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
