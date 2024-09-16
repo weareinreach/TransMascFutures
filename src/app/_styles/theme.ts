@@ -11,6 +11,9 @@ import {
 	Radio,
 	Stepper,
 } from '@mantine/core'
+
+import { Work_Sans } from 'next/font/google'
+
 import AnchorStyles from './variants/Anchor.module.css'
 import ButtonStyles from './variants/Button.module.css'
 import TextInputStyles from './variants/TextInput.module.css'
@@ -18,9 +21,28 @@ import InputWrapperStyles from './variants/InputWrapper.module.css'
 import CheckboxStyles from './variants/Checkbox.module.css'
 import RadioStyles from './variants/Radio.module.css'
 import StepperStyles from './variants/Stepper.module.css'
+
+const fontWorkSans = Work_Sans({
+	subsets: ['latin'],
+	weight: ['400', '500', '600'],
+	display: 'swap',
+	fallback: [
+		'-apple-system',
+		'BlinkMacSystemFont',
+		'Segoe UI',
+		'Roboto',
+		'Helvetica',
+		'Arial',
+		'sans-serif',
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+	],
+})
+
+console.log(fontWorkSans)
 export const mantineTheme = createTheme({
-	fontFamily:
-		'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+	fontFamily: fontWorkSans.style.fontFamily,
+	// 'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
 	fontSizes: {
 		xs: rem(12),
 		sm: rem(14),
