@@ -1,7 +1,7 @@
 'use client'
 
 import { I18nextProvider } from 'react-i18next'
-import initTranslations from '~/app/i18n'
+import { initTranslations } from '~/app/i18n'
 import { createInstance, type Resource } from 'i18next'
 
 export function I18nProvider({ children, locale, namespaces, resources }: I18nProviderProps) {
@@ -16,5 +16,5 @@ type I18nProviderProps = {
 	children: React.ReactNode
 	locale: string
 	namespaces: string[]
-	resources: Resource
+	resources?: Resource
 }

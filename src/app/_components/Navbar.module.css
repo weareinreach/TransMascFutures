@@ -1,0 +1,67 @@
+.glaadGray {
+	background-color: var(--mantine-color-glaad-gray);
+}
+.navbar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	&a {
+		color: var(--mantime-color-gray-0);
+		flex-direction: row;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		font-size: var(----mantine-font-size-lg);
+	}
+	@mixin smaller-than $mantine-breakpoint-md {
+		display: none;
+	}
+}
+
+.burger {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	@mixin larger-than $mantine-breakpoint-md {
+		display: none;
+	}
+	justify-content: space-between;
+	&[data-current-path='/'] {
+		justify-content: end;
+	}
+}
+.drawerContent {
+	background-color: var(--mantine-color-glaad-gray);
+}
+.drawerHeader {
+	background-color: var(--mantine-color-glaad-gray);
+}
+.drawerTitle {
+	font-size: var(--mantine-font-size-md);
+	font-weight: 900;
+	color: --var(--mantine-color-gray-0);
+}
+
+.navlink {
+	color: var(----mantine-color-gray-0);
+	display: flex;
+	width: 100%;
+	height: 100%;
+	font-weight: 600;
+	font-size: rem(32);
+	font-style: italic;
+	flex-direction: column;
+	margin-top: var(--mantine-spacing-md);
+	margin-bottom: var(--mantine-spacing-md);
+	text-decoration: none;
+	&:active,
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.header {
+	height: rem(75);
+	background-color: var(--mantine-color-glaad-gray);
+}
