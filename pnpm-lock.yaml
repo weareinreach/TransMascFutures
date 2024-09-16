@@ -98,9 +98,6 @@ importers:
       next-sitemap:
         specifier: 4.2.3
         version: 4.2.3(next@14.2.11(@babel/core@7.25.2)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      nextjs-routes:
-        specifier: 2.2.1
-        version: 2.2.1(next@14.2.11(@babel/core@7.25.2)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -4995,12 +4992,6 @@ packages:
         optional: true
       sass:
         optional: true
-
-  nextjs-routes@2.2.1:
-    resolution: {integrity: sha512-j2A/XSQ8vDdtKl0sH6Q0msf8yIi9nO5RRtMAcSim/aTQaw9D19O9QnkDNvcliRQU1idCtAAFxnscNQuF5AjuLg==}
-    hasBin: true
-    peerDependencies:
-      next: '*'
 
   nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
@@ -12412,11 +12403,6 @@ snapshots:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
-
-  nextjs-routes@2.2.1(next@14.2.11(@babel/core@7.25.2)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
-    dependencies:
-      chokidar: 3.6.0
-      next: 14.2.11(@babel/core@7.25.2)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   nice-try@1.0.5: {}
 
