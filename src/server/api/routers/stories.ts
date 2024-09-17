@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { SurveySchema } from '~/pages/survey'
+import { SurveySchema } from '~/app/_schemas/survey'
 import { crowdin } from '~/server/crowdin'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
