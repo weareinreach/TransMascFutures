@@ -18,14 +18,14 @@ import { type GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Trans, useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
 import { Banner } from '~/components/Banner/Banner'
 import { StatisticCard } from '~/components/statisticCard/StatisticCard'
 import { getPartnerImage, partnerImages } from '~/data/partners'
 import { getServerSideTranslations } from '~/server/i18n'
-import { api } from '~/utils/api'
-import { trpcServerClient } from '~/utils/ssr'
+import { api } from '~/trpc/react'
+import { api as trpcServerClient } from '~/trpc/server'
 
 const useStyles = createStyles((theme) => ({
 	title: {
@@ -203,7 +203,7 @@ const AboutPage = () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-	const ssg = trpcServerClient()
+	const ssg = trpcServerClient
 
 	const [i18n] = await Promise.allSettled([getServerSideTranslations(locale), ssg.partner.getAll.prefetch()])
 

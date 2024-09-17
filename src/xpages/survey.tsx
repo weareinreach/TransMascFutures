@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
+'use client'
 import {
 	Anchor,
 	AspectRatio,
@@ -18,15 +18,15 @@ import {
 import { useForm, zodResolver } from '@mantine/form'
 import { type GetStaticProps } from 'next'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { Trans, useTranslation } from 'next-i18next'
+import { useRouter } from 'next/navigation'
+import { Trans, useTranslation } from 'react-i18next'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { z } from 'zod'
 
 import { Banner } from '~/components'
 import { stateOptions } from '~/data/states'
 import { getServerSideTranslations } from '~/server/i18n'
-import { api } from '~/utils/api'
+import { api } from '~/trpc/react'
 import ShareWide from '~public/assets/share-wide.jpg'
 
 export const SurveySchema = (ts?: (key: string) => string) =>

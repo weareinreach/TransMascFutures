@@ -14,7 +14,7 @@ import {
 import { type GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next'
 
 import { Banner } from '~/components'
 import { getServerSideTranslations } from '~/server/i18n'

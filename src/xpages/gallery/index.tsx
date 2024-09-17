@@ -19,7 +19,7 @@ import Head from 'next/head'
 import NextImage, { type ImageProps as NextImageProps } from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next'
 import { forwardRef, useMemo } from 'react'
 
 import { StoryPreviewCarousel } from '~/components'
@@ -56,6 +56,7 @@ const Gallery = () => {
 	const router = useRouter()
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
+
 	const { hovered, ref } = useHover()
 	const isEnglish = router.locale === 'en'
 	const { t } = useTranslation()
@@ -85,13 +86,11 @@ const Gallery = () => {
 							ratio={width / height}
 							// w={`min(${art.src.width}px, 25vw)`}
 							sx={(theme) => ({
-								// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 								width: `min(${width}px, 80vw)`,
 								[theme.fn.largerThan('xs')]: {
 									width: `min(${width}px, 40vw)`,
 								},
 								[theme.fn.largerThan('sm')]: {
-									// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 									width: `min(${width}px, 25vw)`,
 								},
 							})}
@@ -229,7 +228,6 @@ const Gallery = () => {
 			</MediaQuery>
 			<Modal
 				opened={!!popupArt}
-				// eslint-disable-next-line @typescript-eslint/no-misused-promises
 				onClose={() => router.replace({ pathname: '/gallery' }, undefined, { shallow: true, scroll: false })}
 				size='75vw'
 				centered

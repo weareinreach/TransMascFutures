@@ -1,7 +1,7 @@
 import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next'
 import { type RoutedQuery } from 'nextjs-routes'
 
 import { getCategoryImage } from '~/data/categoryImages'

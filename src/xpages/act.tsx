@@ -3,7 +3,7 @@ import { type GetStaticProps, type NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Trans, useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
 import { Banner } from '~/components/Banner/Banner'
 import { getServerSideTranslations } from '~/server/i18n'

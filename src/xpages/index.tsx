@@ -17,14 +17,14 @@ import { type GetStaticProps, type NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Trans, useTranslation } from 'next-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
 import { categoryImages, isValidCategoryImage } from '~/data/categoryImages'
 import { getServerSideTranslations } from '~/server/i18n'
-import { trpcServerClient } from '~/utils/ssr'
+import { api as trpcServerClient } from '~/trpc/server'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
-import { api, type RouterOutputs } from '../utils/api'
+import { api, type RouterOutputs } from '../trpc/react'
 
 const useStyles = createStyles((theme) => {
 	return {
@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => {
 export const MainPage = ({ categories }: MainPageProps) => {
 	const { classes } = useStyles()
 	const { t } = useTranslation()
-	const previewCards = categories.map(({ category, id, image, imageAlt, tag }, i) => {
+	const previewCards = categories.map(({ category, id, image, imageAlt, tag }) => {
 		// aspect ratio 0.55
 
 		const imageSrc = isValidCategoryImage(image)
@@ -152,7 +152,7 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async ({ locale: ssrLocale }) => {
 	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
-	const ssg = trpcServerClient()
+	const ssg = trpcServerClient
 
 	const [i18n] = await Promise.allSettled([
 		getServerSideTranslations(locale),
