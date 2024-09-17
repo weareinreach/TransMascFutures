@@ -6,7 +6,7 @@ import { useMediaQuery } from '@mantine/hooks'
 import { type StaticImageData } from 'next/image'
 import { Image } from './Image'
 import { useState } from 'react'
-import { StoryPreviewCarousel } from '~/components/storyPreviewCarousel/StoryPreviewCarousel'
+import { StoryPreviewCarousel } from '~/app/_components/StoryPreviewCarousel'
 export const ArtItem = ({ image, name, description, alt, isModal }: IndividualStoryProps) => {
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)

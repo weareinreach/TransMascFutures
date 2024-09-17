@@ -7,7 +7,7 @@ import { IBM_Plex_Sans } from 'next/font/google'
 
 import { AspectRatio, Button, Container, Grid, GridCol, Stack, Title, rem } from '@mantine/core'
 import Head from 'next/head'
-import { StoryPreviewCarousel } from '~/components/storyPreviewCarousel/StoryPreviewCarousel'
+import { StoryPreviewCarousel } from '~/app/_components/StoryPreviewCarousel'
 
 import { PopupArt } from '~/app/_components/PopupArt'
 import classes from './page.module.css'
