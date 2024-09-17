@@ -1,0 +1,101 @@
+.story {
+	@mixin smaller-than $mantine-breakpoint-md {
+		flex-direction: column;
+	}
+}
+.content {
+	padding: rem(20);
+	&[data-isModal] {
+		padding: rem(0);
+	}
+	@mixin larger-than $mantine-breakpoint-md {
+		padding: rem(40);
+		max-width: 40%;
+		&[data-isModal] {
+			padding: rem(0) rem(0) rem(40) rem(0);
+		}
+	}
+	@mixin larger-than $mantine-breakpoint-lg {
+		max-width: 50%;
+	}
+}
+
+.label {
+	font-size: rem(18);
+	font-style: italic;
+	font-weight: 500;
+	padding-bottom: rem(8);
+}
+
+.imageContainer {
+	@mixin larger-than $mantine-breakpoint-md {
+		max-width: 90%;
+	}
+	@mixin larger-than $mantine-breakpoint-lg {
+		max-width: 50%;
+	}
+}
+
+.indicator {
+	pointer-events: all;
+	width: rem(25);
+	height: rem(5);
+	border-radius: var(--mantine-radius-xl);
+	background-color: var(--mantine-color-black);
+	box-shadow: var(--mantine-shadow-sm);
+	opacity: 0.6;
+	transition: opacity 150ms ease-in;
+
+	&[data-active] {
+		opacity: 1;
+	}
+}
+
+.indicators {
+	position: absolute;
+	bottom: calc(var(--mantine-spacing-md) * -1);
+	top: unset;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: rem(8);
+	pointer-events: none;
+}
+
+.slide {
+	object-fit: scale-down;
+}
+
+.aspect {
+	--viewport-w: 95vw;
+
+	@mixin larger-than $mantine-breakpoint-sm {
+		--viewport-w: 50vw;
+		/* width: min(var(--artitem-width), 50vw); */
+	}
+	@mixin larger-than $mantine-breakpoint-md {
+		/* width: min(var(--artitem-width), 40vw); */
+		--viewport-w: 40vw;
+	}
+	@mixin larger-than $mantine-breakpoint-lg {
+		/* width: min(var(--artitem-width), 25vw); */
+		--viewport-w: 25vw;
+	}
+	&[data-notCarousel] {
+		@mixin larger-than $mantine-breakpoint-xs {
+			/* width: min(var(--artitem-width), 66vw); */
+			--viewport-w: 66vw;
+		}
+		@mixin larger-than $mantine-breakpoint-sm {
+			/* width: min(var(--artitem-width), 40vw); */
+			--viewport-w: 40vw;
+		}
+		@mixin larger-than $mantine-breakpoint-md {
+			/* width: min(var(--artitem-width), 25vw); */
+			--viewport-w: 25vw;
+		}
+	}
+	width: min(var(--artitem-width), var(--viewport-w));
+}

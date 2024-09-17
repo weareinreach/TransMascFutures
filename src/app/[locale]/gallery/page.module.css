@@ -1,0 +1,55 @@
+.aspect {
+	--slide-img-width: 100vw;
+	--slide-viewport-w: 80vw;
+	@mixin larger-than $mantine-breakpoint-xs {
+		--slide-viewport-w: 40vw;
+	}
+	@mixin larger-than $mantine-breakpoint-sm {
+		--slide-viewport-w: 25vw;
+	}
+	--slide-aspect-width: min(var(--slide-img-width), var(--slide-viewport-w));
+	width: var(--slide-aspect-width);
+	height: calc(var(--slide-aspect-width) * var(--ar-ratio));
+}
+
+.slideGroup {
+	--slide-img-width: 100vw;
+	--slide-index: 0;
+	--slide-total: 0;
+	--slide-viewport-w: 80vw;
+	z-index: calc(var(--slide-total) - var(--slide-index));
+	position: absolute;
+	top: 0;
+	@mixin larger-than $mantine-breakpoint-xs {
+		--slide-viewport-w: 40vw;
+	}
+	@mixin larger-than $mantine-breakpoint-sm {
+		--slide-viewport-w: 25vw;
+	}
+	--slide-aspect-width: min(var(--slide-img-width), var(--slide-viewport-w));
+	width: var(--slide-aspect-width);
+	height: calc(var(--slide-aspect-width) * var(--ar-ratio));
+
+	&[data-slide-index='0'] {
+		position: relative;
+	}
+}
+
+.slideStack {
+	--translation-adj: 1;
+	--rotation-adj: 1;
+	&:hover {
+		--translation-adj: 1.5;
+		--rotation-adj: 2;
+	}
+}
+
+.slideFan {
+	--slide-index: 0;
+	--slide-total: 0;
+
+	transform: translateX(calc(20 * var(--translation-adj) * var(--slide-index)) px)
+		translateY(calc(10 * var(--translation-adj) * var(--slide-index)) px);
+	rotate: calc(var(--rotation-factor) * var(--rotation-adj) * 2deg);
+	transition: transform 0.5s ease-in-out;
+}
