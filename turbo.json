@@ -1,8 +1,8 @@
 {
 	"$schema": "https://turbo.build/schema.json",
-	"globalDotEnv": ["./.env"],
+	"globalDependencies": [".env"],
 	"globalEnv": ["POSTGRES_URL_NON_POOLING", "POSTGRES_PRISMA_URL", "NEXTAUTH_SECRET", "CROWDIN_API"],
-	"pipeline": {
+	"tasks": {
 		"build:next": {
 			"dependsOn": ["db:deploy", "db:dataMigrate"],
 			"outputs": [".next/**", "!.next/cache/**"]
