@@ -13,7 +13,6 @@ import {
 } from '@mantine/core'
 import Image from 'next/image'
 import classes from './page.module.css'
-import { I18nProvider } from '~/app/_providers/I18nProvider'
 import { initTranslations, namespaces } from '~/app/i18n'
 import { categoryImages, isValidCategoryImage } from '~/data/categoryImages'
 import { api, HydrateClient } from '~/trpc/server'
@@ -21,8 +20,7 @@ import Link from 'next/link'
 import { Trans } from '~/app/_components/Trans'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
-	console.log('locale', locale)
-	const { t, resources } = await initTranslations(locale, namespaces)
+	const { t } = await initTranslations(locale, namespaces)
 	const categories = await api.story.getCategories({ locale: 'en' })
 	const previewCards = categories.map(({ category, id, image, imageAlt, tag }) => {
 		// aspect ratio 0.55
