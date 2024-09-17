@@ -13,7 +13,7 @@ importers:
         version: 1.35.0
       '@mantine/carousel':
         specifier: 7.12.2
-        version: 7.12.2(@mantine/core@7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.2(react@18.3.1))(embla-carousel-react@8.2.1(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 7.12.2(@mantine/core@7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.2(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/core':
         specifier: 7.12.2
         version: 7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -68,12 +68,15 @@ importers:
       '@vercel/speed-insights':
         specifier: 1.0.12
         version: 1.0.12(next@14.2.11(@babel/core@7.25.2)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      embla-carousel:
+        specifier: 7.1.0
+        version: 7.1.0
       embla-carousel-auto-height:
-        specifier: 8.2.1
-        version: 8.2.1(embla-carousel@8.2.1)
+        specifier: 7.1.0
+        version: 7.1.0(embla-carousel@7.1.0)
       embla-carousel-react:
-        specifier: 8.2.1
-        version: 8.2.1(react@18.3.1)
+        specifier: 7.1.0
+        version: 7.1.0(react@18.3.1)
       i18next:
         specifier: 23.15.1
         version: 23.15.1
@@ -3376,23 +3379,18 @@ packages:
   elliptic@6.5.7:
     resolution: {integrity: sha512-ESVCtTwiA+XhY3wyh24QqRGBoP3rEdDUl3EDUUo9tft074fi19IrdpH7hLCMMP3CIj7jb3W96rn8lt/BqIlt5Q==}
 
-  embla-carousel-auto-height@8.2.1:
-    resolution: {integrity: sha512-/VfT5jp7dDCmDed7ytvLUBDd5FGX+t3RF8txY0FK8u7dh+jRD5jkm9PhrV46iJolYNymK5MFppEt5xAIpgQrRA==}
+  embla-carousel-auto-height@7.1.0:
+    resolution: {integrity: sha512-ghf+vB03/m85wBdkFVb2iM40ZtY/z8jfBI/Q5ez45HN89NXINW5+yEz5aaCY/MdcnhuzmJidUbKMmzgmZjb9Hg==}
     peerDependencies:
-      embla-carousel: 8.2.1
+      embla-carousel: 7.1.0
 
-  embla-carousel-react@8.2.1:
-    resolution: {integrity: sha512-YKtARk101mp00Zb6UAFkkvK+5XRo92LAtO9xLFeDnQ/XU9DqFhKnRy1CedRRj0/RSk6MTFDx3MqOQue3gJj9DA==}
+  embla-carousel-react@7.1.0:
+    resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
 
-  embla-carousel-reactive-utils@8.2.1:
-    resolution: {integrity: sha512-LXMVOOyv09ZKRxRQXYMX1FpVGcypsuxdcidNcNlBQUN2mK7hkmjVFQwwhfnnY39KMi88XYnYPBgMxfTe0vxSrA==}
-    peerDependencies:
-      embla-carousel: 8.2.1
-
-  embla-carousel@8.2.1:
-    resolution: {integrity: sha512-9mTDtyMZJhFuuW5pixhTT4iLiJB1l3dH3IpXUKCsgLlRlHCiySf/wLKy5xIAzmxIsokcQ50xea8wi7BCt0+Rxg==}
+  embla-carousel@7.1.0:
+    resolution: {integrity: sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -8007,11 +8005,11 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mantine/carousel@7.12.2(@mantine/core@7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.2(react@18.3.1))(embla-carousel-react@8.2.1(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@mantine/carousel@7.12.2(@mantine/core@7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.2(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@mantine/core': 7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@mantine/hooks': 7.12.2(react@18.3.1)
-      embla-carousel-react: 8.2.1(react@18.3.1)
+      embla-carousel-react: 7.1.0(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -10312,21 +10310,16 @@ snapshots:
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
 
-  embla-carousel-auto-height@8.2.1(embla-carousel@8.2.1):
+  embla-carousel-auto-height@7.1.0(embla-carousel@7.1.0):
     dependencies:
-      embla-carousel: 8.2.1
+      embla-carousel: 7.1.0
 
-  embla-carousel-react@8.2.1(react@18.3.1):
+  embla-carousel-react@7.1.0(react@18.3.1):
     dependencies:
-      embla-carousel: 8.2.1
-      embla-carousel-reactive-utils: 8.2.1(embla-carousel@8.2.1)
+      embla-carousel: 7.1.0
       react: 18.3.1
 
-  embla-carousel-reactive-utils@8.2.1(embla-carousel@8.2.1):
-    dependencies:
-      embla-carousel: 8.2.1
-
-  embla-carousel@8.2.1: {}
+  embla-carousel@7.1.0: {}
 
   emoji-regex@10.3.0: {}
 

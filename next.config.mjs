@@ -5,7 +5,6 @@
 import bundleAnalyze from '@next/bundle-analyzer'
 import { RelativeCiAgentWebpackPlugin } from '@relative-ci/agent'
 import { I18NextHMRPlugin } from 'i18next-hmr/webpack'
-import nextRoutes from 'nextjs-routes/config'
 
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -20,7 +19,6 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const withRoutes = nextRoutes({ outDir: 'src/types' })
 const withBundleAnalyzer = bundleAnalyze({
 	enabled: process.env.ANALYZE === 'true',
 })
@@ -66,7 +64,7 @@ const nextConfig = {
  * @returns {typeof nextConfig}
  */
 function defineNextConfig(config) {
-	return withBundleAnalyzer(withRoutes(config))
+	return withBundleAnalyzer(config)
 }
 
 export default defineNextConfig(nextConfig)

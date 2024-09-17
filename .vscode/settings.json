@@ -13,5 +13,8 @@
 		"**/*.scss",
 		"**/*.sass",
 		"**/*.less"
-	]
+	],
+	"emmet.includeLanguages": {
+		"postcss": "css"
+	}
 }
