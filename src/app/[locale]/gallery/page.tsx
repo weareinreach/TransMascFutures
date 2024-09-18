@@ -68,7 +68,7 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
 				)}
 			</Link>
 			<Link
-				href={{ pathname: '/[locale]/gallery', query: { locale, artist: art.slug } }}
+				href={`/gallery?artist=${art.slug}`}
 				as={`/gallery/${art.slug}`}
 				scroll={false}
 				style={{ textDecoration: 'none', zIndex: 11, backgroundColor: 'inherit', margin: 'auto' }}
