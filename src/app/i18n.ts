@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next/initReactI18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import i18nConfig from '~/i18nConfig'
 
-export const namespaces = ['common', 'art']
+export const namespaces = ['common', 'art', 'states']
 export async function initTranslations(
 	locale: string,
 	namespaces: string[],

@@ -71,3 +71,5 @@ export const SurveySchema = (ts?: (key: string) => string) =>
 				})
 			}
 		})
+
+export type SurveyData = z.infer<ReturnType<typeof SurveySchema>>
