@@ -1,20 +1,27 @@
-import { Image } from '~/app/_components/Image'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { Image } from '~/app/_components/Image'
 import { artData } from '~/data/artwork'
 
-import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 import { IBM_Plex_Sans } from 'next/font/google'
+import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
 import { AspectRatio, Button, Container, Grid, GridCol, Stack, Title, rem } from '@mantine/core'
-import Head from 'next/head'
 import { StoryPreviewCarousel } from '~/app/_components/StoryPreviewCarousel'
 
 import { PopupArt } from '~/app/_components/PopupArt'
-import classes from './page.module.css'
 import { initTranslations } from '~/app/i18n'
+import classes from './page.module.css'
 
 const fontIbmPlexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['300', '400'], display: 'swap' })
-const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
+
+export const generateMetadata = async ({ params: { locale } }: PageProps): Promise<Metadata> => {
+	const { t } = await initTranslations(locale, ['common'])
+	return {
+		title: t('page-title.general-template', { page: t('nav.gallery') }),
+	}
+}
+const Page = async ({ params: { locale } }: PageProps) => {
 	const { t } = await initTranslations(locale, ['common', 'art'])
 
 	const slides = artData.map((art) => (
@@ -41,7 +48,7 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
 									mod={[{ 'slide-index': i }]}
 								>
 									<Image
-										src={image.src}
+										src={image}
 										alt={altText}
 										className={classes.slideFan}
 										style={{
@@ -84,9 +91,6 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
 
 	return (
 		<Container fluid>
-			<Head>
-				<title>{t('page-title.general-template', { page: '$t(nav.gallery)' })}</title>
-			</Head>
 			<Grid align='center' my='md' grow>
 				<GridCol span={{ sm: 6, lg: 5, md: 4 }} px={{ lg: 40 }}>
 					<AspectRatio ratio={723 / 174} my={40} mx='auto' maw={750}>
@@ -111,11 +115,9 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
 					</Button>
 				</GridCol>
 			</Grid>
-			{/* {showCarousel ? ( */}
 			<StoryPreviewCarousel slidesToScroll='auto' slideSize='33%' visibleFrom='md'>
 				{slides}
 			</StoryPreviewCarousel>
-			{/* ) : ( */}
 			<Grid hiddenFrom='md'>
 				{slides.map((slide, i) => (
 					<GridCol key={i} span={{ sm: 4, xs: 6 }}>
@@ -123,10 +125,14 @@ const Page = async ({ params: { locale } }: { params: { locale: string } }) => {
 					</GridCol>
 				))}
 			</Grid>
-			{/* )} */}
 			<PopupArt />
 		</Container>
 	)
 }
 
 export default Page
+type PageProps = {
+	params: {
+		locale: string
+	}
+}
