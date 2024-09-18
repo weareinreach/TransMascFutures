@@ -65,7 +65,7 @@
 }
 
 .slide {
-	object-fit: scale-down;
+	object-fit: contain;
 }
 
 .aspect {

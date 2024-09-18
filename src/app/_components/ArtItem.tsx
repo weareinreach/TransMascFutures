@@ -42,13 +42,7 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 									'--artitem-height': src.height,
 								}}
 							>
-								<Image
-									src={src}
-									alt={alt}
-									width={src.width}
-									// style={ { objectFit: 'contain', maxWidth: '90%', margin: '0 auto' } }
-									fit='contain'
-								/>
+								<Image src={src} alt={alt} h='100%' />
 							</AspectRatio>
 						))}
 					</StoryPreviewCarousel>
@@ -61,7 +55,7 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 							'--artitem-width': image.width,
 						}}
 					>
-						<Image src={image} alt={alt} fit='scale-down' />
+						<Image src={image} alt={alt} h='100%' />
 					</AspectRatio>
 				)}
 			</Group>
