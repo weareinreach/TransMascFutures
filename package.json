@@ -32,6 +32,7 @@
 	},
 	"dependencies": {
 		"@crowdin/crowdin-api-client": "1.35.0",
+		"@crowdin/ota-client": "2.0.0",
 		"@mantine/carousel": "7.12.2",
 		"@mantine/core": "7.12.2",
 		"@mantine/form": "7.12.2",

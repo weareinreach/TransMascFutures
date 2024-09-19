@@ -21,6 +21,15 @@
     },
     "artist-credit": "Character drawings by Joey Borrelli.",
     "back": "Previous",
+    "category": {
+        "bipoc": "BIPOC",
+        "disabled": "Disabled",
+        "elder": "Elder",
+        "immigrant": "Immigrant",
+        "queer": "Queer",
+        "transman": "Trans Man",
+        "transmasc": "Trans Masc / Nonbinary"
+    },
     "donate": "Donate",
     "errors": {
         "consent-all-3": "You must consent to all three.",
@@ -53,6 +62,15 @@
         "general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
     },
     "participate": "Click here to participate",
+    "pronoun": {
+        "any": "Any pronouns",
+        "ey": "Ey/Em/Eir",
+        "he": "He/Him/His",
+        "none": "No pronouns",
+        "they": "They/Them/Theirs",
+        "xe": "Xe/Xem/Xyr",
+        "ze": "Ze/Zir/Zim"
+    },
     "see-x-stories": "See {{category}} Stories",
     "share": {
         "download-button": "Download Kit",

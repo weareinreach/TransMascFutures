@@ -11,6 +11,9 @@ importers:
       '@crowdin/crowdin-api-client':
         specifier: 1.35.0
         version: 1.35.0
+      '@crowdin/ota-client':
+        specifier: 2.0.0
+        version: 2.0.0
       '@mantine/carousel':
         specifier: 7.12.2
         version: 7.12.2(@mantine/core@7.12.2(@mantine/hooks@7.12.2(react@18.3.1))(@types/react@18.3.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@mantine/hooks@7.12.2(react@18.3.1))(embla-carousel-react@7.1.0(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -954,6 +957,10 @@ packages:
   '@crowdin/crowdin-api-client@1.35.0':
     resolution: {integrity: sha512-+QDaDeQ4N5r66KgxLPMvGvHPQL2slVGP0JyC00oVJMs4iOKKrHFaWhxhZAlsJRB5x1IXb1r1DdhFNBE8GxDB/A==}
     engines: {node: '>=12.9.0'}
+
+  '@crowdin/ota-client@2.0.0':
+    resolution: {integrity: sha512-3cymvRcsYluTX4GliWpbYrZ4X1PaCGq87PRwnjeAvAMcPMAi8zezk9/1NA9IuYAnFZroJ7ceB8vjUezG5j5DTQ==}
+    engines: {node: '>=18.0.0'}
 
   '@discoveryjs/json-ext@0.5.7':
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
@@ -7222,6 +7229,8 @@ snapshots:
       axios: 1.7.4
     transitivePeerDependencies:
       - debug
+
+  '@crowdin/ota-client@2.0.0': {}
 
   '@discoveryjs/json-ext@0.5.7': {}
 
