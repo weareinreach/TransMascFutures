@@ -39,7 +39,6 @@ const fontWorkSans = Work_Sans({
 	],
 })
 
-console.log(fontWorkSans)
 export const mantineTheme = createTheme({
 	fontFamily: fontWorkSans.style.fontFamily,
 	// 'Work Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',

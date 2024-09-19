@@ -67,8 +67,6 @@ type pathProp = { path?: string }
 
 const HamburgerMenu = ({ path }: pathProp) => {
 	const [opened, handler] = useDisclosure(false)
-	console.log('opened', opened)
-	console.log('path', path)
 
 	const drawerTitle = useMemo(() => <Text className={classes.drawerTitle}>{'InReach X GLAAD'}</Text>, [])
 
@@ -88,7 +86,6 @@ const HamburgerMenu = ({ path }: pathProp) => {
 			<Burger
 				opened={opened}
 				onClick={() => {
-					console.log('click')
 					handler.toggle()
 				}}
 				size='lg'
