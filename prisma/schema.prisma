@@ -15,10 +15,10 @@ datasource db {
 }
 
 model DefaultImage {
-  id    String @id @default(cuid())
+  id    String  @id @default(cuid())
   alt   String
-  altEN String
-  altES String
+  altEN String? //to be removed
+  altES String? //to be removed
   src   String
 
   story Story[]
@@ -31,11 +31,11 @@ model Artwork {
   id            String  @id @default(cuid())
   src           String
   alt           String
-  altEN         String
-  altES         String
+  altEN         String? //to be removed
+  altES         String? //to be removed
   title         String
-  titleEN       String
-  titleES       String
+  titleEN       String? //to be removed
+  titleES       String? //to be removed
   artist        String
   description   String?
   descriptionEN String?
@@ -54,8 +54,8 @@ model StoryCategory {
   tag String @unique
 
   category   String
-  categoryEN String
-  categoryES String
+  categoryEN String? //to be removed
+  categoryES String? //to be removed
 
   order Int?
 
@@ -72,10 +72,10 @@ model StoryCategory {
 model Pronouns {
   id String @id @default(cuid())
 
-  tag        String @unique
+  tag        String  @unique
   pronouns   String
-  pronounsEN String
-  pronounsES String
+  pronounsEN String? //to be removed
+  pronounsES String? //to be removed
 
   stories PronounsToStory[]
 

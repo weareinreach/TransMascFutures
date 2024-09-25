@@ -3,56 +3,56 @@ import { type Prisma } from '@prisma/client'
 export const categories: Prisma.StoryCategoryCreateManyInput[] = [
 	{
 		id: 'clienra1i0000pexbs0j5xjhl',
-		categoryEN: 'BIPOC',
-		categoryES: 'BIPOC',
+		category: 'BIPOC',
+
 		image: 'bipoc',
 		order: 1,
 		tag: 'bipoc',
 	},
 	{
 		id: 'clienra1i0001pexbc72b9hyj',
-		categoryEN: 'Disabled',
-		categoryES: 'Con discapacidad',
+		category: 'Disabled',
+
 		image: 'disabled',
 		tag: 'disabled',
 		order: 2,
 	},
 	{
 		id: 'clienra1i0002pexbm17yqg2d',
-		categoryEN: 'Elder',
-		categoryES: 'Persona mayor',
+		category: 'Elder',
+
 		image: 'elder',
 		tag: 'elder',
 		order: 4,
 	},
 	{
 		id: 'clienra1i0003pexbvo2gu720',
-		categoryEN: 'Immigrant',
-		categoryES: 'Inmigrante',
+		category: 'Immigrant',
+
 		image: 'immigrant',
 		tag: 'immigrant',
 		order: 3,
 	},
 	{
 		id: 'clienra1i0004pexbkht4nc39',
-		categoryEN: 'Transmasc/Nonbinary',
-		categoryES: 'Transmasculino/Nonbinario',
+		category: 'Transmasc/Nonbinary',
+
 		image: 'transmasc',
 		tag: 'transmasc-nonbinary',
 		order: 7,
 	},
 	{
 		id: 'clienra1i0005pexby9upd67c',
-		categoryEN: 'Queer',
-		categoryES: 'Queer',
+		category: 'Queer',
+
 		image: 'queer',
 		order: 5,
 		tag: 'queer',
 	},
 	{
 		id: 'clienra1i0006pexbks2nzu97',
-		categoryEN: 'Trans man',
-		categoryES: 'Hombre trans',
+		category: 'Trans man',
+
 		image: 'transman',
 		tag: 'transman',
 		order: 6,
