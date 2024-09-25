@@ -53,6 +53,15 @@
         "general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
     },
     "participate": "Cliquez ici pour participer",
+    "pronoun": {
+        "any": "Tous les Pronouns",
+        "ey": "Ey/Em/Eir",
+        "he": "Il/Lui/Son",
+        "none": "Pas de Pronouns",
+        "they": "Iel/Eux/Leur",
+        "xe": "Xe/Xem/Xyr",
+        "ze": "Ze/Zir/Zim"
+    },
     "see-x-stories": "Voir les histoires {{category}}",
     "share": {
         "download-button": "Télécharger le kit",

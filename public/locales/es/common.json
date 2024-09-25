@@ -63,13 +63,13 @@
     },
     "participate": "Haz click aquí para partcipar",
     "pronoun": {
-        "any": "Elle",
-        "ey": "Él",
-        "he": "Cualquier pronombre",
+        "any": "Cualquier pronombre",
+        "ey": "Ey/Em/Eir",
+        "he": "Él",
         "none": "No pronombres",
-        "they": "Ze/Zir/Zim",
+        "they": "Elle",
         "xe": "Xe/Xem/Xyr",
-        "ze": "Ey/Em/Eir"
+        "ze": "Ze/Zir/Zim"
     },
     "see-x-stories": "Ver Historias sobre {{category}}",
     "share": {
