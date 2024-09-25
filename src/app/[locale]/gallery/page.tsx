@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Image } from '~/app/_components/Image'
 import { artData } from '~/data/artwork'
 
-import { IBM_Plex_Sans } from 'next/font/google'
+import { fontIbmPlexSans } from '~/app/_styles/fonts'
 import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
 import { AspectRatio, Button, Container, Grid, GridCol, Stack, Title, rem } from '@mantine/core'
@@ -12,8 +12,6 @@ import { StoryPreviewCarousel } from '~/app/_components/StoryPreviewCarousel'
 import { PopupArt } from '~/app/_components/PopupArt'
 import { initTranslations } from '~/app/i18n'
 import classes from './page.module.css'
-
-const fontIbmPlexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['300', '400'], display: 'swap' })
 
 export const generateMetadata = async ({ params: { locale } }: PageProps): Promise<Metadata> => {
 	const { t } = await initTranslations(locale, ['common'])
