@@ -61,7 +61,7 @@ export const storyRouter = createTRPCRouter({
 	// }),
 	getCategories: publicProcedure
 		// .input(z.object({ locale: z.enum(['en', 'es']) }))
-		.query(async ({ ctx, input }) => {
+		.query(async ({ ctx }) => {
 			const categories = await ctx.prisma.storyCategory.findMany({
 				select: {
 					category: true,

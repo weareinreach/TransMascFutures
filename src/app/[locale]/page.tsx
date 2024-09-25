@@ -1,16 +1,4 @@
-import {
-	Group,
-	Button,
-	Text,
-	Stack,
-	Anchor,
-	Center,
-	Container,
-	Grid,
-	AspectRatio,
-	Title,
-	GridCol,
-} from '@mantine/core'
+import { Group, Button, Text, Stack, Anchor, Center, Container, Grid, Title, GridCol } from '@mantine/core'
 import Image from 'next/image'
 import classes from './page.module.css'
 import { initTranslations, namespaces } from '~/app/i18n'
@@ -21,7 +9,7 @@ import { Trans } from '~/app/_components/Trans'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
 	const { t } = await initTranslations(locale, namespaces)
-	const categories = await api.story.getCategories({ locale: 'en' })
+	const categories = await api.story.getCategories()
 	const previewCards = categories.map(({ category, id, image, imageAlt, tag }) => {
 		// aspect ratio 0.55
 
