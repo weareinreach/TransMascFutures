@@ -26,5 +26,16 @@
 		"tsconfig.json": "tsconfig.*.json",
 		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
 		"Cargo.toml": "Cargo.lock"
+	},
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/.turbo/": true,
+		"**/node_modules": true,
+		"**/storybook-static": true
 	}
 }
