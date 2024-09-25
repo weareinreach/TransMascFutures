@@ -32,7 +32,56 @@ export const IndividualStory = ({
 	const redirectToCategoryPage = useCallback(() => {
 		router.replace(`/category/${category}`, { scroll: false })
 	}, [router, category])
-	return (
+
+	const content = (
+		<Flex className={classes.story} align='center' justify='space-evenly'>
+			<Group className={classes.imageContainer}>
+				<Image src={image} alt={'photo of individual'} height={350} width={Math.round(350 * 0.6923)} />
+			</Group>
+
+			<Group className={classes.content} mod={{ isModal: true }}>
+				<Stack gap={4} pb={{ xs: 0, lg: 16 }}>
+					<Title order={1} tt='uppercase' fw={700}>
+						{name}
+					</Title>
+					<Text fw={500} tt='lowercase'>{`(${pronouns.join(', ')})`}</Text>
+				</Stack>
+
+				<Flex direction='column' gap='1rem'>
+					{response1 && (
+						<div className='quote-wrapper'>
+							<div className={classes.label}>{t('story.prompt1')}</div>
+							<Blockquote
+								icon={<QuoteIcon />}
+								iconSize={16}
+								styles={{ icon: { marginRight: rem(4) } }}
+								className={classes.blockquote}
+							>
+								{response1}
+							</Blockquote>
+						</div>
+					)}
+					{response2 && (
+						<div className='quote-wrapper'>
+							<div className={classes.label}>{t('story.prompt2')}</div>
+							<Blockquote
+								icon={<QuoteIcon />}
+								iconSize={16}
+								styles={{ icon: { marginRight: rem(4) } }}
+								className={classes.blockquote}
+							>
+								{response2}
+							</Blockquote>
+						</div>
+					)}
+				</Flex>
+			</Group>
+		</Flex>
+	)
+
+	return typeof modalShouldOpen === 'undefined' ? (
+		content
+	) : (
 		<Modal
 			opened={modalShouldOpen}
 			onClose={redirectToCategoryPage}
@@ -43,54 +92,13 @@ export const IndividualStory = ({
 			radius='xl'
 			// fullScreen={isMobile}
 		>
-			<Flex className={classes.story} align='center' justify='space-evenly'>
-				<Group className={classes.imageContainer}>
-					<Image src={image} alt={'photo of individual'} height={350} width={Math.round(350 * 0.6923)} />
-				</Group>
-
-				<Group className={classes.content} mod={{ isModal: true }}>
-					<Stack gap={4} pb={{ xs: 0, lg: 16 }}>
-						<Title order={1} tt='uppercase' fw={700}>
-							{name}
-						</Title>
-						<Text fw={500} tt='lowercase'>{`(${pronouns.join(', ')})`}</Text>
-					</Stack>
-
-					<Flex direction='column' gap='1rem'>
-						{response1 && (
-							<div className='quote-wrapper'>
-								<div className={classes.label}>{t('story.prompt1')}</div>
-								<Blockquote
-									icon={<QuoteIcon />}
-									iconSize={16}
-									styles={{ icon: { marginRight: rem(4) } }}
-									className={classes.blockquote}
-								>
-									{response1}
-								</Blockquote>
-							</div>
-						)}
-						{response2 && (
-							<div className='quote-wrapper'>
-								<div className={classes.label}>{t('story.prompt2')}</div>
-								<Blockquote
-									icon={<QuoteIcon />}
-									iconSize={16}
-									styles={{ icon: { marginRight: rem(4) } }}
-									className={classes.blockquote}
-								>
-									{response2}
-								</Blockquote>
-							</div>
-						)}
-					</Flex>
-				</Group>
-			</Flex>
+			{content}
 		</Modal>
 	)
 }
 
-export interface IndividualStoryProps {
+export type IndividualStoryProps = IndividualStory | IndividualStoryModal
+type IndividualStoryModal = {
 	image: string | StaticImageData
 	name: string
 	pronouns: string[]
@@ -98,4 +106,13 @@ export interface IndividualStoryProps {
 	response2: string | null
 	modalShouldOpen: boolean
 	category: string
+}
+type IndividualStory = {
+	image: string | StaticImageData
+	name: string
+	pronouns: string[]
+	response1: string | null
+	response2: string | null
+	modalShouldOpen?: never
+	category?: never
 }
