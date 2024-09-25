@@ -15,8 +15,8 @@ datasource db {
 }
 
 model DefaultImage {
-  id    String  @id @default(cuid())
-  alt   String?
+  id    String @id @default(cuid())
+  alt   String
   altEN String
   altES String
   src   String
@@ -30,10 +30,10 @@ model DefaultImage {
 model Artwork {
   id            String  @id @default(cuid())
   src           String
-  alt           String?
+  alt           String
   altEN         String
   altES         String
-  title         String?
+  title         String
   titleEN       String
   titleES       String
   artist        String
@@ -53,7 +53,7 @@ model StoryCategory {
   id  String @id @default(cuid())
   tag String @unique
 
-  category   String?
+  category   String
   categoryEN String
   categoryES String
 
@@ -72,8 +72,8 @@ model StoryCategory {
 model Pronouns {
   id String @id @default(cuid())
 
-  tag        String  @unique
-  pronouns   String?
+  tag        String @unique
+  pronouns   String
   pronounsEN String
   pronounsES String
 
