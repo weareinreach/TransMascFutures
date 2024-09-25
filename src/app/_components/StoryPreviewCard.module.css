@@ -1,0 +1,14 @@
+.card {
+	background: transparent;
+	max-width: rem(480);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	& a {
+		text-decoration: underline;
+		color: inherit;
+	}
+}
+.subheading {
+	color: lighten(var(--mantine-color-black, 0.2));
+}

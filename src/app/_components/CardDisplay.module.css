@@ -1,0 +1,79 @@
+.gradientBorder {
+	border-radius: rem(16);
+	border-width: rem(5);
+	border-image-source: linear-gradient(
+		135deg,
+		#5bcefa 0%,
+		#5bcefa 20%,
+		#f5a9b8 20%,
+		#f5a9b8 40%,
+		#ffffff 40%,
+		#ffffff 60%,
+		#f5a9b8 60%,
+		#f5a9b8 80%,
+		#5bcefa 80%,
+		#5bcefa 100%
+	);
+	border-style: solid;
+	border-image-width: auto;
+	border-image-slice: 5;
+	box-shadow: rem(2) rem(4) rem(16) black;
+	&:hover {
+		background: linear-gradient(
+			210deg,
+			rgba(91, 206, 250, 0.33) 0%,
+			rgba(245, 169, 184, 0.33) 25%,
+			rgba(255, 255, 255, 0.33) 50%,
+			rgba(245, 169, 184, 0.33) 75%,
+			rgba(91, 206, 250, 0.33) 100%
+		);
+	}
+	@mixin smaller-than $mantine-breakpoint-md {
+		margin: rem(20) rem(0);
+	}
+	&[data-bordervar='0'] {
+		border-image-source: linear-gradient(
+			45deg,
+			#5bcefa 0%,
+			#5bcefa 20%,
+			#f5a9b8 20%,
+			#f5a9b8 40%,
+			#ffffff 40%,
+			#ffffff 60%,
+			#f5a9b8 60%,
+			#f5a9b8 80%,
+			#5bcefa 80%,
+			#5bcefa 100%
+		);
+	}
+	&[data-bordervar='1'] {
+		border-image-source: linear-gradient(
+			90deg,
+			#5bcefa 0%,
+			#5bcefa 20%,
+			#f5a9b8 20%,
+			#f5a9b8 40%,
+			#ffffff 40%,
+			#ffffff 60%,
+			#f5a9b8 60%,
+			#f5a9b8 80%,
+			#5bcefa 80%,
+			#5bcefa 100%
+		);
+	}
+	&[data-bordervar='2'] {
+		border-image-source: linear-gradient(
+			135deg,
+			#5bcefa 0%,
+			#5bcefa 20%,
+			#f5a9b8 20%,
+			#f5a9b8 40%,
+			#ffffff 40%,
+			#ffffff 60%,
+			#f5a9b8 60%,
+			#f5a9b8 80%,
+			#5bcefa 80%,
+			#5bcefa 100%
+		);
+	}
+}
