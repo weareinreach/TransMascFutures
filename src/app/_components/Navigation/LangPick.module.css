@@ -1,0 +1,23 @@
+.target {
+	background: var(--mantine-color-soft-black);
+	gap: rem(8);
+	padding: rem(8) rem(16);
+	color: var(--mantine-color-white);
+	&:hover {
+		cursor: pointer;
+	}
+	order: 1;
+	@mixin smaller-than $mantine-breakpoint-sm {
+		order: 2;
+	}
+}
+.item {
+	padding: rem(16);
+}
+.itemLabel {
+	color: var(--mantine-color-soft-black);
+	font-size: rem(18);
+	font-weight: 500;
+	line-height: rem(28);
+	text-transform: capitalize;
+}
