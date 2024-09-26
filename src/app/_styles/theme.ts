@@ -76,6 +76,7 @@ export const mantineTheme = createTheme({
 			white: '#FFFFFF',
 			blue: '#5BCEFA',
 			pink: '#F5A9B8',
+			softBlack: '#21272C',
 		},
 	},
 })
@@ -85,6 +86,7 @@ export const cssResolver: CSSVariablesResolver = (theme) => ({
 		'--mantine-color-glaad-gray': theme.other.colors.glaadGray,
 		'--mantine-color-mid-gray': theme.other.colors.midGray,
 		'--mantine-color-black': theme.other.colors.black,
+		'--mantine-color-soft-black': theme.other.colors.softBlack,
 		'--mantine-color-white': theme.other.colors.white,
 		'--mantine-color-blue': theme.other.colors.blue,
 		'--mantine-color-pink': theme.other.colors.pink,
@@ -101,6 +103,7 @@ declare module '@mantine/core' {
 			white: '#FFFFFF'
 			blue: '#5BCEFA'
 			pink: '#F5A9B8'
+			softBlack: '#21272C'
 		}
 	}
 }
