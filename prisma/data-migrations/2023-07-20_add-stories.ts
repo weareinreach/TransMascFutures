@@ -1,3 +1,4 @@
+// @ts-nocheck old migration
 import { prisma } from '~db/client'
 import { type ListrJob } from '~db/dataMigrationRunner'
 import { type JobDef, jobPostRunner, jobPreRunner } from '~db/jobPreRun'

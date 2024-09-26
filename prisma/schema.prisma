@@ -15,11 +15,9 @@ datasource db {
 }
 
 model DefaultImage {
-  id    String  @id @default(cuid())
-  alt   String
-  altEN String? //to be removed
-  altES String? //to be removed
-  src   String
+  id  String @id @default(cuid())
+  alt String
+  src String
 
   story Story[]
 
@@ -28,20 +26,14 @@ model DefaultImage {
 }
 
 model Artwork {
-  id            String  @id @default(cuid())
-  src           String
-  alt           String
-  altEN         String? //to be removed
-  altES         String? //to be removed
-  title         String
-  titleEN       String? //to be removed
-  titleES       String? //to be removed
-  artist        String
-  description   String?
-  descriptionEN String?
-  descriptionES String?
-  height        Int
-  width         Int
+  id          String  @id @default(cuid())
+  src         String
+  alt         String
+  title       String
+  artist      String
+  description String?
+  height      Int
+  width       Int
 
   isVideo Boolean @default(false)
 
@@ -53,16 +45,12 @@ model StoryCategory {
   id  String @id @default(cuid())
   tag String @unique
 
-  category   String
-  categoryEN String? //to be removed
-  categoryES String? //to be removed
+  category String
 
   order Int?
 
-  image      String?
-  imageAlt   String?
-  imageAltEN String?
-  imageAltES String?
+  image    String?
+  imageAlt String?
 
   stories   StoryToCategory[]
   createdAt DateTime          @default(now())
@@ -72,10 +60,8 @@ model StoryCategory {
 model Pronouns {
   id String @id @default(cuid())
 
-  tag        String  @unique
-  pronouns   String
-  pronounsEN String? //to be removed
-  pronounsES String? //to be removed
+  tag      String @unique
+  pronouns String
 
   stories PronounsToStory[]
 
@@ -104,11 +90,6 @@ model Story {
 
   response1 String?
   response2 String?
-
-  response1EN String?
-  response2EN String?
-  response1ES String?
-  response2ES String?
 
   userId String? // Not linked - using app auth
 

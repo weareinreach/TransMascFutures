@@ -1,3 +1,4 @@
+// @ts-nocheck old migration
 import { createId } from '@paralleldrive/cuid2'
 
 import { prisma } from '~db/client'
