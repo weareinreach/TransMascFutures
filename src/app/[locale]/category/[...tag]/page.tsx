@@ -28,8 +28,8 @@ const CategoryPage = async ({ params: { tag: tagParams } }: PageProps) => {
 	const modalShouldOpen = typeof storyId === 'string'
 
 	const previewCards = stories.map(({ name, pronouns, response1, response2, id }) => {
-		const pronounList = pronouns.map(({ pronoun }) => pronoun.pronouns)
 		const storyText = response1 ?? response2
+		const promptResponse = response1 ? 'response1' : 'response2'
 		return (
 			<Link
 				key={id}
@@ -39,7 +39,13 @@ const CategoryPage = async ({ params: { tag: tagParams } }: PageProps) => {
 				style={{ textDecoration: 'none' }}
 				prefetch={true}
 			>
-				<StoryPreviewCard title={name} subtitle={pronounList.join(', ')} text={storyText} />
+				<StoryPreviewCard
+					storyAuthor={name}
+					pronouns={pronouns}
+					defaultText={storyText}
+					id={id}
+					promptResponse={promptResponse}
+				/>
 			</Link>
 		)
 	})
@@ -54,7 +60,7 @@ const CategoryPage = async ({ params: { tag: tagParams } }: PageProps) => {
 					id={singleStory.id}
 					name={singleStory.name}
 					image={getCategoryImage(tag)}
-					pronouns={singleStory.pronouns.map(({ pronoun }) => pronoun.pronouns)}
+					pronouns={singleStory.pronouns}
 					response1={singleStory.response1}
 					response2={singleStory.response2}
 					modalShouldOpen={modalShouldOpen}

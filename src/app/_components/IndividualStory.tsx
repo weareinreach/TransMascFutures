@@ -34,6 +34,12 @@ export const IndividualStory = ({
 		router.replace(`/category/${category}`, { scroll: false })
 	}, [router, category])
 
+	const translatedPronouns = pronouns
+		.map(({ pronouns, tag }) => t(`pronoun.${tag}`, { defaultValue: pronouns }))
+		.join(', ')
+
+	console.log(translatedPronouns)
+
 	const content = (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
 			<Group className={classes.imageContainer}>
@@ -45,7 +51,7 @@ export const IndividualStory = ({
 					<Title order={1} tt='uppercase' fw={700}>
 						{name}
 					</Title>
-					<Text fw={500} tt='lowercase'>{`(${pronouns.join(', ')})`}</Text>
+					<Text fw={500} tt='lowercase'>{`(${translatedPronouns})`}</Text>
 				</Stack>
 
 				<Flex direction='column' gap='1rem'>
@@ -99,11 +105,14 @@ export const IndividualStory = ({
 }
 
 export type IndividualStoryProps = IndividualStory | IndividualStoryModal
+
+type Pronouns = { pronouns: string; tag: string }
+
 type IndividualStoryModal = {
 	id: string
 	image: string | StaticImageData
 	name: string
-	pronouns: string[]
+	pronouns: Pronouns[]
 	response1: string | null
 	response2: string | null
 	modalShouldOpen: boolean
@@ -113,7 +122,7 @@ type IndividualStory = {
 	id: string
 	image: string | StaticImageData
 	name: string
-	pronouns: string[]
+	pronouns: Pronouns[]
 	response1: string | null
 	response2: string | null
 	modalShouldOpen?: never

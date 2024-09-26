@@ -15,15 +15,14 @@ export const generateMetadata = async ({ params: { locale } }: PageProps): Promi
 const StoryPage = async ({ params: { storyId } }: PageProps) => {
 	const story = await api.story.getStoryById({ id: storyId })
 
-	const randomImage = story.categories.at(Math.floor(Math.random() * story.categories.length))?.category
-		?.image
+	const randomImage = story.categories.at(Math.floor(Math.random() * story.categories.length))?.image
 	const image = getCategoryImage(randomImage ?? '')
 
 	const storyProps: IndividualStoryProps = {
 		id: storyId,
 		name: story.name,
 		image,
-		pronouns: story.pronouns.map(({ pronoun }) => pronoun.pronouns),
+		pronouns: story.pronouns,
 		response1: story.response1,
 		response2: story.response2,
 	}
