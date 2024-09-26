@@ -1,10 +1,12 @@
 import '@mantine/core/styles.css'
 
 import { type Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import i18nConfig from '~/i18nConfig'
 
 import { TRPCReactProvider } from '~/trpc/react'
-import { ColorSchemeScript, Loader } from '@mantine/core'
-import { MantineProvider } from '~/app/_styles/MantineProvider'
+import { /*ColorSchemeScript,*/ Loader } from '@mantine/core'
+import { MantineProvider } from '~/app/_providers/MantineProvider'
 import { I18nProvider } from '~/app/_providers/I18nProvider'
 import { initTranslations, namespaces } from '~/app/i18n'
 import { Navbar } from '~/app/_components/Navbar'
@@ -30,11 +32,13 @@ export async function generateMetadata({ params }: RootLayoutProps): Promise<Met
 export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
 	const { resources } = await initTranslations(locale, namespaces)
 
+	if (!i18nConfig.locales.includes(locale)) {
+		notFound()
+	}
+
 	return (
 		<html lang={locale}>
-			<head>
-				<ColorSchemeScript />
-			</head>
+			<head>{/* <ColorSchemeScript /> */}</head>
 			<body>
 				<MantineProvider>
 					<I18nProvider namespaces={namespaces} locale={locale} resources={resources}>
