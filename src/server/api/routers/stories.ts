@@ -37,7 +37,6 @@ export const storyRouter = createTRPCRouter({
 						select: {
 							category: {
 								select: {
-									id: true,
 									image: true,
 									imageAlt: true,
 									category: true,
@@ -46,10 +45,16 @@ export const storyRouter = createTRPCRouter({
 							},
 						},
 					},
-					pronouns: { select: { pronoun: { select: { pronouns: true } } } },
+					pronouns: { select: { pronoun: { select: { pronouns: true, tag: true } } } },
 				},
 			})
-			return story
+
+			const reformattedStory = {
+				...story,
+				categories: story.categories.map(({ category }) => category),
+				pronouns: story.pronouns.map(({ pronoun }) => pronoun),
+			}
+			return reformattedStory
 		}),
 	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
 	// 	const { id } = input
@@ -86,16 +91,22 @@ export const storyRouter = createTRPCRouter({
 					id: true,
 					name: true,
 					categories: {
-						select: { category: { select: { category: true, id: true } } },
+						select: { category: { select: { category: true } } },
 					},
-					pronouns: { select: { pronoun: { select: { id: true, pronouns: true } } } },
+					pronouns: { select: { pronoun: { select: { tag: true, pronouns: true } } } },
 					response1: true,
 					response2: true,
 				},
 				...(input.take ? { take: input.take } : {}),
 				orderBy: { createdAt: 'desc' },
 			})
-			return stories
+
+			const reformattedStories = stories.map(({ categories, pronouns, ...story }) => ({
+				...story,
+				categories: categories.map(({ category }) => category),
+				pronouns: pronouns.map(({ pronoun }) => pronoun),
+			}))
+			return reformattedStories
 		}),
 	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
 		const submission = await ctx.prisma.storySubmission.create({
