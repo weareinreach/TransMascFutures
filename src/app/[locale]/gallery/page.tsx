@@ -72,7 +72,7 @@ const Page = async ({ params: { locale } }: PageProps) => {
 			</Link>
 			<Link
 				href={`/gallery?artist=${art.slug}`}
-				as={`/gallery/${art.slug}`}
+				// as={`/gallery/${art.slug}`}
 				scroll={false}
 				style={{ textDecoration: 'none', zIndex: 11, backgroundColor: 'inherit', margin: 'auto' }}
 			>
