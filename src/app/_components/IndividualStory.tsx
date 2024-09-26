@@ -18,6 +18,7 @@ const QuoteIcon = (props: ComponentPropsWithoutRef<'svg'> & { height?: number; w
 	</svg>
 )
 export const IndividualStory = ({
+	id,
 	image,
 	name,
 	pronouns,
@@ -26,7 +27,7 @@ export const IndividualStory = ({
 	modalShouldOpen,
 	category,
 }: IndividualStoryProps) => {
-	const { t } = useTranslation()
+	const { t } = useTranslation(['common', 'stories'])
 	const router = useRouter()
 
 	const redirectToCategoryPage = useCallback(() => {
@@ -57,7 +58,7 @@ export const IndividualStory = ({
 								styles={{ icon: { marginRight: rem(4) } }}
 								className={classes.blockquote}
 							>
-								{response1}
+								{t(`stories:${id}.response1`, { defaultValue: response1 })}
 							</Blockquote>
 						</div>
 					)}
@@ -70,7 +71,7 @@ export const IndividualStory = ({
 								styles={{ icon: { marginRight: rem(4) } }}
 								className={classes.blockquote}
 							>
-								{response2}
+								{t(`stories:${id}.response2`, { defaultValue: response2 })}
 							</Blockquote>
 						</div>
 					)}
@@ -99,6 +100,7 @@ export const IndividualStory = ({
 
 export type IndividualStoryProps = IndividualStory | IndividualStoryModal
 type IndividualStoryModal = {
+	id: string
 	image: string | StaticImageData
 	name: string
 	pronouns: string[]
@@ -108,6 +110,7 @@ type IndividualStoryModal = {
 	category: string
 }
 type IndividualStory = {
+	id: string
 	image: string | StaticImageData
 	name: string
 	pronouns: string[]

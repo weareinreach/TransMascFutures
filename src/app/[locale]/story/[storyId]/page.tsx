@@ -12,7 +12,7 @@ export const generateMetadata = async ({ params: { locale } }: PageProps): Promi
 	}
 }
 
-const StoryPage = async ({ params: { locale, storyId } }: PageProps) => {
+const StoryPage = async ({ params: { storyId } }: PageProps) => {
 	const story = await api.story.getStoryById({ id: storyId })
 
 	const randomImage = story.categories.at(Math.floor(Math.random() * story.categories.length))?.category
@@ -20,6 +20,7 @@ const StoryPage = async ({ params: { locale, storyId } }: PageProps) => {
 	const image = getCategoryImage(randomImage ?? '')
 
 	const storyProps: IndividualStoryProps = {
+		id: storyId,
 		name: story.name,
 		image,
 		pronouns: story.pronouns.map(({ pronoun }) => pronoun.pronouns),
@@ -27,7 +28,11 @@ const StoryPage = async ({ params: { locale, storyId } }: PageProps) => {
 		response2: story.response2,
 	}
 
-	return <IndividualStory {...storyProps} />
+	return (
+		<div style={{ padding: '40px' }}>
+			<IndividualStory {...storyProps} />
+		</div>
+	)
 }
 
 type PageProps = {

@@ -78,6 +78,7 @@ const CategoryPage = async ({ params: { locale, tag: tagParams } }: PageProps) =
 
 			{singleStory && (
 				<IndividualStory
+					id={singleStory.id}
 					name={singleStory.name}
 					image={getCategoryImage(tag)}
 					pronouns={singleStory.pronouns.map(({ pronoun }) => pronoun.pronouns)}
