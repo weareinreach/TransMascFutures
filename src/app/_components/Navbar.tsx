@@ -17,7 +17,7 @@ const NavLinks = ({ drawerHandler }: { drawerHandler?: ReturnType<typeof useDisc
 		{ key: 'nav.about', href: '/about' as const },
 		{ key: 'nav.share', href: '/share' as const },
 		{ key: 'nav.find-resources', href: 'https://app.inreach.org' as const },
-	] //satisfies Array<Readonly<LinkData>>
+	]
 
 	const closeDrawer = useCallback(() => {
 		if (!drawerHandler) {
@@ -26,13 +26,6 @@ const NavLinks = ({ drawerHandler }: { drawerHandler?: ReturnType<typeof useDisc
 
 		drawerHandler.close()
 	}, [drawerHandler])
-
-	// useEffect(() => {
-	// 	router.events.on('routeChangeComplete', () => setOpened && setOpened(false))
-
-	// 	return router.events.off('routeChangeComplete', () => setOpened && setOpened(false))
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [router.asPath])
 
 	const links = linksInfo.map(({ key, href }) => {
 		if (href === 'https://app.inreach.org') {
@@ -53,16 +46,6 @@ const NavLinks = ({ drawerHandler }: { drawerHandler?: ReturnType<typeof useDisc
 	return <>{links}</>
 }
 
-// const HomeButton = () => (
-// 	<Link href='/'>
-// 		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
-// 			{' Home'}
-// 		</Button>
-// 	</Link>
-// )
-
-// This type is only needed when trying to make a story for a page
-// to check whether the button to go to the main page works
 type pathProp = { path?: string }
 
 const HamburgerMenu = ({ path }: pathProp) => {

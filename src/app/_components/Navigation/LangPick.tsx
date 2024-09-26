@@ -22,11 +22,11 @@ export const LangPick = () => {
 	const langItems = langs.map(({ displayText, locale }) => {
 		const newSearchParams =
 			currentSearchParams.toString().length === 0 ? undefined : currentSearchParams.toString()
-		const newPath = `/${locale}/${pathSegments.join('/')}`
+		const newPath = `/${pathSegments.join('/')}`
 		const newHref = newSearchParams ? [newPath, newSearchParams].join('?') : newPath
 
 		return (
-			<MenuItem key={locale} onClick={() => changeLocale(locale, `/${pathSegments.join('/')}`)}>
+			<MenuItem key={locale} onClick={() => changeLocale(locale, newHref)}>
 				{displayText}
 			</MenuItem>
 		)
