@@ -38,7 +38,7 @@
 .slideStack {
 	--translation-adj: 1;
 	--rotation-adj: 1;
-	&:hover {
+	@mixin hover {
 		--translation-adj: 1.5;
 		--rotation-adj: 2;
 	}

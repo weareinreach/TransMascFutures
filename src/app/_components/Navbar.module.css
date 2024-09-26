@@ -55,8 +55,7 @@
 	margin-top: var(--mantine-spacing-md);
 	margin-bottom: var(--mantine-spacing-md);
 	text-decoration: none;
-	&:active,
-	&:hover {
+	@mixin hover {
 		text-decoration: none;
 	}
 }

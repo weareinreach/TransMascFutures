@@ -3,7 +3,7 @@
 	gap: rem(8);
 	padding: rem(8) rem(16);
 	color: var(--mantine-color-white);
-	&:hover {
+	@mixin hover {
 		cursor: pointer;
 	}
 	order: 1;

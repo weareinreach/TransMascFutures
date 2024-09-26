@@ -1,0 +1,10 @@
+.item {
+	transform: translateX(rem(calc(20 * var(--image-fan-current)) px))
+		translateY(rem(calc(10 * var(--image-fan-current)) px))
+		rotate(calc((var(--image-fan-total) - var(--image-fan-current)) * -2) deg);
+	@mixin hover {
+		transform: translateX(rem(calc(30 * var(--image-fan-current)) px))
+			translateY(rem(calc(15 * var(--image-fan-current)) px))
+			rotate(calc((var(--image-fan-total) - var(--image-fan-current)) * -4) deg);
+	}
+}

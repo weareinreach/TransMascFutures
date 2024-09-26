@@ -18,7 +18,7 @@
 	border-image-width: auto;
 	border-image-slice: 5;
 	box-shadow: rem(2) rem(4) rem(16) black;
-	&:hover {
+	@mixin hover {
 		background: linear-gradient(
 			210deg,
 			rgba(91, 206, 250, 0.33) 0%,

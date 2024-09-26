@@ -8,7 +8,7 @@
 		width: rem(175);
 		color: var(--mantine-color-black);
 		background-color: var(--mantine-color-pink);
-		&:hover {
+		@mixin hover {
 			background: linear-gradient(
 				210deg,
 				rgba(91, 206, 250, 0.5) 0%,
@@ -27,7 +27,7 @@
 		width: rem(175);
 		background-color: var(--mantine-color-blue);
 		border-radius: rem(8);
-		&:hover {
+		@mixin hover {
 			background: linear-gradient(
 				210deg,
 				rgba(91, 206, 250, 0.5) 0%,

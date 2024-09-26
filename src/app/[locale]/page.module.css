@@ -12,7 +12,7 @@
 }
 .categoryImage {
 	filter: rop-shadow(rem(-2) rem(8) rem(8) var(--mantine-color-mid-gray));
-	&:hover {
+	@mixin hover {
 		filter: drop-shadow(rem(-2) rem(8) rem(8) lighten(var(--mantine-color-blue), 0));
 	}
 }
