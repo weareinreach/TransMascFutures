@@ -45,6 +45,7 @@ export const PopupArt = () => {
 					image={popupArt.src}
 					alt={t(`art:${popupArt.slug}-alt-text`, { defaultValue: '' })}
 					description={t(`art:${popupArt.slug}-description`, { defaultValue: '' })}
+					slug={popupArt.slug}
 				/>
 			)}
 		</Modal>

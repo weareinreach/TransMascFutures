@@ -7,12 +7,16 @@ import { type StaticImageData } from 'next/image'
 import { Image } from './Image'
 import { useState } from 'react'
 import { StoryPreviewCarousel } from '~/app/_components/StoryPreviewCarousel'
-export const ArtItem = ({ image, name, description, alt, isModal }: IndividualStoryProps) => {
+import { useTranslation } from 'react-i18next'
+export const ArtItem = ({ image, name, description, alt, isModal, slug }: IndividualStoryProps) => {
+	const { t } = useTranslation(['art'])
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
 	const [embla, setEmbla] = useState<Embla | null>(null)
 	useAnimationOffsetEffect(embla, 200)
 
+	const translatedAltText = t(`${slug}-alt-text`, { defaultValue: alt })
+	const translatedDescription = description ? t(`${slug}-description`, { defaultValue: description }) : null
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
 			<Group className={classes.imageContainer} maw={{ base: '90%', md: '60%', lg: '50%' }}>
@@ -42,7 +46,7 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 									'--artitem-height': src.height,
 								}}
 							>
-								<Image src={src} alt={alt} h='100%' />
+								<Image src={src} alt={translatedAltText} h='100%' />
 							</AspectRatio>
 						))}
 					</StoryPreviewCarousel>
@@ -55,7 +59,7 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 							'--artitem-width': image.width,
 						}}
 					>
-						<Image src={image} alt={alt} h='100%' />
+						<Image src={image} alt={translatedAltText} h='100%' />
 					</AspectRatio>
 				)}
 			</Group>
@@ -70,11 +74,11 @@ export const ArtItem = ({ image, name, description, alt, isModal }: IndividualSt
 				<Flex direction='column' gap='1rem'>
 					{description ? (
 						<div className='quote-wrapper'>
-							<Text>{description}</Text>
+							<Text>{translatedDescription}</Text>
 						</div>
 					) : alt ? (
 						<div className='quote-wrapper'>
-							<Text>{alt}</Text>
+							<Text>{translatedAltText}</Text>
 						</div>
 					) : null}
 				</Flex>
@@ -90,4 +94,5 @@ export interface IndividualStoryProps {
 	description?: string
 	alt: string
 	isModal?: boolean
+	slug: string
 }
