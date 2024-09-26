@@ -1,0 +1,86 @@
+.barRoot {
+	display: flex;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	padding: rem(0) rem(64);
+	justify-content: space-between;
+	align-items: center;
+	background: var(--mantine-color-soft-black);
+	z-index: 50;
+	@mixin smaller-than $mantine-breakpoint-md {
+		flex-direction: column;
+		padding: rem(20) rem(32);
+		align-items: flex-start;
+		gap: rem(32);
+	}
+	@mixin smaller-than $mantine-breakpoint-sm {
+		padding: rem(20) rem(20);
+	}
+}
+.linksContainer {
+	display: flex;
+	align-items: center;
+	gap: rem(40);
+	flex: 1 0 0;
+	@mixin smaller-than $mantine-breakpoint-md {
+		flex-direction: column;
+		gap: rem(32);
+		align-items: flex-start;
+		padding-bottom: rem(32);
+		flex: 0;
+		align-self: stretch;
+	}
+}
+.rightSection {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	align-self: center;
+	gap: rem(40);
+	@mixin smaller-than $mantine-breakpoint-md {
+		flex-direction: column;
+		align-items: flex-start;
+		align-self: flex-start;
+		justify-content: space-between;
+		flex: 0.8 0 0;
+	}
+}
+
+.linkItem {
+	color: var(--mantine-color-white);
+	text-align: center;
+	font-size: rem(18);
+	font-weight: 600;
+	line-height: rem(28);
+	text-transform: capitalize;
+	font-style: normal;
+	text-decoration: none;
+	padding: rem(23) rem(0);
+	@mixin smaller-than $mantine-breakpoint-md {
+		font-size: rem(32);
+		padding: 0;
+		background: var(--mantine-color-soft-black);
+	}
+}
+
+.resourceBtnRoot {
+	--button-color: var(--mantine-color-white);
+	border-radius: rem(8);
+	border: rem(1) solid var(--mantine-color-white);
+	padding: rem(0);
+}
+.resourceBtnLabel {
+	color: var(--mantine-color-white);
+	font-size: rem(14);
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: rem(16);
+}
+
+.findResource {
+	order: 2;
+	@mixin smaller-than $mantine-breakpoint-sm {
+		order: 1;
+	}
+}

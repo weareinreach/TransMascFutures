@@ -9,11 +9,12 @@ import { /*ColorSchemeScript,*/ Loader } from '@mantine/core'
 import { MantineProvider } from '~/app/_providers/MantineProvider'
 import { I18nProvider } from '~/app/_providers/I18nProvider'
 import { initTranslations, namespaces } from '~/app/i18n'
-import { Navbar } from '~/app/_components/Navbar'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Suspense } from 'react'
+import { NavBar } from '~/app/_components/Navigation'
+import { Breakpoint } from '~/app/_components/dev-tools/Breakpoint'
 
 export const generateStaticParams = async () => ['en', 'es', 'fr'].map((locale) => ({ locale }))
 export async function generateMetadata({ params }: RootLayoutProps): Promise<Metadata> {
@@ -43,9 +44,10 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 				<MantineProvider>
 					<I18nProvider namespaces={namespaces} locale={locale} resources={resources}>
 						<TRPCReactProvider>
-							<Navbar />
+							<NavBar />
 							<Suspense fallback={<Loader />}>{children}</Suspense>
 							<ReactQueryDevtools buttonPosition='bottom-left' />
+							<Breakpoint />
 						</TRPCReactProvider>
 					</I18nProvider>
 				</MantineProvider>
