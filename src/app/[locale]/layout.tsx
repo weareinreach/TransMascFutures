@@ -5,14 +5,13 @@ import { notFound } from 'next/navigation'
 import i18nConfig from '~/i18nConfig'
 
 import { TRPCReactProvider } from '~/trpc/react'
-import { Loader, Group, Button } from '@mantine/core'
+import { Group, Button } from '@mantine/core'
 import { MantineProvider } from '~/app/_providers/MantineProvider'
 import { I18nProvider } from '~/app/_providers/I18nProvider'
 import { initTranslations, namespaces } from '~/app/i18n'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Suspense } from 'react'
 import { NavBar } from '~/app/_components/Navigation'
 import { ArtistCredit } from '~/app/_components/ArtistCredit'
 import { VercelLogo } from '~/app/_components/VercelLogo'
@@ -48,7 +47,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 					<I18nProvider namespaces={namespaces} locale={locale} resources={resources}>
 						<TRPCReactProvider>
 							<NavBar />
-							<Suspense fallback={<Loader />}>{children}</Suspense>
+							{children}
 							<Group className={classes.footer}>
 								<Button
 									component='a'
