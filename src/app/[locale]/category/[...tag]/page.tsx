@@ -33,7 +33,7 @@ const CategoryPage = async ({ params: { tag: tagParams } }: PageProps) => {
 		return (
 			<Link
 				key={id}
-				href={{ pathname: `/category/${tag}/${id}` }}
+				href={`/category/${tag}/${id}`}
 				// as={`/story/${id}`}
 				scroll={false}
 				style={{ textDecoration: 'none' }}

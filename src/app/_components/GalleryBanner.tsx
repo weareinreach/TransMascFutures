@@ -25,14 +25,7 @@ export const GalleryBanner = async ({ pageTitle }: GalleryBannerProps) => {
 				</Title>
 			</GridCol>
 			<GridCol span={{ base: 6, lg: 3, md: 4 }}>
-				<Button
-					component={Link}
-					href={{ pathname: '/survey' }}
-					tt='uppercase'
-					variant='secondary'
-					display='block'
-					mx='auto'
-				>
+				<Button component={Link} href='/survey' tt='uppercase' variant='secondary' display='block' mx='auto'>
 					{t('participate')}
 				</Button>
 			</GridCol>

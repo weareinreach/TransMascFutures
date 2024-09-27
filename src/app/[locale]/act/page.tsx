@@ -35,7 +35,7 @@ const Act = async ({ params: { locale } }: PageProps) => {
 							<CardSection>
 								<Center h={400}>
 									<AspectRatio ratio={ParticipateImage.width / ParticipateImage.height} w={400}>
-										<Link href={{ pathname: '/survey' }}>
+										<Link href='/survey'>
 											<Image src={ParticipateImage} alt='' h='100%' fit='contain' />
 										</Link>
 									</AspectRatio>
@@ -45,7 +45,7 @@ const Act = async ({ params: { locale } }: PageProps) => {
 								i18nKey='act.card1'
 								components={{
 									...commonComponents,
-									Link: <Link href={{ pathname: '/survey' }}>.</Link>,
+									Link: <Link href='/survey'>.</Link>,
 								}}
 							/>
 						</Card>

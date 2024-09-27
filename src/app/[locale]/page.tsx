@@ -76,7 +76,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
 						</Title>
 					</Stack>
 					<Stack mx={80} mb={20}>
-						<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
+						<Button component={Link} href='/survey' tt='uppercase' variant='secondary'>
 							{t('participate')}
 						</Button>
 					</Stack>

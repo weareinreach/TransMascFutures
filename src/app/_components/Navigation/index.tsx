@@ -1,4 +1,3 @@
-import { linksInfo, findResourceButton } from './links'
 import { Button } from '@mantine/core'
 import Link from 'next/link'
 import { LangPick } from './LangPick'
@@ -6,6 +5,17 @@ import classes from './styles.module.css'
 import { initTranslations } from '~/app/i18n'
 import { getLocale } from '~/server/i18n'
 import { BurgerButton } from './BurgerButton'
+
+const linksInfo = [
+	{ key: 'nav.home', href: '/' },
+	{ key: 'nav.gallery', href: '/gallery' },
+	{ key: 'nav.act', href: '/act' },
+	{ key: 'nav.about', href: '/about' },
+	{ key: 'nav.share', href: '/share' },
+] as const
+
+const findResourceButton = { key: 'nav.find-resources', href: 'https://app.inreach.org' } as const
+
 export const NavBar = async () => {
 	const locale = getLocale()
 	const { t } = await initTranslations(locale, ['common'])
