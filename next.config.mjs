@@ -25,21 +25,11 @@ const withBundleAnalyzer = bundleAnalyze({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
-	swcMinify: true,
 	compiler: {
 		...(process.env.VERCEL_ENV === 'production' ? { removeConsole: { exclude: ['error'] } } : {}),
 	},
-	images: {
-		remotePatterns: [{ protocol: 'https', hostname: 'placehold.co', pathname: '/**' }],
-		// domains: ['placehold.co'],
-	},
 	experimental: {
 		optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
-		outputFileTracingExcludes: {
-			'*': ['**swc+core**', '**esbuild**'],
-		},
-		webpackBuildWorker: true,
 	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },

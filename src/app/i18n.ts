@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next/initReactI18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import i18nConfig from '~/i18nConfig'
 import OtaClient from '@crowdin/ota-client'
-
+import { HMRPlugin } from 'i18next-hmr/plugin'
 export const namespaces = ['common', 'art', 'states', 'stories']
 
 export async function initTranslations(
@@ -14,6 +14,14 @@ export async function initTranslations(
 ) {
 	i18nInstance = i18nInstance ?? createInstance()
 	i18nInstance.use(initReactI18next)
+
+	if (process.env.NODE_ENV !== 'production') {
+		i18nInstance.use(
+			new HMRPlugin({
+				webpack: { client: typeof window !== 'undefined', server: typeof window === 'undefined' },
+			})
+		)
+	}
 
 	if (!resources) {
 		const ota = new OtaClient('e-dcab4bdc227e647407683b35wj')
