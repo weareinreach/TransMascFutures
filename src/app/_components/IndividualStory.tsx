@@ -38,8 +38,6 @@ export const IndividualStory = ({
 		.map(({ pronouns, tag }) => t(`pronoun.${tag}`, { defaultValue: pronouns }))
 		.join(', ')
 
-	console.log(translatedPronouns)
-
 	const content = (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
 			<Group className={classes.imageContainer}>

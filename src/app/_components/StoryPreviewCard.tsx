@@ -24,7 +24,6 @@ export const StoryPreviewCard = async ({
 			?.map(({ pronouns, tag }) => t(`pronoun.${tag}`, { defaultValue: pronouns, ns: 'common' }))
 			.join(', ') ?? null
 
-	console.log(pronouns, displayPronouns)
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>
 			<CardSection>
