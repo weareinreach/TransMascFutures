@@ -21,3 +21,8 @@
 	line-height: rem(28);
 	text-transform: capitalize;
 }
+.dropdown {
+	@mixin smaller-than $mantine-breakpoint-sm {
+		width: 100% !important;
+	}
+}

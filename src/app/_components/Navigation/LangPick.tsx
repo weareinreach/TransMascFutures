@@ -33,7 +33,10 @@ export const LangPick = () => {
 	})
 
 	return (
-		<Menu classNames={{ item: classes.item, itemLabel: classes.itemLabel }}>
+		<Menu
+			classNames={{ item: classes.item, itemLabel: classes.itemLabel, dropdown: classes.dropdown }}
+			middlewares={{ inline: true }}
+		>
 			<MenuTarget>
 				<Group className={classes.target}>
 					<IconLanguage size={24} />
