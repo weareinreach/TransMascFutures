@@ -26,6 +26,8 @@ export const NavBar = async () => {
 						component={Link}
 						href={findResourceButton.href}
 						variant='outline'
+						target='_blank'
+						className={classes.findResource}
 						classNames={{
 							root: classes.resourceBtnRoot,
 							label: classes.resourceBtnLabel,

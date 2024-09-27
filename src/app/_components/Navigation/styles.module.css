@@ -71,7 +71,7 @@
 	padding: rem(0);
 }
 .resourceBtnLabel {
-	color: var(--mantine-color-white);
+	color: var(--mantine-color-white) !important;
 	font-size: rem(14);
 	font-weight: 600;
 	text-transform: uppercase;
@@ -80,7 +80,7 @@
 
 .findResource {
 	order: 2;
-	@mixin smaller-than $mantine-breakpoint-sm {
+	@mixin smaller-than $mantine-breakpoint-md {
 		order: 1;
 	}
 }

@@ -7,7 +7,7 @@
 		cursor: pointer;
 	}
 	order: 1;
-	@mixin smaller-than $mantine-breakpoint-sm {
+	@mixin smaller-than $mantine-breakpoint-md {
 		order: 2;
 	}
 }

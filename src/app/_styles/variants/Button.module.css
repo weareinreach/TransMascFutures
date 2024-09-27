@@ -40,11 +40,10 @@
 	}
 }
 .label {
-	&[data-variant='primary'] {
-		white-space: normal;
-	}
+	color: var(--mantine-color-black);
+	white-space: normal;
+
 	&[data-variant='secondary'] {
-		white-space: normal;
 		text-transform: uppercase;
 	}
 }
