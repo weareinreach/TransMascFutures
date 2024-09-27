@@ -1,12 +1,13 @@
 'use client'
 
-import { Burger } from '@mantine/core'
+import { Burger, useMantineTheme, Drawer, Stack } from '@mantine/core'
 import classes from './BurgerButton.module.css'
 import { type ReactNode } from 'react'
-import { useDisclosure } from '@mantine/hooks'
+import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 export const BurgerButton = ({ children }: { children: ReactNode }) => {
 	const [opened, handler] = useDisclosure(false)
-
+	const theme = useMantineTheme()
+	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, false)
 	return (
 		<>
 			<Burger
@@ -15,9 +16,25 @@ export const BurgerButton = ({ children }: { children: ReactNode }) => {
 				onClick={handler.toggle}
 				className={classes.burgerItems}
 			/>
-			<div className={classes.burgerContainer} {...(opened && { 'data-opened': true })}>
-				{children}
-			</div>
+			{isMobile ? (
+				<Drawer
+					opened={opened}
+					onClose={handler.close}
+					classNames={{
+						content: classes.drawerContent,
+						header: classes.drawerHeader,
+						close: classes.drawerClose,
+						title: classes.drawerTitle,
+						body: classes.drawerBody,
+					}}
+					closeButtonProps={{ size: 32 }}
+					title='InReach X GLAAD'
+				>
+					<Stack className={classes.drawerStack}>{children}</Stack>
+				</Drawer>
+			) : (
+				children
+			)}
 		</>
 	)
 }

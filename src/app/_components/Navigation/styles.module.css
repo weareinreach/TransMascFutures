@@ -28,7 +28,7 @@
 		gap: rem(32);
 		align-items: flex-start;
 		padding-bottom: rem(32);
-		flex: 0;
+		flex: unset;
 		align-self: stretch;
 	}
 }
@@ -41,9 +41,9 @@
 	@mixin smaller-than $mantine-breakpoint-md {
 		flex-direction: column;
 		align-items: flex-start;
-		align-self: flex-start;
+		align-self: stretch;
 		justify-content: space-between;
-		flex: 0.8 0 0;
+		flex: 1 0 0;
 	}
 }
 

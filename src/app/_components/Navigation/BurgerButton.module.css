@@ -10,37 +10,26 @@
 	@mixin smaller-than $mantine-breakpoint-md {
 		display: unset;
 	}
-	& ~ div {
-		@mixin smaller-than $mantine-breakpoint-md {
-			display: none;
-		}
-	}
-	&:has(> [data-opened]) ~ div {
-		@mixin smaller-than $mantine-breakpoint-md {
-			display: flex;
-			/* position: absolute;
-			top: rem(74);
-			left: 0; */
-			background: var(--mantine-color-soft-black);
-		}
-	}
 }
-.burgerContainer {
-	width: 100%;
-	display: inherit;
-
-	&[data-opened] {
-		flex-direction: column;
-		flex-wrap: nowrap;
-		position: fixed;
-		top: rem(74);
-		left: 0;
-		padding: rem(0) rem(16);
-		z-index: 100;
-		height: 100%;
-		width: 50%;
-		max-width: rem(380);
-		max-height: 100vh;
-		align-self: stretch;
-	}
+.drawerContent {
+	background-color: var(--mantine-color-soft-black);
+	display: flex;
+	flex-direction: column;
+}
+.drawerHeader {
+	background-color: var(--mantine-color-soft-black);
+}
+.drawerClose {
+	color: var(--mantine-color-white);
+}
+.drawerTitle {
+	color: var(--mantine-color-white);
+	font-weight: 600;
+}
+.drawerBody {
+	display: flex;
+	flex: 1 0 0;
+}
+.drawerStack {
+	gap: 0;
 }
