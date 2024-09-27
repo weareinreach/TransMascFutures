@@ -1,12 +1,23 @@
-import { Group, Button, Text, Stack, Anchor, Center, Container, Grid, Title, GridCol } from '@mantine/core'
-import Image from 'next/image'
+import {
+	Group,
+	Button,
+	Stack,
+	Anchor,
+	Center,
+	Container,
+	Grid,
+	Title,
+	GridCol,
+	AspectRatio,
+} from '@mantine/core'
+import { Image } from '~/app/_components/Image'
 import classes from './page.module.css'
 import { initTranslations, namespaces } from '~/app/i18n'
 import { categoryImages, isValidCategoryImage } from '~/data/categoryImages'
 import { api, HydrateClient } from '~/trpc/server'
 import Link from 'next/link'
 import { Trans } from '~/app/_components/Trans'
-import Logo from '~public/assets/tmf-logo-rect-bw.png'
+import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
 	const { t } = await initTranslations(locale, namespaces)
 	const categories = await api.story.getCategories()
@@ -51,13 +62,12 @@ export default async function HomePage({ params: { locale } }: { params: { local
 	})
 	return (
 		<HydrateClient>
-			{/* <I18nProvider namespaces={namespaces} locale={'en'} resources={resources}> */}
 			<Container fluid>
 				<Group w='100%' gap={0} className={classes.header} align='center'>
-					<Stack gap={0} mt={20} mb={{ base: 20, md: 40 }} mx={{ base: 'auto', md: 0 }}>
-						{/* <AspectRatio ratio={723 / 174} mx='auto' maw={750} w='75%'> */}
-						<Image src={Logo} alt={t('logo-alt')} />
-						{/* </AspectRatio> */}
+					<Stack className={classes.headerStack}>
+						<AspectRatio className={classes.headerLogo}>
+							<Image src={Logo} alt={t('logo-alt')} fit='contain' />
+						</AspectRatio>
 						<Title order={3} ta='center' py={0} fw={500} lts={2} fs='oblique'>
 							{t('main-page.tagline1')}
 						</Title>
@@ -80,19 +90,6 @@ export default async function HomePage({ params: { locale } }: { params: { local
 					))}
 				</Grid>
 			</Container>
-			<Group justify='space-between' w='100%' p={40}>
-				<Button
-					component='a'
-					href='https://inreach.kindful.com/?campaign=1296613'
-					target='_blank'
-					rel='noreferrer'
-					className={classes.homeButton}
-				>
-					{t('donate')}
-				</Button>
-				<Text fw={500}>{t('artist-credit')}</Text>
-			</Group>
-			{/* </I18nProvider> */}
 		</HydrateClient>
 	)
 }

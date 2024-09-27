@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import i18nConfig from '~/i18nConfig'
 
 import { TRPCReactProvider } from '~/trpc/react'
-import { /*ColorSchemeScript,*/ Loader } from '@mantine/core'
+import { Loader, Group, Button } from '@mantine/core'
 import { MantineProvider } from '~/app/_providers/MantineProvider'
 import { I18nProvider } from '~/app/_providers/I18nProvider'
 import { initTranslations, namespaces } from '~/app/i18n'
@@ -14,7 +14,10 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Suspense } from 'react'
 import { NavBar } from '~/app/_components/Navigation'
+import { ArtistCredit } from '~/app/_components/ArtistCredit'
+import { VercelLogo } from '~/app/_components/VercelLogo'
 import { Breakpoint } from '~/app/_components/dev-tools/Breakpoint'
+import classes from './layout.module.css'
 
 export const generateStaticParams = async () => ['en', 'es', 'fr'].map((locale) => ({ locale }))
 export async function generateMetadata({ params }: RootLayoutProps): Promise<Metadata> {
@@ -31,7 +34,7 @@ export async function generateMetadata({ params }: RootLayoutProps): Promise<Met
 	}
 }
 export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
-	const { resources } = await initTranslations(locale, namespaces)
+	const { t, resources } = await initTranslations(locale, namespaces)
 
 	if (!i18nConfig.locales.includes(locale)) {
 		notFound()
@@ -46,6 +49,23 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 						<TRPCReactProvider>
 							<NavBar />
 							<Suspense fallback={<Loader />}>{children}</Suspense>
+							<Group className={classes.footer}>
+								<Button
+									component='a'
+									href='https://inreach.kindful.com/?campaign=1296613'
+									target='_blank'
+									rel='noreferrer'
+									className={classes.donateButton}
+								>
+									{t('donate')}
+								</Button>
+								<ArtistCredit />
+								{/* <Group className={classes.vercel}> */}
+								<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
+									<VercelLogo />
+								</a>
+								{/* </Group> */}
+							</Group>
 							<ReactQueryDevtools buttonPosition='top-right' />
 							<Breakpoint />
 						</TRPCReactProvider>

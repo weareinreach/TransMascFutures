@@ -1,0 +1,20 @@
+.donateButton {
+	@mixin smaller-than $mantine-breakpoint-md {
+		opacity: 0;
+		display: none;
+	}
+}
+.vercel {
+	--group-align: 'center';
+	justify-items: flex-end;
+	padding: 0 rem(40) rem(40) rem(40);
+}
+
+.footer {
+	justify-content: space-between;
+	width: 100%;
+	padding: rem(40);
+	@mixin smaller-than $mantine-breakpoint-sm {
+		justify-content: center;
+	}
+}

@@ -1,9 +1,3 @@
-.homeButton {
-	@mixin smaller-than $mantine-breakpoint-md {
-		opacity: 0;
-		display: none;
-	}
-}
 .cardGroup {
 	@mixin smaller-than rem(850) {
 		flex-direction: column;
@@ -18,4 +12,22 @@
 }
 .header {
 	justify-content: center;
+}
+.headerStack {
+	gap: 0;
+	margin: rem(20) auto;
+
+	@mixin smaller-than $mantine-breakpoint-md {
+		margin: rem(20) 0 rem(40) 0;
+	}
+}
+.headerLogo {
+	--ar-ratio: calc(723 / 174);
+	margin-right: auto;
+	margin-left: auto;
+	max-width: rem(750);
+	width: 75%;
+	@mixin smaller-than $mantine-breakpoint-sm {
+		width: 90%;
+	}
 }
