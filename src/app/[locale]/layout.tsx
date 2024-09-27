@@ -46,7 +46,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 						<TRPCReactProvider>
 							<NavBar />
 							<Suspense fallback={<Loader />}>{children}</Suspense>
-							<ReactQueryDevtools buttonPosition='bottom-left' />
+							<ReactQueryDevtools buttonPosition='top-right' />
 							<Breakpoint />
 						</TRPCReactProvider>
 					</I18nProvider>
