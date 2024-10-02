@@ -1,10 +1,4 @@
-// eslint-disable-next-line no-restricted-imports
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { cookies } from 'next/headers'
+import i18nConfig from '~/i18nConfig'
 
-import i18nConfig from '../../next-i18next.config'
-
-export const getServerSideTranslations = async (
-	locale = 'en',
-	namespacesRequired: string[] = ['common'],
-	extraLocales?: string[] | false
-) => serverSideTranslations(locale, namespacesRequired, i18nConfig, extraLocales)
+export const getLocale = () => cookies().get('NEXT_LOCALE')?.value ?? i18nConfig.defaultLocale

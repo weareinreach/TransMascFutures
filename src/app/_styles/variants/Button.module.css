@@ -1,0 +1,49 @@
+.root {
+	&[data-variant='primary'] {
+		border-radius: rem(8);
+		font-weight: 600;
+		height: auto;
+		padding: rem(15);
+		text-align: center;
+		width: rem(175);
+		color: var(--mantine-color-black);
+		background-color: var(--mantine-color-pink);
+		@mixin hover {
+			background: linear-gradient(
+				210deg,
+				rgba(91, 206, 250, 0.5) 0%,
+				rgba(245, 169, 184, 0.5) 25%,
+				rgba(255, 255, 255, 0.5) 50%,
+				rgba(245, 169, 184, 0.5) 75%,
+				rgba(91, 206, 250, 0.5) 100%
+			);
+		}
+	}
+	&[data-variant='secondary'] {
+		font-weight: 600;
+		height: auto;
+		padding: rem(15);
+		text-align: center;
+		width: rem(175);
+		background-color: var(--mantine-color-blue);
+		border-radius: rem(8);
+		@mixin hover {
+			background: linear-gradient(
+				210deg,
+				rgba(91, 206, 250, 0.5) 0%,
+				rgba(245, 169, 184, 0.5) 25%,
+				rgba(255, 255, 255, 0.5) 50%,
+				rgba(245, 169, 184, 0.5) 75%,
+				rgba(91, 206, 250, 0.5) 100%
+			);
+		}
+	}
+}
+.label {
+	color: var(--mantine-color-black);
+	white-space: normal;
+
+	&[data-variant='secondary'] {
+		text-transform: uppercase;
+	}
+}

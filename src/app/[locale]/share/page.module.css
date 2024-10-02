@@ -1,0 +1,47 @@
+.header {
+	text-transform: uppercase;
+}
+
+.content {
+	text-align: center;
+	gap: rem(20);
+	@mixin larger-than $mantine-breakpoint-md {
+		gap: rem(60);
+	}
+}
+
+.listItem {
+	font-size: rem(20);
+	text-align: start;
+	@mixin smaller-than $mantine-breakpoint-md {
+		font-size: rem(16);
+	}
+	@mixin smaller-than em(820) {
+		font-size: rem(14);
+	}
+	@mixin smaller-than $mantine-breakpoint-sm {
+		font-size: rem(16);
+	}
+}
+
+.pressReleaseBtn {
+	text-transform: none;
+	white-space: normal;
+}
+
+.shareTitle {
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: rem(20);
+	@mixin larger-than $mantine-breakpoint-md {
+		font-size: rem(24);
+	}
+}
+.shareSubtitle {
+	font-weight: 600;
+	font-style: italic;
+	font-size: rem(18);
+	@mixin larger-than $mantine-breakpoint-md {
+		font-size: rem(22);
+	}
+}

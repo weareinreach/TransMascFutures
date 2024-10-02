@@ -1,45 +1,35 @@
-/* eslint-disable turbo/no-undeclared-env-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 // @ts-check
 import bundleAnalyze from '@next/bundle-analyzer'
 import { RelativeCiAgentWebpackPlugin } from '@relative-ci/agent'
 import { I18NextHMRPlugin } from 'i18next-hmr/webpack'
-import nextRoutes from 'nextjs-routes/config'
 
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import i18nConfig from './next-i18next.config.js'
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful for
  * Docker builds.
  */
 
-!process.env.SKIP_ENV_VALIDATION && (await import('./src/env/server.mjs'))
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+!process.env.SKIP_ENV_VALIDATION && (await import('./src/env.mjs'))
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const withRoutes = nextRoutes({ outDir: 'src/types' })
 const withBundleAnalyzer = bundleAnalyze({
 	enabled: process.env.ANALYZE === 'true',
 })
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	i18n: i18nConfig.i18n,
-	reactStrictMode: true,
-	swcMinify: true,
 	compiler: {
 		...(process.env.VERCEL_ENV === 'production' ? { removeConsole: { exclude: ['error'] } } : {}),
 	},
-	images: {
-		remotePatterns: [{ protocol: 'https', hostname: 'placehold.co', pathname: '/**' }],
-		// domains: ['placehold.co'],
-	},
 	experimental: {
-		outputFileTracingExcludes: {
-			'*': ['**swc+core**', '**esbuild**'],
-		},
-		webpackBuildWorker: true,
+		optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
 	},
 	eslint: { ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production' },
 	typescript: { ignoreBuildErrors: process.env.VERCEL_ENV !== 'production' },
@@ -64,7 +54,7 @@ const nextConfig = {
  * @returns {typeof nextConfig}
  */
 function defineNextConfig(config) {
-	return withBundleAnalyzer(withRoutes(config))
+	return withBundleAnalyzer(config)
 }
 
 export default defineNextConfig(nextConfig)

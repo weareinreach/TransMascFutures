@@ -1,0 +1,33 @@
+.cardGroup {
+	@mixin smaller-than rem(850) {
+		flex-direction: column;
+		margin: 0 auto;
+	}
+}
+.categoryImage {
+	filter: rop-shadow(rem(-2) rem(8) rem(8) var(--mantine-color-mid-gray));
+	@mixin hover {
+		filter: drop-shadow(rem(-2) rem(8) rem(8) lighten(var(--mantine-color-blue), 0));
+	}
+}
+.header {
+	justify-content: center;
+}
+.headerStack {
+	gap: 0;
+	margin: rem(20) auto;
+
+	@mixin smaller-than $mantine-breakpoint-md {
+		margin: rem(20) 0 rem(40) 0;
+	}
+}
+.headerLogo {
+	--ar-ratio: calc(723 / 174);
+	margin-right: auto;
+	margin-left: auto;
+	max-width: rem(750);
+	width: 75%;
+	@mixin smaller-than $mantine-breakpoint-sm {
+		width: 90%;
+	}
+}

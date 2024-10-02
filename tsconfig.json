@@ -4,6 +4,7 @@
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": ".",
+		"checkJs": true,
 		"declaration": false,
 		"declarationMap": false,
 		"esModuleInterop": true,
@@ -12,9 +13,10 @@
 		"inlineSourceMap": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"module": "esnext",
-		"moduleResolution": "node",
+		"lib": ["dom", "dom.iterable", "ES2022"],
+		"module": "Preserve",
+		"moduleDetection": "force",
+		"moduleResolution": "Bundler",
 		"noEmit": true,
 		"noUncheckedIndexedAccess": true,
 		"plugins": [
@@ -25,7 +27,7 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "es2017",
+		"target": "es2022",
 		"paths": {
 			"~/*": ["./src/*"],
 			"~public/*": ["./public/*"],
@@ -34,14 +36,15 @@
 	},
 	"include": [
 		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"**/*.cjs",
-		"**/*.mjs",
+		"./**/*.ts",
+		"./**/*.tsx",
+		"./**/*.cjs",
+		"./**/*.mjs",
 		".*.js",
 		".lib/*.ts",
 		".storybook/*",
-		".next/types/**/*.ts"
+		".next/types/**/*.ts",
+		".eslintrc.cjs"
 	],
-	"exclude": ["node_modules/**"]
+	"exclude": ["node_modules"]
 }

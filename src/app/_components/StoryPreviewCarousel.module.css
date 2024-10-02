@@ -1,0 +1,13 @@
+.viewport {
+	padding: rem(60) rem(0);
+}
+.control {
+	border: none;
+	background-color: transparent;
+	box-shadow: none;
+}
+/* .root {
+	@mixin smaller-than $mantine-breakpoint-md {
+		display: none;
+	}
+} */

@@ -1,11 +1,11 @@
 /* eslint-disable import/no-unused-modules */
 /**
- * @template {import('@types/prettier').RequiredOptions} T
+ * @template {import('prettier').Options} T
  * @param {T} config A generic parameter that flows through to the return type
- * @constraint {{import('@types/prettier').RequiredOptions}}
+ * @constraint {{import('@types/prettier').Options}}
  */
 
-/** @type {import('@types/prettier').RequiredOptions} */
+/** @type {import('prettier').Options} */
 const config = {
 	plugins: ['prettier-plugin-packagejson', 'prettier-plugin-jsdoc', 'prettier-plugin-prisma'],
 	printWidth: 110,

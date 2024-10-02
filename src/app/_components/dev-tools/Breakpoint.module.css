@@ -1,0 +1,25 @@
+.breakpoint {
+	position: fixed;
+	background-color: red;
+	padding: rem(4) rem(8);
+	border-radius: rem(8);
+	color: black;
+	font-size: rem(18);
+	bottom: rem(8);
+	right: rem(8);
+	&:before {
+		content: 'xl';
+		@mixin smaller-than $mantine-breakpoint-xl {
+			content: 'lg';
+		}
+		@mixin smaller-than $mantine-breakpoint-lg {
+			content: 'md';
+		}
+		@mixin smaller-than $mantine-breakpoint-md {
+			content: 'sm';
+		}
+		@mixin smaller-than $mantine-breakpoint-sm {
+			content: 'xs';
+		}
+	}
+}

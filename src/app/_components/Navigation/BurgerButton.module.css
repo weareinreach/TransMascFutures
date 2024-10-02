@@ -1,0 +1,35 @@
+.burgerRoot {
+	--burger-color: var(--mantine-color-white);
+	--burger-size: rem(24);
+	--burger-line-size: rem(2);
+	padding: rem(6) rem(4);
+}
+.burgerItems {
+	display: none;
+	--burger-menu-position: unset;
+	@mixin smaller-than $mantine-breakpoint-md {
+		display: unset;
+	}
+}
+.drawerContent {
+	background-color: var(--mantine-color-soft-black);
+	display: flex;
+	flex-direction: column;
+}
+.drawerHeader {
+	background-color: var(--mantine-color-soft-black);
+}
+.drawerClose {
+	color: var(--mantine-color-white);
+}
+.drawerTitle {
+	color: var(--mantine-color-white);
+	font-weight: 600;
+}
+.drawerBody {
+	display: flex;
+	flex: 1 0 0;
+}
+.drawerStack {
+	gap: 0;
+}

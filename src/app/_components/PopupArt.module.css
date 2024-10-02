@@ -1,0 +1,11 @@
+.popupModalContent {
+	padding-bottom: rem(40);
+
+	@mixin smaller-than $mantine-breakpoint-sm {
+		margin-top: rem(160);
+		padding-bottom: rem(160);
+		height: calc(100vh - rem(160));
+		border-top-left-radius: rem(16) !important;
+		border-top-right-radius: rem(16) !important;
+	}
+}
