@@ -127,10 +127,10 @@
 		"type-fest": "4.26.1",
 		"typescript": "5.6.2"
 	},
-	"packageManager": "pnpm@9.11.0",
+	"packageManager": "pnpm@9.15.0",
 	"engines": {
 		"node": "^20.12.2",
-		"pnpm": "^9.0.0"
+		"pnpm": "^9.15.0"
 	},
 	"ct3aMetadata": {
 		"initVersion": "7.3.2"
