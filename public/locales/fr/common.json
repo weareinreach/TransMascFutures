@@ -63,10 +63,10 @@
     },
     "participate": "Cliquez ici pour participer",
     "pronoun": {
-        "any": "Any pronouns",
+        "any": "Tous les Pronouns",
         "ey": "Ey/Em/Eir",
         "he": "Il/Lui/Son",
-        "none": "No pronouns",
+        "none": "Pas de Pronouns",
         "they": "Iel/Eux/Leur",
         "xe": "Xe/Xem/Xyr",
         "ze": "Ze/Zir/Zim"
@@ -112,6 +112,7 @@
             "02_nonbinary": "Non binaire",
             "03_genderfluid": "Genderfluid or Genderqueer",
             "04_afab": "Femme assignée à la naissance (AFAB)",
+            "05_one": "Autre (merci de préciser)",
             "05_other": "Autre (merci de préciser)"
         },
         "q11": "Sélectionnez comment vous décrivez votre orientation sexuelle.<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
@@ -123,6 +124,7 @@
             "04_pansexual": "Pansexual",
             "05_asexual": "Asexuel/Démisexuel/As",
             "06_queer": "Queer",
+            "07_one": "Autre (merci de préciser)",
             "07_other": "Autre (merci de préciser)"
         },
         "q12": "Sélectionnez la façon dont vous identifiez votre course/ethnicité.<br/><em>(Sélectionnez tout ce qui s'applique.)</em>",
@@ -137,6 +139,7 @@
             "07_south-asian": "Sud-asiatique",
             "08_white": "Blancs",
             "09_no-answer": "Préférer ne pas répondre",
+            "10_one": "Autre (merci de préciser)",
             "10_other": "Autre (merci de préciser)"
         },
         "q13": "Sélectionnez la région dans laquelle vous habitez.",
@@ -156,9 +159,10 @@
             "01_asylee": "Demandeur d'asile (asile reçu)",
             "02_daca": "Destinataire de DACA",
             "03_resettled": "Réfugié réinstallé",
-            "04_other": "Autre immigrant",
             "05_no-answer": "Préférer ne pas répondre",
-            "06_none": "Je ne les identifie pas"
+            "06_none": "Je ne les identifie pas",
+            "04_one": "Autre immigrant",
+            "04_other": "Autre immigrant"
         },
         "q2": "Je consens à ce que ma soumission soit partagée par InReach via",
         "q2-opts": {
@@ -167,7 +171,7 @@
             "02_media": "Média/Presse"
         },
         "q3": "Veuillez fournir votre adresse e-mail si vous souhaitez rester au courant de l'état de la campagne #TransMascFutures.",
-        "q4": " Veuillez entrer votre nom comme vous souhaitez qu'il apparaisse sur le site web de la campagne.<br/>(Seul un prénom sera affiché. Les alias sont les bienvenus.)",
+        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
         "q5": "Je m'identifie en tant que<br/><em>(Veuillez sélectionner tout ce qui s'applique à vous)</em>",
         "q5-opts": {
             "00_transman": "Homme Trans ",
@@ -188,6 +192,7 @@
             "04_ey": "Ey/Em/Eir",
             "05_none": "Pas de Pronouns",
             "06_any": "Tous les Pronouns",
+            "07_one": "Autre (merci de préciser)",
             "07_other": "Autre (merci de préciser)"
         },
         "q8": "Décrivez le premier moment où vous pouviez voir votre avenir comme un homme trans ou trans.",
