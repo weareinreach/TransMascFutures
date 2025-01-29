@@ -21,6 +21,15 @@
     },
     "artist-credit": "Dessin de personnage par Joey Borrelli.",
     "back": "Précédent",
+    "category": {
+        "bipoc": "BIPOC",
+        "disabled": "Disabled",
+        "elder": "Elder",
+        "immigrant": "Immigrant",
+        "queer": "Queer",
+        "transman": "Trans Man",
+        "transmasc": "Trans Masc / Nonbinary"
+    },
     "donate": "Faire un don",
     "errors": {
         "consent-all-3": "Vous devez accepter les trois.",
@@ -53,6 +62,15 @@
         "general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
     },
     "participate": "Cliquez ici pour participer",
+    "pronoun": {
+        "any": "Tous les Pronouns",
+        "ey": "Ey/Em/Eir",
+        "he": "Il/Lui/Son",
+        "none": "Pas de Pronouns",
+        "they": "Iel/Eux/Leur",
+        "xe": "Xe/Xem/Xyr",
+        "ze": "Ze/Zir/Zim"
+    },
     "see-x-stories": "Voir les histoires {{category}}",
     "share": {
         "download-button": "Télécharger le kit",
@@ -149,7 +167,7 @@
             "02_media": "Média/Presse"
         },
         "q3": "Veuillez fournir votre adresse e-mail si vous souhaitez rester au courant de l'état de la campagne #TransMascFutures.",
-        "q4": " Veuillez entrer votre nom comme vous souhaitez qu'il apparaisse sur le site web de la campagne.<br/>(Seul un prénom sera affiché. Les alias sont les bienvenus.)",
+        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
         "q5": "Je m'identifie en tant que<br/><em>(Veuillez sélectionner tout ce qui s'applique à vous)</em>",
         "q5-opts": {
             "00_transman": "Homme Trans ",
