@@ -9,17 +9,16 @@
 // save the file, push changes to github, then create a PR
 // create a migration file for each story to be added or updated
 
-
 import { createId } from '@paralleldrive/cuid2'
 import { PrismaClient } from '@prisma/client'
 
-import path from 'path';
+import path from 'path'
 
 import { type ListrJob } from '~db/dataMigrationRunner'
 import { type JobDef, jobPostRunner, jobPreRunner } from '~db/jobPreRun'
 
-/** don't change this value, but DO make the filename unique **/
-const filename = path.basename(__filename, '.ts'); // Get the filename without the extension
+/** Don't change this value, but DO make the filename unique * */
+const filename = path.basename(__filename, '.ts') // Get the filename without the extension
 
 /** Define the job metadata here. */
 const storyId = 'cm38fiobr00014uvyzvrlr5nu' // Replace with actual ID if the story already exists in the story table
@@ -43,7 +42,6 @@ const response2ES = `Puede parecer que esto está completamente fuera del alcanc
 Si la comunidad en persona no es viable o segura (por razones de discapacidad, razones de seguridad física, razones financieras, cualquier otra razón), encontrar apoyo virtual puede ser igual de valioso. Hay servidores de Discord, hay grupos de Facebook (si eres una persona mayor como yo y todavía usas Facebook, de todos modos). Te prometo que hay lugares donde tu presencia es deseada, incluso si aún no lo saben. Aunque tú tampoco lo sepas.
 
 El armario puede ser más seguro, pero eso no evita que sea traicioneramente solitario al mismo tiempo. Encontrar una comunidad en línea puede ser como tener un pequeño trozo de Narnia al que escapar mientras nos sentamos entre las bolas de naftalina y el polvo que pasan sus días en el armario con nosotros. `
-
 
 /** Nothing below this line needs to be touched. */
 const jobDef: JobDef = {
@@ -72,7 +70,7 @@ export const job20250128b = {
 		 *
 		 * This ensures that jobs are only run once
 		 */
-		console.log('Starting jobPreRunner...');
+		console.log('Starting jobPreRunner...')
 		if (await jobPreRunner(jobDef, task)) {
 			return task.skip(`${jobDef.storySubmissionId} - Migration has already been run.`)
 		}
@@ -85,9 +83,9 @@ export const job20250128b = {
 		}
 
 		// Get the StorySubmission entry by ID
-		console.log('Fetching StorySubmission for ID:', storySubmissionId);
+		console.log('Fetching StorySubmission for ID:', storySubmissionId)
 		const prisma = new PrismaClient() // Fresh Prisma client instance
-		let storySubmission = null;
+		let storySubmission = null
 
 		try {
 			storySubmission = await prisma.storySubmission.findUnique({
@@ -119,95 +117,94 @@ export const job20250128b = {
 		console.log('response1EN:', response1EN)
 		console.log('response2EN:', response2EN)
 
-// Get Pronouns only if pronounValues is not empty
-let pronouns = []
+		// Get Pronouns only if pronounValues is not empty
+		let pronouns = []
 
-if (pronounValues.length > 0) {
-	try {
-		pronouns = await prisma.pronouns.findMany({
-			where: { tag: { in: pronounValues } },
-		})
-		console.log('Found pronouns:', pronouns) // Log the pronouns after the query
-	} catch (error) {
-		console.error('Error fetching pronouns:', error)
-	}
-} else {
-	console.log('No pronouns to search for (pronounValues is empty).')
-}
+		if (pronounValues.length > 0) {
+			try {
+				pronouns = await prisma.pronouns.findMany({
+					where: { tag: { in: pronounValues } },
+				})
+				console.log('Found pronouns:', pronouns) // Log the pronouns after the query
+			} catch (error) {
+				console.error('Error fetching pronouns:', error)
+			}
+		} else {
+			console.log('No pronouns to search for (pronounValues is empty).')
+		}
 
-// If no pronouns were found, log a message
-if (pronouns.length === 0 && pronounValues.length > 0) {
-	console.log(`No matching Pronouns found for values '${pronounValues.join(', ')}'.`)
-	return
-}
+		// If no pronouns were found, log a message
+		if (pronouns.length === 0 && pronounValues.length > 0) {
+			console.log(`No matching Pronouns found for values '${pronounValues.join(', ')}'.`)
+			return
+		}
 
 		// If updating an existing story
-if (storyId) {
-	// Log before updating the story
-	console.log('Updating story with the following data:');
-	console.log(`Story ID: ${storyId}`);
-	console.log(`Response1ES: ${response1ES}`);
-	console.log(`Response2ES: ${response2ES}`);
-	console.log(`Categories: ${JSON.stringify(categories)}`);
-	const pronounIds = pronouns.map((pronoun) => pronoun.id);
-console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
+		if (storyId) {
+			// Log before updating the story
+			console.log('Updating story with the following data:')
+			console.log(`Story ID: ${storyId}`)
+			console.log(`Response1ES: ${response1ES}`)
+			console.log(`Response2ES: ${response2ES}`)
+			console.log(`Categories: ${JSON.stringify(categories)}`)
+			const pronounIds = pronouns.map((pronoun) => pronoun.id)
+			console.log('Resolved Pronoun IDs:', pronounIds) // Log only IDs
 
-	try {
-		// Update the existing story
-		await prisma.story.update({
-			where: { id: storyId },
-			data: {
-				response1ES,
-				response2ES,
-				published: true,
-			},
-		});
+			try {
+				// Update the existing story
+				await prisma.story.update({
+					where: { id: storyId },
+					data: {
+						response1ES,
+						response2ES,
+						published: true,
+					},
+				})
 
-		console.log(`Story with ID '${storyId}' updated successfully.`);
-	} catch (error) {
-		console.error('Error updating story:', error);
-	}
-} else {
-	// Create a new story
-	const newStoryId = createId();
+				console.log(`Story with ID '${storyId}' updated successfully.`)
+			} catch (error) {
+				console.error('Error updating story:', error)
+			}
+		} else {
+			// Create a new story
+			const newStoryId = createId()
 
-	// Log before creating the new story
-	console.log('Creating new story with the following data:');
-	console.log(`New Story ID: ${newStoryId}`);
-	console.log(`Name: ${responses.q4}`);
-	console.log(`Response1EN: ${response1EN}`);
-	console.log(`Response2EN: ${response2EN}`);
-	console.log(`Categories: ${JSON.stringify(categories)}`);
-		const pronounIds = pronouns.map((pronoun) => pronoun.id);
-console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
+			// Log before creating the new story
+			console.log('Creating new story with the following data:')
+			console.log(`New Story ID: ${newStoryId}`)
+			console.log(`Name: ${responses.q4}`)
+			console.log(`Response1EN: ${response1EN}`)
+			console.log(`Response2EN: ${response2EN}`)
+			console.log(`Categories: ${JSON.stringify(categories)}`)
+			const pronounIds = pronouns.map((pronoun) => pronoun.id)
+			console.log('Resolved Pronoun IDs:', pronounIds) // Log only IDs
 
-	try {
-		await prisma.story.create({
-			data: {
-				id: newStoryId,
-				name: responses.q4, // Use q4 for the story name
-				response1EN,
-				response2EN,
-				published: true,
-				categories: {
-					create: categories.map((tag: string) => ({
-						category: { connect: { tag } },
-					})),
-				},
-				pronouns: {
-					create: pronounIds.map((id) => ({
-						pronoun: { connect: { id } },
-					})),
-				},
-			},
-		});
+			try {
+				await prisma.story.create({
+					data: {
+						id: newStoryId,
+						name: responses.q4, // Use q4 for the story name
+						response1EN,
+						response2EN,
+						published: true,
+						categories: {
+							create: categories.map((tag: string) => ({
+								category: { connect: { tag } },
+							})),
+						},
+						pronouns: {
+							create: pronounIds.map((id) => ({
+								pronoun: { connect: { id } },
+							})),
+						},
+					},
+				})
 
-		console.log(`New story created with ID '${newStoryId}'.`);
-	} catch (error) {
-		console.error('Error creating new story:', error);
-	}
-}
-
+				console.log(`New story created with ID '${newStoryId}'.`)
+			} catch (error) {
+				console.error('Error creating new story:', error)
+			}
+		}
 
 		/**
 		 * DO NOT REMOVE BELOW
@@ -215,7 +212,6 @@ console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
 		 * This writes a record to the DB to register that this migration has run successfully.
 		 */
 		await jobPostRunner(jobDef, prisma)
-		await prisma.$disconnect(); // Disconnect when you're truly done
-
+		await prisma.$disconnect() // Disconnect when you're truly done
 	},
 } satisfies ListrJob
