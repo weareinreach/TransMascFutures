@@ -67,7 +67,7 @@
         "ey": "Él",
         "he": "Cualquier pronombre",
         "none": "No pronombres",
-        "they": "They/Them/Theirs",
+        "they": "Ze/Zir/Zim",
         "xe": "Xe/Xem/Xyr",
         "ze": "Ey/Em/Eir"
     },
@@ -112,6 +112,7 @@
             "02_nonbinary": "No binario",
             "03_genderfluid": "Género fluido o género queer",
             "04_afab": "Mujer asignada al nacer (AFAB)",
+            "05_one": "Otro (por favor, especificar)",
             "05_other": "Otros (especificar)"
         },
         "q11": "Selecciona cómo describes tu orientación sexual.<br/><em>(Selecciona todas las que correspondan.)</em>",
@@ -123,6 +124,7 @@
             "04_pansexual": "Pansexual",
             "05_asexual": "Asexual/Demisexual/As",
             "06_queer": "Queer",
+            "07_one": "Otro (por favor, especificar)",
             "07_other": "Otros (especificar)"
         },
         "q12": "Selecciona cómo identificas tu raza/etnicidad.<br/><em>(Selecciona todas las que correspondan.)</em>",
@@ -137,6 +139,7 @@
             "07_south-asian": "Sudasiático/e",
             "08_white": "Blanco/e",
             "09_no-answer": "Prefiero no responder",
+            "10_one": "Otros (especificar)",
             "10_other": "Otros (especificar)"
         },
         "q13": "Selecciona en qué región de EE. UU. vives.",
@@ -156,9 +159,10 @@
             "01_asylee": "Asilado/e (recibió asilo)",
             "02_daca": "Beneficiario/e de DACA",
             "03_resettled": "Refugiado/e reasentado/e",
-            "04_other": "Otro tipo de inmigrante",
             "05_no-answer": "Prefiero no responder",
-            "06_none": "No me identifico como ninguno de estos"
+            "06_none": "No me identifico como ninguno de estos",
+            "04_one": "Otro tipo de inmigrante",
+            "04_other": "Otro tipo de inmigrante"
         },
         "q2": "Doy mi consentimiento para que InReach comparta mi historia a través de:",
         "q2-opts": {
@@ -188,6 +192,7 @@
             "04_ey": "Ey/Em/Eir",
             "05_none": "Sin pronombres",
             "06_any": "Cualquier pronombre",
+            "07_one": "Otros (especificar)",
             "07_other": "Otros (especificar)"
         },
         "q8": "Describe el primer momento en el que pudiste ver tu futuro como hombre trans o persona trans masculina.",
