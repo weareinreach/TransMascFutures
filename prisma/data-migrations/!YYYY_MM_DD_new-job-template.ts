@@ -138,7 +138,7 @@ if (storyId) {
 	console.log(`Response2ES: ${response2ES}`);
 	console.log(`Categories: ${JSON.stringify(categories)}`);
 	const pronounIds = pronouns.map((pronoun) => pronoun.id);
-console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
+	console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
 
 	try {
 		// Update the existing story
@@ -147,6 +147,7 @@ console.log('Resolved Pronoun IDs:', pronounIds); // Log only IDs
 			data: {
 				response1ES,
 				response2ES,
+				published: true,
 			},
 		});
 
