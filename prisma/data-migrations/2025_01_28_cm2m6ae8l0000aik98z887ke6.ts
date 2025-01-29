@@ -52,7 +52,7 @@ const jobDef: JobDef = {
  *
  * @example `job20230404b`
  */
-export const jobId = {
+export const job20250128a = {
 	title: `${new Date().toISOString().split('T')[0]}_${jobDef.storySubmissionId}`,
 	task: async (_ctx, task) => {
 		/**
@@ -147,6 +147,7 @@ export const jobId = {
 					data: {
 						response1ES,
 						response2ES,
+						published: true,
 					},
 				})
 

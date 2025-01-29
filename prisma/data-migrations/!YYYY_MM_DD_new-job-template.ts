@@ -147,6 +147,7 @@ export const jobId = {
 					data: {
 						response1ES,
 						response2ES,
+						published: true,
 					},
 				})
 
