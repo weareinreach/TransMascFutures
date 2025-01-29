@@ -21,6 +21,15 @@
     },
     "artist-credit": "Character drawings by Joey Borrelli.",
     "back": "Previous",
+    "category": {
+        "bipoc": "BIPOC",
+        "disabled": "Disabled",
+        "elder": "Elder",
+        "immigrant": "Immigrant",
+        "queer": "Queer",
+        "transman": "Trans Man",
+        "transmasc": "Trans Masc / Nonbinary"
+    },
     "donate": "Donate",
     "errors": {
         "consent-all-3": "You must consent to all three.",
@@ -53,6 +62,15 @@
         "general-template": "{{page}} - #TransMascFutures - InReach x GLAAD"
     },
     "participate": "Click here to participate",
+    "pronoun": {
+        "any": "Any pronouns",
+        "ey": "Ey/Em/Eir",
+        "he": "He/Him/His",
+        "none": "No pronouns",
+        "they": "They/Them/Theirs",
+        "xe": "Xe/Xem/Xyr",
+        "ze": "Ze/Zir/Zim"
+    },
     "see-x-stories": "See {{category}} Stories",
     "share": {
         "download-button": "Download Kit",
@@ -149,7 +167,7 @@
             "02_media": "Media/Press"
         },
         "q3": "Please provide your email address if you would like to stay updated on the status of the #TransMascFutures Campaign.",
-        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
+        "q4": "Please enter your name (first name only, please) as you would like it to appear on the campaign website.<br/>Aliases are welcome.",
         "q5": "I identify as:<br/><em>(Please select all that apply to you)</em>",
         "q5-opts": {
             "00_transman": "Trans Man ",

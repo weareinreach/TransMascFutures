@@ -15,7 +15,7 @@ jobs:
       CI: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -24,7 +24,7 @@ jobs:
         with:
           run_install: false
       - name: Install Node.js
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Publish to Chromatic
-        uses: chromaui/action@57a72947e9d7a6d213906cd506276c707e0c580f # v11
+        uses: chromaui/action@f4e60a7072abcac4203f4ca50613f28e199a52ba # v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true

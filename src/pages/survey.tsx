@@ -320,11 +320,11 @@ const Survey = () => {
 									<TextInput {...form.getInputProps('q10other')} required />
 								)}
 							</Stack>
-							{/*Select how you identify your race/ethnicity  */}
+							{/*Select how you identify your sexual orientation  */}
 							<Stack spacing={0}>
 								<Checkbox.Group
 									{...form.getInputProps('q11')}
-									label={<Trans i18nKey='survey-form.q12' components={{ em: <em>.</em> }} />}
+									label={<Trans i18nKey='survey-form.q11' components={{ em: <em>.</em> }} />}
 								>
 									{Object.entries(t('survey-form.q11-opts', { returnObjects: true })).map(
 										([key, value], i) => (
