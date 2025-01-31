@@ -22,11 +22,11 @@
     "artist-credit": "Dibujos por Joey Borrelli.",
     "back": "Anterior",
     "category": {
-        "bipoc": "Personas BIPOC",
-        "disabled": "Personas Inmigrantes",
-        "elder": "Personas Queer",
-        "immigrant": "Personas Con Discapacidad",
-        "queer": "Personas Mayores",
+        "bipoc": "Persones BIPOC",
+        "disabled": "Persones Inmigrantes",
+        "elder": "Persones Queer",
+        "immigrant": "Persones Con Discapacidad",
+        "queer": "Persones Queer",
         "transman": "Hombres Trans",
         "transmasc": "Gente Transmasculino / No Binaria"
     },
@@ -63,13 +63,13 @@
     },
     "participate": "Haz click aquí para partcipar",
     "pronoun": {
-        "any": "Elle",
-        "ey": "Él",
-        "he": "Cualquier pronombre",
+        "any": "Cualquier pronombre",
+        "ey": "Ey/Em/Eir",
+        "he": "Él",
         "none": "No pronombres",
         "they": "Ze/Zir/Zim",
         "xe": "Xe/Xem/Xyr",
-        "ze": "Ey/Em/Eir"
+        "ze": "Ze/Zir/Zim"
     },
     "see-x-stories": "Ver Historias sobre {{category}}",
     "share": {
@@ -167,7 +167,7 @@
             "02_media": "Medios/Prensa"
         },
         "q3": "Proporciona tu dirección de correo electrónico si deseas mantenerte al tanto sobre el estado de la campaña Trans MascFutures.",
-        "q4": "Ingresa tu nombre como te gustaría que apareciera en el sitio web de la campaña.<br/>(Solo se mostrará un nombre. Los alias son bienvenidos).",
+        "q4": "Por favor, introduzca su nombre (solo tu nombre, primaria por favor) como le gustaría que apareciera en el sitio web de la campaña.<br/>Los alias son bienvenidos.",
         "q5": "Me identifico como:<br/><em>(Por favor selecciona toda opción que aplica a tí.)</em>",
         "q5-opts": {
             "00_transman": "Hombre trans",
