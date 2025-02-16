@@ -6,5 +6,8 @@
 	"sonarlint.connectedMode.project": {
 		"connectionId": "inreach",
 		"projectKey": "weareinreach_GLAAD"
-	}
+	},
+	"i18n-ally.localesPaths": [
+		"public/locales"
+	]
 }

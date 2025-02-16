@@ -1,5 +1,6 @@
 import { type LiteralUnion } from 'type-fest'
 
+import Aefoundation from '~public/assets/partners/aefoundation.png'
 import Glaad from '~public/assets/partners/glaad.png'
 import Hollister from '~public/assets/partners/hollister.png'
 import ImmigrationEquality from '~public/assets/partners/immigrationEquality.png'
@@ -14,6 +15,7 @@ import StandWithTrans from '~public/assets/partners/standWithTrans.png'
 import TAVA from '~public/assets/partners/tava.png'
 
 export const partnerImages = {
+	aefoundation: Aefoundation,
 	glaad: Glaad,
 	hollister: Hollister,
 	immigrationEquality: ImmigrationEquality,
