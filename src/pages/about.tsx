@@ -196,17 +196,13 @@ const AboutPage = () => {
 							</AspectRatio>
 						</Center>
 					</Grid.Col>
-										<Grid.Col span={6}>
+					<Grid.Col span={6}>
 						<Center inline w='100%' h='100%'>
 							<AspectRatio
 								ratio={partnerImages.aefoundation.width / partnerImages.aefoundation.height}
 								className={classes.partnerHollister}
 							>
-								<a
-									href='https://blog.ae.com/foundation/'
-									target='_blank'
-									rel='noopener noreferrer'
-								>
+								<a href='https://blog.ae.com/foundation/' target='_blank' rel='noopener noreferrer'>
 									<Image src={partnerImages.aefoundation} alt='AE Foundation' fill />
 								</a>
 							</AspectRatio>
