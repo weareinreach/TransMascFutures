@@ -5,9 +5,9 @@
 	"scripts": {
 		"analyze": "ANALYZE=true pnpm build:next",
 		"build": "turbo build:next",
+		"build:next": "next build",
 		"postbuild": "next-sitemap",
 		"build-storybook": "storybook build",
-		"build:next": "next build",
 		"chromatic": "chromatic --exit-zero-on-changes",
 		"db:dataMigrate": "pnpm with-env tsx ./prisma/dataMigrationRunner.ts",
 		"db:deploy": "prisma migrate deploy",
