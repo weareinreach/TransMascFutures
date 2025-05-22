@@ -15,7 +15,7 @@ export const Act: NextPage = () => {
 	const { t } = useTranslation()
 
 	const commonComponents = {
-		Title: <Title order={3} tt='uppercase' ta='center' my={16} fz={18}></Title>,
+		Title: <Title order={3} ta='center' my={16} fz={18}></Title>,
 		Text: <Text></Text>,
 	}
 
