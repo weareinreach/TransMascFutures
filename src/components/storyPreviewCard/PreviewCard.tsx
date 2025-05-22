@@ -34,8 +34,6 @@ export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps
 
 	const cleanTitle = title.split(' ')[0] ?? ''
 	const displayTitle = cleanTitle
-		.replace(/^[-\w']*?([A-Za-z][-\w']*)/, '$1') // Safe way to extract meaningful leading word
-		.replace(/([-\w']*[A-Za-z])[-\w']*?$/, '$1') // Safe way to keep meaningful trailing word
 
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>
