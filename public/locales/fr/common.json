@@ -171,7 +171,7 @@
             "02_media": "Média/Presse"
         },
         "q3": "Veuillez fournir votre adresse e-mail si vous souhaitez rester au courant de l'état de la campagne #TransMascFutures.",
-        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
+        "q4": "Please enter your first name only or alias as you would like it to appear on the campaign website. For privacy we will display only the first string of text.<br/>(i.e. John Doe will appear as John).",
         "q5": "Je m'identifie en tant que<br/><em>(Veuillez sélectionner tout ce qui s'applique à vous)</em>",
         "q5-opts": {
             "00_transman": "Homme Trans ",
