@@ -8,7 +8,7 @@ const HEADER_HEIGHT = 75
 
 export const useStyles = createStyles((theme) => ({
 	glaadGray: {
-		backgroundColor: theme.other.colors.glaadGray,
+		backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 	},
 
 	navbar: {
@@ -83,7 +83,7 @@ const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>>
 	const links = linksInfo.map(({ key, href }) => {
 		if (href === 'https://app.inreach.org') {
 			return (
-				<a key={key} href={href} className={classes.navlink}>
+				<a key={key} href={href} className={classes.navlink} target='_blank' rel='noopener noreferrer'>
 					{t(key).toLocaleUpperCase()}
 				</a>
 			)
@@ -132,10 +132,10 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				padding='xl'
 				styles={(theme) => ({
 					content: {
-						backgroundColor: theme.other.colors.glaadGray,
+						backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 					header: {
-						backgroundColor: theme.other.colors.glaadGray,
+						backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 				})}
 			>
