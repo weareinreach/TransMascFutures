@@ -54,7 +54,7 @@ export const Act: NextPage = () => {
 							<Card.Section>
 								<Center h={400}>
 									<AspectRatio ratio={SuggestImage.width / SuggestImage.height} w={300} h={400}>
-										<a href='https://app.inreach.org/suggest'>
+										<a href='https://app.inreach.org/suggest' target='_blank' rel='noopener noreferrer'>
 											<Image src={SuggestImage} alt='' fill />
 										</a>
 									</AspectRatio>
@@ -64,7 +64,11 @@ export const Act: NextPage = () => {
 								i18nKey='act.card2'
 								components={{
 									...commonComponents,
-									Link: <a href='https://app.inreach.org/suggest'>.</a>,
+									Link: (
+										<a href='https://app.inreach.org/suggest' target='_blank' rel='noopener noreferrer'>
+											.
+										</a>
+									),
 								}}
 							/>
 						</Card>
@@ -76,7 +80,7 @@ export const Act: NextPage = () => {
 							<Card.Section>
 								<Center h={400}>
 									<AspectRatio ratio={AppImage.width / AppImage.height} w={200} h={400}>
-										<a href='https://app.inreach.org'>
+										<a href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'>
 											<Image src={AppImage} alt='' fill />
 										</a>
 									</AspectRatio>
@@ -86,7 +90,11 @@ export const Act: NextPage = () => {
 								i18nKey='act.card3'
 								components={{
 									...commonComponents,
-									Link: <a href='https://app.inreach.org'>.</a>,
+									Link: (
+										<a href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'>
+											.
+										</a>
+									),
 								}}
 							/>
 						</Card>
