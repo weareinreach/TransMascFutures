@@ -58,6 +58,8 @@ export const IndividualStory = ({
 }: IndividualStoryProps) => {
 	const { t } = useTranslation()
 	const { classes } = useStyles({ isModal })
+	const cleanName = name.split(' ')[0] ?? ''
+	const displayName = cleanName.replace(/^[^\w'-]+|[^\w'-]+$/g, '')
 
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
@@ -68,7 +70,7 @@ export const IndividualStory = ({
 			<Group className={classes.content}>
 				<Stack spacing={4} pb={{ xs: 0, lg: 16 }}>
 					<Title order={1} tt='uppercase' fw={700}>
-						{name}
+						{displayName}
 					</Title>
 					<Text fw={500} tt='lowercase'>{`(${pronouns.join(', ')})`}</Text>
 				</Stack>

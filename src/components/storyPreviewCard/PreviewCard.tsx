@@ -23,6 +23,7 @@ const useStyles = createStyles((theme) => ({
 		alignItems: 'center',
 	},
 	subheading: {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
 		color: theme.fn.lighten(theme.other.colors.black, 0.2),
 	},
 }))
@@ -30,6 +31,10 @@ const useStyles = createStyles((theme) => ({
 export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps) => {
 	const { classes } = useStyles()
 	const lineclamp = { lineClamp: typeof text === 'string' ? 5 : undefined }
+
+	const cleanTitle = title.split(' ')[0] ?? ''
+	const displayTitle = cleanTitle.replace(/^[^\w'-]+|[^\w'-]+$/g, '')
+
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>
 			<Card.Section>
@@ -41,7 +46,7 @@ export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps
 			</Card.Section>
 			<Stack spacing={0}>
 				<Text fw={700} fz='lg' tt='uppercase'>
-					{title}
+					{displayTitle}
 				</Text>
 				{subtitle && (
 					<Text fw={500} fz='sm' className={classes.subheading} tt='lowercase'>
