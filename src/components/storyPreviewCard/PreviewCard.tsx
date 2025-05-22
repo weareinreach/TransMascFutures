@@ -33,7 +33,7 @@ export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps
 	const lineclamp = { lineClamp: typeof text === 'string' ? 5 : undefined }
 
 	const cleanTitle = title.split(' ')[0] ?? ''
-	const displayTitle = cleanTitle.replace(/^[^\w'-]+|[^\w'-]+$/g, '')
+	const displayTitle = cleanTitle.replace(/^[^\w'-]+/, '').replace(/[^\w'-]+$/, '')
 
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>

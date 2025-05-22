@@ -59,7 +59,7 @@ export const IndividualStory = ({
 	const { t } = useTranslation()
 	const { classes } = useStyles({ isModal })
 	const cleanName = name.split(' ')[0] ?? ''
-	const displayName = cleanName.replace(/^[^\w'-]+|[^\w'-]+$/g, '')
+	const displayName = cleanName.replace(/^[^\w'-]+/, '').replace(/[^\w'-]+$/, '')
 
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>
