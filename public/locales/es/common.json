@@ -167,7 +167,7 @@
             "02_media": "Medios/Prensa"
         },
         "q3": "Proporciona tu dirección de correo electrónico si deseas mantenerte al tanto sobre el estado de la campaña Trans MascFutures.",
-        "q4": "Please enter your name (first name only, please) as you would like it to appear on the campaign website.<br/>Aliases are welcome.",
+        "q4": "Please enter your first name only or alias as you would like it to appear on the campaign website. For privacy we will display only the first string of text.<br/>(i.e. John Doe will appear as John).",
         "q5": "Me identifico como:<br/><em>(Por favor selecciona toda opción que aplica a tí.)</em>",
         "q5-opts": {
             "00_transman": "Hombre trans",
