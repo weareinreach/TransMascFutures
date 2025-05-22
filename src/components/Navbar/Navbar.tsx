@@ -1,4 +1,4 @@
-import { Anchor, Burger, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
+import { Anchor, Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -7,8 +7,8 @@ import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 const HEADER_HEIGHT = 75
 
 export const useStyles = createStyles((theme) => ({
-	glaadGray: {
-		backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+	softBlack: {
+		backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 	},
 
 	navbar: {
@@ -16,6 +16,9 @@ export const useStyles = createStyles((theme) => ({
 		justifyContent: 'space-around',
 		alignItems: 'center',
 		height: '100%',
+		paddingLeft: rem(64),
+		paddingRight: rem(64),
+		gap: rem(40),
 
 		['& a']: {
 			color: theme.colors.gray[0],
@@ -35,6 +38,18 @@ export const useStyles = createStyles((theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		height: '100%',
+		paddingLeft: rem(64),
+		paddingRight: rem(64),
+
+		[theme.fn.smallerThan('md')]: {
+			paddingLeft: rem(32),
+			paddingRight: rem(32),
+		},
+
+		[theme.fn.smallerThan('sm')]: {
+			paddingLeft: rem(20),
+			paddingRight: rem(20),
+		},
 
 		[theme.fn.largerThan('md')]: {
 			display: 'none',
@@ -48,7 +63,7 @@ export const useStyles = createStyles((theme) => ({
 		height: '100%',
 		fontWeight: 600,
 		fontSize: rem(32),
-		fontStyle: 'italic',
+		fontStyle: 'normal',
 		flexDirection: 'column',
 		marginTop: theme.spacing.md,
 		marginBottom: theme.spacing.md,
@@ -58,12 +73,36 @@ export const useStyles = createStyles((theme) => ({
 			textDecoration: 'underline',
 		},
 	},
+	navbutton: {
+		color: theme.colors.gray[0],
+		border: 'solid 1px white',
+	},
+	navLinksGroup: {
+		display: 'flex',
+		gap: rem(40),
+		alignItems: 'center',
+	},
+
+	navButtonsGroup: {
+		display: 'flex',
+		gap: rem(20), // Optional: space between the future second button
+		marginLeft: 'auto',
+	},
 }))
 
-const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>> }) => {
+const NavLinks = ({
+	setOpened,
+	onlyLinks = false,
+	onlyButtons = false,
+}: {
+	setOpened?: Dispatch<SetStateAction<boolean>>
+	onlyLinks?: boolean
+	onlyButtons?: boolean
+}) => {
 	const { classes } = useStyles()
 	const { t } = useTranslation()
 	const router = useRouter()
+
 	const linksInfo = [
 		{ key: 'nav.home', href: '/' as const },
 		{ key: 'nav.gallery', href: '/gallery' as const },
@@ -71,32 +110,46 @@ const NavLinks = ({ setOpened }: { setOpened?: Dispatch<SetStateAction<boolean>>
 		{ key: 'nav.about', href: '/about' as const },
 		{ key: 'nav.share', href: '/share' as const },
 		{ key: 'nav.find-resources', href: 'https://app.inreach.org' as const },
-	] //satisfies Array<Readonly<LinkData>>
+	]
 
 	useEffect(() => {
 		router.events.on('routeChangeComplete', () => setOpened && setOpened(false))
-
 		return router.events.off('routeChangeComplete', () => setOpened && setOpened(false))
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [router.asPath])
 
-	const links = linksInfo.map(({ key, href }) => {
-		if (href === 'https://app.inreach.org') {
-			return (
-				<a key={key} href={href} className={classes.navlink} target='_blank' rel='noopener noreferrer'>
-					{t(key).toLocaleUpperCase()}
-				</a>
-			)
-		}
+	return (
+		<>
+			{linksInfo.map(({ key, href }) => {
+				const isExternal = href === 'https://app.inreach.org'
+				if (onlyLinks && isExternal) return null
+				if (onlyButtons && !isExternal) return null
 
-		return (
-			<Link key={key} href={href} className={classes.navlink}>
-				{t(key).toLocaleUpperCase()}
-			</Link>
-		)
-	})
+				if (isExternal) {
+					return (
+						<Button
+							key={key}
+							component='a'
+							href={href}
+							target='_blank'
+							rel='noopener noreferrer'
+							className={classes.navbutton}
+							color='gray.0'
+							variant='outline'
+							radius='md'
+						>
+							{t(key).toLocaleUpperCase()}
+						</Button>
+					)
+				}
 
-	return <>{links}</>
+				return (
+					<Link key={key} href={href} className={classes.navlink}>
+						{t(key)}
+					</Link>
+				)
+			})}
+		</>
+	)
 }
 
 // const HomeButton = () => (
@@ -119,7 +172,7 @@ const HamburgerMenu = ({ path }: pathProp) => {
 	const { t } = useTranslation()
 
 	return (
-		<Container className={classes.burger} sx={{ justifyContent: path === '/' ? 'end' : 'space-between' }}>
+		<Container className={classes.burger}>
 			<Drawer
 				opened={opened}
 				onClose={() => setOpened(false)}
@@ -132,10 +185,10 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				padding='xl'
 				styles={(theme) => ({
 					content: {
-						backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 					header: {
-						backgroundColor: theme.other.colors.glaadGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 				})}
 			>
@@ -168,9 +221,14 @@ export const Navbar = ({ path }: pathProp) => {
 	const { classes } = useStyles()
 	const router = useRouter()
 	return (
-		<Header height={HEADER_HEIGHT} className={classes.glaadGray}>
+		<Header height={HEADER_HEIGHT} className={classes.softBlack}>
 			<Container className={classes.navbar} fluid>
-				<NavLinks />
+				<div className={classes.navLinksGroup}>
+					<NavLinks onlyLinks />
+				</div>
+				<div className={classes.navButtonsGroup}>
+					<NavLinks onlyButtons />
+				</div>
 			</Container>
 			<HamburgerMenu path={path || router.pathname} />
 		</Header>
