@@ -59,7 +59,9 @@ export const IndividualStory = ({
 	const { t } = useTranslation()
 	const { classes } = useStyles({ isModal })
 	const cleanName = name.split(' ')[0] ?? ''
-	const displayName = cleanName.replace(/^[^\w'-]+/, '').replace(/[^\w'-]+$/, '')
+	const displayName = cleanName
+		.replace(/^[-\w']*?([A-Za-z][-\w']*)/, '$1') // Safe way to extract meaningful leading word
+		.replace(/([-\w']*[A-Za-z])[-\w']*?$/, '$1') // Safe way to keep meaningful trailing word
 
 	return (
 		<Flex className={classes.story} align='center' justify='space-evenly'>

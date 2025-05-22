@@ -33,7 +33,9 @@ export const PreviewCard = ({ text, title, subtitle, imgSrc, imgAlt }: CardProps
 	const lineclamp = { lineClamp: typeof text === 'string' ? 5 : undefined }
 
 	const cleanTitle = title.split(' ')[0] ?? ''
-	const displayTitle = cleanTitle.replace(/^[^\w'-]+/, '').replace(/[^\w'-]+$/, '')
+	const displayTitle = cleanTitle
+		.replace(/^[-\w']*?([A-Za-z][-\w']*)/, '$1') // Safe way to extract meaningful leading word
+		.replace(/([-\w']*[A-Za-z])[-\w']*?$/, '$1') // Safe way to keep meaningful trailing word
 
 	return (
 		<Card m='md' mx='auto' h='90%' className={classes.card}>
