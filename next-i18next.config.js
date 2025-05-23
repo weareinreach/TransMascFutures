@@ -31,7 +31,7 @@ const plugins = () => {
 const config = {
 	i18n: {
 		defaultLocale: 'en',
-		locales: ['en', 'es'],
+		locales: ['en', 'es', 'fr'],
 	},
 	defaultNS: 'common',
 	localePath: path.resolve('./public/locales'),

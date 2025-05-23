@@ -25,7 +25,7 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`)
 	const category = router.query.tag
-	const locale = ['en', 'es'].includes(router.locale) ? router.locale : 'en'
+	const locale = ['en', 'es', 'fr'].includes(router.locale) ? router.locale : 'en'
 	const popupStory = useMemo(
 		() =>
 			Array.isArray(router.query.storyId) && router.query.storyId.length
@@ -150,7 +150,7 @@ export const getStaticProps: GetStaticProps<
 	Record<string, unknown>,
 	RoutedQuery<'/category/[tag]/[[...storyId]]'>
 > = async ({ locale: ssrLocale, params }) => {
-	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
+	const locale = (['en', 'es', 'fr'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es' | 'fr'
 	const ssg = trpcServerClient()
 	if (!params?.tag) return { notFound: true }
 
@@ -171,7 +171,7 @@ export const getStaticProps: GetStaticProps<
 	}
 }
 export const getStaticPaths: GetStaticPaths<{ tag: string; storyId?: string[] }> = async ({
-	locales = ['en', 'es'],
+	locales = ['en', 'es', 'fr'],
 }) => {
 	const categories = await prisma.storyCategory.findMany({
 		select: { tag: true, stories: { select: { storyId: true }, where: { story: { published: true } } } },

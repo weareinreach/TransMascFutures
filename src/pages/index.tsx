@@ -35,8 +35,9 @@ const useStyles = createStyles((theme) => {
 			},
 		},
 		categoryImage: {
-			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`,
+			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 			...theme.fn.hover({
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
 				filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.fn.lighten(theme.other.colors.blue, 0)})`,
 			}),
 		},
@@ -151,7 +152,7 @@ const Home: NextPage = () => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async ({ locale: ssrLocale }) => {
-	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
+	const locale = (['en', 'es', 'fr'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es' | 'fr'
 	const ssg = trpcServerClient()
 
 	const [i18n] = await Promise.allSettled([

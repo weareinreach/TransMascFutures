@@ -13,7 +13,7 @@ import { trpcServerClient } from '~/utils/ssr'
 
 const Story = () => {
 	const router = useRouter<'/story/[id]'>()
-	const locale = ['en', 'es'].includes(router.locale) ? router.locale : 'en'
+	const locale = ['en', 'es', 'fr'].includes(router.locale) ? router.locale : 'en'
 	const { data, isLoading } = api.story.getStoryById.useQuery({ id: router.query.id ?? '', locale })
 	const { t } = useTranslation()
 	if (!data || isLoading) return <>Loading...</>
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery
 	locale: ssrLocale,
 	params,
 }) => {
-	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
+	const locale = (['en', 'es', 'fr'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es' | 'fr'
 	const ssg = trpcServerClient()
 	if (!params?.id) return { notFound: true }
 
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<Record<string, unknown>, RoutedQuery
 		// revalidate: 60 * 60 * 24 * 7, // 1 week
 	}
 }
-export const getStaticPaths: GetStaticPaths = async ({ locales = ['en', 'es'] }) => {
+export const getStaticPaths: GetStaticPaths = async ({ locales = ['en', 'es', 'fr'] }) => {
 	const stories = await prisma.story.findMany({ select: { id: true }, where: { published: true } })
 
 	return {
