@@ -1,7 +1,8 @@
-import { Anchor, Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
+import { Burger, Button, Container, createStyles, Drawer, Header, rem, Text } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
+import React from 'react'
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 
 const HEADER_HEIGHT = 75
@@ -85,8 +86,18 @@ export const useStyles = createStyles((theme) => ({
 
 	navButtonsGroup: {
 		display: 'flex',
-		gap: rem(20), // Optional: space between the future second button
+		gap: rem(20),
 		marginLeft: 'auto',
+	},
+
+	languageButton: {
+		fontWeight: 600,
+		backgroundColor: 'transparent',
+		border: 'none',
+
+		'&:hover': {
+			backgroundColor: theme.other.colors.darkGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+		},
 	},
 }))
 
@@ -102,6 +113,7 @@ const NavLinks = ({
 	const { classes } = useStyles()
 	const { t } = useTranslation()
 	const router = useRouter()
+	const { pathname, query, asPath, locale } = router
 
 	const linksInfo = [
 		{ key: 'nav.home', href: '/' as const },
@@ -121,9 +133,44 @@ const NavLinks = ({
 		<>
 			{linksInfo.map(({ key, href }) => {
 				const isExternal = href === 'https://app.inreach.org'
+
 				if (onlyLinks && isExternal) return null
 				if (onlyButtons && !isExternal) return null
 
+				// Handle buttons-only case with language + external button
+				if (onlyButtons && isExternal) {
+					return (
+						<React.Fragment key='lang-and-resources'>
+							<Button
+								variant='subtle'
+								color='gray.0'
+								radius='md'
+								className={classes.languageButton}
+								onClick={() => {
+									void router.replace({ pathname, query }, asPath, {
+										locale: locale === 'en' ? 'es' : 'en',
+									})
+								}}
+							>
+								{t('nav.switch-lang-short')}
+							</Button>
+							<Button
+								component='a'
+								href={href}
+								target='_blank'
+								rel='noopener noreferrer'
+								className={classes.navbutton}
+								color='gray.0'
+								variant='outline'
+								radius='md'
+							>
+								{t(key).toLocaleUpperCase()}
+							</Button>
+						</React.Fragment>
+					)
+				}
+
+				// Handle external link when not onlyButtons
 				if (isExternal) {
 					return (
 						<Button
@@ -142,6 +189,7 @@ const NavLinks = ({
 					)
 				}
 
+				// Default: internal nav links
 				return (
 					<Link key={key} href={href} className={classes.navlink}>
 						{t(key)}
@@ -186,23 +234,32 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				styles={(theme) => ({
 					content: {
 						backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						display: 'flex',
+						flexDirection: 'column',
+						height: '100%',
 					},
 					header: {
 						backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 				})}
 			>
-				<NavLinks setOpened={setOpened} />
-				<Anchor
-					variant='category'
-					tt='uppercase'
-					// eslint-disable-next-line @typescript-eslint/no-misused-promises
-					onClick={() =>
-						router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
-					}
+				<div style={{ flexGrow: 1, overflowY: 'auto' }}>
+					<NavLinks setOpened={setOpened} />
+				</div>
+				<Button
+					variant='subtle'
+					color='gray.0'
+					radius='md'
+					className={classes.languageButton}
+					onClick={() => {
+						void router.replace({ pathname, query }, asPath, {
+							locale: locale === 'en' ? 'es' : 'en',
+						})
+					}}
+					sx={{ marginTop: '80%' }}
 				>
 					{t('nav.switch-lang-short')}
-				</Anchor>
+				</Button>
 			</Drawer>
 			{/* {path !== '/' ? <HomeButton /> : undefined} */}
 			<Burger

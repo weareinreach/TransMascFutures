@@ -18,6 +18,7 @@ const themeCustomObj = {
 	colors: {
 		glaadGray: '#BEBEBE',
 		midGray: '#65676B',
+		darkGray: '#6b6d70',
 		softBlack: '#21272c',
 		black: '#000000',
 		white: '#FFFFFF',
