@@ -69,6 +69,7 @@ export const useStyles = createStyles((theme) => ({
 		marginTop: theme.spacing.md,
 		marginBottom: theme.spacing.md,
 		textDecoration: 'none',
+		textAlign: 'left',
 
 		['&:active, &:hover']: {
 			textDecoration: 'underline',
@@ -94,10 +95,20 @@ export const useStyles = createStyles((theme) => ({
 		fontWeight: 600,
 		backgroundColor: 'transparent',
 		border: 'none',
-
+		paddingLeft: rem(10),
+		paddingRight: rem(10),
 		'&:hover': {
 			backgroundColor: theme.other.colors.darkGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 		},
+	},
+	languageButtonAbsoluteContainer: {
+		position: 'absolute',
+		bottom: rem(theme.spacing.xl),
+		left: rem(theme.spacing.xl),
+		width: '90%',
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
 	},
 }))
 
@@ -127,7 +138,7 @@ const NavLinks = ({
 	useEffect(() => {
 		router.events.on('routeChangeComplete', () => setOpened && setOpened(false))
 		return router.events.off('routeChangeComplete', () => setOpened && setOpened(false))
-	}, [router.asPath])
+	}, [router.asPath, router.events, setOpened]) // FIX: Added router.events and setOpened to dependencies
 
 	return (
 		<>
@@ -136,8 +147,6 @@ const NavLinks = ({
 
 				if (onlyLinks && isExternal) return null
 				if (onlyButtons && !isExternal) return null
-
-				// Handle buttons-only case with language + external button
 				if (onlyButtons && isExternal) {
 					return (
 						<React.Fragment key='lang-and-resources'>
@@ -170,7 +179,6 @@ const NavLinks = ({
 					)
 				}
 
-				// Handle external link when not onlyButtons
 				if (isExternal) {
 					return (
 						<Button
@@ -189,7 +197,6 @@ const NavLinks = ({
 					)
 				}
 
-				// Default: internal nav links
 				return (
 					<Link key={key} href={href} className={classes.navlink}>
 						{t(key)}
@@ -200,16 +207,6 @@ const NavLinks = ({
 	)
 }
 
-// const HomeButton = () => (
-// 	<Link href='/'>
-// 		<Button leftIcon={<IconArrowBigLeftFilled />} color='gray.0' variant='outline'>
-// 			{' Home'}
-// 		</Button>
-// 	</Link>
-// )
-
-// This type is only needed when trying to make a story for a page
-// to check whether the button to go to the main page works
 type pathProp = { path?: string }
 
 const HamburgerMenu = ({ path }: pathProp) => {
@@ -237,6 +234,7 @@ const HamburgerMenu = ({ path }: pathProp) => {
 						display: 'flex',
 						flexDirection: 'column',
 						height: '100%',
+						position: 'relative',
 					},
 					header: {
 						backgroundColor: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
@@ -244,24 +242,41 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				})}
 			>
 				<div style={{ flexGrow: 1, overflowY: 'auto' }}>
-					<NavLinks setOpened={setOpened} />
+					<NavLinks setOpened={setOpened} onlyLinks />
+					<Button
+						component='a'
+						href='https://app.inreach.org'
+						target='_blank'
+						rel='noopener noreferrer'
+						className={classes.navbutton}
+						color='gray.0'
+						variant='outline'
+						radius='md'
+						mt='lg'
+						sx={{ '& > span': { justifyContent: 'flex-start' } }}
+					>
+						{t('nav.find-resources').toLocaleUpperCase()}
+					</Button>
 				</div>
-				<Button
-					variant='subtle'
-					color='gray.0'
-					radius='md'
-					className={classes.languageButton}
-					onClick={() => {
-						void router.replace({ pathname, query }, asPath, {
-							locale: locale === 'en' ? 'es' : 'en',
-						})
-					}}
-					sx={{ marginTop: '80%' }}
-				>
-					{t('nav.switch-lang-short')}
-				</Button>
+
+				<div className={classes.languageButtonAbsoluteContainer}>
+					<Button
+						variant='subtle'
+						color='gray.0'
+						radius='md'
+						className={classes.languageButton}
+						onClick={() => {
+							void router.replace({ pathname, query }, asPath, {
+								locale: locale === 'en' ? 'es' : 'en',
+							})
+						}}
+						sx={{ '& > span': { justifyContent: 'flex-start' } }}
+						pl='0'
+					>
+						{t('nav.switch-lang-short')}
+					</Button>
+				</div>
 			</Drawer>
-			{/* {path !== '/' ? <HomeButton /> : undefined} */}
 			<Burger
 				opened={opened}
 				onClick={() => setOpened((o) => !o)}
@@ -287,7 +302,7 @@ export const Navbar = ({ path }: pathProp) => {
 					<NavLinks onlyButtons />
 				</div>
 			</Container>
-			<HamburgerMenu path={path || router.pathname} />
+			<HamburgerMenu path={path ?? router.pathname} />
 		</Header>
 	)
 }
