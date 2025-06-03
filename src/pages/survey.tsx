@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import {
-	Anchor,
 	AspectRatio,
 	Button,
 	Checkbox,
@@ -223,16 +222,6 @@ const Survey = () => {
 						<Stack>
 							<Stack>
 								<Text>{t('survey-form.intro')}</Text>
-								<Anchor
-									onClick={() =>
-										router.replace({ pathname: '/survey' }, undefined, {
-											locale: isEnglish ? 'es' : 'en',
-											scroll: false,
-										})
-									}
-								>
-									{t('survey-form.switch-lang')}
-								</Anchor>
 							</Stack>
 							<Trans
 								i18nKey='survey-form.eligiblity'

@@ -5,6 +5,8 @@ import { useTranslation } from 'next-i18next'
 import React from 'react'
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 
+import { LangPicker } from '../LanguagePicker/LangPicker'
+
 const HEADER_HEIGHT = 75
 
 export const useStyles = createStyles((theme) => ({
@@ -124,7 +126,7 @@ const NavLinks = ({
 	const { classes } = useStyles()
 	const { t } = useTranslation()
 	const router = useRouter()
-	const { pathname, query, asPath, locale } = router
+	// const { pathname, query, asPath, locale } = router
 
 	const linksInfo = [
 		{ key: 'nav.home', href: '/' as const },
@@ -150,19 +152,6 @@ const NavLinks = ({
 				if (onlyButtons && isExternal) {
 					return (
 						<React.Fragment key='lang-and-resources'>
-							<Button
-								variant='subtle'
-								color='gray.0'
-								radius='md'
-								className={classes.languageButton}
-								onClick={() => {
-									void router.replace({ pathname, query }, asPath, {
-										locale: locale === 'en' ? 'es' : 'en',
-									})
-								}}
-							>
-								{t('nav.switch-lang-short')}
-							</Button>
 							<Button
 								component='a'
 								href={href}
@@ -212,8 +201,8 @@ type pathProp = { path?: string }
 const HamburgerMenu = ({ path }: pathProp) => {
 	const [opened, setOpened] = useState(false)
 	const { classes } = useStyles()
-	const router = useRouter()
-	const { asPath, pathname, query, locale } = router
+	// const router = useRouter()
+	// const { asPath, pathname, query, locale } = router
 	const { t } = useTranslation()
 
 	return (
@@ -260,21 +249,7 @@ const HamburgerMenu = ({ path }: pathProp) => {
 				</div>
 
 				<div className={classes.languageButtonAbsoluteContainer}>
-					<Button
-						variant='subtle'
-						color='gray.0'
-						radius='md'
-						className={classes.languageButton}
-						onClick={() => {
-							void router.replace({ pathname, query }, asPath, {
-								locale: locale === 'en' ? 'es' : 'en',
-							})
-						}}
-						sx={{ '& > span': { justifyContent: 'flex-start' } }}
-						pl='0'
-					>
-						{t('nav.switch-lang-short')}
-					</Button>
+					<LangPicker />
 				</div>
 			</Drawer>
 			<Burger
@@ -299,6 +274,7 @@ export const Navbar = ({ path }: pathProp) => {
 					<NavLinks onlyLinks />
 				</div>
 				<div className={classes.navButtonsGroup}>
+					<LangPicker />
 					<NavLinks onlyButtons />
 				</div>
 			</Container>

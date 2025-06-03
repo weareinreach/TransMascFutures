@@ -1,5 +1,3 @@
-// src/components/LanguagePicker/LangPicker.tsx
-
 import { createStyles, Flex, Menu, rem, Text, UnstyledButton, type UnstyledButtonProps } from '@mantine/core'
 import { IconLanguage } from '@tabler/icons-react'
 import { hasCookie, setCookie } from 'cookies-next'
@@ -16,7 +14,6 @@ const useStyles = createStyles((theme) => ({
 		border: 'none',
 		padding: `${rem(4)} ${rem(12)}`,
 		borderRadius: theme.spacing.sm,
-		height: rem(56),
 		color: theme.colors.gray[0],
 		'&:hover': {
 			backgroundColor: theme.other.colors.darkGray, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
@@ -69,15 +66,14 @@ export const LangPicker = () => {
 
 	const handleLanguageChange = useCallback(
 		(newLocale: LocaleCodes) => () => {
-			// Destructure pathname, query, asPath from router here
-			const { pathname, query, asPath } = router // <-- Add this line
+			const { pathname, query, asPath } = router
 
 			void i18n.changeLanguage(newLocale)
 			// eslint-disable-next-line @typescript-eslint/no-floating-promises
 			setCookie('NEXT_LOCALE', newLocale)
 			void router.replace({ pathname, query }, asPath, { locale: newLocale })
 		},
-		[i18n, router] // Dependencies are still correct
+		[i18n, router]
 	)
 
 	const menuItems = useMemo(
