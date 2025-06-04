@@ -1,4 +1,14 @@
-import { AspectRatio, Button, Container, Grid, Loader, Modal, Title, useMantineTheme } from '@mantine/core'
+import {
+	AspectRatio,
+	Button,
+	Container,
+	Grid,
+	Loader,
+	Modal,
+	Stack,
+	Title,
+	useMantineTheme,
+} from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -9,6 +19,7 @@ import { useTranslation } from 'next-i18next'
 import { type RoutedQuery } from 'nextjs-routes'
 import { useMemo } from 'react'
 
+import { ShareButton } from '~/components/ShareButton/ShareButton'
 import { PreviewCard } from '~/components/storyPreviewCard/PreviewCard'
 import { getCategoryImage } from '~/data/categoryImages'
 import { CardDisplay } from '~/layouts/CardDisplay'
@@ -93,16 +104,19 @@ export const CategoryPage = ({}: CategoryPageProps) => {
 					</Title>
 				</Grid.Col>
 				<Grid.Col lg={3} md={4}>
-					<Button
-						component={Link}
-						href={{ pathname: '/survey' }}
-						tt='uppercase'
-						variant='secondary'
-						display='block'
-						mx='auto'
-					>
-						{t('participate')}
-					</Button>
+					<Stack align='center'>
+						<Button
+							component={Link}
+							href={{ pathname: '/survey' }}
+							tt='uppercase'
+							variant='secondary'
+							display='block'
+							mx='auto'
+						>
+							{t('participate')}
+						</Button>
+						<ShareButton />
+					</Stack>
 				</Grid.Col>
 			</Grid>
 			{Boolean(previewCards.length) && <CardDisplay>{previewCards}</CardDisplay>}

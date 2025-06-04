@@ -120,6 +120,29 @@ export const theme: MantineThemeOverride = {
 						textTransform: 'uppercase',
 					},
 				}),
+				shareWhite: (theme) => ({
+					root: {
+						fontWeight: 600,
+						height: rem(40),
+						width: rem(112),
+						padding: `${rem(8)} ${rem(16)}`,
+						textAlign: 'center', // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						color: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+
+						...theme.fn.hover({
+							backgroundColor: theme.colors.gray[2],
+						}),
+					},
+					label: {
+						whiteSpace: 'nowrap',
+						textTransform: 'uppercase',
+						fontFamily: theme.fontFamily,
+						fontWeight: 600,
+						fontSize: rem(14),
+						lineHeight: '100%',
+						color: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+					},
+				}),
 			},
 		},
 		TextInput: {

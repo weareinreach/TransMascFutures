@@ -24,6 +24,7 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { trpcServerClient } from '~/utils/ssr'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
+import { ShareButton } from '../components/ShareButton/ShareButton'
 import { api, type RouterOutputs } from '../utils/api'
 
 const useStyles = createStyles((theme) => {
@@ -102,10 +103,11 @@ export const MainPage = ({ categories }: MainPageProps) => {
 						{t('main-page.tagline2')}
 					</Title>
 				</Stack>
-				<Stack mx={80} mb={20}>
+				<Stack mx={80} mb={20} align='center'>
 					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
 						{t('participate')}
 					</Button>
+					<ShareButton />
 				</Stack>
 			</Group>
 

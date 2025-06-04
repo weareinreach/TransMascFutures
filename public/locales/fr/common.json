@@ -60,7 +60,13 @@
         "list2": "Document PDF avec exemple de langage de partage",
         "press-release": "Communiqué de presse",
         "subtitle": "Pour votre commodité de partage :",
-        "title": "Utilisez notre boîte à outils de médias sociaux #TransMascFutures."
+        "title": "Utilisez notre boîte à outils de médias sociaux #TransMascFutures.",
+        "facebook": "Facebook",
+        "twitter": "X (Twitter)",
+        "email": "Email",
+        "copy-link": "Copy link",
+        "link-copied": "Link copied to clipboard",
+        "seo": "#TransMascFutures"
     },
     "story": {
         "prompt1": "Le premier moment où je pouvais voir mon avenir comme un homme trans, ou un homme trans, était...",
