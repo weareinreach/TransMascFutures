@@ -21,7 +21,7 @@ i18n
 		debug: true,
 		lng: 'en',
 		backend: {
-			loadPath: '/public/locales/{{lng}}/{{ns}}.json',
+			loadPath: '/locales/{{lng}}/{{ns}}.json',
 		},
 		fallbackLng: {
 			'en-US': ['en'],

@@ -7,7 +7,13 @@ export default {
 	component: ModalForm,
 } as Meta<typeof ModalForm>
 
-export const Default = {}
+export const Default = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'responsive',
+		},
+	},
+}
 
 export const Mobile = {
 	parameters: {
