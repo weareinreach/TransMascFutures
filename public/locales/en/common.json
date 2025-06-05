@@ -78,7 +78,13 @@
         "list2": "PDF document with sample sharing language",
         "press-release": "Press Release",
         "subtitle": "For your sharing convenience:",
-        "title": "Use our #TransMascFutures social media toolkit."
+        "title": "Use our #TransMascFutures social media toolkit.",
+        "facebook": "Facebook",
+        "twitter": "X (Twitter)",
+        "email": "Email",
+        "copy-link": "Copy link",
+        "link-copied": "Link copied to clipboard",
+        "seo": "#TransMascFutures"
     },
     "story": {
         "prompt1": "The first moment I could see my future as a trans man or trans masculine person was...",
