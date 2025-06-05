@@ -98,6 +98,8 @@ model Story {
   response2EN String?
   response1ES String?
   response2ES String?
+  response1FR String?
+  response2FR String?
 
   userId String? // Not linked - using app auth
 

@@ -10,7 +10,7 @@ import { storybookFont } from '../src/styles'
 import { theme } from '../src/styles/theme'
 
 export const parameters = {
-	layout: 'centered',
+	layout: 'fullscreen',
 	controls: {
 		matchers: {
 			color: /(background|color)$/i,
@@ -28,6 +28,10 @@ const mantineProviderProps: Omit<MantineProviderProps, 'children'> = {
 	withCSSVariables: false,
 	withGlobalStyles: true,
 	withNormalizeCSS: false,
+}
+
+type DecoratorProps = {
+	children: ReactNode
 }
 
 const ThemeWrapper = ({ children }: DecoratorProps) => {
@@ -48,7 +52,3 @@ export const decorators = [
 		</ThemeWrapper>
 	),
 ]
-
-type DecoratorProps = {
-	children: ReactNode
-}

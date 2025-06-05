@@ -18,6 +18,8 @@ const themeCustomObj = {
 	colors: {
 		glaadGray: '#BEBEBE',
 		midGray: '#65676B',
+		darkGray: '#6b6d70',
+		softBlack: '#21272c',
 		black: '#000000',
 		white: '#FFFFFF',
 		blue: '#5BCEFA',
@@ -63,7 +65,7 @@ export const theme: MantineThemeOverride = {
 					({
 						root: {
 							fontSize: rem(15),
-							color: theme.other.colors.black,
+							color: theme.other.colors.black, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 							fontWeight: 500,
 							textDecoration: 'underline',
 							...theme.fn.hover({ textDecoration: 'none' }),
@@ -84,8 +86,8 @@ export const theme: MantineThemeOverride = {
 						padding: rem(15),
 						textAlign: 'center',
 						width: rem(175),
-						color: theme.other.colors.black,
-						backgroundColor: theme.other.colors.pink,
+						color: theme.other.colors.black, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						backgroundColor: theme.other.colors.pink, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 						// ['&:hover']: {
 						// 	backgroundColor: theme.other.colors.blue,
 						// },
@@ -104,7 +106,7 @@ export const theme: MantineThemeOverride = {
 						padding: rem(15),
 						textAlign: 'center',
 						width: rem(175),
-						backgroundColor: theme.other.colors.blue,
+						backgroundColor: theme.other.colors.blue, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 						borderRadius: rem(8),
 						// ['&:hover']: {
 						// 	backgroundColor: theme.other.colors.pink,
@@ -116,6 +118,29 @@ export const theme: MantineThemeOverride = {
 					label: {
 						whiteSpace: 'normal',
 						textTransform: 'uppercase',
+					},
+				}),
+				shareWhite: (theme) => ({
+					root: {
+						fontWeight: 600,
+						height: rem(40),
+						width: rem(112),
+						padding: `${rem(8)} ${rem(16)}`,
+						textAlign: 'center', // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+						color: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+
+						...theme.fn.hover({
+							backgroundColor: theme.colors.gray[2],
+						}),
+					},
+					label: {
+						whiteSpace: 'nowrap',
+						textTransform: 'uppercase',
+						fontFamily: theme.fontFamily,
+						fontWeight: 600,
+						fontSize: rem(14),
+						lineHeight: '100%',
+						color: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 					},
 				}),
 			},

@@ -67,6 +67,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 		paths: slugs.flatMap((slug) => [
 			{ params: { slug }, locale: 'en' },
 			{ params: { slug }, locale: 'es' },
+			{ params: { slug }, locale: 'fr' },
 		]),
 		fallback: 'blocking',
 	}

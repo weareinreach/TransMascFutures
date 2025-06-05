@@ -23,7 +23,7 @@ export const storyRouter = createTRPCRouter({
 		.input(
 			z.object({
 				id: z.string(),
-				locale: z.enum(['en', 'es']),
+				locale: z.enum(['en', 'es', 'fr']),
 			})
 		)
 		.query(async ({ ctx, input }) => {
@@ -120,7 +120,7 @@ export const storyRouter = createTRPCRouter({
 	// 	})
 	// }),
 	getCategories: publicProcedure
-		.input(z.object({ locale: z.enum(['en', 'es']) }))
+		.input(z.object({ locale: z.enum(['en', 'es', 'fr']) }))
 		.query(async ({ ctx, input }) => {
 			if (input.locale === 'en') {
 				const categories = await ctx.prisma.storyCategory.findMany({
@@ -159,7 +159,7 @@ export const storyRouter = createTRPCRouter({
 			return formatted
 		}),
 	getByCategory: publicProcedure
-		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es']) }))
+		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es', 'fr']) }))
 		.query(async ({ ctx, input }) => {
 			if (input.locale === 'en') {
 				const stories = await ctx.prisma.story.findMany({

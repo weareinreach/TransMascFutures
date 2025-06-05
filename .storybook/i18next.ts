@@ -2,9 +2,8 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import HttpApi from 'i18next-http-backend'
+import { type HttpBackendOptions } from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
-
-import type { HttpBackendOptions } from 'i18next-http-backend'
 
 const ns = ['common', 'story']
 export const i18nLocales = {
@@ -22,11 +21,12 @@ i18n
 		debug: true,
 		lng: 'en',
 		backend: {
-			loadPath: '/public/locales/{{lng}}/{{ns}}.json',
+			loadPath: '/locales/{{lng}}/{{ns}}.json',
 		},
 		fallbackLng: {
 			'en-US': ['en'],
 			'es-US': ['es'],
+			'fr-US': ['fr'],
 		},
 		defaultNS: 'common',
 		interpolation: { escapeValue: false },

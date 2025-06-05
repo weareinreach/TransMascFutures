@@ -45,7 +45,8 @@ declare module "nextjs-routes" {
 
   export type Locale = 
     | "en"
-    | "es";
+    | "es"
+    | "fr";
 
   type Brand<K, T> = K & { __brand: T };
 
@@ -75,7 +76,8 @@ declare module "nextjs-routes" {
     locale: Locale;
     locales: [
           "en",
-          "es"
+          "es",
+          "fr"
         ];
   };
 
@@ -165,7 +167,8 @@ declare module "next/router" {
         locale: Locale;
         locales: [
           "en",
-          "es"
+          "es",
+          "fr"
         ];
         push(
           url: Route | StaticRoute | Omit<Route, "pathname">,

@@ -29,6 +29,8 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { fontIbmPlexSans } from '~/styles'
 import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
+import { ShareButton } from '../../components/ShareButton/ShareButton'
+
 const uesImageStyles = createStyles((theme) => ({
 	root: {},
 }))
@@ -201,16 +203,19 @@ const Gallery = () => {
 					</Title>
 				</Grid.Col>
 				<Grid.Col span={6} lg={3} md={4}>
-					<Button
-						component={Link}
-						href={{ pathname: '/survey' }}
-						tt='uppercase'
-						variant='secondary'
-						display='block'
-						mx='auto'
-					>
-						{t('participate')}
-					</Button>
+					<Stack align='center'>
+						<Button
+							component={Link}
+							href={{ pathname: '/survey' }}
+							tt='uppercase'
+							variant='secondary'
+							display='block'
+							mx='auto'
+						>
+							{t('participate')}
+						</Button>
+						<ShareButton />
+					</Stack>
 				</Grid.Col>
 			</Grid>
 			<MediaQuery smallerThan='md' styles={{ display: 'none' }}>
