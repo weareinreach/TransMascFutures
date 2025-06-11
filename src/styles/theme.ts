@@ -124,7 +124,7 @@ export const theme: MantineThemeOverride = {
 					root: {
 						fontWeight: 600,
 						height: rem(40),
-						width: rem(112),
+						width: 'auto',
 						padding: `${rem(8)} ${rem(16)}`,
 						textAlign: 'center', // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 						color: theme.other.colors.softBlack, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
