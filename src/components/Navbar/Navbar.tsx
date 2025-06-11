@@ -19,9 +19,9 @@ export const useStyles = createStyles((theme) => ({
 		justifyContent: 'space-around',
 		alignItems: 'center',
 		height: '100%',
-		paddingLeft: rem(64),
-		paddingRight: rem(64),
-		gap: rem(40),
+		paddingLeft: rem(40),
+		paddingRight: rem(40),
+		// gap: rem(30),
 
 		['& a']: {
 			color: theme.colors.gray[0],
@@ -62,10 +62,10 @@ export const useStyles = createStyles((theme) => ({
 	navlink: {
 		color: theme.colors.gray[0],
 		display: 'flex',
-		width: '100%',
+		// width: '100%',
 		height: '100%',
 		fontWeight: 600,
-		fontSize: rem(32),
+		fontSize: rem(16),
 		fontStyle: 'normal',
 		flexDirection: 'column',
 		marginTop: theme.spacing.md,
@@ -83,7 +83,7 @@ export const useStyles = createStyles((theme) => ({
 	},
 	navLinksGroup: {
 		display: 'flex',
-		gap: rem(40),
+		gap: rem(32),
 		alignItems: 'center',
 	},
 
