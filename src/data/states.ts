@@ -1,3 +1,4 @@
+/* sonar-disable */
 export const stateOptions = [
 	{
 		value: 'AL',
@@ -354,3 +355,4 @@ export const stateOptions = [
 		labelFR: 'Îles Vierges',
 	},
 ]
+/* sonar-enable */
