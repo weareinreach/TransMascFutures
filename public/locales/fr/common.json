@@ -65,9 +65,9 @@
     "pronoun": {
         "any": "Tous les Pronouns",
         "ey": "Ey/Em/Eir",
-        "he": "Il/Lui/Son",
+        "he": "il/lui",
         "none": "Pas de Pronouns",
-        "they": "Iel/Eux/Leur",
+        "they": "iel/iels",
         "xe": "Xe/Xem/Xyr",
         "ze": "Ze/Zir/Zim"
     },
