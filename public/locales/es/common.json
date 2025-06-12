@@ -78,7 +78,13 @@
         "list2": "Documento de PDF con una muestra compartiendo lenguaje",
         "press-release": "Comunicado de Prensa",
         "subtitle": "Para tu conveniencia al compartir:",
-        "title": "Usa nuestro kit de herramientas de redes sociales Trans MascFutures"
+        "title": "Usa nuestro kit de herramientas de redes sociales Trans MascFutures",
+        "facebook": "Facebook",
+        "twitter": "X (Twitter)",
+        "email": "Email",
+        "copy-link": "Copy link",
+        "link-copied": "Link copied to clipboard",
+        "seo": "#TransMascFutures"
     },
     "story": {
         "prompt1": "El primer momento en el cual pude ver mi futuro como un hombre trans o una persona transmasculina fue...",
