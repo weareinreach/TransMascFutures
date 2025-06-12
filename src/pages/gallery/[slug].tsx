@@ -74,12 +74,22 @@ export const getStaticProps: GetStaticProps<ArtistDisplayProps, RoutedQuery<'/ga
 	locale,
 	params,
 }) => {
-	const artwork = getArtData(params?.slug)
+	let artwork = getArtData(params?.slug)
 
 	if (!artwork)
 		return {
 			notFound: true,
 		}
+	artwork = {
+		...artwork,
+		altEN: artwork.altEN ?? null,
+		altES: artwork.altES ?? null,
+		altFR: artwork.altFR ?? null,
+		descriptionEN: artwork.descriptionEN ?? null,
+		descriptionES: artwork.descriptionES ?? null,
+		descriptionFR: artwork.descriptionFR ?? null,
+		// Add any other ArtData properties that might be undefined and need to be serialized as null
+	}
 
 	return {
 		props: {

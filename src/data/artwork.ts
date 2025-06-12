@@ -32,12 +32,12 @@ export const getArtwork = (art: LiteralUnion<keyof typeof artwork, string>) =>
 
 export interface ArtData {
 	artist: string
-	descriptionEN?: string
-	descriptionES?: string
-	descriptionFR?: string
-	altEN: string
-	altES: string
-	altFR?: string
+	descriptionEN: string | null
+	descriptionES: string | null
+	descriptionFR: string | null
+	altEN: string | null
+	altES: string | null
+	altFR: string | null
 	src: StaticImageData | StaticImageData[]
 	slug: string
 }
