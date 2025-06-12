@@ -142,5 +142,8 @@
 		"budgetPercentIncreaseRed": 20,
 		"minimumChangeThreshold": 512,
 		"showDetails": true
+	},
+	"prisma": {
+		"seed": "tsx prisma/seed.ts"
 	}
 }

@@ -31,6 +31,24 @@ import Logo from '~public/assets/tmf-logo-rect-bw-cropped.png'
 
 import { ShareButton } from '../../components/ShareButton/ShareButton'
 
+type LocalizedStringFields = {
+	en: string | null
+	es: string | null
+	fr: string | null
+}
+
+const selectLocalized = (data: LocalizedStringFields, locale: 'en' | 'es' | 'fr' | undefined): string => {
+	switch (locale) {
+		case 'fr':
+			return data.fr ?? data.en ?? ''
+		case 'es':
+			return data.es ?? data.en ?? ''
+		case 'en':
+		default:
+			return data.en ?? ''
+	}
+}
+
 const uesImageStyles = createStyles((theme) => ({
 	root: {},
 }))
@@ -59,8 +77,10 @@ const Gallery = () => {
 	const theme = useMantineTheme()
 	const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
 	const { hovered, ref } = useHover()
-	const isEnglish = router.locale === 'en'
 	const { t } = useTranslation()
+
+	// Get the current locale from the router
+	const currentLocale = router.locale as 'en' | 'es' | 'fr' | undefined
 
 	const popupArt = useMemo(
 		() =>
@@ -85,20 +105,22 @@ const Gallery = () => {
 					>
 						<AspectRatio
 							ratio={width / height}
-							// w={`min(${art.src.width}px, 25vw)`}
 							sx={(theme) => ({
-								// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 								width: `min(${width}px, 80vw)`,
 								[theme.fn.largerThan('xs')]: {
 									width: `min(${width}px, 40vw)`,
 								},
 								[theme.fn.largerThan('sm')]: {
-									// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 									width: `min(${width}px, 25vw)`,
 								},
 							})}
 						>
-							<Image src={src} alt={isEnglish ? art.altEN : art.altES} fill />
+							{/* Use selectLocalized for alt */}
+							<Image
+								src={src}
+								alt={selectLocalized({ en: art.altEN, es: art.altES, fr: art.altFR ?? null }, currentLocale)}
+								fill
+							/>
 						</AspectRatio>
 					</Link>
 					<Link
@@ -128,7 +150,6 @@ const Gallery = () => {
 							<AspectRatio
 								key={`${art.artist}-${i}`}
 								ratio={image.width / image.height}
-								// w={{ base: `min(${image.width}px, 80vw)`, md: `min(${image.width}px, 25vw)` }}
 								sx={(theme) => ({
 									width: `min(${image.width}px, 80vw)`,
 									zIndex: 10 - i,
@@ -142,9 +163,13 @@ const Gallery = () => {
 									},
 								})}
 							>
+								{/* Use selectLocalized for alt */}
 								<Image
 									src={image}
-									alt={isEnglish ? art.altEN : art.altES}
+									alt={selectLocalized(
+										{ en: art.altEN, es: art.altES, fr: art.altFR ?? null },
+										currentLocale
+									)}
 									sx={(theme) => ({
 										transform: `translateX(${20 * i}px) translateY(${10 * i}px) rotate(-${
 											(arr.length - i) * 2
@@ -158,7 +183,6 @@ const Gallery = () => {
 									})}
 									data-hovered={hovered}
 									data-item={i}
-									// className={classes.fanOut}
 								/>
 							</AspectRatio>
 						))}
@@ -234,8 +258,9 @@ const Gallery = () => {
 			</MediaQuery>
 			<Modal
 				opened={!!popupArt}
-				// eslint-disable-next-line @typescript-eslint/no-misused-promises
-				onClose={() => router.replace({ pathname: '/gallery' }, undefined, { shallow: true, scroll: false })}
+				onClose={() => {
+					void router.replace({ pathname: '/gallery' }, undefined, { shallow: true, scroll: false })
+				}}
 				size='75vw'
 				centered
 				overlayProps={{ blur: 2 }}
@@ -258,8 +283,15 @@ const Gallery = () => {
 					<ArtItem
 						name={popupArt.artist}
 						image={popupArt.src}
-						alt={isEnglish ? popupArt.altEN : popupArt.altES}
-						description={isEnglish ? popupArt.descriptionEN : popupArt.descriptionES}
+						// Use selectLocalized for alt and description
+						alt={selectLocalized(
+							{ en: popupArt.altEN, es: popupArt.altES, fr: popupArt.altFR ?? null },
+							currentLocale
+						)}
+						description={selectLocalized(
+							{ en: popupArt.descriptionEN, es: popupArt.descriptionES, fr: popupArt.descriptionFR ?? null },
+							currentLocale
+						)}
 					/>
 				)}
 			</Modal>
