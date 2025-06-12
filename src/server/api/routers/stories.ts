@@ -5,6 +5,52 @@ import { crowdin } from '~/server/crowdin'
 
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
+type LocalizedStringFields = {
+	en: string | null
+	es: string | null
+	fr: string | null
+}
+
+const selectLocalized = (data: LocalizedStringFields, locale: 'en' | 'es' | 'fr' | undefined): string => {
+	switch (locale) {
+		case 'fr':
+			return data.fr ?? data.en ?? ''
+		case 'es':
+			return data.es ?? data.en ?? ''
+		case 'en':
+		default:
+			return data.en ?? ''
+	}
+}
+
+type SelectedStoryCategoryFields = {
+	id: string
+	image: string | null
+	imageAltEN: string | null
+	imageAltES: string | null
+	imageAltFR: string | null
+	categoryEN: string
+	categoryES: string
+	categoryFR: string | null
+	tag: string
+}
+
+type SelectedPronounFields = {
+	id: string
+	pronounsEN: string
+	pronounsES: string
+	pronounsFR: string | null
+	tag: string
+}
+
+type StoryToCategoryItem = {
+	category: SelectedStoryCategoryFields
+}
+
+type PronounsToStoryItem = {
+	pronoun: SelectedPronounFields
+}
+
 export const storyRouter = createTRPCRouter({
 	getStoryBySlug: publicProcedure
 		.input(
@@ -19,183 +65,137 @@ export const storyRouter = createTRPCRouter({
 			})
 			return story
 		}),
+
 	getStoryById: publicProcedure
 		.input(
 			z.object({
 				id: z.string(),
-				locale: z.enum(['en', 'es']),
+				locale: z.enum(['en', 'es', 'fr']).optional(),
 			})
 		)
 		.query(async ({ ctx, input }) => {
-			const isEN = input.locale === 'en'
-			if (isEN) {
-				const story = await ctx.prisma.story.findUniqueOrThrow({
-					where: { id: input.id, published: true },
-					select: {
-						id: true,
-						name: true,
-						response1EN: true,
-						response2EN: true,
-						categories: {
-							select: {
-								category: {
-									select: {
-										id: true,
-										image: true,
-										imageAltEN: true,
-										categoryEN: true,
-										tag: true,
-									},
-								},
-							},
-						},
-						pronouns: { select: { pronoun: { select: { pronounsEN: true } } } },
-					},
-				})
-				const { categories, pronouns, response1EN, response2EN, ...rest } = story
-				const formatted = {
-					...rest,
-					response1: response1EN,
-					response2: response2EN,
-					categories: categories.map(({ category }) => ({
-						category: {
-							id: category.id,
-							image: category.image,
-							imageAlt: category.imageAltEN,
-							category: category.categoryEN,
-							tag: category.tag,
-						},
-					})),
-					pronouns: pronouns.map(({ pronoun }) => ({ pronoun: pronoun.pronounsEN })),
-				}
-				return formatted
-			}
 			const story = await ctx.prisma.story.findUniqueOrThrow({
 				where: { id: input.id, published: true },
 				select: {
 					id: true,
 					name: true,
+					response1EN: true,
 					response1ES: true,
+					response1FR: true,
+					response2EN: true,
 					response2ES: true,
+					response2FR: true,
 					categories: {
 						select: {
 							category: {
 								select: {
 									id: true,
 									image: true,
+									imageAltEN: true,
 									imageAltES: true,
+									imageAltFR: true,
+									categoryEN: true,
 									categoryES: true,
+									categoryFR: true,
 									tag: true,
 								},
 							},
 						},
 					},
-					pronouns: { select: { pronoun: { select: { pronounsES: true } } } },
+					pronouns: {
+						select: {
+							pronoun: {
+								select: {
+									id: true,
+									pronounsEN: true,
+									pronounsES: true,
+									pronounsFR: true,
+									tag: true,
+								},
+							},
+						},
+					},
 				},
 			})
-			const { categories, pronouns, response1ES, response2ES, ...rest } = story
+
 			const formatted = {
-				...rest,
-				response1: response1ES,
-				response2: response2ES,
-				categories: categories.map(({ category }) => ({
-					category: {
-						id: category.id,
-						image: category.image,
-						imageAlt: category.imageAltES,
-						category: category.categoryES,
-						tag: category.tag,
-					},
-				})),
-				pronouns: pronouns.map(({ pronoun }) => ({ pronoun: pronoun.pronounsES })),
+				...story,
+				response1: selectLocalized(
+					{ en: story.response1EN, es: story.response1ES, fr: story.response1FR },
+					input.locale
+				),
+				response2: selectLocalized(
+					{ en: story.response2EN, es: story.response2ES, fr: story.response2FR },
+					input.locale
+				),
+				categories: (story.categories as StoryToCategoryItem[]).map((item) => {
+					const category = item.category
+					return {
+						category: {
+							id: category.id,
+							image: category.image,
+							tag: category.tag,
+							imageAlt: selectLocalized(
+								{ en: category.imageAltEN, es: category.imageAltES, fr: category.imageAltFR },
+								input.locale
+							),
+							category: selectLocalized(
+								{ en: category.categoryEN, es: category.categoryES, fr: category.categoryFR },
+								input.locale
+							),
+						},
+					}
+				}),
+				pronouns: (story.pronouns as PronounsToStoryItem[]).map((item) => {
+					const pronoun = item.pronoun
+					return {
+						pronoun: selectLocalized(
+							{ en: pronoun.pronounsEN, es: pronoun.pronounsES, fr: pronoun.pronounsFR },
+							input.locale
+						),
+					}
+				}),
 			}
 			return formatted
 		}),
-	// unpublishStory: protectedProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
-	// 	const { id } = input
-	// 	// Check if story belongs to user
-	// 	return await ctx.prisma.story.update({
-	// 		where: { id },
-	// 		data: { published: false },
-	// 	})
-	// }),
-	getCategories: publicProcedure
-		.input(z.object({ locale: z.enum(['en', 'es']) }))
-		.query(async ({ ctx, input }) => {
-			if (input.locale === 'en') {
-				const categories = await ctx.prisma.storyCategory.findMany({
-					select: {
-						categoryEN: true,
-						id: true,
-						image: true,
-						imageAltEN: true,
-						tag: true,
-					},
-					orderBy: { order: 'asc' },
-				})
-				const formatted = categories.map(({ categoryEN, imageAltEN, ...rest }) => ({
-					...rest,
-					category: categoryEN,
-					imageAlt: imageAltEN,
-				}))
-				return formatted
-			}
 
+	getCategories: publicProcedure
+		.input(z.object({ locale: z.enum(['en', 'es', 'fr']).optional() }))
+		.query(async ({ ctx, input }) => {
 			const categories = await ctx.prisma.storyCategory.findMany({
 				select: {
+					categoryEN: true,
 					categoryES: true,
+					categoryFR: true,
 					id: true,
 					image: true,
+					imageAltEN: true,
 					imageAltES: true,
+					imageAltFR: true,
 					tag: true,
 				},
 				orderBy: { order: 'asc' },
 			})
-			const formatted = categories.map(({ categoryES, imageAltES, ...rest }) => ({
-				...rest,
-				category: categoryES,
-				imageAlt: imageAltES,
-			}))
+
+			const formatted = categories.map(
+				({ categoryEN, categoryES, categoryFR, imageAltEN, imageAltES, imageAltFR, ...rest }) => ({
+					...rest,
+					category: selectLocalized({ en: categoryEN, es: categoryES, fr: categoryFR }, input.locale),
+					imageAlt: selectLocalized({ en: imageAltEN, es: imageAltES, fr: imageAltFR }, input.locale),
+				})
+			)
 			return formatted
 		}),
+
 	getByCategory: publicProcedure
-		.input(z.object({ tag: z.string(), take: z.number().optional(), locale: z.enum(['en', 'es']) }))
+		.input(
+			z.object({
+				tag: z.string(),
+				take: z.number().optional(),
+				locale: z.enum(['en', 'es', 'fr']).optional(),
+			})
+		)
 		.query(async ({ ctx, input }) => {
-			if (input.locale === 'en') {
-				const stories = await ctx.prisma.story.findMany({
-					where: {
-						published: true,
-						categories: { some: { category: { tag: input.tag } } },
-					},
-					select: {
-						id: true,
-						name: true,
-						categories: {
-							select: { category: { select: { categoryEN: true, id: true } } },
-						},
-						pronouns: { select: { pronoun: { select: { id: true, pronounsEN: true } } } },
-						response1EN: true,
-						response2EN: true,
-					},
-					...(input.take ? { take: input.take } : {}),
-					orderBy: { createdAt: 'desc' },
-				})
-				const formatted = stories.map(({ categories, pronouns, response1EN, response2EN, ...rest }) => ({
-					...rest,
-					response1: response1EN,
-					response2: response2EN,
-					categories: categories.map(({ category }) => ({
-						category: {
-							id: category.id,
-							category: category.categoryEN,
-						},
-					})),
-					pronouns: pronouns.map(({ pronoun }) => ({
-						pronoun: pronoun.pronounsEN,
-					})),
-				}))
-				return formatted
-			}
 			const stories = await ctx.prisma.story.findMany({
 				where: {
 					published: true,
@@ -204,30 +204,76 @@ export const storyRouter = createTRPCRouter({
 				select: {
 					id: true,
 					name: true,
-					categories: { select: { category: { select: { categoryES: true, id: true } } } },
-					pronouns: { select: { pronoun: { select: { id: true, pronounsES: true } } } },
+					response1EN: true,
 					response1ES: true,
+					response1FR: true,
+					response2EN: true,
 					response2ES: true,
+					response2FR: true,
+					categories: {
+						select: {
+							category: {
+								select: {
+									id: true,
+									categoryEN: true,
+									categoryES: true,
+									categoryFR: true,
+								},
+							},
+						},
+					},
+					pronouns: {
+						select: {
+							pronoun: {
+								select: {
+									id: true,
+									pronounsEN: true,
+									pronounsES: true,
+									pronounsFR: true,
+								},
+							},
+						},
+					},
 				},
 				...(input.take ? { take: input.take } : {}),
 				orderBy: { createdAt: 'desc' },
 			})
-			const formatted = stories.map(({ categories, pronouns, response1ES, response2ES, ...rest }) => ({
-				...rest,
-				response1: response1ES,
-				response2: response2ES,
-				categories: categories.map(({ category }) => ({
-					category: {
-						id: category.id,
-						category: category.categoryES,
-					},
-				})),
-				pronouns: pronouns.map(({ pronoun }) => ({
-					pronoun: pronoun.pronounsES,
-				})),
-			}))
+
+			const formatted = stories.map(
+				({
+					categories,
+					pronouns,
+					response1EN,
+					response1ES,
+					response1FR,
+					response2EN,
+					response2ES,
+					response2FR,
+					...rest
+				}) => ({
+					...rest,
+					response1: selectLocalized({ en: response1EN, es: response1ES, fr: response1FR }, input.locale),
+					response2: selectLocalized({ en: response2EN, es: response2ES, fr: response2FR }, input.locale),
+					categories: categories.map(({ category }) => ({
+						category: {
+							id: category.id,
+							category: selectLocalized(
+								{ en: category.categoryEN, es: category.categoryES, fr: category.categoryFR },
+								input.locale
+							),
+						},
+					})),
+					pronouns: pronouns.map(({ pronoun }) => ({
+						pronoun: selectLocalized(
+							{ en: pronoun.pronounsEN, es: pronoun.pronounsES, fr: pronoun.pronounsFR },
+							input.locale
+						),
+					})),
+				})
+			)
 			return formatted
 		}),
+
 	submit: publicProcedure.input(SurveySchema()).mutation(async ({ ctx, input }) => {
 		const submission = await ctx.prisma.storySubmission.create({
 			data: {

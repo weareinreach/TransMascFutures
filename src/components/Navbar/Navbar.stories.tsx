@@ -13,12 +13,40 @@ export default {
 	},
 } as Meta<typeof Navbar>
 
-export const Default = {}
+export const Default = {
+	render: (args: Record<string, unknown>) => <Navbar {...args} />,
+	parameters: {
+		viewport: {
+			defaultViewport: 'responsive',
+		},
+		nextjs: {
+			router: {
+				locale: 'en',
+				locales: ['en', 'es', 'fr'],
+				pathname: '/',
+				asPath: '/',
+				query: {},
+				basePath: '',
+			},
+		},
+	},
+}
 
 export const Mobile = {
+	render: (args: Record<string, unknown>) => <Navbar {...args} />,
 	parameters: {
 		viewport: {
 			defaultViewport: 'iphonex',
+		},
+		nextjs: {
+			router: {
+				locale: 'en',
+				locales: ['en', 'es', 'fr'],
+				pathname: '/',
+				asPath: '/',
+				query: {},
+				basePath: '',
+			},
 		},
 	},
 }

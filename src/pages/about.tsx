@@ -129,6 +129,7 @@ const AboutPage = () => {
 					</Text>
 				</Stack>
 			</Container>
+			{/* eslint-disable @typescript-eslint/no-unsafe-member-access */}
 			<Divider size={10} color={theme.other.colors.glaadGray} my={40} mx={{ lg: 80, base: 15, xs: 40 }} />
 			<Flex direction='column' align='center' w='100%'>
 				<Title order={2} mb={40}>

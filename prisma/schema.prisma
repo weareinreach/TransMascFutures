@@ -50,12 +50,14 @@ model StoryCategory {
 
   categoryEN String
   categoryES String
+  categoryFR String?
 
   order Int?
 
   image      String?
   imageAltEN String?
   imageAltES String?
+  imageAltFR String?
 
   stories   StoryToCategory[]
   createdAt DateTime          @default(now())
@@ -65,9 +67,10 @@ model StoryCategory {
 model Pronouns {
   id String @id @default(cuid())
 
-  tag        String @unique
+  tag        String  @unique
   pronounsEN String
   pronounsES String
+  pronounsFR String?
 
   stories PronounsToStory[]
 
@@ -98,6 +101,8 @@ model Story {
   response2EN String?
   response1ES String?
   response2ES String?
+  response1FR String?
+  response2FR String?
 
   userId String? // Not linked - using app auth
 

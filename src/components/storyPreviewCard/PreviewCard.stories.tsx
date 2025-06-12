@@ -13,7 +13,13 @@ export default {
 	},
 } as Meta<typeof PreviewCard>
 
-export const Default = {}
+export const Default = {
+	parameters: {
+		viewport: {
+			defaultViewport: 'responsive',
+		},
+	},
+}
 
 export const Mobile = {
 	parameters: {

@@ -9,14 +9,37 @@ import { artData, type ArtData, getArtData } from '~/data/artwork'
 import { ArtItem } from '~/layouts/ArtItem'
 import { getServerSideTranslations } from '~/server/i18n'
 
+// --- START: Import selectLocalized helper and define LocalizedStringFields type ---
+type LocalizedStringFields = {
+	en: string | null | undefined
+	es: string | null | undefined
+	fr: string | null | undefined
+}
+
+const selectLocalized = (data: LocalizedStringFields, locale: 'en' | 'es' | 'fr' | undefined): string => {
+	switch (locale) {
+		case 'fr':
+			return data.fr ?? data.en ?? ''
+		case 'es':
+			return data.es ?? data.en ?? ''
+		case 'en':
+		default:
+			return data.en ?? ''
+	}
+}
+// --- END: Import selectLocalized helper ---
+
 interface ArtistDisplayProps {
 	artwork: ArtData
 }
 
 const ArtistDisplay = ({ artwork }: ArtistDisplayProps) => {
 	const router = useRouter<'/gallery/[slug]'>()
-	const isEnglish = router.locale === 'en'
+	// const isEnglish = router.locale === 'en' // No longer needed
 	const { t } = useTranslation()
+
+	// Get the current locale from the router
+	const currentLocale = router.locale as 'en' | 'es' | 'fr' | undefined
 
 	if (!artwork) return router.replace({ pathname: '/gallery' })
 
@@ -33,8 +56,15 @@ const ArtistDisplay = ({ artwork }: ArtistDisplayProps) => {
 			<ArtItem
 				name={artwork.artist}
 				image={artwork.src}
-				alt={isEnglish ? artwork.altEN : artwork.altES}
-				description={isEnglish ? artwork.descriptionEN : artwork.descriptionES}
+				// Use selectLocalized for alt and description
+				alt={selectLocalized(
+					{ en: artwork.altEN, es: artwork.altES, fr: artwork.altFR ?? null },
+					currentLocale
+				)}
+				description={selectLocalized(
+					{ en: artwork.descriptionEN, es: artwork.descriptionES, fr: artwork.descriptionFR ?? null },
+					currentLocale
+				)}
 			/>
 		</>
 	)
@@ -44,12 +74,22 @@ export const getStaticProps: GetStaticProps<ArtistDisplayProps, RoutedQuery<'/ga
 	locale,
 	params,
 }) => {
-	const artwork = getArtData(params?.slug)
+	let artwork = getArtData(params?.slug)
 
 	if (!artwork)
 		return {
 			notFound: true,
 		}
+	artwork = {
+		...artwork,
+		altEN: artwork.altEN ?? null,
+		altES: artwork.altES ?? null,
+		altFR: artwork.altFR ?? null,
+		descriptionEN: artwork.descriptionEN ?? null,
+		descriptionES: artwork.descriptionES ?? null,
+		descriptionFR: artwork.descriptionFR ?? null,
+		// Add any other ArtData properties that might be undefined and need to be serialized as null
+	}
 
 	return {
 		props: {
@@ -67,6 +107,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 		paths: slugs.flatMap((slug) => [
 			{ params: { slug }, locale: 'en' },
 			{ params: { slug }, locale: 'es' },
+			{ params: { slug }, locale: 'fr' },
 		]),
 		fallback: 'blocking',
 	}

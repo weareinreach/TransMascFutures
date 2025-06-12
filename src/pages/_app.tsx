@@ -1,4 +1,4 @@
-import { Anchor, Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
+import { Button, createStyles, Group, MantineProvider, Text } from '@mantine/core'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -30,7 +30,6 @@ const useStyles = createStyles((theme, { showButton, isHome }: { showButton: boo
 
 const MyApp: AppType = ({ Component, pageProps }) => {
 	const router = useRouter()
-	const { asPath, pathname, query, locale } = router
 	const { t } = useTranslation()
 	const { classes } = useStyles({ showButton: router.pathname !== '/', isHome: router.pathname === '/' })
 	return (
@@ -64,16 +63,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 					<Text className={classes.artistCredit} fw={500}>
 						{t('artist-credit')}
 					</Text>
-					<Anchor
-						variant='category'
-						tt='uppercase'
-						// eslint-disable-next-line @typescript-eslint/no-misused-promises
-						onClick={() =>
-							router.replace({ pathname, query }, asPath, { locale: locale === 'en' ? 'es' : 'en' })
-						}
-					>
-						{t('nav.switch-lang')}
-					</Anchor>
 				</Group>
 				<Group position='right' w='100%' p={40} pt={0}>
 					<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>

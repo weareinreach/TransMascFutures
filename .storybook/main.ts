@@ -1,4 +1,5 @@
 import { type StorybookConfig } from '@storybook/nextjs'
+// @ts-expect-error just an annoying warning
 import { merge } from 'merge-anything'
 
 import { dirname, join } from 'path'
@@ -16,6 +17,7 @@ const config: StorybookConfig = {
 		getAbsolutePath('@storybook/addon-links'),
 		getAbsolutePath('@storybook/addon-essentials'),
 		getAbsolutePath('@storybook/addon-interactions'),
+		getAbsolutePath('@storybook/addon-viewport'),
 	],
 	framework: {
 		name: '@storybook/nextjs',
@@ -44,6 +46,7 @@ const config: StorybookConfig = {
 			},
 		}
 		const mergedConfig = merge(config, configAdditions)
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 		return mergedConfig
 	},
 }

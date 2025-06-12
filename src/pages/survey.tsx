@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import {
-	Anchor,
 	AspectRatio,
 	Button,
 	Checkbox,
@@ -24,10 +23,28 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { z } from 'zod'
 
 import { Banner } from '~/components'
-import { stateOptions } from '~/data/states'
+import { stateOptions } from '~/data/states' // Make sure this file contains labelFR now!
 import { getServerSideTranslations } from '~/server/i18n'
 import { api } from '~/utils/api'
 import ShareWide from '~public/assets/share-wide.jpg'
+
+// Helper function for localized selection
+// You could place this in a '~/utils/i18n.ts' file and import it if preferred
+interface LocalizedLabels {
+	en: string
+	es: string
+	fr: string | null
+}
+
+const selectLocalized = (labels: LocalizedLabels, locale?: string | null): string => {
+	if (locale === 'fr' && labels.fr) {
+		return labels.fr
+	}
+	if (locale === 'es' && labels.es) {
+		return labels.es
+	}
+	return labels.en // Fallback to English
+}
 
 export const SurveySchema = (ts?: (key: string) => string) =>
 	z
@@ -130,8 +147,10 @@ const Survey = () => {
 		setActiveStep((current) => (current >= 0 ? current - 1 : current))
 		scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
 	}
+
 	const router = useRouter()
-	const isEnglish = router.locale === 'en'
+	// Get the current locale from the router
+	const currentLocale = router.locale as 'en' | 'es' | 'fr' | undefined
 
 	const okToProceed = useMemo(() => {
 		if (activeStep === 0) {
@@ -201,10 +220,15 @@ const Survey = () => {
 
 	const [statePNA, setStatePNA] = useState(false)
 
+	// Updated stateSelectOptions to use selectLocalized and currentLocale
 	const stateSelectOptions = useMemo(
 		() =>
-			stateOptions.map(({ value, labelEN, labelES }) => ({ value, label: isEnglish ? labelEN : labelES })),
-		[isEnglish]
+			stateOptions.map(({ value, labelEN, labelES, labelFR }) => ({
+				// Include labelFR here
+				value,
+				label: selectLocalized({ en: labelEN, es: labelES, fr: labelFR ?? null }, currentLocale),
+			})),
+		[currentLocale] // Dependency changed to currentLocale
 	)
 
 	return (
@@ -223,16 +247,6 @@ const Survey = () => {
 						<Stack>
 							<Stack>
 								<Text>{t('survey-form.intro')}</Text>
-								<Anchor
-									onClick={() =>
-										router.replace({ pathname: '/survey' }, undefined, {
-											locale: isEnglish ? 'es' : 'en',
-											scroll: false,
-										})
-									}
-								>
-									{t('survey-form.switch-lang')}
-								</Anchor>
 							</Stack>
 							<Trans
 								i18nKey='survey-form.eligiblity'
@@ -248,7 +262,7 @@ const Survey = () => {
 									<Checkbox value={key.substring(3)} label={value} key={i} />
 								))}
 							</Checkbox.Group>
-							{/*  I consent to having my submission shared by InReach via */}
+							{/* I consent to having my submission shared by InReach via */}
 							<Checkbox.Group {...form.getInputProps('q2')} label={t('survey-form.q2')} required>
 								{Object.entries(t('survey-form.q2-opts', { returnObjects: true })).map(([key, value], i) => (
 									<Checkbox value={key.substring(3)} label={value} key={i} />
@@ -370,7 +384,7 @@ const Survey = () => {
 								<Select
 									label={t('survey-form.q14')}
 									{...form.getInputProps('q14')}
-									data={stateSelectOptions}
+									data={stateSelectOptions} // This now uses the localized data
 									maw={300}
 									disabled={statePNA}
 									searchable

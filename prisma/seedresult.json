@@ -1,0 +1,498 @@
+{
+	"categories": [
+		{
+			"id": "clienra1i0000pexbs0j5xjhl",
+			"tag": "bipoc",
+			"categoryEN": "BIPOC",
+			"categoryES": "BIPOC",
+			"categoryFR": "BIPOC",
+			"order": 1,
+			"image": "bipoc",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.439Z"
+		},
+		{
+			"id": "clienra1i0001pexbc72b9hyj",
+			"tag": "disabled",
+			"categoryEN": "Disabled",
+			"categoryES": "Con discapacidad",
+			"categoryFR": "Personne handicapée",
+			"order": 2,
+			"image": "disabled",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.450Z"
+		},
+		{
+			"id": "clienra1i0002pexbm17yqg2d",
+			"tag": "elder",
+			"categoryEN": "Elder",
+			"categoryES": "Persona mayor",
+			"categoryFR": "Personne âgée",
+			"order": 4,
+			"image": "elder",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.453Z"
+		},
+		{
+			"id": "clienra1i0003pexbvo2gu720",
+			"tag": "immigrant",
+			"categoryEN": "Immigrant",
+			"categoryES": "Inmigrante",
+			"categoryFR": "Immigré(e)",
+			"order": 3,
+			"image": "immigrant",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.456Z"
+		},
+		{
+			"id": "clienra1i0004pexbkht4nc39",
+			"tag": "transmasc",
+			"categoryEN": "Transmasc/Nonbinary",
+			"categoryES": "Transmasculino/Nonbinario",
+			"categoryFR": "Transmasculine/Nonbinaire",
+			"order": 7,
+			"image": "transmasc",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.459Z"
+		},
+		{
+			"id": "clienra1i0005pexby9upd67c",
+			"tag": "queer",
+			"categoryEN": "Queer",
+			"categoryES": "Queer",
+			"categoryFR": "Queer",
+			"order": 5,
+			"image": "queer",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.461Z"
+		},
+		{
+			"id": "clienra1i0006pexbks2nzu97",
+			"tag": "transman",
+			"categoryEN": "Trans man",
+			"categoryES": "Hombre trans",
+			"categoryFR": "Homme trans",
+			"order": 6,
+			"image": "transman",
+			"imageAltEN": null,
+			"imageAltES": null,
+			"imageAltFR": null,
+			"createdAt": "2023-06-03T02:42:00.578Z",
+			"updatedAt": "2025-06-11T04:33:29.464Z"
+		}
+	],
+	"pronouns": [
+		{
+			"id": "clj4e08hd0000pen90lv874yq",
+			"tag": "ze",
+			"pronounsEN": "Ze/Zir/Zim",
+			"pronounsES": "Ze/Zir/Zim",
+			"pronounsFR": null,
+			"createdAt": "2023-06-20T14:34:14.313Z",
+			"updatedAt": "2023-06-20T14:34:14.313Z"
+		},
+		{
+			"id": "e760lz3xzlp27tlbt5bon5li",
+			"tag": "xe",
+			"pronounsEN": "Xe/Xem/Xyr",
+			"pronounsES": "Xe/Xem/Xyr",
+			"pronounsFR": null,
+			"createdAt": "2023-06-27T16:48:38.608Z",
+			"updatedAt": "2023-06-27T16:48:38.608Z"
+		},
+		{
+			"id": "p25mm6jsk7e52y5rir82sedh",
+			"tag": "ey",
+			"pronounsEN": "Ey/Em/Eir",
+			"pronounsES": "Ey/Em/Eir",
+			"pronounsFR": null,
+			"createdAt": "2023-06-27T16:48:38.608Z",
+			"updatedAt": "2023-06-27T16:48:38.608Z"
+		},
+		{
+			"id": "bcyvm58r6hrr90b1z26xwzbd",
+			"tag": "other",
+			"pronounsEN": "",
+			"pronounsES": "",
+			"pronounsFR": null,
+			"createdAt": "2023-06-27T16:48:38.608Z",
+			"updatedAt": "2023-06-27T16:48:38.608Z"
+		},
+		{
+			"id": "clienra200007pexbweivoffq",
+			"tag": "they",
+			"pronounsEN": "They/Them/Theirs",
+			"pronounsES": "Elle/Elles",
+			"pronounsFR": "iel/iels",
+			"createdAt": "2023-06-03T02:42:00.708Z",
+			"updatedAt": "2025-06-11T04:33:29.467Z"
+		},
+		{
+			"id": "clienra200008pexbpobaxztr",
+			"tag": "he",
+			"pronounsEN": "He/Him/His",
+			"pronounsES": "Él",
+			"pronounsFR": "il/lui",
+			"createdAt": "2023-06-03T02:42:00.708Z",
+			"updatedAt": "2025-06-11T04:33:29.471Z"
+		},
+		{
+			"id": "clienra200009pexb5wyo4bkt",
+			"tag": "any",
+			"pronounsEN": "Any pronouns",
+			"pronounsES": "Cualquier pronombre",
+			"pronounsFR": "Tous pronoms",
+			"createdAt": "2023-06-03T02:42:00.708Z",
+			"updatedAt": "2025-06-11T04:33:29.473Z"
+		},
+		{
+			"id": "clienra20000apexb4zhmhq3d",
+			"tag": "none",
+			"pronounsEN": "No pronouns",
+			"pronounsES": "No pronombres",
+			"pronounsFR": "Pas de pronoms",
+			"createdAt": "2023-06-03T02:42:00.708Z",
+			"updatedAt": "2025-06-11T04:33:29.476Z"
+		}
+	],
+	"partners": [
+		{
+			"id": "cliid2kua0000pejmue084f2j",
+			"name": "GLAAD",
+			"href": "https://www.glaad.org/",
+			"tag": "glaad",
+			"imageSrc": null,
+			"order": 1,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0001pejm57fo6tk3",
+			"name": "Lambda Legal",
+			"href": "https://www.lambdalegal.org/",
+			"tag": "lambdaLegal",
+			"imageSrc": null,
+			"order": 2,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0002pejmpzoxxye5",
+			"name": "SAGE",
+			"href": "https://www.sageusa.org/",
+			"tag": "sage",
+			"imageSrc": null,
+			"order": 3,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0003pejmb54qw3e5",
+			"name": "Immigration Equality",
+			"href": "https://immigrationequality.org/",
+			"tag": "immigrationEquality",
+			"imageSrc": null,
+			"order": 4,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0004pejmyk3ammln",
+			"name": "NQAPIA",
+			"href": "https://www.nqapia.org/",
+			"tag": "nqapia",
+			"imageSrc": null,
+			"order": 5,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0005pejmaxgdl2wy",
+			"name": "KYLP",
+			"href": "https://www.kylp.org/",
+			"tag": "kylp",
+			"imageSrc": null,
+			"order": 6,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0006pejmd1mlzpf0",
+			"name": "MTPC",
+			"href": "https://www.masstpc.org/",
+			"tag": "mtpc",
+			"imageSrc": null,
+			"order": 7,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kua0007pejm1rmn3ov1",
+			"name": "Oasis Legal",
+			"href": "https://www.oasislegalservices.org/",
+			"tag": "oasisLegal",
+			"imageSrc": null,
+			"order": 8,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kub0008pejmrgr2f2yw",
+			"name": "Stand With Trans",
+			"href": "https://standwithtrans.org/",
+			"tag": "standWithTrans",
+			"imageSrc": null,
+			"order": 9,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		},
+		{
+			"id": "cliid2kub0009pejmm9yoo2s7",
+			"name": "TAVA",
+			"href": "https://www.transveteran.org/",
+			"tag": "tava",
+			"imageSrc": null,
+			"order": 10,
+			"visible": true,
+			"height": null,
+			"width": null,
+			"createdAt": "2023-06-05T04:37:54.563Z",
+			"updatedAt": "2023-06-05T04:37:54.563Z"
+		}
+	],
+	"storiesResult": [
+		{
+			"id": "clieqqs8x0000pejgjjg7vpzl",
+			"name": "Shannon"
+		},
+		{
+			"id": "clieqqs8z0016pejg3sa34r69",
+			"name": "Tom"
+		},
+		{
+			"id": "clieqqs8x0001pejgnud4kby0",
+			"name": "Ari"
+		},
+		{
+			"id": "clieqqs8x0002pejgh18od3ie",
+			"name": "Logan"
+		},
+		{
+			"id": "clieqqs8x0003pejgqj1taakh",
+			"name": "Jett"
+		},
+		{
+			"id": "clieqqs8x0004pejgjm53yq03",
+			"name": "JJ"
+		},
+		{
+			"id": "clieqqs8x0005pejgi6kxffd5",
+			"name": "2AM Ricky"
+		},
+		{
+			"id": "clieqqs8z0019pejg847edpp9",
+			"name": "Chris"
+		},
+		{
+			"id": "clieqqs8x0006pejg3fwcv6i5",
+			"name": "Max"
+		},
+		{
+			"id": "clieqqs8x0007pejgifgpu6n1",
+			"name": "Kell"
+		},
+		{
+			"id": "clieqqs8x0008pejggcqd2ukm",
+			"name": "Michael"
+		},
+		{
+			"id": "clieqqs8x0009pejgnb7wbh4d",
+			"name": "Valentín"
+		},
+		{
+			"id": "clieqqs8y000npejgv54g3m6f",
+			"name": "Jamie"
+		},
+		{
+			"id": "clieqqs8y000apejg60h0yfru",
+			"name": "Jamison"
+		},
+		{
+			"id": "clieqqs8y000bpejg195lwjh0",
+			"name": "Eppchez"
+		},
+		{
+			"id": "clieqqs8y000cpejgg903362q",
+			"name": "Myles"
+		},
+		{
+			"id": "clieqqs8y000dpejgqun3jemq",
+			"name": "Meryl"
+		},
+		{
+			"id": "clieqqs8y000epejgh70w6781",
+			"name": "Lío"
+		},
+		{
+			"id": "clieqqs8z0018pejgikqb0k94",
+			"name": "Chris"
+		},
+		{
+			"id": "clieqqs8y000fpejgx3wgd3lv",
+			"name": "Trystan"
+		},
+		{
+			"id": "clieqqs8y000gpejgkf9reuwe",
+			"name": "Brison"
+		},
+		{
+			"id": "clieqqs8y000hpejgkxh6i105",
+			"name": "Gabe"
+		},
+		{
+			"id": "clieqqs8y000ipejgyatt1bq0",
+			"name": "Maxl"
+		},
+		{
+			"id": "clieqqs8y000jpejgze4uihbt",
+			"name": "Hunter"
+		},
+		{
+			"id": "clieqqs8y000kpejgxmesu4ur",
+			"name": "Arick"
+		},
+		{
+			"id": "clieqqs8y000lpejgb6dgsvak",
+			"name": "Cameron"
+		},
+		{
+			"id": "clieqqs8y000mpejgvv7o5ory",
+			"name": "Clay"
+		},
+		{
+			"id": "clieqqs8y000opejgvzetgpev",
+			"name": "Marty"
+		},
+		{
+			"id": "clieqqs8z000ppejg38flafm9",
+			"name": "Leonardo A"
+		},
+		{
+			"id": "clieqqs8z000qpejgh8rtx0dz",
+			"name": "Tiq"
+		},
+		{
+			"id": "clieqqs8z000rpejgrrbrnbp2",
+			"name": "Reid"
+		},
+		{
+			"id": "clieqqs8z000spejgapwgud4v",
+			"name": "Michelangelo"
+		},
+		{
+			"id": "clieqqs8z000tpejg8osg75qt",
+			"name": "Karsten"
+		},
+		{
+			"id": "clieqqs8z000upejglrmx0s8t",
+			"name": "Xanh"
+		},
+		{
+			"id": "clieqqs8z000vpejg3ajg3a0l",
+			"name": "Steph"
+		},
+		{
+			"id": "clieqqs8z000wpejggkr4vb1n",
+			"name": "Al"
+		},
+		{
+			"id": "clieqqs8z000xpejgslpd6gd5",
+			"name": "Cika"
+		},
+		{
+			"id": "clieqqs8z0015pejgz4brgpow",
+			"name": "Sam"
+		},
+		{
+			"id": "clieqqs8z000ypejgnum927yt",
+			"name": "Asher"
+		},
+		{
+			"id": "clieqqs8z0017pejgfrytorzn",
+			"name": "Skylar"
+		},
+		{
+			"id": "clieqqs8z000zpejg3jzevqyi",
+			"name": "Zander"
+		},
+		{
+			"id": "clieqqs8z0010pejgy12lcyth",
+			"name": "Nikolas"
+		},
+		{
+			"id": "clieqqs8z0011pejgbe0pykxn",
+			"name": "Lance"
+		},
+		{
+			"id": "clieqqs8z0012pejgpvgi5tz4",
+			"name": "Krystiano"
+		},
+		{
+			"id": "clieqqs8z0013pejg5scf4zfm",
+			"name": "Max"
+		},
+		{
+			"id": "clieqqs8z0014pejghgdaeyya",
+			"name": "Maxc"
+		},
+		{
+			"id": "clieqqs90001apejgyfzlky5z",
+			"name": "Axel"
+		}
+	]
+}

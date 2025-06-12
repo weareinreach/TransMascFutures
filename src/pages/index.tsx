@@ -24,6 +24,7 @@ import { getServerSideTranslations } from '~/server/i18n'
 import { trpcServerClient } from '~/utils/ssr'
 import Logo from '~public/assets/tmf-logo-rect-bw.png'
 
+import { ShareButton } from '../components/ShareButton/ShareButton'
 import { api, type RouterOutputs } from '../utils/api'
 
 const useStyles = createStyles((theme) => {
@@ -35,8 +36,9 @@ const useStyles = createStyles((theme) => {
 			},
 		},
 		categoryImage: {
-			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`,
+			filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.other.colors.midGray})`, // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 			...theme.fn.hover({
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
 				filter: `drop-shadow(${rem(-2)} ${rem(8)} ${rem(8)} ${theme.fn.lighten(theme.other.colors.blue, 0)})`,
 			}),
 		},
@@ -101,10 +103,11 @@ export const MainPage = ({ categories }: MainPageProps) => {
 						{t('main-page.tagline2')}
 					</Title>
 				</Stack>
-				<Stack mx={80} mb={20}>
+				<Stack mx={80} mb={20} align='center'>
 					<Button component={Link} href={{ pathname: '/survey' }} tt='uppercase' variant='secondary'>
 						{t('participate')}
 					</Button>
+					<ShareButton />
 				</Stack>
 			</Group>
 
@@ -151,7 +154,7 @@ const Home: NextPage = () => {
 export default Home
 
 export const getStaticProps: GetStaticProps = async ({ locale: ssrLocale }) => {
-	const locale = (['en', 'es'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es'
+	const locale = (['en', 'es', 'fr'].includes(ssrLocale ?? '') ? ssrLocale : 'en') as 'en' | 'es' | 'fr'
 	const ssg = trpcServerClient()
 
 	const [i18n] = await Promise.allSettled([
