@@ -123,7 +123,7 @@
 		"prettier-plugin-prisma": "5.0.0",
 		"prisma": "5.22.0",
 		"react-docgen-typescript": "2.2.2",
-		"storybook": "8.6.2",
+		"storybook": "8.6.15",
 		"tsx": "4.19.3",
 		"turbo": "1.13.4",
 		"type-fest": "4.35.0",
