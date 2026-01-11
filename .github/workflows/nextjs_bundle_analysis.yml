@@ -30,7 +30,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.15.6
+          version: 10.27.0
           run_install: false
 
       - name: Install Node.js
