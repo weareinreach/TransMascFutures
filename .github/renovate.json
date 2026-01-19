@@ -1,5 +1,12 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["local>weareinreach/renovate-config"],
-	"schedule": ["before 4am on Monday", "before 4am on Thursday"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>weareinreach/renovate-config"],
+  "schedule": ["before 4am on Monday", "before 4am on Thursday"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "groupName": "pnpm-v10-migration-batch",
+      "dependencyDashboardApproval": false
+    }
+  ]
 }
