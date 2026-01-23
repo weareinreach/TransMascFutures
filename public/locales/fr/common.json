@@ -28,7 +28,7 @@
         "immigrant": "Immigrant",
         "queer": "Queer",
         "transman": "Trans Man",
-        "transmasc": "Trans Masc / Nonbinary"
+        "transmasc": "Trans Masc/Non binaire"
     },
     "donate": "Faire un don",
     "errors": {
@@ -63,7 +63,7 @@
     },
     "participate": "Cliquez ici pour participer",
     "pronoun": {
-        "any": "Tous les Pronouns",
+        "any": "Tous les pronoms",
         "ey": "Ey/Em/Eir",
         "he": "il/lui",
         "none": "Pas de Pronouns",
