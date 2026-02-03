@@ -98,7 +98,7 @@
 		"chromatic": "11.26.1",
 		"dotenv": "16.4.7",
 		"dotenv-cli": "7.4.4",
-		"eslint": "8.57.1",
+		"eslint": "9.26.0",
 		"eslint-config-next": "14.2.24",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-formatter-github": "1.1.4",
