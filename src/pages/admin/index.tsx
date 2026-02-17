@@ -39,7 +39,10 @@ const AdminPage: NextPage = () => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { t } = useTranslation()
 	const [page, setPage] = useState(1)
-	const [sortBy, setSortBy] = useState<{ key: keyof Story | 'reviewed' | 'category'; direction: 'asc' | 'desc' } | null>(null)
+	const [sortBy, setSortBy] = useState<{
+		key: keyof Story | 'reviewed' | 'category'
+		direction: 'asc' | 'desc'
+	} | null>(null)
 	const [expandedStoryId, setExpandedStoryId] = useState<string | null>(null)
 	const [visibleColumns, setVisibleColumns] = useState({
 		id: false,
@@ -49,6 +52,8 @@ const AdminPage: NextPage = () => {
 		response2EN: true,
 		published: true,
 		reviewed: true,
+		createdAt: false,
+		updatedAt: false,
 	})
 	const ITEMS_PER_PAGE = 10
 
@@ -99,7 +104,14 @@ const AdminPage: NextPage = () => {
 					const catB = b.categories?.[0]?.category?.tag || ''
 					return catA.localeCompare(catB) * dir
 				}
-				if (key === 'id' || key === 'name' || key === 'response1EN' || key === 'response2EN') {
+				if (
+					key === 'id' ||
+					key === 'name' ||
+					key === 'response1EN' ||
+					key === 'response2EN' ||
+					key === 'createdAt' ||
+					key === 'updatedAt'
+				) {
 					const valA = a[key] || ''
 					const valB = b[key] || ''
 					if (typeof valA === 'string' && typeof valB === 'string') {
@@ -129,27 +141,27 @@ const AdminPage: NextPage = () => {
 	}
 
 	return (
-		<Container py="xl">
-			<Stack align="center" spacing="lg" mt={50} className={classes.header}>
+		<Container py='xl'>
+			<Stack align='center' spacing='lg' mt={50} className={classes.header}>
 				<Title order={1}>Admin Portal</Title>
 				<Text>Welcome to the TransMascFutures admin area.</Text>
 			</Stack>
 
 			<StatusLegend />
 
-			<Stack spacing="xs" mb="md">
-				<Text size="sm">
+			<Stack spacing='xs' mb='md'>
+				<Text size='sm'>
 					<strong>Question 1:</strong> {t('story.prompt1')}
 				</Text>
-				<Text size="sm">
+				<Text size='sm'>
 					<strong>Question 2:</strong> {t('story.prompt2')}
 				</Text>
 			</Stack>
 
-						<Group position="right" mb="md" align="flex-end">
-				<Menu shadow="md" width={200} closeOnItemClick={false}>
+			<Group position='right' mb='md' align='flex-end'>
+				<Menu shadow='md' width={200} closeOnItemClick={false}>
 					<Menu.Target>
-						<Button leftIcon={<IconColumns size="1rem" />} variant="outline">
+						<Button leftIcon={<IconColumns size='1rem' />} variant='outline'>
 							Columns
 						</Button>
 					</Menu.Target>
@@ -159,16 +171,20 @@ const AdminPage: NextPage = () => {
 							id: 'ID',
 							name: 'Name',
 							categories: 'Categories',
-							response1EN: 'Resp 1 (EN)',
-							response2EN: 'Resp 2 (EN)',
+							response1EN: 'Response 1',
+							response2EN: 'Response 2',
 							published: 'Published',
 							reviewed: 'Reviewed',
+							createdAt: 'Created',
+							updatedAt: 'Updated',
 						}).map(([key, label]) => (
 							<Menu.Item key={key}>
 								<Checkbox
 									label={label}
 									checked={visibleColumns[key as keyof typeof visibleColumns]}
-									onChange={(event) => setVisibleColumns((current) => ({ ...current, [key]: event.currentTarget.checked }))}
+									onChange={(event) =>
+										setVisibleColumns((current) => ({ ...current, [key]: event.currentTarget.checked }))
+									}
 								/>
 							</Menu.Item>
 						))}
@@ -177,7 +193,7 @@ const AdminPage: NextPage = () => {
 			</Group>
 
 			{isLoading && !allStories.length ? (
-				<Text align="center">Loading...</Text>
+				<Text align='center'>Loading...</Text>
 			) : (
 				<ScrollArea>
 					<Table striped highlightOnHover withBorder withColumnBorders>
@@ -187,7 +203,11 @@ const AdminPage: NextPage = () => {
 								{visibleColumns.id && <SortableTh>ID</SortableTh>}
 								{visibleColumns.name && <SortableTh>Name</SortableTh>}
 								{visibleColumns.categories && (
-									<SortableTh sorted={sortBy?.key === 'category'} reversed={sortBy?.direction === 'desc'} onSort={() => setSorting('category')}>
+									<SortableTh
+										sorted={sortBy?.key === 'category'}
+										reversed={sortBy?.direction === 'desc'}
+										onSort={() => setSorting('category')}
+									>
 										Categories
 									</SortableTh>
 								)}
@@ -203,8 +223,30 @@ const AdminPage: NextPage = () => {
 									</SortableTh>
 								)}
 								{visibleColumns.reviewed && (
-									<SortableTh sorted={sortBy?.key === 'reviewed'} reversed={sortBy?.direction === 'desc'} onSort={() => setSorting('reviewed')}>
+									<SortableTh
+										sorted={sortBy?.key === 'reviewed'}
+										reversed={sortBy?.direction === 'desc'}
+										onSort={() => setSorting('reviewed')}
+									>
 										Reviewed
+									</SortableTh>
+								)}
+								{visibleColumns.createdAt && (
+									<SortableTh
+										sorted={sortBy?.key === 'createdAt'}
+										reversed={sortBy?.direction === 'desc'}
+										onSort={() => setSorting('createdAt')}
+									>
+										Created
+									</SortableTh>
+								)}
+								{visibleColumns.updatedAt && (
+									<SortableTh
+										sorted={sortBy?.key === 'updatedAt'}
+										reversed={sortBy?.direction === 'desc'}
+										onSort={() => setSorting('updatedAt')}
+									>
+										Updated
 									</SortableTh>
 								)}
 							</tr>
@@ -225,7 +267,7 @@ const AdminPage: NextPage = () => {
 						</tbody>
 					</Table>
 
-					<Center mt="xl">
+					<Center mt='xl'>
 						<Pagination total={totalPages} value={page} onChange={setPage} />
 					</Center>
 				</ScrollArea>

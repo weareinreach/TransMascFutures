@@ -40,7 +40,7 @@ export function SortableTh({ children, reversed, sorted, onSort }: ThProps) {
 		return (
 			<th className={classes.th}>
 				<Box className={classes.control}>
-					<Text fw={700} fz="sm">
+					<Text fw={700} fz='sm'>
 						{children}
 					</Text>
 				</Box>
@@ -52,13 +52,13 @@ export function SortableTh({ children, reversed, sorted, onSort }: ThProps) {
 	return (
 		<th className={classes.th}>
 			<UnstyledButton onClick={onSort} className={classes.control}>
-				<Group position="apart" noWrap>
-					<Text fw={700} fz="sm">
+				<Group position='apart' noWrap>
+					<Text fw={700} fz='sm'>
 						{children}
 					</Text>
 					{Icon && (
 						<Center className={classes.icon}>
-							<Icon size="0.9rem" stroke={1.5} />
+							<Icon size='0.9rem' stroke={1.5} />
 						</Center>
 					)}
 				</Group>

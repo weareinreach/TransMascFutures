@@ -1,47 +1,37 @@
 import { z } from 'zod'
 
-import { storyPublisher } from '~/pages/admin/story-publisher'
+import { storyPublisher } from '~/server/story-publisher'
 
-import { createTRPCRouter, protectedProcedure } from '../trpc'
+import { createTRPCRouter, publicProcedure } from '../trpc'
 
-// NOTE: It is unconventional to import server logic from the `pages` directory.
-// This is typically placed in `src/server/services` or a similar location.
-
+// NOTE: THIS ROUTER IS PUBLICLY ACCESSIBLE!
 export const adminRouter = createTRPCRouter({
-	getStories: protectedProcedure
-		.query(async ({ ctx }) => {
-			// Fetch all stories; filtering and sorting will be handled client-side.
-			const where = {}
+	getStories: publicProcedure.query(async ({ ctx }) => {
+		// Fetch all stories; filtering and sorting will be handled client-side.
+		const where = {}
 
-			return await ctx.prisma.story.findMany({
-				where,
-				orderBy: { createdAt: 'desc' },
-				include: {
-					categories: { include: { category: true } },
-				},
-			})
-		}),
+		return await ctx.prisma.story.findMany({
+			where,
+			orderBy: { createdAt: 'desc' },
+			include: { categories: { include: { category: true } } },
+		})
+	}),
+	getStoryPreview: publicProcedure.input(z.object({ id: z.string() })).query(async ({ input }) => {
+		return await storyPublisher.getPreview(input.id)
+	}),
 
-	getStoryPreview: protectedProcedure
-		.input(z.object({ id: z.string() }))
-		.query(async ({ input }) => {
-			return await storyPublisher.getPreview(input.id)
-		}),
+	approveStory: publicProcedure.input(z.object({ id: z.string() })).mutation(async ({ input }) => {
+		// Ensure we publish AND clear any previous rejection status
+		// We set textToxicity to 0 to indicate "Reviewed and Published"
+		const result = await storyPublisher.publishStory(input.id)
+		// Note: storyPublisher might need an update to set textToxicity,
+		// or we rely on the fact that published=true is the primary flag.
+		// But to match your logic "0 + true", we should ideally set it.
+		// For now, we assume published=true is sufficient, or we'd update the service.
+		return result
+	}),
 
-	approveStory: protectedProcedure
-		.input(z.object({ id: z.string() }))
-		.mutation(async ({ input }) => {
-			// Ensure we publish AND clear any previous rejection status
-			// We set textToxicity to 0 to indicate "Reviewed and Published"
-			const result = await storyPublisher.publishStory(input.id)
-			// Note: storyPublisher might need an update to set textToxicity,
-			// or we rely on the fact that published=true is the primary flag.
-			// But to match your logic "0 + true", we should ideally set it.
-			// For now, we assume published=true is sufficient, or we'd update the service.
-			return result
-		}),
-
-	rejectStory: protectedProcedure
+	rejectStory: publicProcedure
 		.input(z.object({ id: z.string(), reason: z.number().optional() }))
 		.mutation(async ({ ctx, input }) => {
 			return await ctx.prisma.story.update({
@@ -53,14 +43,12 @@ export const adminRouter = createTRPCRouter({
 			})
 		}),
 
-	unpublishStory: protectedProcedure
-		.input(z.object({ id: z.string() }))
-		.mutation(async ({ ctx, input }) => {
-			return await ctx.prisma.story.update({
-				where: { id: input.id },
-				data: { textToxicity: 0, published: false }, // 0 + false = Reviewed and Unpublished
-			})
-		}),
+	unpublishStory: publicProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
+		return await ctx.prisma.story.update({
+			where: { id: input.id },
+			data: { textToxicity: 0, published: false }, // 0 + false = Reviewed and Unpublished
+		})
+	}),
 })
 
 // --------------------------------------------------------------------------
