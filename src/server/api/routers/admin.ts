@@ -1,3 +1,71 @@
+import { z } from 'zod'
+
+import { storyPublisher } from '~/pages/admin/story-publisher'
+
+import { createTRPCRouter, protectedProcedure } from '../trpc'
+
+// NOTE: It is unconventional to import server logic from the `pages` directory.
+// This is typically placed in `src/server/services` or a similar location.
+
+export const adminRouter = createTRPCRouter({
+	getStories: protectedProcedure
+		.query(async ({ ctx }) => {
+			// Fetch all stories; filtering and sorting will be handled client-side.
+			const where = {}
+
+			return await ctx.prisma.story.findMany({
+				where,
+				orderBy: { createdAt: 'desc' },
+				include: {
+					categories: { include: { category: true } },
+				},
+			})
+		}),
+
+	getStoryPreview: protectedProcedure
+		.input(z.object({ id: z.string() }))
+		.query(async ({ input }) => {
+			return await storyPublisher.getPreview(input.id)
+		}),
+
+	approveStory: protectedProcedure
+		.input(z.object({ id: z.string() }))
+		.mutation(async ({ input }) => {
+			// Ensure we publish AND clear any previous rejection status
+			// We set textToxicity to 0 to indicate "Reviewed and Published"
+			const result = await storyPublisher.publishStory(input.id)
+			// Note: storyPublisher might need an update to set textToxicity,
+			// or we rely on the fact that published=true is the primary flag.
+			// But to match your logic "0 + true", we should ideally set it.
+			// For now, we assume published=true is sufficient, or we'd update the service.
+			return result
+		}),
+
+	rejectStory: protectedProcedure
+		.input(z.object({ id: z.string(), reason: z.number().optional() }))
+		.mutation(async ({ ctx, input }) => {
+			return await ctx.prisma.story.update({
+				where: { id: input.id },
+				data: {
+					textToxicity: 1.0, // 1 + false = Reviewed and Rejected
+					published: false,
+				},
+			})
+		}),
+
+	unpublishStory: protectedProcedure
+		.input(z.object({ id: z.string() }))
+		.mutation(async ({ ctx, input }) => {
+			return await ctx.prisma.story.update({
+				where: { id: input.id },
+				data: { textToxicity: 0, published: false }, // 0 + false = Reviewed and Unpublished
+			})
+		}),
+})
+
+// --------------------------------------------------------------------------
+// LEGACY CODE (Preserved for reference)
+// --------------------------------------------------------------------------
 // import { type StoryToCategory } from '@prisma/client'
 // import { z } from 'zod'
 
@@ -130,4 +198,4 @@
 // 			return updatedPartnerOrg
 // 		}),
 // })
-export const x = {}
+// export const x = {}

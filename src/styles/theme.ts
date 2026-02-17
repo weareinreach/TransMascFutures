@@ -14,7 +14,7 @@ import {
 	type TextInputStylesNames,
 } from '@mantine/core'
 
-const themeCustomObj = {
+export const themeCustomObj = {
 	colors: {
 		glaadGray: '#BEBEBE',
 		midGray: '#65676B',
@@ -197,3 +197,8 @@ export const theme: MantineThemeOverride = {
 }
 
 export type ThemeCustomObject = typeof themeCustomObj
+
+declare module '@mantine/core' {
+	// eslint-disable-next-line @typescript-eslint/no-empty-interface
+	export interface MantineThemeOther extends ThemeCustomObject {}
+}
