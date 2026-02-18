@@ -1,7 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import {
 	Button,
-	Center,
 	Checkbox,
 	Container,
 	createStyles,
@@ -264,9 +263,13 @@ const AdminPage: NextPage = () => {
 						</tbody>
 					</Table>
 
-					<Center mt='xl'>
+					<Group position='apart' mt='xl' align='center'>
+						<Text size='sm' color='dimmed'>
+							Showing {sortedStories.length === 0 ? 0 : (page - 1) * ITEMS_PER_PAGE + 1} to{' '}
+							{Math.min(page * ITEMS_PER_PAGE, sortedStories.length)} of {sortedStories.length} entries
+						</Text>
 						<Pagination total={totalPages} value={page} onChange={setPage} />
-					</Center>
+					</Group>
 				</ScrollArea>
 			)}
 		</Container>
