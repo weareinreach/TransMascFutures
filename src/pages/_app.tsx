@@ -32,6 +32,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 	const router = useRouter()
 	const { t } = useTranslation()
 	const { classes } = useStyles({ showButton: router.pathname !== '/', isHome: router.pathname === '/' })
+	const isAdmin = router.pathname.startsWith('/admin')
 	return (
 		<>
 			<Head>
@@ -50,25 +51,29 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 			>
 				<Navbar />
 				<Component {...pageProps} />
-				<Group position='apart' w='100%' p={40}>
-					<Button
-						component='a'
-						href='https://inreach.kindful.com/?campaign=1296613'
-						target='_blank'
-						rel='noreferrer'
-						className={classes.homeButton}
-					>
-						{t('donate')}
-					</Button>
-					<Text className={classes.artistCredit} fw={500}>
-						{t('artist-credit')}
-					</Text>
-				</Group>
-				<Group position='right' w='100%' p={40} pt={0}>
-					<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
-						<Image src={VercelLogo} alt={t('vercel')} />
-					</a>
-				</Group>
+				{!isAdmin && (
+					<>
+						<Group position='apart' w='100%' p={40}>
+							<Button
+								component='a'
+								href='https://inreach.kindful.com/?campaign=1296613'
+								target='_blank'
+								rel='noreferrer'
+								className={classes.homeButton}
+							>
+								{t('donate')}
+							</Button>
+							<Text className={classes.artistCredit} fw={500}>
+								{t('artist-credit')}
+							</Text>
+						</Group>
+						<Group position='right' w='100%' p={40} pt={0}>
+							<a href='https://vercel.com/?utm_source=in-reach&utm_campaign=oss' target='_blank'>
+								<Image src={VercelLogo} alt={t('vercel')} />
+							</a>
+						</Group>
+					</>
+				)}
 			</MantineProvider>
 			<Analytics />
 			<SpeedInsights />
