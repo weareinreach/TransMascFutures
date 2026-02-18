@@ -19,11 +19,11 @@ This pipeline handles the text that lives in the codebase (buttons, navigation, 
 This pipeline handles the dynamic content submitted by users, which lives in the database.
 
 - **Source of Truth:** The `Story` table in the PostgreSQL database.
-- **Integration Method:** Custom API Calls + Manual Labor.
+- **Integration Method:** Custom API Calls (Automated).
 - **Workflow:**
   1.  **Push:** The `story.submit` function manually pushes text to a specific file (`new-submissions.json`) in Crowdin via API.
   2.  **Translate:** Translators work on this specific file.
-  3.  **Pull:** **Manual.** An engineer manually downloads the translations and hardcodes them into a migration script.
+  3.  **Pull:** **Automated.** When an admin approves a story in the Admin Portal, the application fetches the latest translations from Crowdin and saves them to the database.
 
 ## Summary of Architecture
 
@@ -33,4 +33,4 @@ This pipeline handles the dynamic content submitted by users, which lives in the
 | **Storage**        | JSON Files in Git Repo          | Database Rows (Prisma)               |
 | **Crowdin File**   | `en/common.json`                | `new-submissions.json`               |
 | **Sync Direction** | Bidirectional (Syncs both ways) | Unidirectional (Push only)           |
-| **Deployment**     | Required (Code change)          | Should not be required (Data change) |
+| **Deployment**     | Required (Code change)          | Not required (Admin Portal action)   |
