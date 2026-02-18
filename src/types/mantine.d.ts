@@ -1,4 +1,4 @@
-import { type ThemeCustomObject } from '~/styles'
+import { type ThemeCustomObject } from '~/styles/theme'
 
 declare module '@mantine/core' {
 	// eslint-disable-next-line @typescript-eslint/no-empty-interface

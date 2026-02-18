@@ -34,8 +34,8 @@
 	},
 	"include": [
 		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
+		"src/**/*.ts",
+		"src/**/*.tsx",
 		"**/*.cjs",
 		"**/*.mjs",
 		".*.js",
