@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return */
+// @ts-nocheck
 // To use this template,
 // Copy the file and make the name of the new filet today's date plus the storysubmission id (i.e. 2023-06-27_cm2m6ae8l0000aik98z887ke6)
 // Complete the values under the section for 'Define the job metadate here'
