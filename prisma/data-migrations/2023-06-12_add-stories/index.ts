@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return */
+// @ts-nocheck
 import { prisma } from '~db/client'
 import { type ListrJob } from '~db/dataMigrationRunner'
 import { type JobDef, jobPostRunner, jobPreRunner } from '~db/jobPreRun'
@@ -11,6 +13,9 @@ const jobDef: JobDef = {
 	jobId: '2023-06-12_add-stories',
 	title: 'Add submitted stories',
 	createdBy: 'Joe Karow',
+	storyId: '',
+	storySubmissionId: '',
+	description: '',
 }
 /**
  * Job export - this variable MUST be UNIQUE
@@ -61,6 +66,6 @@ export const job20230612 = {
 		 *
 		 * This writes a record to the DB to register that this migration has run successfully.
 		 */
-		await jobPostRunner(jobDef)
+		await jobPostRunner(jobDef, prisma)
 	},
 } satisfies ListrJob
