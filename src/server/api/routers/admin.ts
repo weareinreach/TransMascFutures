@@ -40,6 +40,7 @@ export const adminRouter = createTRPCRouter({
 					textToxicity: 1.0, // 1 + false = Reviewed and Rejected
 					published: false,
 				},
+				include: { categories: { include: { category: true } } },
 			})
 		}),
 
@@ -47,6 +48,7 @@ export const adminRouter = createTRPCRouter({
 		return await ctx.prisma.story.update({
 			where: { id: input.id },
 			data: { textToxicity: 0, published: false }, // 0 + false = Reviewed and Unpublished
+			include: { categories: { include: { category: true } } },
 		})
 	}),
 })

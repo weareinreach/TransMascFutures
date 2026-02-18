@@ -6,6 +6,7 @@ import { prisma } from '~/server/db'
 const PROJECT_ID = 14
 const FILE_NAME = 'new-submissions.json'
 const CROWDIN_TOKEN = process.env.CROWDIN_API
+const ORGANIZATION_DOMAIN = 'inreach'
 
 /**
  * Fixes: Unsafe member access .default on an `any` value We cast the import to 'unknown' first to safely
@@ -23,7 +24,7 @@ export class StoryPublisher {
 			if (!CROWDIN_TOKEN) {
 				throw new Error('CROWDIN_API environment variable is not defined')
 			}
-			this._client = new CrowdinConstructor({ token: CROWDIN_TOKEN })
+			this._client = new CrowdinConstructor({ token: CROWDIN_TOKEN, organization: ORGANIZATION_DOMAIN })
 		}
 		return this._client
 	}
@@ -35,13 +36,22 @@ export class StoryPublisher {
 
 		if (!story) throw new Error(`Story with ID ${storyId} not found`)
 
-		const translations = await this.fetchTranslations()
+		const [translationsES, translationsFR] = await Promise.all([
+			this.fetchTranslations('es'),
+			this.fetchTranslations('fr'),
+		])
 
 		return {
 			story,
 			crowdin: {
-				response1: translations[`${storyId}_response1`] || translations[`${storyId}.response1`] || '',
-				response2: translations[`${storyId}_response2`] || translations[`${storyId}.response2`] || '',
+				es: {
+					response1: translationsES[`${storyId}_response1`] || translationsES[`${storyId}.response1`] || '',
+					response2: translationsES[`${storyId}_response2`] || translationsES[`${storyId}.response2`] || '',
+				},
+				fr: {
+					response1: translationsFR[`${storyId}_response1`] || translationsFR[`${storyId}.response1`] || '',
+					response2: translationsFR[`${storyId}_response2`] || translationsFR[`${storyId}.response2`] || '',
+				},
 			},
 		}
 	}
@@ -53,10 +63,15 @@ export class StoryPublisher {
 
 		if (!story) throw new Error(`Story with ID ${storyId} not found`)
 
-		const translations = await this.fetchTranslations()
+		const [translationsES, translationsFR] = await Promise.all([
+			this.fetchTranslations('es'),
+			this.fetchTranslations('fr'),
+		])
 
-		const response1ES = translations[`${storyId}_response1`] || translations[`${storyId}.response1`]
-		const response2ES = translations[`${storyId}_response2`] || translations[`${storyId}.response2`]
+		const response1ES = translationsES[`${storyId}_response1`] || translationsES[`${storyId}.response1`]
+		const response2ES = translationsES[`${storyId}_response2`] || translationsES[`${storyId}.response2`]
+		const response1FR = translationsFR[`${storyId}_response1`] || translationsFR[`${storyId}.response1`]
+		const response2FR = translationsFR[`${storyId}_response2`] || translationsFR[`${storyId}.response2`]
 
 		const updatedStory = await prisma.story.update({
 			where: { id: storyId },
@@ -65,13 +80,16 @@ export class StoryPublisher {
 				textToxicity: 0,
 				response1ES: response1ES || null,
 				response2ES: response2ES || null,
+				response1FR: response1FR || null,
+				response2FR: response2FR || null,
 			},
+			include: { categories: { include: { category: true } } },
 		})
 
 		return updatedStory
 	}
 
-	private async fetchTranslations(): Promise<Record<string, string>> {
+	private async fetchTranslations(targetLanguageId = 'es'): Promise<Record<string, string>> {
 		try {
 			/** Fix: 'SourceFiles' only refers to a type. We use the Response types directly from the client methods. */
 			const files = await this.client.sourceFilesApi.listProjectFiles(PROJECT_ID)
@@ -84,7 +102,7 @@ export class StoryPublisher {
 			const downloadLink = await this.client.translationsApi.buildProjectFileTranslation(
 				PROJECT_ID,
 				targetFile.data.id,
-				{ targetLanguageId: 'es' }
+				{ targetLanguageId }
 			)
 
 			if (!downloadLink.data.url) {

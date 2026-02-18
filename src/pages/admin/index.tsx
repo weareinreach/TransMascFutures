@@ -17,12 +17,11 @@ import {
 import { IconColumns } from '@tabler/icons-react'
 import { type GetStaticProps, type NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { SortableTh } from '~/components/Admin/SortableTh'
 import { StatusLegend } from '~/components/Admin/StatusLegend'
 import { StoryRow } from '~/components/Admin/StoryRow'
-import { mockStories } from '~/data/mockStories'
 import { getServerSideTranslations } from '~/server/i18n'
 import { api, type RouterOutputs } from '~/utils/api'
 
@@ -57,27 +56,28 @@ const AdminPage: NextPage = () => {
 	})
 	const ITEMS_PER_PAGE = 10
 
-	const utils = api.useContext()
+	const utils = api.useUtils()
 	const { data: apiStories, isLoading } = api.admin.getStories.useQuery()
 
 	// Single item actions wrapper
 	const approveStory = api.admin.approveStory.useMutation({
-		onSuccess: () => {
-			void utils.admin.getStories.invalidate()
+		onSuccess: (data) => {
+			setExpandedStoryId(null)
+			utils.admin.getStories.setData(undefined, (old) => old?.map((s) => (s.id === data.id ? data : s)))
 		},
 	})
 	const rejectStory = api.admin.rejectStory.useMutation({
-		onSuccess: () => {
-			void utils.admin.getStories.invalidate()
+		onSuccess: (data) => {
+			setExpandedStoryId(null)
+			utils.admin.getStories.setData(undefined, (old) => old?.map((s) => (s.id === data.id ? data : s)))
 		},
 	})
 	const unpublishStory = api.admin.unpublishStory.useMutation({
-		onSuccess: () => {
-			void utils.admin.getStories.invalidate()
+		onSuccess: (data) => {
+			setExpandedStoryId(null)
+			utils.admin.getStories.setData(undefined, (old) => old?.map((s) => (s.id === data.id ? data : s)))
 		},
 	})
-
-	const allStories = apiStories && apiStories.length > 0 ? apiStories : mockStories
 
 	const getReviewStatusValue = (story: Story) => {
 		if (story.published) return 3 // Published
@@ -86,44 +86,41 @@ const AdminPage: NextPage = () => {
 		return 0 // Not Reviewed
 	}
 
-	const sortedStories = useMemo(() => {
-		const filtered = [...allStories]
-		if (sortBy) {
-			filtered.sort((a, b) => {
-				const { key, direction } = sortBy
-				const dir = direction === 'asc' ? 1 : -1
+	const allStories = apiStories || []
+	const sortedStories = [...allStories]
+	if (sortBy) {
+		sortedStories.sort((a, b) => {
+			const { key, direction } = sortBy
+			const dir = direction === 'asc' ? 1 : -1
 
-				if (key === 'reviewed') {
-					return (getReviewStatusValue(a) - getReviewStatusValue(b)) * dir
+			if (key === 'reviewed') {
+				return (getReviewStatusValue(a) - getReviewStatusValue(b)) * dir
+			}
+			if (key === 'published') {
+				return (Number(a.published) - Number(b.published)) * dir
+			}
+			if (key === 'category') {
+				const catA = a.categories?.[0]?.category?.tag || ''
+				const catB = b.categories?.[0]?.category?.tag || ''
+				return catA.localeCompare(catB) * dir
+			}
+			if (
+				key === 'id' ||
+				key === 'name' ||
+				key === 'response1EN' ||
+				key === 'response2EN' ||
+				key === 'createdAt' ||
+				key === 'updatedAt'
+			) {
+				const valA = a[key] || ''
+				const valB = b[key] || ''
+				if (typeof valA === 'string' && typeof valB === 'string') {
+					return valA.localeCompare(valB) * dir
 				}
-				if (key === 'published') {
-					return (Number(a.published) - Number(b.published)) * dir
-				}
-				if (key === 'category') {
-					const catA = a.categories?.[0]?.category?.tag || ''
-					const catB = b.categories?.[0]?.category?.tag || ''
-					return catA.localeCompare(catB) * dir
-				}
-				if (
-					key === 'id' ||
-					key === 'name' ||
-					key === 'response1EN' ||
-					key === 'response2EN' ||
-					key === 'createdAt' ||
-					key === 'updatedAt'
-				) {
-					const valA = a[key] || ''
-					const valB = b[key] || ''
-					if (typeof valA === 'string' && typeof valB === 'string') {
-						return valA.localeCompare(valB) * dir
-					}
-				}
-				return 0
-			})
-		}
-
-		return filtered
-	}, [allStories, sortBy])
+			}
+			return 0
+		})
+	}
 
 	const paginatedStories = sortedStories.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
 	const totalPages = Math.ceil(sortedStories.length / ITEMS_PER_PAGE)

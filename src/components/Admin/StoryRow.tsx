@@ -3,7 +3,7 @@ import { ActionIcon, Badge, Grid, Group, Text, Tooltip } from '@mantine/core'
 import { IconCheck, IconRotateClockwise, IconX } from '@tabler/icons-react'
 import { DateTime } from 'luxon'
 
-import { type RouterOutputs } from '~/utils/api'
+import { api, type RouterOutputs } from '~/utils/api'
 
 type Story = RouterOutputs['admin']['getStories'][number]
 
@@ -36,6 +36,12 @@ export const StoryRow = <T extends Record<string, boolean>>({
 	console.log(story)
 	// Total columns for the expanded row colspan
 	const totalColumns = Object.values(visibleColumns).filter(Boolean).length + 1
+
+	// Fetch live preview data from Crowdin when expanded
+	const { data: previewData, isLoading: isLoadingPreview } = api.admin.getStoryPreview.useQuery(
+		{ id: story.id },
+		{ enabled: expanded, refetchOnWindowFocus: false }
+	)
 
 	return (
 		<>
@@ -121,25 +127,49 @@ export const StoryRow = <T extends Record<string, boolean>>({
 								<Text weight={700} size='sm'>
 									Response 1 (Spanish)
 								</Text>
-								<Text size='sm'>{story.response1ES || 'N/A'}</Text>
+								<Text size='sm'>
+									{story.response1ES
+										? story.response1ES
+										: isLoadingPreview
+											? 'Loading from Crowdin...'
+											: previewData?.crowdin?.es?.response1 || 'N/A'}
+								</Text>
 							</Grid.Col>
 							<Grid.Col span={6}>
 								<Text weight={700} size='sm'>
 									Response 1 (French)
 								</Text>
-								<Text size='sm'>{story.response1FR || 'N/A'}</Text>
+								<Text size='sm'>
+									{story.response1FR
+										? story.response1FR
+										: isLoadingPreview
+											? 'Loading from Crowdin...'
+											: previewData?.crowdin?.fr?.response1 || 'N/A'}
+								</Text>
 							</Grid.Col>
 							<Grid.Col span={6}>
 								<Text weight={700} size='sm'>
 									Response 2 (Spanish)
 								</Text>
-								<Text size='sm'>{story.response2ES || 'N/A'}</Text>
+								<Text size='sm'>
+									{story.response2ES
+										? story.response2ES
+										: isLoadingPreview
+											? 'Loading from Crowdin...'
+											: previewData?.crowdin?.es?.response2 || 'N/A'}
+								</Text>
 							</Grid.Col>
 							<Grid.Col span={6}>
 								<Text weight={700} size='sm'>
 									Response 2 (French)
 								</Text>
-								<Text size='sm'>{story.response2FR || 'N/A'}</Text>
+								<Text size='sm'>
+									{story.response2FR
+										? story.response2FR
+										: isLoadingPreview
+											? 'Loading from Crowdin...'
+											: previewData?.crowdin?.fr?.response2 || 'N/A'}
+								</Text>
 							</Grid.Col>
 							<Grid.Col span={12}>
 								{/* FIX: Changed justify back to position for v6 */}
