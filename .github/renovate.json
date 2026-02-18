@@ -4,9 +4,9 @@
 	"schedule": ["before 4am on Monday", "before 4am on Thursday"],
 	"packageRules": [
 		{
-			"matchPackagePatterns": ["*"],
 			"groupName": "all-dependencies",
-			"dependencyDashboardApproval": false
+			"dependencyDashboardApproval": false,
+			"matchPackageNames": ["*"]
 		}
 	]
 }
