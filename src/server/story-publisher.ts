@@ -68,20 +68,20 @@ export class StoryPublisher {
 			this.fetchTranslations('fr'),
 		])
 
-		const response1ES = translationsES[`${storyId}_response1`] || translationsES[`${storyId}.response1`]
-		const response2ES = translationsES[`${storyId}_response2`] || translationsES[`${storyId}.response2`]
-		const response1FR = translationsFR[`${storyId}_response1`] || translationsFR[`${storyId}.response1`]
-		const response2FR = translationsFR[`${storyId}_response2`] || translationsFR[`${storyId}.response2`]
+		const response1ES = translationsES[`${storyId}_response1`] ?? translationsES[`${storyId}.response1`]
+		const response2ES = translationsES[`${storyId}_response2`] ?? translationsES[`${storyId}.response2`]
+		const response1FR = translationsFR[`${storyId}_response1`] ?? translationsFR[`${storyId}.response1`]
+		const response2FR = translationsFR[`${storyId}_response2`] ?? translationsFR[`${storyId}.response2`]
 
 		const updatedStory = await prisma.story.update({
 			where: { id: storyId },
 			data: {
 				published: true,
 				textToxicity: 0,
-				response1ES: response1ES || null,
-				response2ES: response2ES || null,
-				response1FR: response1FR || null,
-				response2FR: response2FR || null,
+				response1ES: response1ES ?? null,
+				response2ES: response2ES ?? null,
+				response1FR: response1FR ?? null,
+				response2FR: response2FR ?? null,
 			},
 			include: { categories: { include: { category: true } } },
 		})
