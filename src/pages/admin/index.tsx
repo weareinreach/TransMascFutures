@@ -7,10 +7,13 @@ import {
 	Group,
 	Menu,
 	Pagination,
+	Paper,
+	PasswordInput,
 	ScrollArea,
 	Stack,
 	Table,
 	Text,
+	TextInput,
 	Title,
 } from '@mantine/core'
 import { IconColumns } from '@tabler/icons-react'
@@ -36,6 +39,11 @@ const AdminPage: NextPage = () => {
 	const { classes } = useStyles()
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { t } = useTranslation()
+	const [isAuthenticated, setIsAuthenticated] = useState(false)
+	const [isAuthChecking, setIsAuthChecking] = useState(true)
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [loginError, setLoginError] = useState('')
 	const [page, setPage] = useState(1)
 	const [sortBy, setSortBy] = useState<{
 		key: keyof Story | 'reviewed' | 'category'
@@ -57,6 +65,26 @@ const AdminPage: NextPage = () => {
 
 	const utils = api.useUtils()
 	const { data: apiStories, isLoading } = api.admin.getStories.useQuery()
+
+	useEffect(() => {
+		const auth = localStorage.getItem('tmf_admin_auth')
+		if (auth === 'true') {
+			setIsAuthenticated(true)
+		}
+		setIsAuthChecking(false)
+	}, [])
+
+	const loginMutation = api.admin.login.useMutation({
+		onSuccess: (success) => {
+			if (success) {
+				setIsAuthenticated(true)
+				setLoginError('')
+				localStorage.setItem('tmf_admin_auth', 'true')
+			} else {
+				setLoginError('Invalid email or password')
+			}
+		},
+	})
 
 	// Single item actions wrapper
 	const approveStory = api.admin.approveStory.useMutation({
@@ -136,9 +164,64 @@ const AdminPage: NextPage = () => {
 		}
 	}
 
+	if (isAuthChecking) return null
+
+	if (!isAuthenticated) {
+		return (
+			<Container size='xs' py={100}>
+				<Paper withBorder shadow='md' p={30} radius='md' mt='xl'>
+					<Title order={2} align='center' mb='lg'>
+						Admin Login
+					</Title>
+					<TextInput
+						label='Email'
+						placeholder='you@example.com'
+						required
+						value={email}
+						onChange={(e) => setEmail(e.currentTarget.value)}
+					/>
+					<PasswordInput
+						label='Password'
+						placeholder='Your password'
+						required
+						mt='md'
+						value={password}
+						onChange={(e) => setPassword(e.currentTarget.value)}
+					/>
+					{loginError && (
+						<Text color='red' size='sm' mt='sm'>
+							{loginError}
+						</Text>
+					)}
+					<Button
+						fullWidth
+						mt='xl'
+						onClick={() => loginMutation.mutate({ email, password })}
+						loading={loginMutation.isLoading}
+					>
+						Sign in
+					</Button>
+				</Paper>
+			</Container>
+		)
+	}
+
 	return (
 		<Container py='xl'>
-			<Stack align='center' spacing='lg' mt={50} className={classes.header}>
+			<Group position='right'>
+				<Button
+					variant='outline'
+					color='red'
+					size='xs'
+					onClick={() => {
+						localStorage.removeItem('tmf_admin_auth')
+						setIsAuthenticated(false)
+					}}
+				>
+					Logout
+				</Button>
+			</Group>
+			<Stack align='center' spacing='lg' mt={20} className={classes.header}>
 				<Title order={1}>Admin Portal</Title>
 				<Text>Welcome to the TransMascFutures admin area.</Text>
 			</Stack>

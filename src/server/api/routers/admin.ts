@@ -6,6 +6,11 @@ import { createTRPCRouter, publicProcedure } from '../trpc'
 
 // NOTE: THIS ROUTER IS PUBLICLY ACCESSIBLE!
 export const adminRouter = createTRPCRouter({
+	login: publicProcedure
+		.input(z.object({ email: z.string(), password: z.string() }))
+		.mutation(({ input }) => {
+			return input.email === process.env.ADMIN_EMAIL && input.password === process.env.ADMIN_PASSWORD
+		}),
 	getStories: publicProcedure.query(async ({ ctx }) => {
 		// Fetch all stories; filtering and sorting will be handled client-side.
 		const where = {}
