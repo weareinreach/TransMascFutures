@@ -27,10 +27,10 @@ This pipeline handles the dynamic content submitted by users, which lives in the
 
 ## Summary of Architecture
 
-| Feature            | App Pipeline (UI)               | Data Pipeline (Stories)              |
-| :----------------- | :------------------------------ | :----------------------------------- |
-| **Content Type**   | Static (Menus, Labels)          | Dynamic (User Essays)                |
-| **Storage**        | JSON Files in Git Repo          | Database Rows (Prisma)               |
-| **Crowdin File**   | `en/common.json`                | `new-submissions.json`               |
-| **Sync Direction** | Bidirectional (Syncs both ways) | Unidirectional (Push only)           |
-| **Deployment**     | Required (Code change)          | Not required (Admin Portal action)   |
+| Feature            | App Pipeline (UI)               | Data Pipeline (Stories)            |
+| :----------------- | :------------------------------ | :--------------------------------- |
+| **Content Type**   | Static (Menus, Labels)          | Dynamic (User Essays)              |
+| **Storage**        | JSON Files in Git Repo          | Database Rows (Prisma)             |
+| **Crowdin File**   | `en/common.json`                | `new-submissions.json`             |
+| **Sync Direction** | Bidirectional (Syncs both ways) | Unidirectional (Push only)         |
+| **Deployment**     | Required (Code change)          | Not required (Admin Portal action) |
