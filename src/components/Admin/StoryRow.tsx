@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { ActionIcon, Badge, Grid, Group, Text, Tooltip } from '@mantine/core'
-import { IconCheck, IconRotateClockwise, IconX } from '@tabler/icons-react'
+import { IconCheck, IconExternalLink, IconRefresh, IconRotateClockwise, IconX } from '@tabler/icons-react'
 import { DateTime } from 'luxon'
 
 import { api, type RouterOutputs } from '~/utils/api'
@@ -15,6 +15,46 @@ interface StoryRowProps<T extends Record<string, boolean>> {
 	onReject: () => void
 	onUnpublish: () => void
 	visibleColumns: T
+}
+
+type TranslationStatus = 'in-db' | 'in-crowdin' | 'missing' | 'unchecked'
+
+const TranslationBadge = ({ lang, status }: { lang: string; status: TranslationStatus }) => {
+	let color = '#868e96' // mantine gray.6
+	let label = 'Not in DB (Expand to check)'
+
+	if (status === 'in-db') {
+		color = '#40c057' // mantine green.6
+		label = 'Present in DB'
+	} else if (status === 'in-crowdin') {
+		color = '#228be6' // mantine blue.6
+		label = 'Available in Crowdin (Not in DB)'
+	} else if (status === 'missing') {
+		color = '#fa5252' // mantine red.6
+		label = 'Missing in Crowdin'
+	}
+
+	return (
+		<Tooltip label={`${lang} Translation: ${label}`}>
+			<div
+				style={{
+					width: 22,
+					height: 22,
+					borderRadius: '50%',
+					backgroundColor: color,
+					color: 'white',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					fontSize: 10,
+					fontWeight: 700,
+					cursor: 'default',
+				}}
+			>
+				{lang}
+			</div>
+		</Tooltip>
+	)
 }
 
 export const StoryRow = <T extends Record<string, boolean>>({
@@ -33,7 +73,7 @@ export const StoryRow = <T extends Record<string, boolean>>({
 			: story.textToxicity === 0
 				? { label: 'Unpublished', color: 'orange' }
 				: { label: 'Not Reviewed', color: 'blue' }
-	console.log(story)
+
 	// Total columns for the expanded row colspan
 	const totalColumns = Object.values(visibleColumns).filter(Boolean).length + 1
 
@@ -42,6 +82,20 @@ export const StoryRow = <T extends Record<string, boolean>>({
 		{ id: story.id },
 		{ enabled: expanded, refetchOnWindowFocus: false }
 	)
+
+	const getStatus = (
+		inDB: boolean,
+		crowdinData: { response1?: string | null; response2?: string | null } | undefined
+	): TranslationStatus => {
+		if (inDB) return 'in-db'
+		if (previewData && crowdinData) {
+			return crowdinData.response1 || crowdinData.response2 ? 'in-crowdin' : 'missing'
+		}
+		return 'unchecked'
+	}
+
+	const esStatus = getStatus(!!(story.response1ES || story.response2ES), previewData?.crowdin?.es)
+	const frStatus = getStatus(!!(story.response1FR || story.response2FR), previewData?.crowdin?.fr)
 
 	return (
 		<>
@@ -100,7 +154,11 @@ export const StoryRow = <T extends Record<string, boolean>>({
 				)}
 				{visibleColumns.reviewed && (
 					<td>
-						<Badge color={reviewStatus.color}>{reviewStatus.label}</Badge>
+						<Group spacing={8} noWrap>
+							<Badge color={reviewStatus.color}>{reviewStatus.label}</Badge>
+							<TranslationBadge lang='ES' status={esStatus} />
+							<TranslationBadge lang='FR' status={frStatus} />
+						</Group>
 					</td>
 				)}
 				{visibleColumns.createdAt && <td>{DateTime.fromJSDate(story.createdAt).toFormat('M/d/yyyy')} </td>}
@@ -178,10 +236,29 @@ export const StoryRow = <T extends Record<string, boolean>>({
 										DB: published: {String(story.published)}, textToxicity: {story.textToxicity ?? 'null'}
 									</Text>
 									<Group position='right'>
+										<Tooltip label='Open in Crowdin'>
+											<ActionIcon
+												component='a'
+												href={`https://inreach.crowdin.com/editor/14/2653/`}
+												target='_blank'
+												color='blue'
+												variant='filled'
+												size='lg'
+											>
+												<IconExternalLink size='1.2rem' />
+											</ActionIcon>
+										</Tooltip>
 										{!story.published && (
 											<Tooltip label='Approve & Publish'>
 												<ActionIcon color='green' variant='filled' size='lg' onClick={onApprove}>
 													<IconCheck size='1.2rem' />
+												</ActionIcon>
+											</Tooltip>
+										)}
+										{story.published && (
+											<Tooltip label='Refresh Translations'>
+												<ActionIcon color='blue' variant='filled' size='lg' onClick={onApprove}>
+													<IconRefresh size='1.2rem' />
 												</ActionIcon>
 											</Tooltip>
 										)}

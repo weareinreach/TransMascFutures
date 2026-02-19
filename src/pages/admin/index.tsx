@@ -16,11 +16,12 @@ import {
 	TextInput,
 	Title,
 } from '@mantine/core'
-import { IconColumns } from '@tabler/icons-react'
+import { IconColumns, IconHelp } from '@tabler/icons-react'
 import { type GetStaticProps, type NextPage } from 'next'
 import { useTranslation } from 'next-i18next'
 import { useEffect, useState } from 'react'
 
+import { AdminInstructions } from '~/components/Admin/AdminInstructions'
 import { SortableTh } from '~/components/Admin/SortableTh'
 import { StatusLegend } from '~/components/Admin/StatusLegend'
 import { StoryRow } from '~/components/Admin/StoryRow'
@@ -40,6 +41,7 @@ const AdminPage: NextPage = () => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { t } = useTranslation()
 	const [isAuthenticated, setIsAuthenticated] = useState(false)
+	const [instructionsOpened, setInstructionsOpened] = useState(false)
 	const [isAuthChecking, setIsAuthChecking] = useState(true)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -178,7 +180,10 @@ const AdminPage: NextPage = () => {
 						placeholder='you@example.com'
 						required
 						value={email}
-						onChange={(e) => setEmail(e.currentTarget.value)}
+						onChange={(e) => {
+							setEmail(e.currentTarget.value)
+							setLoginError('')
+						}}
 					/>
 					<PasswordInput
 						label='Password'
@@ -186,7 +191,10 @@ const AdminPage: NextPage = () => {
 						required
 						mt='md'
 						value={password}
-						onChange={(e) => setPassword(e.currentTarget.value)}
+						onChange={(e) => {
+							setPassword(e.currentTarget.value)
+							setLoginError('')
+						}}
 					/>
 					{loginError && (
 						<Text color='red' size='sm' mt='sm'>
@@ -210,6 +218,13 @@ const AdminPage: NextPage = () => {
 		<Container py='xl'>
 			<Group position='right'>
 				<Button
+					leftIcon={<IconHelp size='1rem' />}
+					variant='default'
+					onClick={() => setInstructionsOpened(true)}
+				>
+					Help
+				</Button>
+				<Button
 					variant='outline'
 					color='red'
 					size='xs'
@@ -227,6 +242,7 @@ const AdminPage: NextPage = () => {
 			</Stack>
 
 			<StatusLegend />
+			<AdminInstructions opened={instructionsOpened} onClose={() => setInstructionsOpened(false)} />
 
 			<Stack spacing='xs' mb='md'>
 				<Text size='sm'>

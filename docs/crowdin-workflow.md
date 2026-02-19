@@ -24,6 +24,7 @@ This pipeline handles the dynamic content submitted by users, which lives in the
   1.  **Push:** The `story.submit` function manually pushes text to a specific file (`new-submissions.json`) in Crowdin via API.
   2.  **Translate:** Translators work on this specific file.
   3.  **Pull:** **Automated.** When an admin approves a story in the Admin Portal, the application fetches the latest translations from Crowdin and saves them to the database.
+  4.  **Refresh:** **On-Demand.** Admins can click "Refresh Translations" on published stories to pull updates from Crowdin without unpublishing.
 
 ## Summary of Architecture
 
