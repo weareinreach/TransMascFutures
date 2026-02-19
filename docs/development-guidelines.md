@@ -70,11 +70,11 @@ We use Prisma ORM to interact with the PostgreSQL database.
 
 ## 5. Authentication
 
-Authentication is handled by **NextAuth.js**.
+The Admin Portal (`/admin`) uses a simple credential check against environment variables.
 
-- **Client-side**: Use `useSession()` to check if a user is logged in.
-- **Server-side**: Use `getServerSession()` in API routes or `getServerSideProps`.
-- **Environment**: Ensure `NEXTAUTH_SECRET` is set in your `.env` file.
+*   **Credentials**: `ADMIN_EMAIL` and `ADMIN_PASSWORD` defined in `.env`.
+*   **Mechanism**: A tRPC mutation validates inputs. On success, a flag is stored in `localStorage`.
+*   **Note**: This project does not currently use a full authentication provider like NextAuth.js for public users.
 
 ## 6. API & Data Fetching (tRPC)
 

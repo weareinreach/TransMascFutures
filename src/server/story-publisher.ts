@@ -15,6 +15,9 @@ const ORGANIZATION_DOMAIN = 'inreach'
 const CrowdinConstructor =
 	typeof Crowdin === 'function' ? Crowdin : (Crowdin as unknown as { default: typeof Crowdin }).default
 
+// A type for the JSON structure returned by Crowdin, which can be flat or nested.
+type CrowdinTranslationFile = Record<string, string | Record<string, string>>
+
 export class StoryPublisher {
 	// Use InstanceType to avoid 'any' and 'redundant-type-constituents'
 	private _client: InstanceType<typeof Crowdin> | null = null
@@ -41,16 +44,35 @@ export class StoryPublisher {
 			this.fetchTranslations('fr'),
 		])
 
+		// Helper to extract translation from nested or flat structure
+		const getT = (data: CrowdinTranslationFile, field: string, source: string | null): string => {
+			let value = ''
+			// Try nested structure: { storyId: { field: "value" } }
+			const nestedData = data[storyId]
+			if (nestedData && typeof nestedData === 'object' && field in nestedData) {
+				const val = nestedData[field]
+				if (typeof val === 'string') value = val
+			} else {
+				// Try flat structure: { "storyId.field": "value" }
+				const flatData = data[`${storyId}.${field}`]
+				if (typeof flatData === 'string') value = flatData
+			}
+
+			// If the translation matches the source (English), treat it as missing/untranslated
+			if (source && value === source) return ''
+			return value
+		}
+
 		return {
 			story,
 			crowdin: {
 				es: {
-					response1: translationsES[`${storyId}_response1`] || translationsES[`${storyId}.response1`] || '',
-					response2: translationsES[`${storyId}_response2`] || translationsES[`${storyId}.response2`] || '',
+					response1: getT(translationsES, 'response1', story.response1EN),
+					response2: getT(translationsES, 'response2', story.response2EN),
 				},
 				fr: {
-					response1: translationsFR[`${storyId}_response1`] || translationsFR[`${storyId}.response1`] || '',
-					response2: translationsFR[`${storyId}_response2`] || translationsFR[`${storyId}.response2`] || '',
+					response1: getT(translationsFR, 'response1', story.response1EN),
+					response2: getT(translationsFR, 'response2', story.response2EN),
 				},
 			},
 		}
@@ -68,10 +90,35 @@ export class StoryPublisher {
 			this.fetchTranslations('fr'),
 		])
 
-		const response1ES = translationsES[`${storyId}_response1`] ?? translationsES[`${storyId}.response1`]
-		const response2ES = translationsES[`${storyId}_response2`] ?? translationsES[`${storyId}.response2`]
-		const response1FR = translationsFR[`${storyId}_response1`] ?? translationsFR[`${storyId}.response1`]
-		const response2FR = translationsFR[`${storyId}_response2`] ?? translationsFR[`${storyId}.response2`]
+		const getT = (data: CrowdinTranslationFile, field: string, source: string | null): string | null => {
+			let value: string | null = null
+			// Try nested structure: { storyId: { field: "value" } }
+			const nestedData = data[storyId]
+			if (nestedData && typeof nestedData === 'object' && field in nestedData) {
+				const val = nestedData[field]
+				if (typeof val === 'string') value = val
+			} else {
+				// Try flat structure: { "storyId.field": "value" }
+				const flatData = data[`${storyId}.${field}`]
+				if (typeof flatData === 'string') {
+					value = flatData
+				} else {
+					// Try legacy flat structure: { "storyId_field": "value" }
+					const legacyFlatData = data[`${storyId}_${field}`]
+					if (typeof legacyFlatData === 'string') {
+						value = legacyFlatData
+					}
+				}
+			}
+
+			if (source && value === source) return null
+			return value
+		}
+
+		const response1ES = getT(translationsES, 'response1', story.response1EN)
+		const response2ES = getT(translationsES, 'response2', story.response2EN)
+		const response1FR = getT(translationsFR, 'response1', story.response1EN)
+		const response2FR = getT(translationsFR, 'response2', story.response2EN)
 
 		const updatedStory = await prisma.story.update({
 			where: { id: storyId },
@@ -89,7 +136,7 @@ export class StoryPublisher {
 		return updatedStory
 	}
 
-	private async fetchTranslations(targetLanguageId = 'es'): Promise<Record<string, string>> {
+	private async fetchTranslations(targetLanguageId = 'es'): Promise<CrowdinTranslationFile> {
 		try {
 			/** Fix: 'SourceFiles' only refers to a type. We use the Response types directly from the client methods. */
 			const files = await this.client.sourceFilesApi.listProjectFiles(PROJECT_ID)
@@ -110,7 +157,8 @@ export class StoryPublisher {
 			}
 
 			const response = await fetch(downloadLink.data.url)
-			return (await response.json()) as Record<string, string>
+			const data = await response.json()
+			return data as CrowdinTranslationFile
 		} catch (error) {
 			console.error('Crowdin Fetch Error:', error)
 			throw new Error('Failed to retrieve translations from Crowdin')

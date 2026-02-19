@@ -9,7 +9,22 @@ export const adminRouter = createTRPCRouter({
 	login: publicProcedure
 		.input(z.object({ email: z.string(), password: z.string() }))
 		.mutation(({ input }) => {
-			return input.email === process.env.ADMIN_EMAIL && input.password === process.env.ADMIN_PASSWORD
+			const envEmail = process.env.ADMIN_EMAIL
+			const envPassword = process.env.ADMIN_PASSWORD
+
+			if (!envEmail || !envPassword) {
+				console.error('ADMIN_EMAIL or ADMIN_PASSWORD not set in environment variables.')
+				return false
+			}
+
+			const isValidEmail = input.email.trim() === envEmail.trim()
+			const isValidPassword = input.password.trim() === envPassword.trim()
+
+			if (!isValidEmail || !isValidPassword) {
+				console.warn('Admin login failed: Invalid credentials')
+			}
+
+			return isValidEmail && isValidPassword
 		}),
 	getStories: publicProcedure.query(async ({ ctx }) => {
 		// Fetch all stories; filtering and sorting will be handled client-side.
