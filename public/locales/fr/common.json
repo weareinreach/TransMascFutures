@@ -6,7 +6,7 @@
             "stat1-text": "of trans men and trans masculine youth have considered suicide",
             "stat1-title": "56%",
             "stat2-text": "les jeunes transgenres et non binaires ont tenté de se suicider.",
-            "stat2-title": "1 in 5",
+            "stat2-title": "1 sur 7",
             "stat3-text": "de la population trans dans les États-Unis identifiés comme des hommes trans.",
             "stat3-title": "36%"
         },
@@ -173,7 +173,7 @@
             "02_media": "Média/Presse"
         },
         "q3": "Veuillez fournir votre adresse e-mail si vous souhaitez rester au courant de l'état de la campagne #TransMascFutures.",
-        "q4": " Please enter your name as you would like it to appear on the campaign website.<br/>(Only a first name will be displayed. Aliases are welcome.)",
+        "q4": "Veuillez entrer votre prénom préféré comme vous souhaitez qu'il apparaisse sur le site web de la campagne.<br/> (Seulement un prénom sera affiché. Les alias sont les bienvenus.)",
         "q5": "Je m'identifie en tant que<br/><em>(Veuillez sélectionner tout ce qui s'applique à vous)</em>",
         "q5-opts": {
             "00_transman": "Homme Trans ",
