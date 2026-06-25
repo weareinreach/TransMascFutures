@@ -1,9 +1,9 @@
 {
     "about": {
-        "campaign": "This trans-led digital campaign organized by <Link1>InReach</Link1> and <Link2>GLAAD</Link2> aims to showcase positive stories from the diverse trans masculine community and increase access to safe, verified resources through the <Link3>free InReach App</Link3>.",
+        "campaign": "Cette campagne numérique trans-dirigée organisée par <Link href='https://www.inreach.org' target='_blank' rel='noopener noreferrer'>InReach</Link> et <Link href='https://www.glaad.org' target='_blank' rel='noopener noreferrer'>GLAAD</Link> vise à présenter des histoires positives de la communauté diverse trans-masculine et à améliorer l'accès à des ressources sûr et vérifiées via l'appli <Link href='https://app.inreach.org' target='_blank' rel='noopener noreferrer'> appli gratuite InReach</Link>.",
         "hollister": "<Title>Et un merci tout spécial à <Link>Le Hollister Confidence Fund</Link> pour son soutien.</Title>",
         "stats": {
-            "stat1-text": "of trans men and trans masculine youth have considered suicide",
+            "stat1-text": "des hommes trans et jeunes trans masculins ont considéré le suicide.",
             "stat1-title": "56%",
             "stat2-text": "les jeunes transgenres et non binaires ont tenté de se suicider.",
             "stat2-title": "1 sur 7",
