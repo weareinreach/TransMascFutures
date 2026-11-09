@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
-      - uses: connor-baer/action-sync-branch@main
+        uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
+      - uses: connor-baer/action-sync-branch@21932388b7d8bb5928eff2cdcde6a7ca3c56f270 # main
         with:
           branch: dev
           token: ${{ secrets.GH_ACT_PAT }}
